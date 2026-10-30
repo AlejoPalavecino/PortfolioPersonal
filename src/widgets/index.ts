@@ -1,4 +1,5 @@
 import { cases, email, type CaseId, type Section } from '../entities'
+import { assetUrl } from '../shared'
 
 const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`
 const back = '<button class="text-button" data-action="back">← Volver al campamento</button>'
@@ -24,7 +25,7 @@ function about(): string {
       <p>Trabajo en desarrollo full stack, análisis funcional, automatización e inteligencia artificial aplicada. Soy cofundador de FoxMind, una plataforma educativa orientada a personalizar el aprendizaje y acompañar el trabajo docente.</p>
       <h3>Lo que me interesa</h3>
       <p>Construir productos, comprender problemas y colaborar en la evolución de ideas.</p>
-    </div><img src="/assets/portrait.webp" alt="Retrato ilustrado de Alejo"></div>`
+    </div><img src="${assetUrl('portrait.webp')}" alt="Retrato ilustrado de Alejo"></div>`
 }
 
 function journey(): string {
@@ -45,7 +46,7 @@ function contact(): string {
       <a class="primary" href="${mail('Oportunidad laboral')}">Conversar sobre una oportunidad →</a>
       <a class="outline" href="${mail('Proyecto de desarrollo')}">Contarme sobre un proyecto →</a>
     </div>
-    <p><a href="/assets/cv-alejo-palavecino-es.pdf" download>Descargar CV original (pendiente de revisión) ↓</a></p>`
+    <p><a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>Descargar CV original (pendiente de revisión) ↓</a></p>`
 }
 
 export function sectionMarkup(section: Section): string {

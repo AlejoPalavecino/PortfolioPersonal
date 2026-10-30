@@ -1,5 +1,6 @@
 import { WORLD, nearbySection } from '../core/domain'
 import { sections, type Section } from '../entities'
+import { assetUrl } from '../shared'
 import type { createController } from './controller'
 import type { createViews } from './views'
 
@@ -40,7 +41,7 @@ export function createRenderer(root: HTMLElement, views: ReturnType<typeof creat
     const name = moving ? `walk-${direction}-${Math.floor(performance.now() / 167) % 4 + 1}` : `idle-${direction}`
     const frame = frames.find(item => item.name === name)
     if (frame) {
-      avatar.src = `/assets/avatar/${frame.name}.webp`
+      avatar.src = assetUrl(`avatar/${frame.name}.webp`)
       avatar.style.width = `${frame.w * .28 / 10}%`
       avatar.style.transform = `translate(${-frame.anchorX / frame.w * 100}%, ${-frame.anchorY / frame.h * 100}%)`
     }
@@ -60,7 +61,7 @@ export function createRenderer(root: HTMLElement, views: ReturnType<typeof creat
   }
   return { render, async loadFrames(ready: () => void) {
     try {
-      const response = await fetch('/assets/avatar/frames.json')
+      const response = await fetch(assetUrl('avatar/frames.json'))
       if (response.ok) { frames = await response.json() as Frame[]; ready() }
     } catch { /* Static HTML avatar remains available without metadata. */ }
   } }

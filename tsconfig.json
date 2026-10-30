@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022", "module": "ESNext", "moduleResolution": "Bundler",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"], "strict": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"], "types": ["vite/client"], "strict": true,
     "noUncheckedIndexedAccess": true, "noEmit": true, "skipLibCheck": true,
     "allowImportingTsExtensions": true
   },

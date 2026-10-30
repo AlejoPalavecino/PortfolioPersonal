@@ -1,5 +1,7 @@
+import { assetUrl } from '../shared'
+
 export function createAudio() {
-  const ambient = new Audio('/assets/camp-ambience-loop.wav')
+  const ambient = new Audio(assetUrl('camp-ambience-loop.wav'))
   ambient.loop = true; ambient.volume = .22
   let enabled = false, paused = false
   return {
