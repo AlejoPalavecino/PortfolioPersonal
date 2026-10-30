@@ -22,7 +22,13 @@ Se releen `controller`, `keyboard`, `events`, `actions`, `views`, `rendering` y 
 
 Sobre este candidato, `npx eslint src` y `npm run build` terminaron con código 0. El coordinador informó QA de producción con rutas de 1,19–1,96 s, última selección, apertura/cancelación, historial estable, enlaces directos tras recarga, fallo y reintento, PDF, pausa/reanudación, menú móvil, foco y audio/contacto. Son resultados del responsable de QA; esta auditoría no los repitió en otro navegador. La comprobación final de teclas mantenidas seguía en curso al revisar el delta.
 
-## Cierre pendiente del candidato
+## Cierre del coordinador
+
+Sobre el candidato final pasaron `npm test` (15/15), `npm run lint` y `npm run build`. Los guiones ego se trasladaron a `tools/qa/`. QA confirmó teclas sostenidas, reposo al soltar, detención por pérdida de foco, reducción y salto al contenido sin cambiar la ficha. Evidencias y cobertura parcial de AC están en `ENTREGA-0.1.0.md`.
+
+Se ejecutó `gitleaks protect --staged --redact --no-banner` antes de cada commit local sin detectar secretos. Estos controles cierran la revisión técnica registrada; no aprueban contenido final, mezcla audible ni la matriz exhaustiva de aceptación. No hubo escrituras remotas.
+
+### Alcance del dictamen previo
 
 El dictamen global requiere la ejecución final de test/lint/build sobre fuentes congeladas, las evidencias funcionales y visuales del responsable de QA, y `gitleaks protect --staged` ejecutado por el coordinador. Esta revisión no ejecutó un segundo navegador ni Gitleaks.
 

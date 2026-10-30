@@ -61,6 +61,10 @@ CT-05/07/10 son opcionales: marcas oficiales, tercer caso y evidencia de reconoc
 
 Engram identificó `portfolioalejo` pero la búsqueda acotada devolvió `unknown_project`; no se confirma persistencia de claves ni se mezclan memorias de FoxMind con este proyecto. El estado verificable se conserva en estos documentos y en Git local. No hay migraciones, base de datos, Docker, variables de entorno ni integración de terceros que preparar.
 
+El intento final de guardar el resumen fue bloqueado por el hook de Engram: `Codex host session resolution could not be confirmed`. No se inventó una identidad de sesión ni se eludió el control. El registro local queda completo aunque la persistencia externa no esté disponible.
+
+Git local usa la rama `feat/portfolio-review`. La importación inicial conserva el dossier original y derivados; el lockfile y esos materiales suministrados/generados se distinguen del código escrito. Las siguientes unidades tienen entre 186 y 375 líneas authored por commit. Antes de cada commit se ejecutó Gitleaks staged sin hallazgos. No se configuró un remoto ni se creó un PR.
+
 ## Evidencias de ejecución
 
 Entorno: Windows, Node.js 24.20.0, npm 12.0.2 y Chromium de ego(lite). QA de producción en `http://127.0.0.1:4173`, escritorio 1440 × 1000 y móvil emulado 390 × 844. Las últimas pruebas usaron la salida estática sin HMR. No se utilizó un teléfono físico.
