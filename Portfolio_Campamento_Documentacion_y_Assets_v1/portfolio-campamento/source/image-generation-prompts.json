@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "created": "2026-10-29",
+  "engine": "built-in image_gen",
+  "note": "Regenerar puede producir variaciones; los tamaños reales están en el manifiesto. La fotografía de identidad no se distribuye.",
+  "generations": [
+    {
+      "name": "poi-projects",
+      "prompt": "Original cohesive game art for Alejo's portfolio camp in fictional Mendoza/Andes. Warm, professional, inviting pixel art with consistent square pixel clusters and hard edges, detailed 16-bit-inspired illustration, three-quarter elevated orthographic-like view (visible front and right side), same warm daylight from upper left, shadows to lower right. Palette sky blue, deep teal outlines, sage and pine green, warm ochre ground, terracotta roofs, weathered walnut and cream canvas, restrained coral accents. Keep lighting and scale consistent. Deliver usable game asset art, not a webpage mockup, no words, no letters, no UI, no watermarks, no labels, no numbers. Isolated objects need a true transparent alpha background; never draw a checkerboard. Preserve complete silhouettes with generous margins, no cuts. Use the attached selected camp as style/identity guidance, but exclude its existing UI.\nASSET: one isolated hero workshop building for the Projects destination, true transparent background, target 1024 x 1024. Recreate the visual identity of the main timber creative workshop from the selected camp reference as a standalone game prop. Complete cozy timber cabin with warm walnut beams, pale cream plaster, terracotta pitched roof, two discreet blue solar panels, a small stone chimney WITHOUT smoke, a welcoming wide open front doorway, a desk with a dark computer monitor visible inside, and warm amber window light. One simple large horizontal EMPTY wooden sign above the entrance; absolutely no letters, symbols or fox logo. A small potted plant and modest climbing vine may be attached to the building. View from elevated front-left, seeing the front and the right wall and roof, consistent with the reference. The complete building occupies about 80% width/height, centered, all eaves and steps included with generous transparent margin. Just a few front steps and a compact foundation footprint; NO surrounding grass island, NO scenery, NO greenhouse, NO trees, NO other buildings, NO character, NO sky, NO background square. Keep pixels crisp and coherent, readable at small size, slightly simplify the ornate details. Compact shadow on transparent canvas to lower right only. This is a single functional isolated environment sprite, not a website screenshot.",
+      "refs": [
+        "source/selected-concept.png"
+      ],
+      "transparent": true
+    },
+    {
+      "name": "poi-journey",
+      "prompt": "Original cohesive game art for Alejo's portfolio camp in fictional Mendoza/Andes. Warm, professional, inviting pixel art with consistent square pixel clusters and hard edges, detailed 16-bit-inspired illustration, three-quarter elevated orthographic-like view (visible front and right side), same warm daylight from upper left, shadows to lower right. Palette sky blue, deep teal outlines, sage and pine green, warm ochre ground, terracotta roofs, weathered walnut and cream canvas, restrained coral accents. Keep lighting and scale consistent. Deliver usable game asset art, not a webpage mockup, no words, no letters, no UI, no watermarks, no labels, no numbers. Isolated objects need a true transparent alpha background; never draw a checkerboard. Preserve complete silhouettes with generous margins, no cuts. Use the attached selected camp as style/identity guidance, but exclude its existing UI.\nASSET: one isolated career-journal destination, genuine transparent alpha background, target 1024 x 1024. Camera, palette and light must match the workshop in reference image 2. A compact inviting outdoor walnut writing desk with sturdy legs, one simple chair placed behind it, an open cream journal with blank abstract pages (no readable writing), three small stacked books, a brass compass, a pencil cup, and a tiny unbranded commemorative geometric object on the corner. Do not add an award logo, text or dates. A small green plant in a terracotta pot sits beside the desk. Composition from elevated front-left with front and right surfaces visible, coherent with camp destinations. Object group complete with table legs and chair, generous transparent margins. No shelter, no room, no ground island, no scenery, no trees, no people, no labels, no letters, no UI. The journal is the visual focal point. Clean hard pixel edges and restrained tiny contact shadow, no fuzzy aura or glow around the group. Detailed but readable at small game scale.",
+      "refs": [
+        "source/selected-concept.png",
+        "assets/destinations/poi-projects.png"
+      ],
+      "transparent": true
+    },
+    {
+      "name": "alejo-portrait",
+      "prompt": "Create one polished pixel-art bust portrait asset of the person in reference image 1, with the character design and color palette from reference image 2. Target 1024 x 1024 square, TRUE TRANSPARENT background. Preserve recognizable visible traits: short dark brown nearly black tousled hair with a little height, thick eyebrows, slim oval face, brown/hazel eyes, subtle friendly smile, light complexion with warm daylight, very slight facial stubble and the small facial mark beside the mouth. Wear the same dark forest-green crewneck sweater; optional simple ochre backpack straps consistent with the avatar. Portrait from top of hair to mid chest, facing almost forward with a slight friendly three-quarter turn, adult proportions and a natural approachable expression. Crisp detailed 16-bit-inspired pixel-art clusters, carefully designed facial planes, no smoothed photorealism, no generic anime face, no exaggerated childlike proportions. Keep the complete hair silhouette and shoulders inside the canvas with generous transparency margins. No scenery, no labels, no border, no text, no badge, no round colored disc, no social platform logos. The output must be one usable portrait cutout matching the approved full-body avatar, suitable for an About section, not a photograph or character sheet.",
+      "refs": [
+        "user-supplied-photo-not-bundled",
+        "assets/character/avatar-master.png"
+      ],
+      "transparent": true
+    },
+    {
+      "name": "favicon-master",
+      "prompt": "Create one minimal distinctive pixel-art favicon / app-symbol master for Alejo Palavecino's Andean creative-camp portfolio. Target 1024 x 1024 square, true transparent background outside the icon. A single solid dark teal square badge with pixel-stepped corners, warm cream uppercase 'AP' monogram in extremely bold simple pixel lettering, and one tiny restrained coral square accent above the A. Monogram EXACTLY 'AP', no extra letters or words. Very low-detail design built as if on a 32 by 32 logical pixel grid, crisp chunky square forms, large central negative spaces so the A and P remain distinguishable at 32px. Icon occupies about 85% of canvas, centered with generous transparent margin. Flat colors only: deep teal approximately #173D3D, warm cream approximately #FFF1D5, coral approximately #ED6A4B. No gradient, no shadow, no 3D, no scene, no face, no mountain detail, no texture, no glow, no border around the canvas, no checkerboard. This is one custom personal monogram asset consistent with the attached warm pixel camp visual palette, not a website mockup or icon collection.",
+      "refs": [
+        "source/selected-concept.png"
+      ],
+      "transparent": true
+    }
+  ]
+}

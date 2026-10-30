@@ -1,0 +1,24 @@
+[
+  {
+    "file": "Lexend-Variable.ttf",
+    "missing_spanish_glyphs": [],
+    "axes": [
+      {
+        "tag": "wght",
+        "min": 100.0,
+        "max": 900.0
+      }
+    ]
+  },
+  {
+    "file": "PixelifySans-Variable.ttf",
+    "missing_spanish_glyphs": [],
+    "axes": [
+      {
+        "tag": "wght",
+        "min": 400.0,
+        "max": 700.0
+      }
+    ]
+  }
+]

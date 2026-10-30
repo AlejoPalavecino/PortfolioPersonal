@@ -1,0 +1,1258 @@
+{
+  "schema_version": "1.0.0",
+  "proposal_version": "0.1",
+  "milestone": "10",
+  "title": "Mapa jugable del Campamento creativo",
+  "date": "2026-10-29",
+  "status": "base_layout_adopted_geometry_reference",
+  "user_approval": "base_layout_adopted_DEC_28",
+  "implementation_status": "not_implemented",
+  "runtime_verified": false,
+  "source_of_direction": "DEC-26 confirms walking and opening on arrival; DEC-28 adopts the central clearing, central avatar and relative placement of the four destinations in the desktop and mobile references. Numeric geometry remains an adjustable integration reference.",
+  "coordinate_system": {
+    "origin": "top_left",
+    "x_direction": "right",
+    "y_direction": "down",
+    "units": "logical_planning_units",
+    "scope": "playable_camp_area_only",
+    "excludes": [
+      "navbar",
+      "hero",
+      "distant_landscape"
+    ],
+    "not_css_pixels": true,
+    "not_original_asset_pixels": true,
+    "transform_between_layouts": "semantic_destination_and_valid_ground_mapping_not_simple_proportional_position_copy"
+  },
+  "sources": [
+    {
+      "path": "../mockups/01-inicio-escritorio-v2.png",
+      "role": "adopted_visual_direction_not_collision_data"
+    },
+    {
+      "path": "../mockups/03-inicio-movil-v2.png",
+      "role": "adopted_visual_direction_not_collision_data"
+    },
+    {
+      "path": "../../portfolio-campamento/assets/world/camp-ground.png",
+      "role": "existing_single_terrain_illustration_not_tiles"
+    },
+    {
+      "path": "../../portfolio-campamento/config/world-layout.json",
+      "role": "historical_visual_placement_reference_not_navigation"
+    },
+    {
+      "path": "../02_EXPERIENCIA_Y_PANTALLAS.md",
+      "role": "behavior_reference"
+    },
+    {
+      "path": "../09_HITO_EXPERIENCIA_E_INTERACCIONES.md",
+      "role": "interaction_direction_and_proposals"
+    }
+  ],
+  "integration_rules": {
+    "keep_original_assets": true,
+    "original_asset_count": 35,
+    "preserve_asset_aspect_ratios": true,
+    "art_alignment": "fit_footprints_and_arrivals_to_visible_support_and_terrain_before_runtime_use",
+    "terrain_recomposition": "mobile_geometry_is_not_a_promise_that_the_single_terrain_png_can_be_rearranged_without_a_reviewed_derivative",
+    "reference_network": "guide_for_automatic_routes_not_restriction_of_manual_exploration",
+    "manual_walkable_area": "ground_polygon_minus_obstacle_footprints_with_avatar_clearance",
+    "joining_routes_from_free_position": "development_agent_must_resolve_a_valid_connection_without_crossing_obstacles_or_teleporting",
+    "contact_access": "on_main_accessible_land_no_required_water_crossing_or_new_island",
+    "bridge": "peripheral_visual_reference_not_a_fifth_destination_or_required_link",
+    "arrival_zone": "tolerant_region_not_an_exact_pixel",
+    "manual_proximity": "candidate_only_where_avatar_is_on_valid_ground; proximity_does_not_open_content",
+    "route_time": "design_goal_in_02_and_09_not_measured_here",
+    "runtime_failure": "cancel_route_and_open_selected_section_as_described_in_02",
+    "change_management": "Routine adjustments to footprints, arrivals, scale and terrain alignment preserve the adopted layout and belong to integration; material spatial reorganizations return to design review."
+  },
+  "layouts": [
+    {
+      "id": "desktop",
+      "label": "Escritorio",
+      "width": 1000,
+      "height": 650,
+      "geometry_status": "schematic_proposal_not_registered_to_terrain_pixels",
+      "ground_boundary": {
+        "shape": "polygon",
+        "vertices": [
+          [
+            95,
+            145
+          ],
+          [
+            315,
+            110
+          ],
+          [
+            445,
+            170
+          ],
+          [
+            500,
+            95
+          ],
+          [
+            755,
+            80
+          ],
+          [
+            855,
+            160
+          ],
+          [
+            900,
+            310
+          ],
+          [
+            875,
+            490
+          ],
+          [
+            755,
+            570
+          ],
+          [
+            565,
+            590
+          ],
+          [
+            475,
+            545
+          ],
+          [
+            275,
+            590
+          ],
+          [
+            110,
+            510
+          ],
+          [
+            60,
+            350
+          ]
+        ],
+        "meaning": "boundary_of_proposed_walkable_land_before_subtracting_obstacles"
+      },
+      "avatar_footprint": {
+        "shape": "circle",
+        "radius": 10,
+        "extra_clearance": 6,
+        "anchor": "feet_support_point",
+        "status": "proposed"
+      },
+      "reference_corridor": {
+        "half_width": 22,
+        "meaning": "reserved_clearance_around_reference_centerlines_not_a_rail_constraint"
+      },
+      "nodes": [
+        {
+          "id": "spawn",
+          "point": [
+            500,
+            400
+          ],
+          "role": "spawn"
+        },
+        {
+          "id": "hub",
+          "point": [
+            500,
+            340
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "north",
+          "point": [
+            565,
+            285
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "projects",
+          "point": [
+            610,
+            247
+          ],
+          "role": "arrival"
+        },
+        {
+          "id": "west",
+          "point": [
+            390,
+            325
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "about",
+          "point": [
+            280,
+            312
+          ],
+          "role": "arrival"
+        },
+        {
+          "id": "southwest",
+          "point": [
+            405,
+            430
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "journey",
+          "point": [
+            350,
+            488
+          ],
+          "role": "arrival"
+        },
+        {
+          "id": "east",
+          "point": [
+            650,
+            440
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "contact",
+          "point": [
+            760,
+            455
+          ],
+          "role": "arrival"
+        }
+      ],
+      "edges": [
+        {
+          "from": "spawn",
+          "to": "hub",
+          "bidirectional": true,
+          "centerline": [
+            [
+              500,
+              400
+            ],
+            [
+              500,
+              340
+            ]
+          ],
+          "length_logical_units": 60.0
+        },
+        {
+          "from": "hub",
+          "to": "north",
+          "bidirectional": true,
+          "centerline": [
+            [
+              500,
+              340
+            ],
+            [
+              565,
+              285
+            ]
+          ],
+          "length_logical_units": 85.15
+        },
+        {
+          "from": "north",
+          "to": "projects",
+          "bidirectional": true,
+          "centerline": [
+            [
+              565,
+              285
+            ],
+            [
+              610,
+              247
+            ]
+          ],
+          "length_logical_units": 58.9
+        },
+        {
+          "from": "hub",
+          "to": "west",
+          "bidirectional": true,
+          "centerline": [
+            [
+              500,
+              340
+            ],
+            [
+              390,
+              325
+            ]
+          ],
+          "length_logical_units": 111.02
+        },
+        {
+          "from": "west",
+          "to": "about",
+          "bidirectional": true,
+          "centerline": [
+            [
+              390,
+              325
+            ],
+            [
+              280,
+              312
+            ]
+          ],
+          "length_logical_units": 110.77
+        },
+        {
+          "from": "spawn",
+          "to": "southwest",
+          "bidirectional": true,
+          "centerline": [
+            [
+              500,
+              400
+            ],
+            [
+              405,
+              430
+            ]
+          ],
+          "length_logical_units": 99.62
+        },
+        {
+          "from": "southwest",
+          "to": "journey",
+          "bidirectional": true,
+          "centerline": [
+            [
+              405,
+              430
+            ],
+            [
+              350,
+              488
+            ]
+          ],
+          "length_logical_units": 79.93
+        },
+        {
+          "from": "spawn",
+          "to": "east",
+          "bidirectional": true,
+          "centerline": [
+            [
+              500,
+              400
+            ],
+            [
+              650,
+              440
+            ]
+          ],
+          "length_logical_units": 155.24
+        },
+        {
+          "from": "east",
+          "to": "contact",
+          "bidirectional": true,
+          "centerline": [
+            [
+              650,
+              440
+            ],
+            [
+              760,
+              455
+            ]
+          ],
+          "length_logical_units": 111.02
+        },
+        {
+          "from": "hub",
+          "to": "east",
+          "bidirectional": true,
+          "centerline": [
+            [
+              500,
+              340
+            ],
+            [
+              650,
+              440
+            ]
+          ],
+          "length_logical_units": 180.28
+        }
+      ],
+      "spawn": {
+        "node_id": "spawn",
+        "point": [
+          500,
+          400
+        ],
+        "facing": "up",
+        "on_arrival": "idle",
+        "inside_interaction_zone": false
+      },
+      "arrival_zones": [
+        {
+          "id": "projects",
+          "node_id": "projects",
+          "section": "Proyectos",
+          "asset_id": "poi-projects",
+          "center": [
+            610,
+            247
+          ],
+          "radius": 16,
+          "manual_proximity_radius": 36,
+          "facing": "up",
+          "manual_opening": "explicit_confirmation_on_reachable_ground",
+          "automatic_opening": "once_on_reaching_zone_if_this_section_is_still_selected",
+          "status": "proposed"
+        },
+        {
+          "id": "about",
+          "node_id": "about",
+          "section": "Sobre mí",
+          "asset_id": "poi-about",
+          "center": [
+            280,
+            312
+          ],
+          "radius": 16,
+          "manual_proximity_radius": 36,
+          "facing": "up",
+          "manual_opening": "explicit_confirmation_on_reachable_ground",
+          "automatic_opening": "once_on_reaching_zone_if_this_section_is_still_selected",
+          "status": "proposed"
+        },
+        {
+          "id": "journey",
+          "node_id": "journey",
+          "section": "Trayectoria",
+          "asset_id": "poi-journey",
+          "center": [
+            350,
+            488
+          ],
+          "radius": 16,
+          "manual_proximity_radius": 36,
+          "facing": "left",
+          "manual_opening": "explicit_confirmation_on_reachable_ground",
+          "automatic_opening": "once_on_reaching_zone_if_this_section_is_still_selected",
+          "status": "proposed"
+        },
+        {
+          "id": "contact",
+          "node_id": "contact",
+          "section": "Contacto",
+          "asset_id": "poi-contact",
+          "center": [
+            760,
+            455
+          ],
+          "radius": 16,
+          "manual_proximity_radius": 36,
+          "facing": "up",
+          "manual_opening": "explicit_confirmation_on_reachable_ground",
+          "automatic_opening": "once_on_reaching_zone_if_this_section_is_still_selected",
+          "status": "proposed"
+        }
+      ],
+      "obstacles": [
+        {
+          "id": "workshop",
+          "label": "Taller",
+          "shape": "polygon",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "vertices": [
+            [
+              530,
+              125
+            ],
+            [
+              735,
+              125
+            ],
+            [
+              735,
+              205
+            ],
+            [
+              530,
+              205
+            ]
+          ],
+          "asset_id": "poi-projects"
+        },
+        {
+          "id": "tent",
+          "label": "Carpa",
+          "shape": "polygon",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "vertices": [
+            [
+              175,
+              185
+            ],
+            [
+              310,
+              185
+            ],
+            [
+              310,
+              265
+            ],
+            [
+              175,
+              265
+            ]
+          ],
+          "asset_id": "poi-about"
+        },
+        {
+          "id": "table",
+          "label": "Mesa de bitácora",
+          "shape": "polygon",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "vertices": [
+            [
+              220,
+              400
+            ],
+            [
+              325,
+              400
+            ],
+            [
+              325,
+              447
+            ],
+            [
+              220,
+              447
+            ]
+          ],
+          "asset_id": "poi-journey"
+        },
+        {
+          "id": "radio",
+          "label": "Puesto de radio",
+          "shape": "polygon",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "vertices": [
+            [
+              715,
+              340
+            ],
+            [
+              825,
+              340
+            ],
+            [
+              825,
+              410
+            ],
+            [
+              715,
+              410
+            ]
+          ],
+          "asset_id": "poi-contact"
+        },
+        {
+          "id": "fire",
+          "label": "Fogón",
+          "shape": "circle",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "center": [
+            350,
+            260
+          ],
+          "radius": 22
+        },
+        {
+          "id": "rock",
+          "label": "Roca de borde interior",
+          "shape": "circle",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "center": [
+            590,
+            500
+          ],
+          "radius": 24
+        }
+      ],
+      "decorative_context": {
+        "water_guide": {
+          "shape": "polygon",
+          "vertices": [
+            [
+              925,
+              230
+            ],
+            [
+              1000,
+              265
+            ],
+            [
+              1000,
+              650
+            ],
+            [
+              815,
+              650
+            ],
+            [
+              805,
+              590
+            ],
+            [
+              900,
+              545
+            ],
+            [
+              920,
+              460
+            ],
+            [
+              938,
+              355
+            ]
+          ],
+          "status": "schematic_guide_outside_principal_walkable_land",
+          "walkable": false
+        },
+        "bridge_guide": {
+          "start": [
+            830,
+            520
+          ],
+          "end": [
+            950,
+            535
+          ],
+          "status": "visual_reference_outside_validated_principal_routes",
+          "required_for_any_section": false,
+          "walkability": "not_defined_here_fit_to_existing_terrain_before_enabling"
+        }
+      },
+      "mobile_presentation": null
+    },
+    {
+      "id": "mobile",
+      "label": "Celular",
+      "width": 600,
+      "height": 760,
+      "geometry_status": "schematic_proposal_not_registered_to_terrain_pixels",
+      "ground_boundary": {
+        "shape": "polygon",
+        "vertices": [
+          [
+            55,
+            125
+          ],
+          [
+            230,
+            90
+          ],
+          [
+            300,
+            150
+          ],
+          [
+            330,
+            100
+          ],
+          [
+            510,
+            105
+          ],
+          [
+            545,
+            255
+          ],
+          [
+            550,
+            440
+          ],
+          [
+            525,
+            610
+          ],
+          [
+            450,
+            690
+          ],
+          [
+            330,
+            705
+          ],
+          [
+            240,
+            675
+          ],
+          [
+            85,
+            690
+          ],
+          [
+            40,
+            545
+          ],
+          [
+            35,
+            365
+          ]
+        ],
+        "meaning": "boundary_of_proposed_walkable_land_before_subtracting_obstacles"
+      },
+      "avatar_footprint": {
+        "shape": "circle",
+        "radius": 8,
+        "extra_clearance": 6,
+        "anchor": "feet_support_point",
+        "status": "proposed"
+      },
+      "reference_corridor": {
+        "half_width": 18,
+        "meaning": "reserved_clearance_around_reference_centerlines_not_a_rail_constraint"
+      },
+      "nodes": [
+        {
+          "id": "spawn",
+          "point": [
+            306,
+            441
+          ],
+          "role": "spawn"
+        },
+        {
+          "id": "hub",
+          "point": [
+            306,
+            385
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "north",
+          "point": [
+            350,
+            320
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "projects",
+          "point": [
+            390,
+            266
+          ],
+          "role": "arrival"
+        },
+        {
+          "id": "west",
+          "point": [
+            240,
+            365
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "about",
+          "point": [
+            168,
+            327
+          ],
+          "role": "arrival"
+        },
+        {
+          "id": "southwest",
+          "point": [
+            225,
+            500
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "journey",
+          "point": [
+            180,
+            547
+          ],
+          "role": "arrival"
+        },
+        {
+          "id": "east",
+          "point": [
+            385,
+            540
+          ],
+          "role": "junction"
+        },
+        {
+          "id": "contact",
+          "point": [
+            438,
+            570
+          ],
+          "role": "arrival"
+        }
+      ],
+      "edges": [
+        {
+          "from": "spawn",
+          "to": "hub",
+          "bidirectional": true,
+          "centerline": [
+            [
+              306,
+              441
+            ],
+            [
+              306,
+              385
+            ]
+          ],
+          "length_logical_units": 56.0
+        },
+        {
+          "from": "hub",
+          "to": "north",
+          "bidirectional": true,
+          "centerline": [
+            [
+              306,
+              385
+            ],
+            [
+              350,
+              320
+            ]
+          ],
+          "length_logical_units": 78.49
+        },
+        {
+          "from": "north",
+          "to": "projects",
+          "bidirectional": true,
+          "centerline": [
+            [
+              350,
+              320
+            ],
+            [
+              390,
+              266
+            ]
+          ],
+          "length_logical_units": 67.2
+        },
+        {
+          "from": "hub",
+          "to": "west",
+          "bidirectional": true,
+          "centerline": [
+            [
+              306,
+              385
+            ],
+            [
+              240,
+              365
+            ]
+          ],
+          "length_logical_units": 68.96
+        },
+        {
+          "from": "west",
+          "to": "about",
+          "bidirectional": true,
+          "centerline": [
+            [
+              240,
+              365
+            ],
+            [
+              168,
+              327
+            ]
+          ],
+          "length_logical_units": 81.41
+        },
+        {
+          "from": "spawn",
+          "to": "southwest",
+          "bidirectional": true,
+          "centerline": [
+            [
+              306,
+              441
+            ],
+            [
+              225,
+              500
+            ]
+          ],
+          "length_logical_units": 100.21
+        },
+        {
+          "from": "southwest",
+          "to": "journey",
+          "bidirectional": true,
+          "centerline": [
+            [
+              225,
+              500
+            ],
+            [
+              180,
+              547
+            ]
+          ],
+          "length_logical_units": 65.07
+        },
+        {
+          "from": "spawn",
+          "to": "east",
+          "bidirectional": true,
+          "centerline": [
+            [
+              306,
+              441
+            ],
+            [
+              385,
+              540
+            ]
+          ],
+          "length_logical_units": 126.66
+        },
+        {
+          "from": "east",
+          "to": "contact",
+          "bidirectional": true,
+          "centerline": [
+            [
+              385,
+              540
+            ],
+            [
+              438,
+              570
+            ]
+          ],
+          "length_logical_units": 60.9
+        },
+        {
+          "from": "hub",
+          "to": "east",
+          "bidirectional": true,
+          "centerline": [
+            [
+              306,
+              385
+            ],
+            [
+              385,
+              540
+            ]
+          ],
+          "length_logical_units": 173.97
+        }
+      ],
+      "spawn": {
+        "node_id": "spawn",
+        "point": [
+          306,
+          441
+        ],
+        "facing": "up",
+        "on_arrival": "idle",
+        "inside_interaction_zone": false
+      },
+      "arrival_zones": [
+        {
+          "id": "projects",
+          "node_id": "projects",
+          "section": "Proyectos",
+          "asset_id": "poi-projects",
+          "center": [
+            390,
+            266
+          ],
+          "radius": 14,
+          "manual_proximity_radius": 30,
+          "facing": "up",
+          "manual_opening": "explicit_confirmation_on_reachable_ground",
+          "automatic_opening": "once_on_reaching_zone_if_this_section_is_still_selected",
+          "status": "proposed"
+        },
+        {
+          "id": "about",
+          "node_id": "about",
+          "section": "Sobre mí",
+          "asset_id": "poi-about",
+          "center": [
+            168,
+            327
+          ],
+          "radius": 14,
+          "manual_proximity_radius": 30,
+          "facing": "up",
+          "manual_opening": "explicit_confirmation_on_reachable_ground",
+          "automatic_opening": "once_on_reaching_zone_if_this_section_is_still_selected",
+          "status": "proposed"
+        },
+        {
+          "id": "journey",
+          "node_id": "journey",
+          "section": "Trayectoria",
+          "asset_id": "poi-journey",
+          "center": [
+            180,
+            547
+          ],
+          "radius": 14,
+          "manual_proximity_radius": 30,
+          "facing": "up",
+          "manual_opening": "explicit_confirmation_on_reachable_ground",
+          "automatic_opening": "once_on_reaching_zone_if_this_section_is_still_selected",
+          "status": "proposed"
+        },
+        {
+          "id": "contact",
+          "node_id": "contact",
+          "section": "Contacto",
+          "asset_id": "poi-contact",
+          "center": [
+            438,
+            570
+          ],
+          "radius": 14,
+          "manual_proximity_radius": 30,
+          "facing": "up",
+          "manual_opening": "explicit_confirmation_on_reachable_ground",
+          "automatic_opening": "once_on_reaching_zone_if_this_section_is_still_selected",
+          "status": "proposed"
+        }
+      ],
+      "obstacles": [
+        {
+          "id": "workshop",
+          "label": "Taller",
+          "shape": "polygon",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "vertices": [
+            [
+              335,
+              155
+            ],
+            [
+              490,
+              155
+            ],
+            [
+              490,
+              225
+            ],
+            [
+              335,
+              225
+            ]
+          ],
+          "asset_id": "poi-projects"
+        },
+        {
+          "id": "tent",
+          "label": "Carpa",
+          "shape": "polygon",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "vertices": [
+            [
+              85,
+              205
+            ],
+            [
+              205,
+              205
+            ],
+            [
+              205,
+              275
+            ],
+            [
+              85,
+              275
+            ]
+          ],
+          "asset_id": "poi-about"
+        },
+        {
+          "id": "table",
+          "label": "Mesa de bitácora",
+          "shape": "polygon",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "vertices": [
+            [
+              80,
+              440
+            ],
+            [
+              165,
+              440
+            ],
+            [
+              165,
+              497
+            ],
+            [
+              80,
+              497
+            ]
+          ],
+          "asset_id": "poi-journey"
+        },
+        {
+          "id": "radio",
+          "label": "Puesto de radio",
+          "shape": "polygon",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "vertices": [
+            [
+              408,
+              435
+            ],
+            [
+              505,
+              435
+            ],
+            [
+              505,
+              519
+            ],
+            [
+              408,
+              519
+            ]
+          ],
+          "asset_id": "poi-contact"
+        },
+        {
+          "id": "fire",
+          "label": "Fogón",
+          "shape": "circle",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "center": [
+            230,
+            290
+          ],
+          "radius": 19
+        },
+        {
+          "id": "rock",
+          "label": "Roca de borde interior",
+          "shape": "circle",
+          "basis": "proposed_physical_footprint_not_image_bounds",
+          "center": [
+            310,
+            560
+          ],
+          "radius": 20
+        }
+      ],
+      "decorative_context": {
+        "water_guide": {
+          "shape": "polygon",
+          "vertices": [
+            [
+              565,
+              230
+            ],
+            [
+              600,
+              250
+            ],
+            [
+              600,
+              760
+            ],
+            [
+              470,
+              760
+            ],
+            [
+              480,
+              700
+            ],
+            [
+              545,
+              650
+            ],
+            [
+              575,
+              550
+            ]
+          ],
+          "status": "schematic_guide_outside_principal_walkable_land",
+          "walkable": false
+        },
+        "bridge_guide": {
+          "start": [
+            495,
+            635
+          ],
+          "end": [
+            585,
+            650
+          ],
+          "status": "visual_reference_outside_validated_principal_routes",
+          "required_for_any_section": false,
+          "walkability": "not_defined_here_fit_to_existing_terrain_before_enabling"
+        }
+      },
+      "mobile_presentation": {
+        "camera": "stable",
+        "page_scroll": "preserved",
+        "entering_from_navigation": "align_camp_block_once_then_allow_normal_page_scroll",
+        "labels": "independent_legible_ui_not_scaled_bitmap_text",
+        "short_viewports": "keep_route_status_and_open_now_accessible_allow_page_scroll",
+        "status": "proposed"
+      }
+    }
+  ],
+  "verification_reference": "geometric-review.json",
+  "document_revision": "0.2",
+  "adoption": {
+    "decision_id": "DEC-28",
+    "confirmed_on": "2026-10-29",
+    "source_id": "user-map-adoption-2026-10-29",
+    "reference_geometry_version": "0.1",
+    "scope": "base_spatial_distribution_only",
+    "adopted_relationships": [
+      "central_clearing",
+      "central_avatar_start",
+      "prominent_upper_right_workshop",
+      "left_tent_and_campfire",
+      "lower_left_logbook_table",
+      "lower_right_radio"
+    ],
+    "reference_layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "exact_numeric_geometry_finalized": false,
+    "interaction_details_globally_approved": false,
+    "runtime_verified": false,
+    "figure_labels": "Proposal 0.1 labels identify the unchanged reference now adopted; no geometry or artwork was regenerated."
+  }
+}

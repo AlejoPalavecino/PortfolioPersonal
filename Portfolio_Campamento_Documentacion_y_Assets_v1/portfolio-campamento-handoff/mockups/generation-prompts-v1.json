@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "generated_on": "2026-10-29",
+  "method": "built_in_image_gen",
+  "purpose": "Cuatro maquetas de revisión del mismo portfolio; no alternativas de estilo ni implementación.",
+  "references": [
+    {
+      "id": "camp-selected",
+      "path": "references/selected-concept-received.png",
+      "role": "Concepto elegido, re-adjuntado por Alejo; píxeles equivalentes al concepto archivado en el kit."
+    },
+    {
+      "id": "avatar",
+      "path": "../../portfolio-campamento/assets/character/avatar-master.png",
+      "role": "Identidad del avatar a escala de juego."
+    },
+    {
+      "id": "journey",
+      "path": "../../portfolio-campamento/assets/destinations/poi-journey.png",
+      "role": "Mesa de Trayectoria, cuarto destino."
+    }
+  ],
+  "screens": [
+    {
+      "id": "S01",
+      "file": "01-inicio-escritorio.png",
+      "target_frame": [
+        1440,
+        1024
+      ],
+      "references": [
+        "camp-selected",
+        "avatar",
+        "journey"
+      ],
+      "prompt": "Use case: ui-mockup.\nCreate ONE refined desktop homepage mockup for Alejo Palavecino's personal portfolio, continuing the already selected Campamento creativo art direction. This is screen S01, not a new style exploration. Target design viewport 1440 x 1024, landscape. Full bleed website content only, no browser chrome, device, presentation border, sheet title or annotations.\n\nINPUTS: Image 1 is the selected camp homepage and is the primary visual reference. Preserve its warm daylight Andean pixel-art world, landscape depth, blue mountain range and lake, vineyard vegetation, sunny wood workshop with terracotta roof, cream tent/campfire, riverside radio station and paths. Image 2 is the approved avatar identity reference only: render this young man very small at game scale at the central path, dark tousled hair, forest-green sweater, ochre backpack, dark trousers, hiking boots. Image 3 is the trajectory desk asset: place a scaled-down version on a clear foreground-left pad, replacing some incidental foreground clutter. Do not show the input reference images as separate cards.\n\nCOMPOSITION: faithful to image 1, large but restrained identity text in open sky at upper left, main workshop mid-right, tent left, radio lower right, desk foreground-left, central small avatar. Keep all four destinations visible. Landscape should be the dominant visual area. Preserve crisp intentional pixel-art look for world, and modern clear text UI, not pixelating paragraphs. No extra buildings, characters or destinations. Match original quality and warm lighting, do not turn this into a generic dashboard.\n\nTOP NAV: left small pixel brand 'ALEJO'; right readable links exactly 'Proyectos', 'Sobre mí', 'Trayectoria', 'Contacto', and outline button 'CV ↓'. All are aligned on one row with breathing room.\nHERO exact text:\n'Alejo'\n'Palavecino'\n'Desarrollo software.'\n'Transformo ideas en productos.'\n'Full stack · Automatización · IA aplicada'\nPrimary coral solid button 'Ver proyectos →', secondary quieter outlined/text button 'Contactar'.\nThe name is dark navy bold short pixel display, body/navigation inspired by Lexend. Keep enough quiet pale-sky behind the full hero and controls for legibility.\nWAYFINDING: near each of the four objects place one distinct clean cream UI label, visually compatible with the world, with EXACT text: 'Proyectos' by workshop, 'Sobre mí' by tent, 'Trayectoria' by desk, 'Contacto' by radio. These are visually overlaid UI, not a massive baked-in heading on a building; no extra FoxMind logo. Make all labels easy to read.\nBOTTOM: modest help 'Hacé clic en un lugar para explorar'. Small mute control and reduced-motion control in one corner, outside object labels.\nPalette interface dark ink #102E3C, warm paper #FFF4DF, coral #EB654F; retain the reference blue sky, natural greens and terracotta.\nAvoid invented job availability, stats, awards, clients, productivity scores, levels, XP, gameplay HUD, tooltips everywhere, popups, fake product screenshots, frames around the entire website. No placeholders on this home screen. The scene is visually composed for a website with usable navigation, not merely a scenic poster."
+    },
+    {
+      "id": "S02",
+      "file": "02-ficha-escritorio.png",
+      "target_frame": [
+        1440,
+        1024
+      ],
+      "references": [
+        "camp-selected",
+        "avatar"
+      ],
+      "prompt": "Use case: ui-mockup.\nCreate ONE high-fidelity DESKTOP project detail screen for Alejo Palavecino's Campamento creativo portfolio, target viewport 1440 x 1024 landscape, complete website content with no browser chrome, no device, no presentation captions. This is the already chosen integrated project sheet concept, not a new design style.\n\nINPUT image 1 is the selected camp art direction. Keep the SAME Andean daytime pixel-art camp as a recognizable background, including distant mountains, wood workshop, tent left, riverside radio right. The camp is quiet and slightly dimmed so foreground reading is dominant. Retain visible landscape strips at both sides and below the reading surface. Do not replace the scenery with a generic dark gradient.\nINPUT image 2 is the user's avatar reference; if the small avatar is visible in the background preserve the forest-green sweater, ochre backpack and dark hair. Do not enlarge the avatar or create a portrait on the sheet.\n\nGLOBAL HEADER stays above and outside the sheet: small pixel 'ALEJO' at left; 'Proyectos', 'Sobre mí', 'Trayectoria', 'Contacto', outlined 'CV ↓' at right. Clear modern Lexend-like text. 'Proyectos' is subtly active.\nMAIN READING SHEET: one calm warm cream #FFF4DF surface, about 80 percent screen width, under header, generous padding, almost full remaining height. Very subtle pixel-stepped corner details and a fine dark outline, understated notebook/field-journal character. NOT a literal book, scroll, fantasy parchment, dashboard cards, glass dialog or modal with black overlay. No spine, no rings, no stained paper or decorative body texture. Large readable ink #102E3C text. Sheet may continue vertically; show a natural top portion of a reading page, not the entire case squeezed down. Navigation remains visible and usable.\n\nInside top sheet: left simple link '← Volver a Proyectos'; right quieter 'Volver al campamento'.\nSmall eyebrow 'PROYECTO DESTACADO'.\nBig pixel-display title exactly 'FoxMind'.\nSubtitle exactly 'Plataforma educativa con inteligencia artificial.'\nMain reading column roughly two thirds width; quiet summary rail on right with NO nested boxes, just spacing and thin rules.\nThe main column contains one broad EMPTY image area in pale muted blue/cream with a simple outline image symbol and EXACT visible words:\n'Captura real de FoxMind'\n'Material pendiente de incorporar'\nThis is an explicit design placeholder. Do not invent a product screen, a dashboard, a Foxy mascot, an official logo, performance statistics, an award badge, a fake testimonial, a live demo button or availability information.\nBelow it show two short well-spaced sections:\n'El problema'\n'Acompañar distintos ritmos de aprendizaje y el trabajo docente.'\n'Mi aporte'\n'Producto, análisis funcional y desarrollo full stack.'\nThe right rail shows:\n'Mi rol'\n'Cofundador y desarrollador'\n'Enfoque'\n'Producto · Desarrollo · IA'\nThen ample air and a coral #EB654F action with dark readable lettering:\n'Conversemos'\nSmall note 'Sobre una oportunidad o un proyecto.'\nAt the bottom of the visible reading surface a quiet continuation cue 'Decisiones y aprendizajes ↓', indicating the case can continue without inventing its outcomes.\n\nTypography: one short pixel display for FoxMind/brand, Lexend-inspired contemporary sans for all reading and controls, body visually 17-18px at target scale. Strong hierarchy and crisp text, all Spanish spelled correctly.\nMatch selected world colors: cool blue sky/mountains, leafy greens, warm terracotta roofs. This is a polished useful professional portfolio inside an illustrated world, with one continuous reading surface."
+    },
+    {
+      "id": "S03",
+      "file": "03-inicio-movil.png",
+      "target_frame": [
+        390,
+        844
+      ],
+      "references": [
+        "camp-selected",
+        "avatar",
+        "journey"
+      ],
+      "prompt": "Use case: ui-mockup.\nCreate ONE portrait MOBILE homepage screen for Alejo Palavecino's Campamento creativo portfolio. Target logical viewport 390 x 844; high-resolution portrait image in approximately that 0.462 aspect ratio. Render ONLY website content, no phone body, bezel, notch, OS status bar, clock, battery, browser chrome, rounded device mask, or surrounding presentation canvas.\n\nInput 1 is the already selected DESKTOP camp concept. Recompose its same Andean pixel-art camp for a narrow vertical screen instead of shrinking the whole desktop screenshot. Input 2 is the avatar identity: small game character with dark tousled hair, forest-green sweater and ochre backpack. Input 3 is the trajectory desk: integrate a small recognizable version as the fourth destination.\nPreserve cool-blue mountain range and lake, warm terracotta wood workshop, cream tent/campfire, wood radio station by a river, green vegetation and bright daylight. Crisp intentional pixel-art environment. Small character around 35-45 logical pixels tall in the central path, not a giant portrait.\n\nLAYOUT, readable at 390px:\nA compact quiet pale sky / warm cream top navigation region. Top line pixel 'ALEJO' at left, outlined 'CV ↓' at right. Below, four clearly visible navigation links in two rows:\n'Proyectos'   'Sobre mí'\n'Trayectoria'   'Contacto'\nEach has ample touch space; no hamburger-only navigation.\nThen a concise left-aligned hero against calm light sky. Pixel title 'Alejo Palavecino' on two short lines. Body text exactly 'Desarrollo software. Transformo ideas en productos.' under it, normal Lexend-style sans. Small line 'Full stack · Automatización · IA aplicada', allowed to wrap cleanly.\nNext to one another the PRIMARY coral button 'Ver proyectos' and quieter secondary button 'Contactar'. Large readable lettering and touch spacing.\nThe lower, visually dominant portion is the camp, rebuilt vertically in two terraces: workshop toward upper right, tent toward middle left, desk lower left, radio lower right, small avatar between. Background mountains behind the top of this scene. Keep FOUR destination objects identifiable within the visible scene and don't crop off the desk. Put one cream UI label adjacent to each object, exactly 'Proyectos', 'Sobre mí', 'Trayectoria', 'Contacto'. Labels must be readable, cannot overlap each other or the avatar, no giant signs. The scene may continue vertically in a real page, but this frame must show the four destinations.\nAt the bottom a small quiet instruction 'Tocá un lugar para conocer más', and compact muted-sound and motion controls. Do not add joystick, directional pad, XP, progress counters, awards, job-availability badges or invented claims.\n\nVisual system: ink #102E3C, paper #FFF4DF, coral #EB654F, same blue sky/greens/terracotta as source. Pixel display for short title/brand only, readable modern Lexend-like UI body. Keep content uncluttered, realistic sizes and natural scrolling webpage composition. Preserve the personal, rich illustrated camp mood rather than turning it into a generic card-based portfolio."
+    },
+    {
+      "id": "S04",
+      "file": "04-ficha-movil.png",
+      "target_frame": [
+        390,
+        844
+      ],
+      "references": [
+        "camp-selected",
+        "avatar"
+      ],
+      "prompt": "Use case: ui-mockup.\nCreate ONE portrait MOBILE project-detail screen for Alejo Palavecino's Campamento creativo portfolio. Target logical viewport 390 x 844, output high-resolution portrait with approximately 0.462 aspect ratio. Website content only: absolutely no phone device/bezel, OS bar, notch, browser chrome, outer border or comparison layout.\n\nInput 1 is the selected camp art direction: the same warm daylight Andean pixel-art landscape, blue cordillera, wooden workshop with terracotta roof, cream tent, vegetation and river. Input 2 is the avatar reference, only if a tiny character appears in the camp strip. Retain dark hair, forest-green sweater, ochre backpack. No portrait on the project sheet.\n\nThis is the accepted INTEGRATED PROJECT SHEET, adapted for mobile. Show a compact persistent header with pixel 'ALEJO' left and outline 'CV ↓' right, then four clearly legible menu links in two rows:\n'Proyectos'  'Sobre mí'\n'Trayectoria'  'Contacto'\nProyectos is subtly active.\nUnder the navigation leave an illustrated camp band about 70-95 logical pixels high, showing a recognizable slice of the blue mountains and workshop roof. A calm warm cream reading surface nearly fills the rest of the width with tiny pixel-stepped corner accents, about 12-16px side margins. A hint of scenery remains visible along edges. No literal book, pages, spiral binding, parchment stains, glassmorphism or stacked cards.\n\nInside the reading surface, roomy one-column layout, normal paragraph text at realistic 16-17px logical scale:\nsmall back row '← Proyectos' left and 'Campamento' right.\nSmall eyebrow 'PROYECTO DESTACADO'.\nLarge short pixel title 'FoxMind'.\nSubtitle 'Plataforma educativa con inteligencia artificial.'\nA brief unboxed context line 'Cofundador y desarrollador'.\nThen a wide clean pale blue/cream reserved image area, aspect ratio about 16:9, simple outline image icon and two clearly readable centered lines:\n'Captura real de FoxMind'\n'Material pendiente de incorporar'\nThis is an honest placeholder inside a DESIGN MOCKUP. Do NOT invent a dashboard screenshot, Foxy mascot, logo, metrics, testimonials, launches or current stage. No app screenshot thumbnails as decoration.\nBelow the reserved image show:\n'El problema'\n'Acompañar distintos ritmos de aprendizaje y el trabajo docente.'\nThen 'Mi aporte' and, if natural viewport space allows, 'Producto, análisis funcional y desarrollo full stack.'\nAllow the article to CONTINUE BELOW the screen. Do not shrink everything to squeeze in a full long case. Contact remains accessible through the persistent navigation. Do not add a fake bottom tab bar, giant floating contact button covering content, game joystick or scores.\n\nTypography/colors match source: ink #102E3C, paper #FFF4DF, coral #EB654F for small accents. Pixel display only for the brand/title and modern Lexend-like sans for body/navigation. Clear hierarchy, flat continuous reading surface, breathable spacing, same charming camp identity as desktop with professional readable case-study content.",
+      "revision": {
+        "prompt": "Use case: compositing / ui-mockup correction.\nMake ONE targeted refined version of the mobile project detail in INPUT IMAGE 1. INPUT IMAGE 2 is the corresponding mobile homepage and is only a reference for the navigation header. Output one portrait website mockup matching input image 1 aspect ratio and resolution, around 853 x 1844. No device/bezel/browser.\n\nPRESERVE the integrated cream project sheet, FoxMind title, all exact case text, back controls, honest image placeholder, Andean pixel-art world, colors, sheet corners, layout and content of image 1. Do not invent a screenshot, new content, metrics, dates, logos, stages or cards. Do not use image 2's hero, CTA or map as case content.\n\nCHANGE ONLY THESE COMPOSITION DETAILS:\n1. Make the GLOBAL TOP HEADER match image 2's calm cream/pale-sky background and its compact 2x2 link structure, brand 'ALEJO' left and 'CV ↓' right. The four links are 'Proyectos', 'Sobre mí', 'Trayectoria', 'Contacto'. Render ALL navigation text in dark navy #102E3C for clarity. Proyectos is active by a coral UNDERLINE only, not coral text. Keep all four links easy to read and with ample touch spacing.\n2. Reduce the camp landscape BAND between the header and reading sheet to approximately 90 logical mobile pixels (about 190-210 pixels at this output scale). Show mountains and a hint of workshop roof in this compact band, not a full large camp view. Preserve illustrated scenery in narrow side margins too.\n3. Move the reading sheet upward accordingly. It should begin around 200-220 logical pixels from the top, so the project gets more room. Do not shrink all the text or stretch the sheet; retain natural readable text and let content continue below the viewport. Avoid wasting space above FoxMind.\n\nRequired unchanged exact visible copy inside sheet:\n'← Proyectos' and 'Campamento'\n'PROYECTO DESTACADO'\n'FoxMind'\n'Plataforma educativa con inteligencia artificial.'\n'Cofundador y desarrollador.'\nInside a single wide empty image placeholder:\n'Captura real de FoxMind'\n'Material pendiente de incorporar'\nThen:\n'El problema'\n'Acompañar distintos ritmos de aprendizaje y el trabajo docente.'\n'Mi aporte'\n'Producto, análisis funcional y desarrollo full stack.'\n\nThis is a professional project article integrated in the camp, with clean Lexend-like body, pixel display title and warm cream #FFF4DF paper. All visual changes serve consistency and reading space. No surrounding page title or annotation.",
+        "input_references": [
+          {
+            "role": "initial_mobile_project_sheet",
+            "generation_filename": "exec-db6706a7-c078-425a-9a12-e9083eb183c9.png",
+            "included_in_bundle": false
+          },
+          {
+            "role": "mobile_home_header_reference",
+            "path": "03-inicio-movil.png"
+          }
+        ],
+        "final_generation_filename": "exec-76923b6a-2bc0-493c-8258-83656cab2ba6.png",
+        "final_file": "04-ficha-movil.png"
+      }
+    }
+  ],
+  "notes": [
+    "La referencia personal original no se incluye; se usa el avatar derivado del kit.",
+    "La reproducción exacta no está garantizada: son generaciones de imagen. Las dimensiones observadas se registran aparte.",
+    "Las capturas de FoxMind se reservan mediante una marca explícita; no se genera evidencia de producto."
+  ]
+}

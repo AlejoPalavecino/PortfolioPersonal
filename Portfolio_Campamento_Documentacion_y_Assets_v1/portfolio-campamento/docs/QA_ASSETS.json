@@ -1,0 +1,3143 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-10-29T15:06:01.325523+00:00",
+  "read_only_images": true,
+  "coordinate_convention": "bbox=[left,top,right,bottom], right/bottom exclusive; frame={x,y,w,h}",
+  "notes": [
+    "Only the first image frame of an animated PNG is analyzed.",
+    "Transparency is measured in the actual decoded alpha channel.",
+    "Connected islands can be separate body parts or decorations, not necessarily individual sprites.",
+    "Atlas candidates must be checked visually before use as animation frames.",
+    "This report does not assess visual likeness, art consistency, clipping semantics or animation quality."
+  ],
+  "summary": {
+    "png_files": 14,
+    "valid_png_files": 14,
+    "files_with_real_transparency": 12,
+    "total_bytes": 19709537,
+    "missing_inputs": []
+  },
+  "files": [
+    {
+      "path": "brand/favicon-master.png",
+      "bytes": 845808,
+      "sha256": "c4c9e7b3509164e1e31a167d3c8c49df6ff880075eb52b36c82dde64f262a5ee",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero_fraction": 0.415251,
+        "opaque_fraction": 0.00163,
+        "partial_fraction": 0.583119,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        92,
+        21,
+        1162,
+        1225
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        95,
+        145,
+        1159,
+        1109
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": false,
+        "bottom": false,
+        "left": false
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 7,
+        "above_minimum": 1,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              95,
+              145,
+              1159,
+              1109
+            ],
+            "pixels": 912414,
+            "center": [
+              627.0,
+              627.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            145,
+            1109
+          ]
+        ],
+        "column_bands": [
+          [
+            95,
+            1159
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 95,
+            "y": 145,
+            "w": 1064,
+            "h": 964,
+            "pixels": 912422
+          }
+        ]
+      }
+    },
+    {
+      "path": "brand/portfolio-share-cover.png",
+      "bytes": 2267082,
+      "sha256": "9e2aaf04b09e5ae2134269e229bf5dc7b5ca0dca3826da1773ba8c6d59aace26",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "image_frames": 1,
+      "has_alpha_channel": false,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zero_fraction": 0.0,
+        "opaque_fraction": 1.0,
+        "partial_fraction": 0.0,
+        "has_real_transparency": false,
+        "has_fully_transparent_pixels": false
+      },
+      "visible_bbox": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "touches_canvas_edges": {
+        "top": true,
+        "right": true,
+        "bottom": true,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 1,
+        "above_minimum": 1,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              0,
+              0,
+              1672,
+              941
+            ],
+            "pixels": 1573352,
+            "center": [
+              836.0,
+              470.5
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            0,
+            941
+          ]
+        ],
+        "column_bands": [
+          [
+            0,
+            1672
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 0,
+            "y": 0,
+            "w": 1672,
+            "h": 941,
+            "pixels": 1573352
+          }
+        ]
+      }
+    },
+    {
+      "path": "character/alejo-portrait.png",
+      "bytes": 873046,
+      "sha256": "a13e76d7779a4e43d08229ee86adf76264a380ca7bb7bd8185ba20261a7a2eed",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero_fraction": 0.573847,
+        "opaque_fraction": 0.0009,
+        "partial_fraction": 0.425252,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        0,
+        21,
+        1234,
+        1254
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        149,
+        76,
+        1149,
+        1242
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": false,
+        "bottom": true,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 116,
+        "above_minimum": 1,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              149,
+              76,
+              1149,
+              1242
+            ],
+            "pixels": 655066,
+            "center": [
+              649.0,
+              659.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            76,
+            1242
+          ]
+        ],
+        "column_bands": [
+          [
+            149,
+            1149
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 149,
+            "y": 76,
+            "w": 1000,
+            "h": 1166,
+            "pixels": 655365
+          }
+        ]
+      }
+    },
+    {
+      "path": "character/avatar-master.png",
+      "bytes": 530394,
+      "sha256": "7c930622dc8acf49d695cb6240e1f15ad88125640f7a45c4490a275afc4db328",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero_fraction": 0.780435,
+        "opaque_fraction": 0.001001,
+        "partial_fraction": 0.218564,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        0,
+        35,
+        1240,
+        1228
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        403,
+        77,
+        878,
+        1220
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": false,
+        "bottom": false,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 95,
+        "above_minimum": 4,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              403,
+              77,
+              878,
+              1220
+            ],
+            "pixels": 330866,
+            "center": [
+              640.5,
+              648.5
+            ]
+          },
+          {
+            "bbox": [
+              492,
+              228,
+              493,
+              245
+            ],
+            "pixels": 17,
+            "center": [
+              492.5,
+              236.5
+            ]
+          },
+          {
+            "bbox": [
+              494,
+              800,
+              495,
+              834
+            ],
+            "pixels": 34,
+            "center": [
+              494.5,
+              817.0
+            ]
+          },
+          {
+            "bbox": [
+              692,
+              1187,
+              704,
+              1192
+            ],
+            "pixels": 16,
+            "center": [
+              698.0,
+              1189.5
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            77,
+            1220
+          ]
+        ],
+        "column_bands": [
+          [
+            403,
+            878
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 403,
+            "y": 77,
+            "w": 475,
+            "h": 1143,
+            "pixels": 331106
+          }
+        ]
+      }
+    },
+    {
+      "path": "character/avatar-movement-atlas.png",
+      "bytes": 1078994,
+      "sha256": "a2f3478040eb893877824f780f8723cd0d40ef54291de2e0e763a4009f3469d9",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1402,
+      "height": 1122,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero_fraction": 0.645895,
+        "opaque_fraction": 0.000426,
+        "partial_fraction": 0.353679,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        0,
+        23,
+        1402,
+        1122
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        146,
+        29,
+        1257,
+        1094
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": true,
+        "bottom": true,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 247,
+        "above_minimum": 22,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              635,
+              29,
+              763,
+              285
+            ],
+            "pixels": 22868,
+            "center": [
+              699.0,
+              157.0
+            ]
+          },
+          {
+            "bbox": [
+              1127,
+              29,
+              1256,
+              284
+            ],
+            "pixels": 22493,
+            "center": [
+              1191.5,
+              156.5
+            ]
+          },
+          {
+            "bbox": [
+              147,
+              30,
+              274,
+              281
+            ],
+            "pixels": 23342,
+            "center": [
+              210.5,
+              155.5
+            ]
+          },
+          {
+            "bbox": [
+              397,
+              32,
+              526,
+              285
+            ],
+            "pixels": 21943,
+            "center": [
+              461.5,
+              158.5
+            ]
+          },
+          {
+            "bbox": [
+              879,
+              32,
+              1012,
+              284
+            ],
+            "pixels": 22536,
+            "center": [
+              945.5,
+              158.0
+            ]
+          },
+          {
+            "bbox": [
+              877,
+              163,
+              878,
+              183
+            ],
+            "pixels": 20,
+            "center": [
+              877.5,
+              173.0
+            ]
+          },
+          {
+            "bbox": [
+              151,
+              299,
+              272,
+              561
+            ],
+            "pixels": 20884,
+            "center": [
+              211.5,
+              430.0
+            ]
+          },
+          {
+            "bbox": [
+              639,
+              299,
+              758,
+              558
+            ],
+            "pixels": 20138,
+            "center": [
+              698.5,
+              428.5
+            ]
+          },
+          {
+            "bbox": [
+              873,
+              299,
+              1007,
+              558
+            ],
+            "pixels": 21916,
+            "center": [
+              940.0,
+              428.5
+            ]
+          },
+          {
+            "bbox": [
+              1129,
+              299,
+              1254,
+              557
+            ],
+            "pixels": 21098,
+            "center": [
+              1191.5,
+              428.0
+            ]
+          },
+          {
+            "bbox": [
+              392,
+              300,
+              526,
+              558
+            ],
+            "pixels": 22213,
+            "center": [
+              459.0,
+              429.0
+            ]
+          },
+          {
+            "bbox": [
+              171,
+              438,
+              172,
+              463
+            ],
+            "pixels": 25,
+            "center": [
+              171.5,
+              450.5
+            ]
+          },
+          {
+            "bbox": [
+              146,
+              570,
+              271,
+              832
+            ],
+            "pixels": 20791,
+            "center": [
+              208.5,
+              701.0
+            ]
+          },
+          {
+            "bbox": [
+              394,
+              570,
+              532,
+              825
+            ],
+            "pixels": 22583,
+            "center": [
+              463.0,
+              697.5
+            ]
+          },
+          {
+            "bbox": [
+              642,
+              570,
+              767,
+              827
+            ],
+            "pixels": 19826,
+            "center": [
+              704.5,
+              698.5
+            ]
+          },
+          {
+            "bbox": [
+              870,
+              570,
+              1007,
+              825
+            ],
+            "pixels": 21958,
+            "center": [
+              938.5,
+              697.5
+            ]
+          },
+          {
+            "bbox": [
+              1129,
+              570,
+              1257,
+              827
+            ],
+            "pixels": 21459,
+            "center": [
+              1193.0,
+              698.5
+            ]
+          },
+          {
+            "bbox": [
+              638,
+              840,
+              763,
+              1094
+            ],
+            "pixels": 21776,
+            "center": [
+              700.5,
+              967.0
+            ]
+          },
+          {
+            "bbox": [
+              147,
+              841,
+              273,
+              1088
+            ],
+            "pixels": 22534,
+            "center": [
+              210.0,
+              964.5
+            ]
+          },
+          {
+            "bbox": [
+              871,
+              841,
+              1007,
+              1094
+            ],
+            "pixels": 21986,
+            "center": [
+              939.0,
+              967.5
+            ]
+          },
+          {
+            "bbox": [
+              1123,
+              841,
+              1253,
+              1094
+            ],
+            "pixels": 21829,
+            "center": [
+              1188.0,
+              967.5
+            ]
+          },
+          {
+            "bbox": [
+              394,
+              842,
+              524,
+              1090
+            ],
+            "pixels": 21198,
+            "center": [
+              459.0,
+              966.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            29,
+            286
+          ],
+          [
+            299,
+            561
+          ],
+          [
+            570,
+            832
+          ],
+          [
+            838,
+            1094
+          ]
+        ],
+        "column_bands": [
+          [
+            146,
+            274
+          ],
+          [
+            392,
+            532
+          ],
+          [
+            635,
+            767
+          ],
+          [
+            870,
+            1012
+          ],
+          [
+            1123,
+            1257
+          ]
+        ],
+        "candidate_count": 21,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 147,
+            "y": 30,
+            "w": 127,
+            "h": 251,
+            "pixels": 23359
+          },
+          {
+            "x": 397,
+            "y": 32,
+            "w": 130,
+            "h": 254,
+            "pixels": 21993
+          },
+          {
+            "x": 635,
+            "y": 29,
+            "w": 128,
+            "h": 256,
+            "pixels": 22873
+          },
+          {
+            "x": 877,
+            "y": 163,
+            "w": 1,
+            "h": 29,
+            "pixels": 27
+          },
+          {
+            "x": 879,
+            "y": 32,
+            "w": 133,
+            "h": 252,
+            "pixels": 22544
+          },
+          {
+            "x": 1127,
+            "y": 29,
+            "w": 129,
+            "h": 257,
+            "pixels": 22507
+          },
+          {
+            "x": 151,
+            "y": 299,
+            "w": 121,
+            "h": 262,
+            "pixels": 20940
+          },
+          {
+            "x": 392,
+            "y": 300,
+            "w": 134,
+            "h": 258,
+            "pixels": 22223
+          },
+          {
+            "x": 639,
+            "y": 299,
+            "w": 119,
+            "h": 259,
+            "pixels": 20149
+          },
+          {
+            "x": 873,
+            "y": 299,
+            "w": 134,
+            "h": 259,
+            "pixels": 21928
+          },
+          {
+            "x": 1129,
+            "y": 299,
+            "w": 125,
+            "h": 259,
+            "pixels": 21107
+          },
+          {
+            "x": 146,
+            "y": 570,
+            "w": 125,
+            "h": 262,
+            "pixels": 20799
+          },
+          {
+            "x": 394,
+            "y": 570,
+            "w": 138,
+            "h": 255,
+            "pixels": 22594
+          },
+          {
+            "x": 642,
+            "y": 570,
+            "w": 125,
+            "h": 259,
+            "pixels": 19837
+          },
+          {
+            "x": 870,
+            "y": 570,
+            "w": 137,
+            "h": 255,
+            "pixels": 21974
+          },
+          {
+            "x": 1129,
+            "y": 570,
+            "w": 128,
+            "h": 257,
+            "pixels": 21473
+          },
+          {
+            "x": 147,
+            "y": 841,
+            "w": 126,
+            "h": 247,
+            "pixels": 22556
+          },
+          {
+            "x": 394,
+            "y": 842,
+            "w": 131,
+            "h": 248,
+            "pixels": 21234
+          },
+          {
+            "x": 637,
+            "y": 838,
+            "w": 126,
+            "h": 256,
+            "pixels": 21805
+          },
+          {
+            "x": 871,
+            "y": 841,
+            "w": 136,
+            "h": 253,
+            "pixels": 22009
+          },
+          {
+            "x": 1123,
+            "y": 839,
+            "w": 130,
+            "h": 255,
+            "pixels": 21841
+          }
+        ]
+      }
+    },
+    {
+      "path": "decoration/camp-props-atlas.png",
+      "bytes": 1927496,
+      "sha256": "9ad972f54e92ff9b7c3a5f1a1bdc53f9e3e71922945e64318a431900d5ad7595",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "zero_fraction": 0.668314,
+        "opaque_fraction": 0.0,
+        "partial_fraction": 0.331686,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        0,
+        9,
+        1522,
+        1000
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        46,
+        20,
+        1501,
+        972
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": false,
+        "bottom": false,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 46,
+        "above_minimum": 8,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              46,
+              20,
+              405,
+              580
+            ],
+            "pixels": 111895,
+            "center": [
+              225.5,
+              300.0
+            ]
+          },
+          {
+            "bbox": [
+              440,
+              169,
+              769,
+              573
+            ],
+            "pixels": 83190,
+            "center": [
+              604.5,
+              371.0
+            ]
+          },
+          {
+            "bbox": [
+              796,
+              368,
+              1106,
+              588
+            ],
+            "pixels": 45042,
+            "center": [
+              951.0,
+              478.0
+            ]
+          },
+          {
+            "bbox": [
+              1177,
+              419,
+              1501,
+              580
+            ],
+            "pixels": 32907,
+            "center": [
+              1339.0,
+              499.5
+            ]
+          },
+          {
+            "bbox": [
+              102,
+              616,
+              305,
+              963
+            ],
+            "pixels": 39036,
+            "center": [
+              203.5,
+              789.5
+            ]
+          },
+          {
+            "bbox": [
+              801,
+              655,
+              1045,
+              959
+            ],
+            "pixels": 39394,
+            "center": [
+              923.0,
+              807.0
+            ]
+          },
+          {
+            "bbox": [
+              467,
+              721,
+              677,
+              959
+            ],
+            "pixels": 31265,
+            "center": [
+              572.0,
+              840.0
+            ]
+          },
+          {
+            "bbox": [
+              1122,
+              734,
+              1496,
+              972
+            ],
+            "pixels": 56502,
+            "center": [
+              1309.0,
+              853.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            20,
+            588
+          ],
+          [
+            616,
+            972
+          ]
+        ],
+        "column_bands": [
+          [
+            46,
+            405
+          ],
+          [
+            440,
+            769
+          ],
+          [
+            796,
+            1106
+          ],
+          [
+            1122,
+            1501
+          ]
+        ],
+        "candidate_count": 8,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 46,
+            "y": 20,
+            "w": 359,
+            "h": 560,
+            "pixels": 111913
+          },
+          {
+            "x": 440,
+            "y": 169,
+            "w": 329,
+            "h": 404,
+            "pixels": 83194
+          },
+          {
+            "x": 796,
+            "y": 368,
+            "w": 310,
+            "h": 220,
+            "pixels": 45049
+          },
+          {
+            "x": 1177,
+            "y": 419,
+            "w": 324,
+            "h": 161,
+            "pixels": 32911
+          },
+          {
+            "x": 102,
+            "y": 616,
+            "w": 203,
+            "h": 347,
+            "pixels": 39037
+          },
+          {
+            "x": 467,
+            "y": 721,
+            "w": 210,
+            "h": 238,
+            "pixels": 31266
+          },
+          {
+            "x": 801,
+            "y": 655,
+            "w": 244,
+            "h": 304,
+            "pixels": 39396
+          },
+          {
+            "x": 1122,
+            "y": 734,
+            "w": 374,
+            "h": 238,
+            "pixels": 56511
+          }
+        ]
+      }
+    },
+    {
+      "path": "destinations/poi-about.png",
+      "bytes": 955560,
+      "sha256": "703d7fbb10b531e111a9b30e78e0179b8d1d8da96ee98900541347506c0342bd",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero_fraction": 0.664982,
+        "opaque_fraction": 6.2e-05,
+        "partial_fraction": 0.334956,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        25,
+        19,
+        1234,
+        1254
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        60,
+        255,
+        1195,
+        1028
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": false,
+        "bottom": true,
+        "left": false
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 50,
+        "above_minimum": 3,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              60,
+              255,
+              1120,
+              874
+            ],
+            "pixels": 350291,
+            "center": [
+              590.0,
+              564.5
+            ]
+          },
+          {
+            "bbox": [
+              620,
+              774,
+              1193,
+              1026
+            ],
+            "pixels": 85986,
+            "center": [
+              906.5,
+              900.0
+            ]
+          },
+          {
+            "bbox": [
+              389,
+              871,
+              618,
+              1028
+            ],
+            "pixels": 26733,
+            "center": [
+              503.5,
+              949.5
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            255,
+            1028
+          ]
+        ],
+        "column_bands": [
+          [
+            60,
+            1193
+          ],
+          [
+            1194,
+            1195
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 60,
+            "y": 255,
+            "w": 1133,
+            "h": 773,
+            "pixels": 463071
+          }
+        ]
+      }
+    },
+    {
+      "path": "destinations/poi-contact.png",
+      "bytes": 1255095,
+      "sha256": "6d64124071fcc9a47ed51825e1047b6a2a0ff1c19ff6418ce1015c137f0d9484",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero_fraction": 0.568829,
+        "opaque_fraction": 0.000834,
+        "partial_fraction": 0.430337,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        0,
+        17,
+        1248,
+        1254
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        171,
+        85,
+        1206,
+        1205
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": false,
+        "bottom": true,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 65,
+        "above_minimum": 1,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              171,
+              87,
+              1206,
+              1205
+            ],
+            "pixels": 644310,
+            "center": [
+              688.5,
+              646.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            85,
+            86
+          ],
+          [
+            87,
+            1205
+          ]
+        ],
+        "column_bands": [
+          [
+            171,
+            1206
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 171,
+            "y": 87,
+            "w": 1035,
+            "h": 1118,
+            "pixels": 644412
+          }
+        ]
+      }
+    },
+    {
+      "path": "destinations/poi-journey.png",
+      "bytes": 1038244,
+      "sha256": "deef4030b1a7c94e5afad7ba49ae8c523e3d8ff430dff7e830f36c4ababeea9e",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero_fraction": 0.612799,
+        "opaque_fraction": 0.001075,
+        "partial_fraction": 0.386126,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        0,
+        61,
+        1224,
+        1235
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        58,
+        228,
+        1215,
+        1188
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": false,
+        "bottom": false,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 108,
+        "above_minimum": 5,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              58,
+              228,
+              1213,
+              1188
+            ],
+            "pixels": 584376,
+            "center": [
+              635.5,
+              708.0
+            ]
+          },
+          {
+            "bbox": [
+              977,
+              343,
+              979,
+              377
+            ],
+            "pixels": 35,
+            "center": [
+              978.0,
+              360.0
+            ]
+          },
+          {
+            "bbox": [
+              988,
+              503,
+              989,
+              525
+            ],
+            "pixels": 22,
+            "center": [
+              988.5,
+              514.0
+            ]
+          },
+          {
+            "bbox": [
+              1214,
+              875,
+              1215,
+              894
+            ],
+            "pixels": 19,
+            "center": [
+              1214.5,
+              884.5
+            ]
+          },
+          {
+            "bbox": [
+              726,
+              1112,
+              727,
+              1154
+            ],
+            "pixels": 42,
+            "center": [
+              726.5,
+              1133.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            228,
+            1188
+          ]
+        ],
+        "column_bands": [
+          [
+            58,
+            1213
+          ],
+          [
+            1214,
+            1215
+          ]
+        ],
+        "candidate_count": 2,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 58,
+            "y": 228,
+            "w": 1155,
+            "h": 960,
+            "pixels": 584714
+          },
+          {
+            "x": 1214,
+            "y": 875,
+            "w": 1,
+            "h": 22,
+            "pixels": 20
+          }
+        ]
+      }
+    },
+    {
+      "path": "destinations/poi-projects.png",
+      "bytes": 2151147,
+      "sha256": "b14f4dc91c6cd3a400c5a349e118ee17d48c68aa70426556eab28c2113b1d4cc",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "zero_fraction": 0.498763,
+        "opaque_fraction": 0.0,
+        "partial_fraction": 0.501237,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        0,
+        0,
+        1522,
+        1024
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        128,
+        68,
+        1426,
+        943
+      ],
+      "touches_canvas_edges": {
+        "top": true,
+        "right": false,
+        "bottom": true,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 14,
+        "above_minimum": 1,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              128,
+              68,
+              1426,
+              943
+            ],
+            "pixels": 758751,
+            "center": [
+              777.0,
+              505.5
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            68,
+            943
+          ]
+        ],
+        "column_bands": [
+          [
+            128,
+            1426
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 128,
+            "y": 68,
+            "w": 1298,
+            "h": 875,
+            "pixels": 758765
+          }
+        ]
+      }
+    },
+    {
+      "path": "effects/camp-effects-atlas.png",
+      "bytes": 572166,
+      "sha256": "f0bdae2bbd996fa4678fe945be6044fa62311b90143ecacd8cf80d3f0a06924b",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero_fraction": 0.753495,
+        "opaque_fraction": 0.000613,
+        "partial_fraction": 0.245892,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        17,
+        0,
+        1447,
+        1086
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        72,
+        107,
+        1368,
+        987
+      ],
+      "touches_canvas_edges": {
+        "top": true,
+        "right": false,
+        "bottom": true,
+        "left": false
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 189,
+        "above_minimum": 73,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              537,
+              107,
+              547,
+              118
+            ],
+            "pixels": 102,
+            "center": [
+              542.0,
+              112.5
+            ]
+          },
+          {
+            "bbox": [
+              1246,
+              108,
+              1256,
+              118
+            ],
+            "pixels": 100,
+            "center": [
+              1251.0,
+              113.0
+            ]
+          },
+          {
+            "bbox": [
+              209,
+              127,
+              219,
+              137
+            ],
+            "pixels": 100,
+            "center": [
+              214.0,
+              132.0
+            ]
+          },
+          {
+            "bbox": [
+              469,
+              127,
+              619,
+              338
+            ],
+            "pixels": 17013,
+            "center": [
+              544.0,
+              232.5
+            ]
+          },
+          {
+            "bbox": [
+              1289,
+              127,
+              1299,
+              138
+            ],
+            "pixels": 109,
+            "center": [
+              1294.0,
+              132.5
+            ]
+          },
+          {
+            "bbox": [
+              1193,
+              129,
+              1339,
+              338
+            ],
+            "pixels": 15723,
+            "center": [
+              1266.0,
+              233.5
+            ]
+          },
+          {
+            "bbox": [
+              941,
+              136,
+              951,
+              147
+            ],
+            "pixels": 109,
+            "center": [
+              946.0,
+              141.5
+            ]
+          },
+          {
+            "bbox": [
+              182,
+              144,
+              193,
+              155
+            ],
+            "pixels": 108,
+            "center": [
+              187.5,
+              149.5
+            ]
+          },
+          {
+            "bbox": [
+              125,
+              152,
+              260,
+              331
+            ],
+            "pixels": 14902,
+            "center": [
+              192.5,
+              241.5
+            ]
+          },
+          {
+            "bbox": [
+              832,
+              155,
+              976,
+              338
+            ],
+            "pixels": 14590,
+            "center": [
+              904.0,
+              246.5
+            ]
+          },
+          {
+            "bbox": [
+              874,
+              164,
+              894,
+              195
+            ],
+            "pixels": 339,
+            "center": [
+              884.0,
+              179.5
+            ]
+          },
+          {
+            "bbox": [
+              215,
+              172,
+              225,
+              183
+            ],
+            "pixels": 107,
+            "center": [
+              220.0,
+              177.5
+            ]
+          },
+          {
+            "bbox": [
+              576,
+              172,
+              601,
+              200
+            ],
+            "pixels": 432,
+            "center": [
+              588.5,
+              186.0
+            ]
+          },
+          {
+            "bbox": [
+              1310,
+              189,
+              1329,
+              209
+            ],
+            "pixels": 225,
+            "center": [
+              1319.5,
+              199.0
+            ]
+          },
+          {
+            "bbox": [
+              240,
+              198,
+              250,
+              209
+            ],
+            "pixels": 109,
+            "center": [
+              245.0,
+              203.5
+            ]
+          },
+          {
+            "bbox": [
+              477,
+              198,
+              497,
+              226
+            ],
+            "pixels": 315,
+            "center": [
+              487.0,
+              212.0
+            ]
+          },
+          {
+            "bbox": [
+              1202,
+              198,
+              1221,
+              226
+            ],
+            "pixels": 295,
+            "center": [
+              1211.5,
+              212.0
+            ]
+          },
+          {
+            "bbox": [
+              958,
+              208,
+              967,
+              218
+            ],
+            "pixels": 90,
+            "center": [
+              962.5,
+              213.0
+            ]
+          },
+          {
+            "bbox": [
+              249,
+              217,
+              268,
+              247
+            ],
+            "pixels": 317,
+            "center": [
+              258.5,
+              232.0
+            ]
+          },
+          {
+            "bbox": [
+              971,
+              222,
+              991,
+              244
+            ],
+            "pixels": 239,
+            "center": [
+              981.0,
+              233.0
+            ]
+          },
+          {
+            "bbox": [
+              611,
+              226,
+              621,
+              250
+            ],
+            "pixels": 230,
+            "center": [
+              616.0,
+              238.0
+            ]
+          },
+          {
+            "bbox": [
+              101,
+              227,
+              120,
+              258
+            ],
+            "pixels": 413,
+            "center": [
+              110.5,
+              242.5
+            ]
+          },
+          {
+            "bbox": [
+              849,
+              233,
+              859,
+              244
+            ],
+            "pixels": 110,
+            "center": [
+              854.0,
+              238.5
+            ]
+          },
+          {
+            "bbox": [
+              1334,
+              233,
+              1344,
+              258
+            ],
+            "pixels": 248,
+            "center": [
+              1339.0,
+              245.5
+            ]
+          },
+          {
+            "bbox": [
+              1332,
+              234,
+              1333,
+              256
+            ],
+            "pixels": 22,
+            "center": [
+              1332.5,
+              245.0
+            ]
+          },
+          {
+            "bbox": [
+              823,
+              243,
+              842,
+              264
+            ],
+            "pixels": 229,
+            "center": [
+              832.5,
+              253.5
+            ]
+          },
+          {
+            "bbox": [
+              578,
+              436,
+              593,
+              450
+            ],
+            "pixels": 208,
+            "center": [
+              585.5,
+              443.0
+            ]
+          },
+          {
+            "bbox": [
+              1340,
+              453,
+              1349,
+              462
+            ],
+            "pixels": 79,
+            "center": [
+              1344.5,
+              457.5
+            ]
+          },
+          {
+            "bbox": [
+              192,
+              454,
+              236,
+              488
+            ],
+            "pixels": 732,
+            "center": [
+              214.0,
+              471.0
+            ]
+          },
+          {
+            "bbox": [
+              554,
+              454,
+              577,
+              477
+            ],
+            "pixels": 429,
+            "center": [
+              565.5,
+              465.5
+            ]
+          },
+          {
+            "bbox": [
+              950,
+              460,
+              967,
+              476
+            ],
+            "pixels": 250,
+            "center": [
+              958.5,
+              468.0
+            ]
+          },
+          {
+            "bbox": [
+              1319,
+              470,
+              1339,
+              488
+            ],
+            "pixels": 353,
+            "center": [
+              1329.0,
+              479.0
+            ]
+          },
+          {
+            "bbox": [
+              220,
+              487,
+              267,
+              533
+            ],
+            "pixels": 1669,
+            "center": [
+              243.5,
+              510.0
+            ]
+          },
+          {
+            "bbox": [
+              569,
+              487,
+              607,
+              533
+            ],
+            "pixels": 1322,
+            "center": [
+              588.0,
+              510.0
+            ]
+          },
+          {
+            "bbox": [
+              941,
+              488,
+              991,
+              539
+            ],
+            "pixels": 1509,
+            "center": [
+              966.0,
+              513.5
+            ]
+          },
+          {
+            "bbox": [
+              110,
+              517,
+              244,
+              723
+            ],
+            "pixels": 15629,
+            "center": [
+              177.0,
+              620.0
+            ]
+          },
+          {
+            "bbox": [
+              1321,
+              518,
+              1350,
+              552
+            ],
+            "pixels": 660,
+            "center": [
+              1335.5,
+              535.0
+            ]
+          },
+          {
+            "bbox": [
+              476,
+              526,
+              598,
+              723
+            ],
+            "pixels": 13849,
+            "center": [
+              537.0,
+              624.5
+            ]
+          },
+          {
+            "bbox": [
+              893,
+              541,
+              951,
+              596
+            ],
+            "pixels": 2210,
+            "center": [
+              922.0,
+              568.5
+            ]
+          },
+          {
+            "bbox": [
+              1282,
+              542,
+              1301,
+              561
+            ],
+            "pixels": 267,
+            "center": [
+              1291.5,
+              551.5
+            ]
+          },
+          {
+            "bbox": [
+              868,
+              549,
+              889,
+              567
+            ],
+            "pixels": 336,
+            "center": [
+              878.5,
+              558.0
+            ]
+          },
+          {
+            "bbox": [
+              1229,
+              564,
+              1247,
+              565
+            ],
+            "pixels": 18,
+            "center": [
+              1238.0,
+              564.5
+            ]
+          },
+          {
+            "bbox": [
+              1216,
+              566,
+              1282,
+              625
+            ],
+            "pixels": 2472,
+            "center": [
+              1249.0,
+              595.5
+            ]
+          },
+          {
+            "bbox": [
+              840,
+              594,
+              934,
+              723
+            ],
+            "pixels": 6207,
+            "center": [
+              887.0,
+              658.5
+            ]
+          },
+          {
+            "bbox": [
+              1221,
+              653,
+              1281,
+              723
+            ],
+            "pixels": 1218,
+            "center": [
+              1251.0,
+              688.0
+            ]
+          },
+          {
+            "bbox": [
+              1297,
+              673,
+              1308,
+              684
+            ],
+            "pixels": 114,
+            "center": [
+              1302.5,
+              678.5
+            ]
+          },
+          {
+            "bbox": [
+              192,
+              852,
+              202,
+              862
+            ],
+            "pixels": 98,
+            "center": [
+              197.0,
+              857.0
+            ]
+          },
+          {
+            "bbox": [
+              553,
+              867,
+              564,
+              878
+            ],
+            "pixels": 115,
+            "center": [
+              558.5,
+              872.5
+            ]
+          },
+          {
+            "bbox": [
+              1247,
+              868,
+              1257,
+              878
+            ],
+            "pixels": 98,
+            "center": [
+              1252.0,
+              873.0
+            ]
+          },
+          {
+            "bbox": [
+              449,
+              874,
+              646,
+              962
+            ],
+            "pixels": 6190,
+            "center": [
+              547.5,
+              918.0
+            ]
+          },
+          {
+            "bbox": [
+              90,
+              878,
+              278,
+              954
+            ],
+            "pixels": 5116,
+            "center": [
+              184.0,
+              916.0
+            ]
+          },
+          {
+            "bbox": [
+              823,
+              878,
+              1005,
+              953
+            ],
+            "pixels": 6270,
+            "center": [
+              914.0,
+              915.5
+            ]
+          },
+          {
+            "bbox": [
+              128,
+              889,
+              138,
+              900
+            ],
+            "pixels": 109,
+            "center": [
+              133.0,
+              894.5
+            ]
+          },
+          {
+            "bbox": [
+              460,
+              889,
+              470,
+              899
+            ],
+            "pixels": 100,
+            "center": [
+              465.0,
+              894.0
+            ]
+          },
+          {
+            "bbox": [
+              1168,
+              889,
+              1342,
+              950
+            ],
+            "pixels": 4490,
+            "center": [
+              1255.0,
+              919.5
+            ]
+          },
+          {
+            "bbox": [
+              1332,
+              889,
+              1343,
+              900
+            ],
+            "pixels": 115,
+            "center": [
+              1337.5,
+              894.5
+            ]
+          },
+          {
+            "bbox": [
+              628,
+              894,
+              668,
+              907
+            ],
+            "pixels": 476,
+            "center": [
+              648.0,
+              900.5
+            ]
+          },
+          {
+            "bbox": [
+              957,
+              897,
+              967,
+              907
+            ],
+            "pixels": 100,
+            "center": [
+              962.0,
+              902.0
+            ]
+          },
+          {
+            "bbox": [
+              272,
+              904,
+              286,
+              915
+            ],
+            "pixels": 151,
+            "center": [
+              279.0,
+              909.5
+            ]
+          },
+          {
+            "bbox": [
+              72,
+              915,
+              83,
+              926
+            ],
+            "pixels": 119,
+            "center": [
+              77.5,
+              920.5
+            ]
+          },
+          {
+            "bbox": [
+              795,
+              915,
+              806,
+              926
+            ],
+            "pixels": 118,
+            "center": [
+              800.5,
+              920.5
+            ]
+          },
+          {
+            "bbox": [
+              1357,
+              915,
+              1368,
+              926
+            ],
+            "pixels": 118,
+            "center": [
+              1362.5,
+              920.5
+            ]
+          },
+          {
+            "bbox": [
+              635,
+              925,
+              646,
+              936
+            ],
+            "pixels": 110,
+            "center": [
+              640.5,
+              930.5
+            ]
+          },
+          {
+            "bbox": [
+              112,
+              936,
+              136,
+              937
+            ],
+            "pixels": 24,
+            "center": [
+              124.0,
+              936.5
+            ]
+          },
+          {
+            "bbox": [
+              111,
+              938,
+              138,
+              949
+            ],
+            "pixels": 283,
+            "center": [
+              124.5,
+              943.5
+            ]
+          },
+          {
+            "bbox": [
+              476,
+              938,
+              487,
+              949
+            ],
+            "pixels": 117,
+            "center": [
+              481.5,
+              943.5
+            ]
+          },
+          {
+            "bbox": [
+              1292,
+              945,
+              1310,
+              946
+            ],
+            "pixels": 18,
+            "center": [
+              1301.0,
+              945.5
+            ]
+          },
+          {
+            "bbox": [
+              1288,
+              947,
+              1312,
+              958
+            ],
+            "pixels": 251,
+            "center": [
+              1300.0,
+              952.5
+            ]
+          },
+          {
+            "bbox": [
+              192,
+              962,
+              202,
+              973
+            ],
+            "pixels": 109,
+            "center": [
+              197.0,
+              967.5
+            ]
+          },
+          {
+            "bbox": [
+              922,
+              963,
+              932,
+              973
+            ],
+            "pixels": 100,
+            "center": [
+              927.0,
+              968.0
+            ]
+          },
+          {
+            "bbox": [
+              562,
+              965,
+              571,
+              976
+            ],
+            "pixels": 96,
+            "center": [
+              566.5,
+              970.5
+            ]
+          },
+          {
+            "bbox": [
+              1278,
+              971,
+              1288,
+              981
+            ],
+            "pixels": 98,
+            "center": [
+              1283.0,
+              976.0
+            ]
+          },
+          {
+            "bbox": [
+              893,
+              975,
+              903,
+              985
+            ],
+            "pixels": 100,
+            "center": [
+              898.0,
+              980.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            107,
+            118
+          ],
+          [
+            127,
+            338
+          ],
+          [
+            436,
+            450
+          ],
+          [
+            453,
+            723
+          ],
+          [
+            852,
+            862
+          ],
+          [
+            867,
+            985
+          ],
+          [
+            986,
+            987
+          ]
+        ],
+        "column_bands": [
+          [
+            72,
+            83
+          ],
+          [
+            88,
+            89
+          ],
+          [
+            90,
+            286
+          ],
+          [
+            449,
+            668
+          ],
+          [
+            793,
+            794
+          ],
+          [
+            795,
+            806
+          ],
+          [
+            823,
+            1005
+          ],
+          [
+            1168,
+            1350
+          ],
+          [
+            1357,
+            1368
+          ]
+        ],
+        "candidate_count": 21,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 537,
+            "y": 107,
+            "w": 10,
+            "h": 11,
+            "pixels": 102
+          },
+          {
+            "x": 1246,
+            "y": 108,
+            "w": 10,
+            "h": 10,
+            "pixels": 100
+          },
+          {
+            "x": 101,
+            "y": 227,
+            "w": 19,
+            "h": 31,
+            "pixels": 413
+          },
+          {
+            "x": 125,
+            "y": 127,
+            "w": 143,
+            "h": 204,
+            "pixels": 15650
+          },
+          {
+            "x": 469,
+            "y": 127,
+            "w": 152,
+            "h": 211,
+            "pixels": 18023
+          },
+          {
+            "x": 823,
+            "y": 136,
+            "w": 168,
+            "h": 202,
+            "pixels": 15725
+          },
+          {
+            "x": 1193,
+            "y": 127,
+            "w": 151,
+            "h": 211,
+            "pixels": 16651
+          },
+          {
+            "x": 578,
+            "y": 436,
+            "w": 15,
+            "h": 14,
+            "pixels": 208
+          },
+          {
+            "x": 110,
+            "y": 454,
+            "w": 157,
+            "h": 269,
+            "pixels": 18054
+          },
+          {
+            "x": 476,
+            "y": 454,
+            "w": 131,
+            "h": 269,
+            "pixels": 15623
+          },
+          {
+            "x": 840,
+            "y": 460,
+            "w": 151,
+            "h": 263,
+            "pixels": 10546
+          },
+          {
+            "x": 1216,
+            "y": 542,
+            "w": 92,
+            "h": 181,
+            "pixels": 4102
+          },
+          {
+            "x": 1319,
+            "y": 453,
+            "w": 31,
+            "h": 99,
+            "pixels": 1094
+          },
+          {
+            "x": 192,
+            "y": 852,
+            "w": 10,
+            "h": 10,
+            "pixels": 98
+          },
+          {
+            "x": 72,
+            "y": 915,
+            "w": 11,
+            "h": 11,
+            "pixels": 119
+          },
+          {
+            "x": 90,
+            "y": 878,
+            "w": 196,
+            "h": 95,
+            "pixels": 5809
+          },
+          {
+            "x": 449,
+            "y": 867,
+            "w": 219,
+            "h": 109,
+            "pixels": 7228
+          },
+          {
+            "x": 795,
+            "y": 915,
+            "w": 11,
+            "h": 11,
+            "pixels": 118
+          },
+          {
+            "x": 823,
+            "y": 876,
+            "w": 182,
+            "h": 109,
+            "pixels": 6589
+          },
+          {
+            "x": 1168,
+            "y": 868,
+            "w": 175,
+            "h": 113,
+            "pixels": 5077
+          },
+          {
+            "x": 1357,
+            "y": 915,
+            "w": 11,
+            "h": 11,
+            "pixels": 118
+          }
+        ]
+      }
+    },
+    {
+      "path": "world/camp-foreground.png",
+      "bytes": 1123217,
+      "sha256": "1049a5f50aa1235668a647e49dd0b640058e5dde16881add1912ec78947c683c",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "zero_fraction": 0.869226,
+        "opaque_fraction": 0.0,
+        "partial_fraction": 0.130774,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        13,
+        181,
+        1520,
+        1008
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        16,
+        358,
+        1513,
+        1000
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": false,
+        "bottom": false,
+        "left": false
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 10,
+        "above_minimum": 2,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              16,
+              358,
+              475,
+              962
+            ],
+            "pixels": 137857,
+            "center": [
+              245.5,
+              660.0
+            ]
+          },
+          {
+            "bbox": [
+              1123,
+              802,
+              1513,
+              1000
+            ],
+            "pixels": 49921,
+            "center": [
+              1318.0,
+              901.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            358,
+            1000
+          ]
+        ],
+        "column_bands": [
+          [
+            16,
+            475
+          ],
+          [
+            1123,
+            1513
+          ]
+        ],
+        "candidate_count": 2,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 16,
+            "y": 358,
+            "w": 459,
+            "h": 604,
+            "pixels": 137863
+          },
+          {
+            "x": 1123,
+            "y": 802,
+            "w": 390,
+            "h": 198,
+            "pixels": 49924
+          }
+        ]
+      }
+    },
+    {
+      "path": "world/camp-ground.png",
+      "bytes": 2751653,
+      "sha256": "44616dd8c6cdbbdc158a5a8f04a864bb00f914cf59faba16a84a59007ae551f5",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "image_frames": 1,
+      "has_alpha_channel": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "zero_fraction": 0.371819,
+        "opaque_fraction": 0.0,
+        "partial_fraction": 0.628181,
+        "has_real_transparency": true,
+        "has_fully_transparent_pixels": true
+      },
+      "visible_bbox": [
+        0,
+        17,
+        1536,
+        1024
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        5,
+        206,
+        1536,
+        1024
+      ],
+      "touches_canvas_edges": {
+        "top": false,
+        "right": true,
+        "bottom": true,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 2,
+        "above_minimum": 1,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              5,
+              206,
+              1536,
+              1024
+            ],
+            "pixels": 961185,
+            "center": [
+              770.5,
+              615.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            206,
+            1024
+          ]
+        ],
+        "column_bands": [
+          [
+            5,
+            1536
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 5,
+            "y": 206,
+            "w": 1531,
+            "h": 818,
+            "pixels": 961187
+          }
+        ]
+      }
+    },
+    {
+      "path": "world/world-backdrop.png",
+      "bytes": 2339635,
+      "sha256": "4e93ec327f8ad9814a1fa3b9a16e3aa4456e0fb14000b1ead9b66e17dd4fc711",
+      "valid_png": true,
+      "format": "PNG",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "image_frames": 1,
+      "has_alpha_channel": false,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zero_fraction": 0.0,
+        "opaque_fraction": 1.0,
+        "partial_fraction": 0.0,
+        "has_real_transparency": false,
+        "has_fully_transparent_pixels": false
+      },
+      "visible_bbox": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "analysis_alpha_threshold": 8,
+      "analysis_bbox": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "touches_canvas_edges": {
+        "top": true,
+        "right": true,
+        "bottom": true,
+        "left": true
+      },
+      "components": {
+        "connectivity": 8,
+        "total": 1,
+        "above_minimum": 1,
+        "minimum_pixels": 16,
+        "truncated": false,
+        "items": [
+          {
+            "bbox": [
+              0,
+              0,
+              1536,
+              1024
+            ],
+            "pixels": 1572864,
+            "center": [
+              768.0,
+              512.0
+            ]
+          }
+        ]
+      },
+      "atlas_candidates": {
+        "method": "alpha projection bands; manual visual validation required",
+        "row_bands": [
+          [
+            0,
+            1024
+          ]
+        ],
+        "column_bands": [
+          [
+            0,
+            1536
+          ]
+        ],
+        "candidate_count": 1,
+        "truncated": false,
+        "frames": [
+          {
+            "x": 0,
+            "y": 0,
+            "w": 1536,
+            "h": 1024,
+            "pixels": 1572864
+          }
+        ]
+      }
+    }
+  ]
+}

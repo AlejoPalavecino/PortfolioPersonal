@@ -1,0 +1,573 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "locale": "es-AR",
+    "updated_at": "2026-10-29",
+    "status": "draft_content",
+    "site_implemented": false,
+    "current_facts_verified": false,
+    "note": "Contenido inicial basado en el CV aportado. Los estados actuales, enlaces y materiales visuales requieren revisión antes de publicar."
+  },
+  "sources": [
+    {
+      "id": "cv-provided",
+      "type": "user_provided_document",
+      "filename": "CV_Alejo_Palavecino_ES.pdf",
+      "package_path": "content/cv-alejo-palavecino-es.pdf",
+      "pages": [
+        1
+      ],
+      "document_date": null,
+      "reviewed_on": "2026-10-29",
+      "externally_verified": false
+    },
+    {
+      "id": "portfolio-brief",
+      "type": "user_instructions",
+      "summary": "Portfolio personal con experiencia de juego pixel art, concepto Campamento creativo y objetivo dual de empleo y clientes."
+    }
+  ],
+  "identity": {
+    "name": "Alejo Palavecino",
+    "short_name": "Alejo",
+    "headline_from_cv": "Desarrollador Full Stack | Automatización e IA | Análisis Funcional",
+    "location_from_cv": {
+      "city": "Godoy Cruz",
+      "province": "Mendoza",
+      "current_status": "pending_confirmation"
+    },
+    "source_ids": [
+      "cv-provided"
+    ],
+    "official_personal_logo": null,
+    "portrait_asset": "assets/character/alejo-portrait.png",
+    "avatar_asset": "assets/character/avatar-movement-atlas.png",
+    "avatar_reference_photo_included": false,
+    "avatar_metadata": "assets/character/avatar-movement-atlas.json",
+    "personal_monogram_asset": "assets/brand/favicon-master.png",
+    "personal_monogram_status": "generated_for_this_portfolio"
+  },
+  "hero": {
+    "eyebrow": "Portfolio de Alejo Palavecino",
+    "title": "Desarrollo software. Transformo ideas en productos.",
+    "description": "Desarrollo full stack, automatización e inteligencia artificial aplicada. Conocé mis proyectos y cómo trabajo.",
+    "primary_action": {
+      "label": "Explorar el campamento",
+      "target": "#campamento"
+    },
+    "secondary_action": {
+      "label": "Ver proyectos",
+      "target": "#proyectos"
+    },
+    "copy_status": "editorial_proposal",
+    "source_ids": [
+      "cv-provided",
+      "portfolio-brief"
+    ]
+  },
+  "navigation": [
+    {
+      "id": "projects",
+      "label": "Proyectos",
+      "target": "#proyectos"
+    },
+    {
+      "id": "about",
+      "label": "Sobre mí",
+      "target": "#sobre-mi"
+    },
+    {
+      "id": "journey",
+      "label": "Trayectoria",
+      "target": "#trayectoria"
+    },
+    {
+      "id": "contact",
+      "label": "Contacto",
+      "target": "#contacto"
+    }
+  ],
+  "world": {
+    "name": "Campamento creativo",
+    "style": "pixel_art",
+    "perspective": "elevated_three_quarter",
+    "lighting": "warm_daylight",
+    "destinations": [
+      {
+        "id": "projects",
+        "label": "Proyectos",
+        "object": "taller",
+        "content_target": "#proyectos",
+        "asset": "assets/destinations/poi-projects.png",
+        "featured_project_id": "foxmind"
+      },
+      {
+        "id": "about",
+        "label": "Sobre mí",
+        "object": "carpa_y_fogon",
+        "content_target": "#sobre-mi",
+        "asset": "assets/destinations/poi-about.png"
+      },
+      {
+        "id": "journey",
+        "label": "Trayectoria",
+        "object": "mesa_bitacora",
+        "content_target": "#trayectoria",
+        "asset": "assets/destinations/poi-journey.png"
+      },
+      {
+        "id": "contact",
+        "label": "Contacto",
+        "object": "puesto_comunicacion",
+        "content_target": "#contacto",
+        "asset": "assets/destinations/poi-contact.png"
+      }
+    ],
+    "labels_render_as": "html_text",
+    "mandatory_unlocks": false,
+    "sound_enabled_by_default": false,
+    "movement_reduction_required": true,
+    "implementation_status": "specified_not_implemented"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "body": "Soy estudiante de Ingeniería en Sistemas de Información y desarrollador de software. Me interesa construir productos que conecten una necesidad concreta con una solución clara. Trabajo en desarrollo full stack, automatización, inteligencia artificial aplicada y análisis funcional. Soy cofundador de FoxMind, una plataforma educativa orientada a personalizar el aprendizaje y acompañar el trabajo docente.",
+    "copy_status": "editorial_proposal_based_on_cv",
+    "source_ids": [
+      "cv-provided"
+    ],
+    "additional_personal_story": ""
+  },
+  "professional_focus": {
+    "employment": {
+      "title": "Oportunidades laborales",
+      "body": "Mi experiencia reúne desarrollo de software, definición de producto y análisis funcional.",
+      "cta": "Conversar sobre una oportunidad",
+      "desired_roles": [],
+      "availability": null,
+      "work_mode_preference": null,
+      "copy_status": "editorial_proposal_based_on_cv"
+    },
+    "clients": {
+      "title": "Proyectos para tu negocio",
+      "body": "Podemos conversar sobre desarrollo web, automatización y herramientas adaptadas a una necesidad concreta.",
+      "cta": "Consultar por un proyecto",
+      "service_offerings_confirmed": false,
+      "service_scope": [],
+      "rates": null,
+      "copy_status": "editorial_proposal_based_on_cv"
+    },
+    "source_ids": [
+      "cv-provided",
+      "portfolio-brief"
+    ]
+  },
+  "skills": [
+    {
+      "group": "Lenguajes",
+      "items": [
+        "Java",
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "C++"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Frontend",
+      "items": [
+        "React",
+        "Next.js",
+        "UX/UI",
+        "Diseño de flujos"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Backend y datos",
+      "items": [
+        "Node.js",
+        "FastAPI",
+        "Spring Boot",
+        "APIs REST",
+        "PostgreSQL"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Calidad y DevOps",
+      "items": [
+        "JUnit",
+        "TDD",
+        "Pruebas E2E",
+        "Docker",
+        "Git",
+        "GitHub Actions"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Desarrollo asistido por IA",
+      "items": [
+        "OpenCode",
+        "Gentle-AI",
+        "SDD",
+        "Engram",
+        "MCPs",
+        "Subagentes",
+        "Skills"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Análisis funcional",
+      "items": [
+        "Relevamiento",
+        "Definición de requisitos",
+        "Especificación de funcionalidades",
+        "Modelado de flujos",
+        "Automatización de procesos"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "experience-foxmind",
+      "organization": "FoxMind",
+      "role": "Cofundador, Product Builder y Desarrollador Full Stack",
+      "location_from_cv": "Mendoza",
+      "start_year": 2024,
+      "end_year": null,
+      "period_label_from_cv": "2024 - Actualidad",
+      "currently_active": null,
+      "current_status": "pending_confirmation",
+      "responsibilities_from_cv": [
+        "Participación en análisis funcional, definición de producto, UX/UI, arquitectura y desarrollo de la plataforma.",
+        "Desarrollo de funcionalidades para aulas, carpetas de estudio, Foxy IA, monitoreo de riesgo, agendas y herramientas para docentes.",
+        "Uso de SDD y TDD en funcionalidades complejas, con apoyo de OpenCode y Gentle-AI."
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "id": "experience-freelance",
+      "organization": "Trabajo independiente",
+      "role": "Desarrollador Web Freelance",
+      "location_from_cv": "Mendoza",
+      "start_year": 2022,
+      "end_year": 2025,
+      "responsibilities_from_cv": [
+        "Desarrollo de landing pages, catálogos y formularios de contacto o WhatsApp.",
+        "SEO básico, despliegue y hosting administrado.",
+        "Relevamiento de necesidades, comunicación con clientes y entregas iterativas."
+      ],
+      "named_case_studies": [],
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "foxmind",
+      "title": "FoxMind",
+      "featured": true,
+      "category": "Tecnología educativa",
+      "summary": "Plataforma educativa orientada a personalizar el aprendizaje y brindar herramientas para reducir la carga operativa docente.",
+      "role_from_cv": "Cofundador, Product Builder y Desarrollador Full Stack",
+      "problem": "",
+      "my_contribution": "Participación en análisis funcional, definición de producto, UX/UI, arquitectura y desarrollo de la plataforma.",
+      "team_role_details": "",
+      "key_decisions": [],
+      "technologies_from_cv": [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Modelos de IA"
+      ],
+      "current_technologies_verified": false,
+      "stage_from_cv": "Etapa previa a pruebas piloto",
+      "current_stage": null,
+      "current_stage_status": "pending_confirmation",
+      "outcomes": [],
+      "metrics": [],
+      "screenshots": [],
+      "cover_image": null,
+      "official_logo": null,
+      "official_foxy_asset": null,
+      "links": {
+        "website_from_cv": "https://foxmind.site",
+        "website_verified": false,
+        "repository": null,
+        "demo": null
+      },
+      "recognition_ids": [
+        "ilan-2026"
+      ],
+      "publication_status": "needs_real_media_and_current_review",
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "id": "project-02",
+      "title": "",
+      "featured": false,
+      "category": "",
+      "summary": "",
+      "role": "",
+      "problem": "",
+      "my_contribution": "",
+      "key_decisions": [],
+      "technologies": [],
+      "current_stage": null,
+      "outcomes": [],
+      "metrics": [],
+      "screenshots": [],
+      "cover_image": null,
+      "links": {
+        "website": null,
+        "repository": null,
+        "demo": null
+      },
+      "publication_status": "pending_project_selection",
+      "source_ids": []
+    },
+    {
+      "id": "project-03",
+      "title": "",
+      "featured": false,
+      "category": "",
+      "summary": "",
+      "role": "",
+      "problem": "",
+      "my_contribution": "",
+      "key_decisions": [],
+      "technologies": [],
+      "current_stage": null,
+      "outcomes": [],
+      "metrics": [],
+      "screenshots": [],
+      "cover_image": null,
+      "links": {
+        "website": null,
+        "repository": null,
+        "demo": null
+      },
+      "publication_status": "pending_project_selection",
+      "source_ids": []
+    }
+  ],
+  "project_candidates_from_cv": [
+    {
+      "id": "candidate-aforo",
+      "title": "Automatización de sección de aforo",
+      "description_from_cv": "Desarrollo con Arduino de una solución para medición y mejor gestión del agua, impulsada junto a Irrigación.",
+      "date": null,
+      "current_stage": null,
+      "links": [],
+      "media": [],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "id": "candidate-agrotech",
+      "title": "Agrotech",
+      "description_from_cv": "Iniciativa orientada a soluciones tecnológicas para el agro, con prototipos desarrollados principalmente sobre Arduino.",
+      "date": null,
+      "current_stage": null,
+      "links": [],
+      "media": [],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "id": "candidate-herbario",
+      "title": "Herbario Digital",
+      "description_from_cv": "Plataforma informativa sobre especies vegetales creada con Google Sites en 2018 y utilizada por la organización impulsora, según el CV.",
+      "year": 2018,
+      "current_stage": null,
+      "organization_name": null,
+      "links": [],
+      "media": [],
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "qualification": "Ingeniería en Sistemas de Información",
+      "institution": "Universidad Tecnológica Nacional",
+      "start_year": 2023,
+      "status_from_cv": "En curso",
+      "year_level_from_cv": "4.º año",
+      "progress_from_cv": "Más del 50 % aprobado",
+      "estimated_graduation_year_from_cv": 2028,
+      "current_status": "pending_confirmation",
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "qualification": "Programación Web Full Stack",
+      "institution": "Egg Corporation",
+      "start_year": 2021,
+      "end_year": 2022,
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "qualification": "Desarrollo de Apps Móviles",
+      "institution": "Universidad Complutense de Madrid",
+      "year": 2020,
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "qualification": "Técnico en Producción Agropecuaria",
+      "institution": "Escuela de Agricultura, UNCuyo",
+      "start_year": 2017,
+      "end_year": 2022,
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "recognitions": [
+    {
+      "id": "ilan-2026",
+      "title_from_cv": "1.er puesto del Premio ILAN a la Innovación Universitaria con FoxMind",
+      "date_from_cv": "2026-04-15",
+      "evidence_link": null,
+      "image": null,
+      "verification_status": "reported_in_cv_not_externally_verified",
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "level_from_cv": "Nativo",
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "language": "Inglés",
+      "level_from_cv": "B2",
+      "certification": null,
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "additional_experience_from_cv": [
+    {
+      "activity": "Emprendimiento e-commerce",
+      "start_year": 2021,
+      "end_year": 2023,
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "activity": "Atención al cliente",
+      "year": 2023,
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "activity": "Trabajo rural",
+      "start_year": 2019,
+      "end_year": 2022,
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "contact": {
+    "title": "Conversemos",
+    "body": "Si tenés una oportunidad laboral o una idea para desarrollar, podés escribirme.",
+    "email": "alejopalavecino12@gmail.com",
+    "email_source_ids": [
+      "cv-provided"
+    ],
+    "phone": null,
+    "employment_subject": "Oportunidad laboral - Alejo Palavecino",
+    "project_subject": "Consulta por un proyecto - Alejo Palavecino",
+    "social_links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/alejo-palavecino",
+        "verified": false,
+        "source_ids": [
+          "cv-provided"
+        ]
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/AlejoPalavecino",
+        "verified": false,
+        "source_ids": [
+          "cv-provided"
+        ]
+      }
+    ],
+    "cv": {
+      "label": "Descargar CV",
+      "file_path": "content/cv-alejo-palavecino-es.pdf",
+      "path_base": "package_root",
+      "status": "included_user_provided_original",
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    "copy_status": "editorial_proposal_based_on_cv"
+  },
+  "ui_copy": {
+    "explore_hint": "Hacé clic o tocá un lugar para explorar.",
+    "keyboard_hint": "Movete con las flechas o WASD. Enter para interactuar. Escape para cerrar.",
+    "open_projects": "Ver proyectos",
+    "open_foxmind": "Conocer FoxMind",
+    "open_about": "Conocer a Alejo",
+    "open_journey": "Abrir bitácora",
+    "open_contact": "Contactar",
+    "close_panel": "Cerrar",
+    "back_to_camp": "Volver al campamento",
+    "visited": "Visitado",
+    "sound_on": "Activar sonido",
+    "sound_off": "Desactivar sonido",
+    "reduce_motion": "Reducir movimiento"
+  },
+  "rendering_rules": {
+    "text_in_html": true,
+    "hide_empty_projects": true,
+    "hide_links_without_target": true,
+    "hide_unsubstantiated_metrics": true,
+    "never_render_null_as_copy": true,
+    "do_not_treat_cv_current_claims_as_currently_verified": true
+  }
+}

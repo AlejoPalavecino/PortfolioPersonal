@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "1.0",
+  "image": "camp-effects-atlas.png",
+  "sourceSize": {
+    "w": 1448,
+    "h": 1086
+  },
+  "sha256": "f0bdae2bbd996fa4678fe945be6044fa62311b90143ecacd8cf80d3f0a06924b",
+  "coordinateConvention": "Source pixels; x/y top-left, w/h crop size. Anchors are relative to each crop.",
+  "layout": {
+    "rows": 3,
+    "columns": 4,
+    "cellSize": {
+      "w": 362,
+      "h": 362
+    },
+    "rowEffects": [
+      "fire",
+      "smoke",
+      "waterSparkle"
+    ]
+  },
+  "fps": 6,
+  "defaultAnimation": "fire",
+  "frames": [
+    {
+      "name": "fire-1",
+      "group": "fire",
+      "row": 0,
+      "column": 0,
+      "x": 0,
+      "y": 0,
+      "w": 362,
+      "h": 362,
+      "anchorX": 192,
+      "anchorY": 330,
+      "solidBounds": {
+        "x": 101,
+        "y": 127,
+        "w": 169,
+        "h": 204
+      }
+    },
+    {
+      "name": "fire-2",
+      "group": "fire",
+      "row": 0,
+      "column": 1,
+      "x": 362,
+      "y": 0,
+      "w": 362,
+      "h": 362,
+      "anchorX": 181,
+      "anchorY": 336,
+      "solidBounds": {
+        "x": 469,
+        "y": 107,
+        "w": 152,
+        "h": 231
+      }
+    },
+    {
+      "name": "fire-3",
+      "group": "fire",
+      "row": 0,
+      "column": 2,
+      "x": 724,
+      "y": 0,
+      "w": 362,
+      "h": 362,
+      "anchorX": 179,
+      "anchorY": 336,
+      "solidBounds": {
+        "x": 823,
+        "y": 136,
+        "w": 168,
+        "h": 202
+      }
+    },
+    {
+      "name": "fire-4",
+      "group": "fire",
+      "row": 0,
+      "column": 3,
+      "x": 1086,
+      "y": 0,
+      "w": 362,
+      "h": 362,
+      "anchorX": 179,
+      "anchorY": 336,
+      "solidBounds": {
+        "x": 1193,
+        "y": 108,
+        "w": 151,
+        "h": 230
+      }
+    },
+    {
+      "name": "smoke-1",
+      "group": "smoke",
+      "row": 1,
+      "column": 0,
+      "x": 0,
+      "y": 362,
+      "w": 362,
+      "h": 362,
+      "anchorX": 181,
+      "anchorY": 360,
+      "solidBounds": {
+        "x": 110,
+        "y": 454,
+        "w": 157,
+        "h": 269
+      }
+    },
+    {
+      "name": "smoke-2",
+      "group": "smoke",
+      "row": 1,
+      "column": 1,
+      "x": 362,
+      "y": 362,
+      "w": 362,
+      "h": 362,
+      "anchorX": 181,
+      "anchorY": 360,
+      "solidBounds": {
+        "x": 476,
+        "y": 436,
+        "w": 131,
+        "h": 287
+      }
+    },
+    {
+      "name": "smoke-3",
+      "group": "smoke",
+      "row": 1,
+      "column": 2,
+      "x": 724,
+      "y": 362,
+      "w": 362,
+      "h": 362,
+      "anchorX": 167,
+      "anchorY": 360,
+      "solidBounds": {
+        "x": 840,
+        "y": 460,
+        "w": 151,
+        "h": 263
+      }
+    },
+    {
+      "name": "smoke-4",
+      "group": "smoke",
+      "row": 1,
+      "column": 3,
+      "x": 1086,
+      "y": 362,
+      "w": 362,
+      "h": 362,
+      "anchorX": 185,
+      "anchorY": 360,
+      "solidBounds": {
+        "x": 1216,
+        "y": 453,
+        "w": 134,
+        "h": 270
+      }
+    },
+    {
+      "name": "waterSparkle-1",
+      "group": "waterSparkle",
+      "row": 2,
+      "column": 0,
+      "x": 0,
+      "y": 724,
+      "w": 362,
+      "h": 362,
+      "anchorX": 181,
+      "anchorY": 193,
+      "solidBounds": {
+        "x": 72,
+        "y": 852,
+        "w": 214,
+        "h": 121
+      }
+    },
+    {
+      "name": "waterSparkle-2",
+      "group": "waterSparkle",
+      "row": 2,
+      "column": 1,
+      "x": 362,
+      "y": 724,
+      "w": 362,
+      "h": 362,
+      "anchorX": 166,
+      "anchorY": 192,
+      "solidBounds": {
+        "x": 449,
+        "y": 867,
+        "w": 219,
+        "h": 109
+      }
+    },
+    {
+      "name": "waterSparkle-3",
+      "group": "waterSparkle",
+      "row": 2,
+      "column": 2,
+      "x": 724,
+      "y": 724,
+      "w": 362,
+      "h": 362,
+      "anchorX": 170,
+      "anchorY": 193,
+      "solidBounds": {
+        "x": 793,
+        "y": 876,
+        "w": 212,
+        "h": 111
+      }
+    },
+    {
+      "name": "waterSparkle-4",
+      "group": "waterSparkle",
+      "row": 2,
+      "column": 3,
+      "x": 1086,
+      "y": 724,
+      "w": 362,
+      "h": 362,
+      "anchorX": 152,
+      "anchorY": 195,
+      "solidBounds": {
+        "x": 1168,
+        "y": 868,
+        "w": 200,
+        "h": 113
+      }
+    }
+  ],
+  "animations": {
+    "fire": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "smoke": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "waterSparkle": [
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "analysis": {
+    "alphaThreshold": 8,
+    "noImageModification": true,
+    "allFramesInsideSource": true,
+    "anchorMethod": "Fire/smoke: solid lower emitter center from alpha>128. Water: median bright central reflection, preserving the same visual point between frames.",
+    "cellMethod": "Visually verified 362px cells; each cell includes detached sparks, smoke fragments and reflection fragments belonging to that effect."
+  },
+  "qualityNotes": [
+    "Se verificaron doce estados: cuatro de fuego, cuatro de humo y cuatro de brillo de agua.",
+    "Se conserva cada celda completa para incluir chispas y fragmentos separados; los componentes alpha individuales no deben interpretarse como efectos independientes.",
+    "El fuego se apoya sobre su base; el humo se posiciona por su emisor inferior; el brillo de agua se alinea por su reflejo central.",
+    "Las secuencias son ciclos iniciales de apariencia pixelada. Hay cambios de masa entre estados, especialmente en el humo; revisar el paso del último al primer cuadro al tamaño final.",
+    "Usar el brillo como detalle localizado sobre agua, no como reemplazo de una animación completa del cauce.",
+    "El PNG original permanece intacto; el JSON solo define cómo leerlo."
+  ]
+}

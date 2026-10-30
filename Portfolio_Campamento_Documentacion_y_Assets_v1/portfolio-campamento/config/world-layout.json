@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "1.0",
+  "referenceOnly": true,
+  "assetManifest": "../assets-manifest.json",
+  "coordinateUnits": "logical scene pixels",
+  "scenes": [
+    {
+      "name": "Escritorio · 1536 × 1152",
+      "width": 1536,
+      "height": 1152,
+      "referenceOnly": true,
+      "coordinateUnits": "logical scene pixels",
+      "notes": "Composición de referencia para revisar escala y distribución. No define colisiones, caminos navegables ni un mapa de juego validado. Los destinos se colocan por el apoyo inferior de su silueta; el fondo conserva su proporción. El primer plano se deja oculto para no tapar destinos.",
+      "layers": [
+        {
+          "asset": "world-backdrop",
+          "name": "Paisaje lejano",
+          "x": -96.0,
+          "y": 0.0,
+          "scale": 1.125,
+          "z": 0
+        },
+        {
+          "asset": "camp-ground",
+          "name": "Terreno",
+          "x": 0,
+          "y": 128,
+          "width": 1536,
+          "z": 10
+        },
+        {
+          "asset": "poi-projects",
+          "name": "Taller · Proyectos",
+          "x": 1000,
+          "y": 500,
+          "scale": 0.40061633281972264,
+          "anchorX": 777.0,
+          "anchorY": 943,
+          "z": 500,
+          "placementBasis": "alpha>8 visual bounds; full source file remains unchanged"
+        },
+        {
+          "asset": "poi-about",
+          "name": "Fogón · Sobre mí",
+          "x": 320,
+          "y": 680,
+          "scale": 0.28193832599118945,
+          "anchorX": 627.5,
+          "anchorY": 1028,
+          "z": 680,
+          "placementBasis": "alpha>8 visual bounds; full source file remains unchanged"
+        },
+        {
+          "asset": "poi-journey",
+          "name": "Bitácora · Trayectoria",
+          "x": 550,
+          "y": 860,
+          "scale": 0.11668107173725151,
+          "anchorX": 636.5,
+          "anchorY": 1188,
+          "z": 860,
+          "placementBasis": "alpha>8 visual bounds; full source file remains unchanged"
+        },
+        {
+          "asset": "poi-contact",
+          "name": "Radio · Contacto",
+          "x": 1160,
+          "y": 800,
+          "scale": 0.24154589371980675,
+          "anchorX": 688.5,
+          "anchorY": 1205,
+          "z": 800,
+          "placementBasis": "alpha>8 visual bounds; full source file remains unchanged"
+        },
+        {
+          "asset": "avatar-movement-atlas",
+          "frame": "idle-down",
+          "name": "idle-down",
+          "x": 750,
+          "y": 800,
+          "scale": 0.32941176470588235,
+          "anchorX": 64,
+          "anchorY": 252,
+          "z": 801
+        },
+        {
+          "asset": "camp-props-atlas",
+          "frame": "pine",
+          "name": "pine",
+          "x": 115,
+          "y": 1080,
+          "scale": 0.4078014184397163,
+          "anchorX": 184,
+          "anchorY": 557,
+          "z": 1081
+        },
+        {
+          "asset": "camp-props-atlas",
+          "frame": "bush",
+          "name": "bush",
+          "x": 1420,
+          "y": 1070,
+          "scale": 0.3125,
+          "anchorX": 158,
+          "anchorY": 212,
+          "z": 1071
+        },
+        {
+          "asset": "camp-foreground",
+          "name": "Primer plano · opcional",
+          "x": 0,
+          "y": 128,
+          "width": 1536,
+          "z": 5000,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "name": "Celular · 768 × 1152",
+      "width": 768,
+      "height": 1152,
+      "referenceOnly": true,
+      "coordinateUnits": "logical scene pixels",
+      "notes": "Composición de referencia para revisar escala y distribución. No define colisiones, caminos navegables ni un mapa de juego validado. Los destinos se colocan por el apoyo inferior de su silueta; el fondo conserva su proporción. El primer plano se deja oculto para no tapar destinos.",
+      "layers": [
+        {
+          "asset": "world-backdrop",
+          "name": "Paisaje lejano",
+          "x": -480.0,
+          "y": 0.0,
+          "scale": 1.125,
+          "z": 0
+        },
+        {
+          "asset": "camp-ground",
+          "name": "Terreno",
+          "x": -66,
+          "y": 440,
+          "width": 900,
+          "z": 10
+        },
+        {
+          "asset": "poi-projects",
+          "name": "Taller · Proyectos",
+          "x": 520,
+          "y": 670,
+          "scale": 0.23112480739599384,
+          "anchorX": 777.0,
+          "anchorY": 943,
+          "z": 670,
+          "placementBasis": "alpha>8 visual bounds; full source file remains unchanged"
+        },
+        {
+          "asset": "poi-about",
+          "name": "Fogón · Sobre mí",
+          "x": 150,
+          "y": 770,
+          "scale": 0.19383259911894274,
+          "anchorX": 627.5,
+          "anchorY": 1028,
+          "z": 770,
+          "placementBasis": "alpha>8 visual bounds; full source file remains unchanged"
+        },
+        {
+          "asset": "poi-journey",
+          "name": "Bitácora · Trayectoria",
+          "x": 280,
+          "y": 930,
+          "scale": 0.08210890233362143,
+          "anchorX": 636.5,
+          "anchorY": 1188,
+          "z": 930,
+          "placementBasis": "alpha>8 visual bounds; full source file remains unchanged"
+        },
+        {
+          "asset": "poi-contact",
+          "name": "Radio · Contacto",
+          "x": 600,
+          "y": 900,
+          "scale": 0.18357487922705315,
+          "anchorX": 688.5,
+          "anchorY": 1205,
+          "z": 900,
+          "placementBasis": "alpha>8 visual bounds; full source file remains unchanged"
+        },
+        {
+          "asset": "avatar-movement-atlas",
+          "frame": "idle-down",
+          "name": "idle-down",
+          "x": 380,
+          "y": 925,
+          "scale": 0.27450980392156865,
+          "anchorX": 64,
+          "anchorY": 252,
+          "z": 926
+        },
+        {
+          "asset": "camp-foreground",
+          "name": "Primer plano · opcional",
+          "x": -66,
+          "y": 440,
+          "width": 900,
+          "z": 5000,
+          "visible": false
+        }
+      ]
+    }
+  ]
+}

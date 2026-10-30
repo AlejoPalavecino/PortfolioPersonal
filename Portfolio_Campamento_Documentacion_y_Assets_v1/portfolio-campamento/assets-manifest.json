@@ -1,0 +1,1682 @@
+{
+  "schemaVersion": "1.0",
+  "title": "Campamento creativo · Alejo Palavecino",
+  "generatedAt": "2026-10-29T15:06:29.336996+00:00",
+  "purpose": "Kit de assets para desarrollar un portfolio. No es una web publicada ni un juego completo.",
+  "pathsRelativeTo": "kit root",
+  "sourceImagesModifiedByBuilder": false,
+  "summary": {
+    "assetFiles": 35,
+    "galleryFiles": 33,
+    "byKind": {
+      "audio": 5,
+      "font": 2,
+      "icon": 14,
+      "image": 11,
+      "spritesheet": 3
+    },
+    "totalAssetBytes": 22239702
+  },
+  "assets": [
+    {
+      "id": "camp-foreground",
+      "name": "Vegetación de primer plano",
+      "path": "assets/world/camp-foreground.png",
+      "category": "Mundo",
+      "bytes": 1123217,
+      "sha256": "1049a5f50aa1235668a647e49dd0b640058e5dde16881add1912ec78947c683c",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1536,
+      "height": 1024,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 16,
+        "y": 358,
+        "w": 1497,
+        "h": 642
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 764.5,
+        "y": 1000
+      },
+      "notes": "Capa opcional de profundidad. Está oculta inicialmente en la composición para conservar visibles los destinos.",
+      "wide": true
+    },
+    {
+      "id": "camp-ground",
+      "name": "Terreno del campamento",
+      "path": "assets/world/camp-ground.png",
+      "category": "Mundo",
+      "bytes": 2751653,
+      "sha256": "44616dd8c6cdbbdc158a5a8f04a864bb00f914cf59faba16a84a59007ae551f5",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1536,
+      "height": 1024,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 5,
+        "y": 206,
+        "w": 1531,
+        "h": 818
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 770.5,
+        "y": 1024
+      },
+      "notes": "Capa con transparencia real. Los caminos y claros son una propuesta artística; no contienen colisiones programadas.",
+      "wide": true
+    },
+    {
+      "id": "world-backdrop",
+      "name": "Cordillera y paisaje lejano",
+      "path": "assets/world/world-backdrop.png",
+      "category": "Mundo",
+      "bytes": 2339635,
+      "sha256": "4e93ec327f8ad9814a1fa3b9a16e3aa4456e0fb14000b1ead9b66e17dd4fc711",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1536,
+      "height": 1024,
+      "hasRealTransparency": false,
+      "visibleBounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1536,
+        "h": 1024
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 768.0,
+        "y": 1024
+      },
+      "notes": "Fondo opaco. Se compone detrás del terreno sin deformar su proporción.",
+      "wide": true
+    },
+    {
+      "id": "poi-about",
+      "name": "Fogón · Sobre mí",
+      "path": "assets/destinations/poi-about.png",
+      "category": "Destinos",
+      "bytes": 955560,
+      "sha256": "703d7fbb10b531e111a9b30e78e0179b8d1d8da96ee98900541347506c0342bd",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1254,
+      "height": 1254,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 60,
+        "y": 255,
+        "w": 1135,
+        "h": 773
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 627.5,
+        "y": 1028
+      },
+      "notes": "Zona del fogón y presentación personal; el efecto de fuego se integra por separado.",
+      "wide": false
+    },
+    {
+      "id": "poi-contact",
+      "name": "Radio · Contacto",
+      "path": "assets/destinations/poi-contact.png",
+      "category": "Destinos",
+      "bytes": 1255095,
+      "sha256": "6d64124071fcc9a47ed51825e1047b6a2a0ff1c19ff6418ce1015c137f0d9484",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1254,
+      "height": 1254,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 171,
+        "y": 85,
+        "w": 1035,
+        "h": 1120
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 688.5,
+        "y": 1205
+      },
+      "notes": "Puesto de radio para acceder al contacto profesional.",
+      "wide": false
+    },
+    {
+      "id": "poi-journey",
+      "name": "Bitácora · Trayectoria",
+      "path": "assets/destinations/poi-journey.png",
+      "category": "Destinos",
+      "bytes": 1038244,
+      "sha256": "deef4030b1a7c94e5afad7ba49ae8c523e3d8ff430dff7e830f36c4ababeea9e",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1254,
+      "height": 1254,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 58,
+        "y": 228,
+        "w": 1157,
+        "h": 960
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 636.5,
+        "y": 1188
+      },
+      "notes": "Mesa y bitácora para presentar la trayectoria.",
+      "wide": false
+    },
+    {
+      "id": "poi-projects",
+      "name": "Taller · Proyectos",
+      "path": "assets/destinations/poi-projects.png",
+      "category": "Destinos",
+      "bytes": 2151147,
+      "sha256": "b14f4dc91c6cd3a400c5a349e118ee17d48c68aa70426556eab28c2113b1d4cc",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1536,
+      "height": 1024,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 128,
+        "y": 68,
+        "w": 1298,
+        "h": 875
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 777.0,
+        "y": 943
+      },
+      "notes": "Edificio separado, con cartel vacío para añadir el título mediante la interfaz web.",
+      "wide": false
+    },
+    {
+      "id": "alejo-portrait",
+      "name": "Alejo · Retrato pixel art",
+      "path": "assets/character/alejo-portrait.png",
+      "category": "Personaje",
+      "bytes": 873046,
+      "sha256": "a13e76d7779a4e43d08229ee86adf76264a380ca7bb7bd8185ba20261a7a2eed",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1254,
+      "height": 1254,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 149,
+        "y": 76,
+        "w": 1000,
+        "h": 1166
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 649.0,
+        "y": 1242
+      },
+      "notes": "Retrato estilizado para presentación personal; no sustituye una fotografía documental.",
+      "wide": false
+    },
+    {
+      "id": "avatar-master",
+      "name": "Alejo · Personaje maestro",
+      "path": "assets/character/avatar-master.png",
+      "category": "Personaje",
+      "bytes": 530394,
+      "sha256": "7c930622dc8acf49d695cb6240e1f15ad88125640f7a45c4490a275afc4db328",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1254,
+      "height": 1254,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 403,
+        "y": 77,
+        "w": 475,
+        "h": 1143
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 640.5,
+        "y": 1220
+      },
+      "notes": "Diseño maestro inspirado en la fotografía aportada. La foto original no se incluye en este kit.",
+      "wide": false
+    },
+    {
+      "id": "avatar-movement-atlas",
+      "name": "Alejo · Poses y caminata",
+      "path": "assets/character/avatar-movement-atlas.png",
+      "category": "Personaje",
+      "bytes": 1078994,
+      "sha256": "a2f3478040eb893877824f780f8723cd0d40ef54291de2e0e763a4009f3469d9",
+      "kind": "spritesheet",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1402,
+      "height": 1122,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 146,
+        "y": 29,
+        "w": 1111,
+        "h": 1065
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 701.5,
+        "y": 1094
+      },
+      "atlasMetadata": "assets/character/avatar-movement-atlas.json",
+      "frames": [
+        {
+          "name": "idle-down",
+          "direction": "down",
+          "state": "idle",
+          "row": 0,
+          "column": 0,
+          "x": 145,
+          "y": 28,
+          "w": 131,
+          "h": 255,
+          "anchorX": 64,
+          "anchorY": 252,
+          "solidBounds": {
+            "x": 147,
+            "y": 30,
+            "w": 127,
+            "h": 251
+          }
+        },
+        {
+          "name": "walk-down-1",
+          "direction": "down",
+          "state": "walk",
+          "row": 0,
+          "column": 1,
+          "x": 395,
+          "y": 30,
+          "w": 134,
+          "h": 258,
+          "anchorX": 64,
+          "anchorY": 254,
+          "solidBounds": {
+            "x": 397,
+            "y": 32,
+            "w": 130,
+            "h": 254
+          }
+        },
+        {
+          "name": "walk-down-2",
+          "direction": "down",
+          "state": "walk",
+          "row": 0,
+          "column": 2,
+          "x": 633,
+          "y": 27,
+          "w": 132,
+          "h": 260,
+          "anchorX": 67,
+          "anchorY": 257,
+          "solidBounds": {
+            "x": 635,
+            "y": 29,
+            "w": 128,
+            "h": 256
+          }
+        },
+        {
+          "name": "walk-down-3",
+          "direction": "down",
+          "state": "walk",
+          "row": 0,
+          "column": 3,
+          "x": 875,
+          "y": 30,
+          "w": 139,
+          "h": 256,
+          "anchorX": 69,
+          "anchorY": 254,
+          "solidBounds": {
+            "x": 877,
+            "y": 32,
+            "w": 135,
+            "h": 252
+          }
+        },
+        {
+          "name": "walk-down-4",
+          "direction": "down",
+          "state": "walk",
+          "row": 0,
+          "column": 4,
+          "x": 1125,
+          "y": 27,
+          "w": 133,
+          "h": 261,
+          "anchorX": 69,
+          "anchorY": 256,
+          "solidBounds": {
+            "x": 1127,
+            "y": 29,
+            "w": 129,
+            "h": 257
+          }
+        },
+        {
+          "name": "idle-left",
+          "direction": "left",
+          "state": "idle",
+          "row": 1,
+          "column": 0,
+          "x": 149,
+          "y": 297,
+          "w": 125,
+          "h": 266,
+          "anchorX": 59,
+          "anchorY": 259,
+          "solidBounds": {
+            "x": 151,
+            "y": 299,
+            "w": 121,
+            "h": 262
+          }
+        },
+        {
+          "name": "walk-left-1",
+          "direction": "left",
+          "state": "walk",
+          "row": 1,
+          "column": 1,
+          "x": 390,
+          "y": 298,
+          "w": 138,
+          "h": 262,
+          "anchorX": 66,
+          "anchorY": 257,
+          "solidBounds": {
+            "x": 392,
+            "y": 300,
+            "w": 134,
+            "h": 258
+          }
+        },
+        {
+          "name": "walk-left-2",
+          "direction": "left",
+          "state": "walk",
+          "row": 1,
+          "column": 2,
+          "x": 635,
+          "y": 297,
+          "w": 125,
+          "h": 263,
+          "anchorX": 59,
+          "anchorY": 258,
+          "solidBounds": {
+            "x": 637,
+            "y": 299,
+            "w": 121,
+            "h": 259
+          }
+        },
+        {
+          "name": "walk-left-3",
+          "direction": "left",
+          "state": "walk",
+          "row": 1,
+          "column": 3,
+          "x": 871,
+          "y": 297,
+          "w": 138,
+          "h": 263,
+          "anchorX": 61,
+          "anchorY": 258,
+          "solidBounds": {
+            "x": 873,
+            "y": 299,
+            "w": 134,
+            "h": 259
+          }
+        },
+        {
+          "name": "walk-left-4",
+          "direction": "left",
+          "state": "walk",
+          "row": 1,
+          "column": 4,
+          "x": 1127,
+          "y": 297,
+          "w": 129,
+          "h": 263,
+          "anchorX": 57,
+          "anchorY": 258,
+          "solidBounds": {
+            "x": 1129,
+            "y": 299,
+            "w": 125,
+            "h": 259
+          }
+        },
+        {
+          "name": "idle-right",
+          "direction": "right",
+          "state": "idle",
+          "row": 2,
+          "column": 0,
+          "x": 144,
+          "y": 568,
+          "w": 129,
+          "h": 266,
+          "anchorX": 70,
+          "anchorY": 259,
+          "solidBounds": {
+            "x": 146,
+            "y": 570,
+            "w": 125,
+            "h": 262
+          }
+        },
+        {
+          "name": "walk-right-1",
+          "direction": "right",
+          "state": "walk",
+          "row": 2,
+          "column": 1,
+          "x": 392,
+          "y": 568,
+          "w": 142,
+          "h": 259,
+          "anchorX": 84,
+          "anchorY": 256,
+          "solidBounds": {
+            "x": 394,
+            "y": 570,
+            "w": 138,
+            "h": 255
+          }
+        },
+        {
+          "name": "walk-right-2",
+          "direction": "right",
+          "state": "walk",
+          "row": 2,
+          "column": 2,
+          "x": 640,
+          "y": 568,
+          "w": 129,
+          "h": 263,
+          "anchorX": 70,
+          "anchorY": 257,
+          "solidBounds": {
+            "x": 642,
+            "y": 570,
+            "w": 125,
+            "h": 259
+          }
+        },
+        {
+          "name": "walk-right-3",
+          "direction": "right",
+          "state": "walk",
+          "row": 2,
+          "column": 3,
+          "x": 868,
+          "y": 568,
+          "w": 141,
+          "h": 259,
+          "anchorX": 82,
+          "anchorY": 256,
+          "solidBounds": {
+            "x": 870,
+            "y": 570,
+            "w": 137,
+            "h": 255
+          }
+        },
+        {
+          "name": "walk-right-4",
+          "direction": "right",
+          "state": "walk",
+          "row": 2,
+          "column": 4,
+          "x": 1127,
+          "y": 568,
+          "w": 132,
+          "h": 261,
+          "anchorX": 74,
+          "anchorY": 258,
+          "solidBounds": {
+            "x": 1129,
+            "y": 570,
+            "w": 128,
+            "h": 257
+          }
+        },
+        {
+          "name": "idle-up",
+          "direction": "up",
+          "state": "idle",
+          "row": 3,
+          "column": 0,
+          "x": 145,
+          "y": 839,
+          "w": 130,
+          "h": 251,
+          "anchorX": 66,
+          "anchorY": 248,
+          "solidBounds": {
+            "x": 147,
+            "y": 841,
+            "w": 126,
+            "h": 247
+          }
+        },
+        {
+          "name": "walk-up-1",
+          "direction": "up",
+          "state": "walk",
+          "row": 3,
+          "column": 1,
+          "x": 392,
+          "y": 840,
+          "w": 135,
+          "h": 252,
+          "anchorX": 68,
+          "anchorY": 249,
+          "solidBounds": {
+            "x": 394,
+            "y": 842,
+            "w": 131,
+            "h": 248
+          }
+        },
+        {
+          "name": "walk-up-2",
+          "direction": "up",
+          "state": "walk",
+          "row": 3,
+          "column": 2,
+          "x": 635,
+          "y": 836,
+          "w": 130,
+          "h": 260,
+          "anchorX": 66,
+          "anchorY": 257,
+          "solidBounds": {
+            "x": 637,
+            "y": 838,
+            "w": 126,
+            "h": 256
+          }
+        },
+        {
+          "name": "walk-up-3",
+          "direction": "up",
+          "state": "walk",
+          "row": 3,
+          "column": 3,
+          "x": 869,
+          "y": 839,
+          "w": 140,
+          "h": 257,
+          "anchorX": 70,
+          "anchorY": 254,
+          "solidBounds": {
+            "x": 871,
+            "y": 841,
+            "w": 136,
+            "h": 253
+          }
+        },
+        {
+          "name": "walk-up-4",
+          "direction": "up",
+          "state": "walk",
+          "row": 3,
+          "column": 4,
+          "x": 1121,
+          "y": 837,
+          "w": 134,
+          "h": 259,
+          "anchorX": 68,
+          "anchorY": 256,
+          "solidBounds": {
+            "x": 1123,
+            "y": 839,
+            "w": 130,
+            "h": 255
+          }
+        }
+      ],
+      "animations": {
+        "idleDown": [
+          0
+        ],
+        "walkDown": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "idleLeft": [
+          5
+        ],
+        "walkLeft": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "idleRight": [
+          10
+        ],
+        "walkRight": [
+          11,
+          12,
+          13,
+          14
+        ],
+        "idleUp": [
+          15
+        ],
+        "walkUp": [
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      "fps": 6,
+      "defaultAnimation": "idleDown",
+      "qualityNotes": [
+        "La disposición de cuatro filas y cinco columnas se verificó visualmente en el PNG original.",
+        "Los recortes son variables: aplicar una escala común a toda la secuencia y respetar los anclajes. No ajustar cada cuadro a una anchura distinta.",
+        "Los anclajes horizontales siguen la proyección de la cabeza y los verticales alinean la base sólida de los zapatos; revisar el movimiento al tamaño final del personaje.",
+        "El atlas conserva de forma reconocible cabello oscuro, cejas, suéter verde, mochila ocre y pantalón azul. Hay variaciones menores de contorno y proporción entre poses.",
+        "Las cuatro fases de caminata sirven como ciclo inicial. No equivalen a una animación depurada manualmente: comprobar deslizamiento de pies y cambios de volumen durante la integración.",
+        "Existen píxeles marginales de alpha muy bajo. El recorte incluye un margen de dos píxeles alrededor de la silueta detectada; el PNG original queda intacto.",
+        "La imagen no usa una cuadrícula de píxel lógico estrictamente uniforme. Es arte de apariencia pixelada, con escala y exportación aún por fijar en el sitio."
+      ],
+      "notes": "20 cuadros con metadatos reales. Secuencias iniciales; revisar el movimiento al tamaño final.",
+      "wide": false
+    },
+    {
+      "id": "camp-props-atlas",
+      "name": "Objetos reutilizables",
+      "path": "assets/decoration/camp-props-atlas.png",
+      "category": "Decoración",
+      "bytes": 1927496,
+      "sha256": "9ad972f54e92ff9b7c3a5f1a1bdc53f9e3e71922945e64318a431900d5ad7595",
+      "kind": "spritesheet",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1536,
+      "height": 1024,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 46,
+        "y": 20,
+        "w": 1455,
+        "h": 952
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 773.5,
+        "y": 972
+      },
+      "atlasMetadata": "assets/decoration/camp-props-atlas.json",
+      "frames": [
+        {
+          "name": "pine",
+          "row": 0,
+          "column": 0,
+          "x": 44,
+          "y": 18,
+          "w": 363,
+          "h": 564,
+          "anchorX": 184,
+          "anchorY": 557,
+          "solidBounds": {
+            "x": 46,
+            "y": 20,
+            "w": 359,
+            "h": 560
+          }
+        },
+        {
+          "name": "leafy-tree",
+          "row": 0,
+          "column": 1,
+          "x": 438,
+          "y": 167,
+          "w": 333,
+          "h": 408,
+          "anchorX": 170,
+          "anchorY": 395,
+          "solidBounds": {
+            "x": 440,
+            "y": 169,
+            "w": 329,
+            "h": 404
+          }
+        },
+        {
+          "name": "bush",
+          "row": 0,
+          "column": 2,
+          "x": 794,
+          "y": 366,
+          "w": 314,
+          "h": 224,
+          "anchorX": 158,
+          "anchorY": 212,
+          "solidBounds": {
+            "x": 796,
+            "y": 368,
+            "w": 310,
+            "h": 220
+          }
+        },
+        {
+          "name": "rocks",
+          "row": 0,
+          "column": 3,
+          "x": 1175,
+          "y": 417,
+          "w": 328,
+          "h": 165,
+          "anchorX": 165,
+          "anchorY": 154,
+          "solidBounds": {
+            "x": 1177,
+            "y": 419,
+            "w": 324,
+            "h": 161
+          }
+        },
+        {
+          "name": "lantern",
+          "row": 1,
+          "column": 0,
+          "x": 100,
+          "y": 614,
+          "w": 207,
+          "h": 351,
+          "anchorX": 87,
+          "anchorY": 339,
+          "solidBounds": {
+            "x": 102,
+            "y": 616,
+            "w": 203,
+            "h": 347
+          }
+        },
+        {
+          "name": "plant",
+          "row": 1,
+          "column": 1,
+          "x": 465,
+          "y": 719,
+          "w": 214,
+          "h": 242,
+          "anchorX": 113,
+          "anchorY": 234,
+          "solidBounds": {
+            "x": 467,
+            "y": 721,
+            "w": 210,
+            "h": 238
+          }
+        },
+        {
+          "name": "sign",
+          "row": 1,
+          "column": 2,
+          "x": 799,
+          "y": 653,
+          "w": 248,
+          "h": 308,
+          "anchorX": 101,
+          "anchorY": 298,
+          "solidBounds": {
+            "x": 801,
+            "y": 655,
+            "w": 244,
+            "h": 304
+          }
+        },
+        {
+          "name": "bench",
+          "row": 1,
+          "column": 3,
+          "x": 1120,
+          "y": 732,
+          "w": 378,
+          "h": 242,
+          "anchorX": 189,
+          "anchorY": 237,
+          "solidBounds": {
+            "x": 1122,
+            "y": 734,
+            "w": 374,
+            "h": 238
+          }
+        }
+      ],
+      "animations": {
+        "pine": [
+          0
+        ],
+        "leafy-tree": [
+          1
+        ],
+        "bush": [
+          2
+        ],
+        "rocks": [
+          3
+        ],
+        "lantern": [
+          4
+        ],
+        "plant": [
+          5
+        ],
+        "sign": [
+          6
+        ],
+        "bench": [
+          7
+        ]
+      },
+      "fps": 1,
+      "defaultAnimation": "pine",
+      "qualityNotes": [
+        "Se verificaron visualmente ocho objetos. La separación real entre filas está alrededor de y=602, no y=512.",
+        "Las sombras de apoyo están integradas en cada recorte. Los valores de anclaje son una propuesta de colocación que se ajusta al terreno durante la integración.",
+        "El atlas contiene transparencia alpha real. Los colores amplios visibles en algunas previsualizaciones pueden corresponder a RGB oculto detrás de alpha 0.",
+        "Los objetos tienen tamaños diferentes; conservar proporciones y una escala de mundo coherente al colocarlos."
+      ],
+      "notes": "8 objetos con recortes variables y anclajes. Seleccioná cada nombre para inspeccionarlo.",
+      "wide": false
+    },
+    {
+      "id": "camp-effects-atlas",
+      "name": "Fuego, humo y agua",
+      "path": "assets/effects/camp-effects-atlas.png",
+      "category": "Efectos",
+      "bytes": 572166,
+      "sha256": "f0bdae2bbd996fa4678fe945be6044fa62311b90143ecacd8cf80d3f0a06924b",
+      "kind": "spritesheet",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1448,
+      "height": 1086,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 72,
+        "y": 107,
+        "w": 1296,
+        "h": 880
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 720.0,
+        "y": 987
+      },
+      "atlasMetadata": "assets/effects/camp-effects-atlas.json",
+      "frames": [
+        {
+          "name": "fire-1",
+          "group": "fire",
+          "row": 0,
+          "column": 0,
+          "x": 0,
+          "y": 0,
+          "w": 362,
+          "h": 362,
+          "anchorX": 192,
+          "anchorY": 330,
+          "solidBounds": {
+            "x": 101,
+            "y": 127,
+            "w": 169,
+            "h": 204
+          }
+        },
+        {
+          "name": "fire-2",
+          "group": "fire",
+          "row": 0,
+          "column": 1,
+          "x": 362,
+          "y": 0,
+          "w": 362,
+          "h": 362,
+          "anchorX": 181,
+          "anchorY": 336,
+          "solidBounds": {
+            "x": 469,
+            "y": 107,
+            "w": 152,
+            "h": 231
+          }
+        },
+        {
+          "name": "fire-3",
+          "group": "fire",
+          "row": 0,
+          "column": 2,
+          "x": 724,
+          "y": 0,
+          "w": 362,
+          "h": 362,
+          "anchorX": 179,
+          "anchorY": 336,
+          "solidBounds": {
+            "x": 823,
+            "y": 136,
+            "w": 168,
+            "h": 202
+          }
+        },
+        {
+          "name": "fire-4",
+          "group": "fire",
+          "row": 0,
+          "column": 3,
+          "x": 1086,
+          "y": 0,
+          "w": 362,
+          "h": 362,
+          "anchorX": 179,
+          "anchorY": 336,
+          "solidBounds": {
+            "x": 1193,
+            "y": 108,
+            "w": 151,
+            "h": 230
+          }
+        },
+        {
+          "name": "smoke-1",
+          "group": "smoke",
+          "row": 1,
+          "column": 0,
+          "x": 0,
+          "y": 362,
+          "w": 362,
+          "h": 362,
+          "anchorX": 181,
+          "anchorY": 360,
+          "solidBounds": {
+            "x": 110,
+            "y": 454,
+            "w": 157,
+            "h": 269
+          }
+        },
+        {
+          "name": "smoke-2",
+          "group": "smoke",
+          "row": 1,
+          "column": 1,
+          "x": 362,
+          "y": 362,
+          "w": 362,
+          "h": 362,
+          "anchorX": 181,
+          "anchorY": 360,
+          "solidBounds": {
+            "x": 476,
+            "y": 436,
+            "w": 131,
+            "h": 287
+          }
+        },
+        {
+          "name": "smoke-3",
+          "group": "smoke",
+          "row": 1,
+          "column": 2,
+          "x": 724,
+          "y": 362,
+          "w": 362,
+          "h": 362,
+          "anchorX": 167,
+          "anchorY": 360,
+          "solidBounds": {
+            "x": 840,
+            "y": 460,
+            "w": 151,
+            "h": 263
+          }
+        },
+        {
+          "name": "smoke-4",
+          "group": "smoke",
+          "row": 1,
+          "column": 3,
+          "x": 1086,
+          "y": 362,
+          "w": 362,
+          "h": 362,
+          "anchorX": 185,
+          "anchorY": 360,
+          "solidBounds": {
+            "x": 1216,
+            "y": 453,
+            "w": 134,
+            "h": 270
+          }
+        },
+        {
+          "name": "waterSparkle-1",
+          "group": "waterSparkle",
+          "row": 2,
+          "column": 0,
+          "x": 0,
+          "y": 724,
+          "w": 362,
+          "h": 362,
+          "anchorX": 181,
+          "anchorY": 193,
+          "solidBounds": {
+            "x": 72,
+            "y": 852,
+            "w": 214,
+            "h": 121
+          }
+        },
+        {
+          "name": "waterSparkle-2",
+          "group": "waterSparkle",
+          "row": 2,
+          "column": 1,
+          "x": 362,
+          "y": 724,
+          "w": 362,
+          "h": 362,
+          "anchorX": 166,
+          "anchorY": 192,
+          "solidBounds": {
+            "x": 449,
+            "y": 867,
+            "w": 219,
+            "h": 109
+          }
+        },
+        {
+          "name": "waterSparkle-3",
+          "group": "waterSparkle",
+          "row": 2,
+          "column": 2,
+          "x": 724,
+          "y": 724,
+          "w": 362,
+          "h": 362,
+          "anchorX": 170,
+          "anchorY": 193,
+          "solidBounds": {
+            "x": 793,
+            "y": 876,
+            "w": 212,
+            "h": 111
+          }
+        },
+        {
+          "name": "waterSparkle-4",
+          "group": "waterSparkle",
+          "row": 2,
+          "column": 3,
+          "x": 1086,
+          "y": 724,
+          "w": 362,
+          "h": 362,
+          "anchorX": 152,
+          "anchorY": 195,
+          "solidBounds": {
+            "x": 1168,
+            "y": 868,
+            "w": 200,
+            "h": 113
+          }
+        }
+      ],
+      "animations": {
+        "fire": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "smoke": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "waterSparkle": [
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "fps": 6,
+      "defaultAnimation": "fire",
+      "qualityNotes": [
+        "Se verificaron doce estados: cuatro de fuego, cuatro de humo y cuatro de brillo de agua.",
+        "Se conserva cada celda completa para incluir chispas y fragmentos separados; los componentes alpha individuales no deben interpretarse como efectos independientes.",
+        "El fuego se apoya sobre su base; el humo se posiciona por su emisor inferior; el brillo de agua se alinea por su reflejo central.",
+        "Las secuencias son ciclos iniciales de apariencia pixelada. Hay cambios de masa entre estados, especialmente en el humo; revisar el paso del último al primer cuadro al tamaño final.",
+        "Usar el brillo como detalle localizado sobre agua, no como reemplazo de una animación completa del cauce.",
+        "El PNG original permanece intacto; el JSON solo define cómo leerlo."
+      ],
+      "notes": "3 secuencias de 4 cuadros. Las celdas incluyen chispas y fragmentos separados.",
+      "wide": false
+    },
+    {
+      "id": "favicon-master",
+      "name": "Símbolo · Fuente para favicon",
+      "path": "assets/brand/favicon-master.png",
+      "category": "Identidad",
+      "bytes": 845808,
+      "sha256": "c4c9e7b3509164e1e31a167d3c8c49df6ff880075eb52b36c82dde64f262a5ee",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1254,
+      "height": 1254,
+      "hasRealTransparency": true,
+      "visibleBounds": {
+        "x": 95,
+        "y": 145,
+        "w": 1064,
+        "h": 964
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 627.0,
+        "y": 1109
+      },
+      "notes": "Arte fuente del símbolo. Preparar y revisar sus exportaciones pequeñas durante la integración.",
+      "wide": false
+    },
+    {
+      "id": "portfolio-share-cover",
+      "name": "Portada para compartir",
+      "path": "assets/brand/portfolio-share-cover.png",
+      "category": "Identidad",
+      "bytes": 2267082,
+      "sha256": "9e2aaf04b09e5ae2134269e229bf5dc7b5ca0dca3826da1773ba8c6d59aace26",
+      "kind": "image",
+      "mimeType": "image/png",
+      "sourceKind": "generated-art",
+      "width": 1672,
+      "height": 941,
+      "hasRealTransparency": false,
+      "visibleBounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1672,
+        "h": 941
+      },
+      "boundsAlphaThreshold": 8,
+      "defaultAnchor": {
+        "x": 836.0,
+        "y": 941
+      },
+      "notes": "Portada ilustrada para compartir el portfolio.",
+      "wide": true
+    },
+    {
+      "id": "icons-arrow-down",
+      "name": "Flecha abajo",
+      "path": "assets/icons/arrow-down.svg",
+      "category": "Interfaz",
+      "bytes": 262,
+      "sha256": "2b641c7a59d39450edfed72067fcc9940a1a316a737346af23b4b9103c0689f2",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-arrow-left",
+      "name": "Flecha izquierda",
+      "path": "assets/icons/arrow-left.svg",
+      "category": "Interfaz",
+      "bytes": 262,
+      "sha256": "c5f4b88076108eb1a0d95336e1aa7e7bb1419a3a92af96f6247d88cd3456f933",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-arrow-right",
+      "name": "Flecha derecha",
+      "path": "assets/icons/arrow-right.svg",
+      "category": "Interfaz",
+      "bytes": 261,
+      "sha256": "288397fdb73bb4f783cf9eabb726ff47357df1d4e3f1201dd748090579f108b9",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-arrow-up",
+      "name": "Flecha arriba",
+      "path": "assets/icons/arrow-up.svg",
+      "category": "Interfaz",
+      "bytes": 261,
+      "sha256": "8c22c25874c80bb062bef985d207d8f1d4a4d7847237d0a8cf720a3235968518",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-book-open",
+      "name": "Bitácora",
+      "path": "assets/icons/book-open.svg",
+      "category": "Interfaz",
+      "bytes": 387,
+      "sha256": "9b9bed0ff057283d5c5c5a1c71f8d3e927db26a56639603a92fdf7b25961510e",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-briefcase-business",
+      "name": "Proyectos",
+      "path": "assets/icons/briefcase-business.svg",
+      "category": "Interfaz",
+      "bytes": 388,
+      "sha256": "98388a2bf7b9d102d77772d125d26f59ea3bed0d8573a5fc8907003099ae9a54",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-download",
+      "name": "Descargar CV",
+      "path": "assets/icons/download.svg",
+      "category": "Interfaz",
+      "bytes": 318,
+      "sha256": "3daeee13ded5a3afa2198b1bb4e2262d163922f97d96ac6ff9953e8ed4fe039d",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-external-link",
+      "name": "Enlace externo",
+      "path": "assets/icons/external-link.svg",
+      "category": "Interfaz",
+      "bytes": 332,
+      "sha256": "3891241b8c3bfc3a8a930078f26ffc5a7e9763da6d0162ace2050b28d4c1d1fe",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-mail",
+      "name": "Correo",
+      "path": "assets/icons/mail.svg",
+      "category": "Interfaz",
+      "bytes": 316,
+      "sha256": "3236a51d5b8ce9b0528cf2e6ad07e527bd636dded6f5a9d656072052b99caea8",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-map",
+      "name": "Mapa",
+      "path": "assets/icons/map.svg",
+      "category": "Interfaz",
+      "bytes": 516,
+      "sha256": "41300a8ef2c2a4cf36ec3f8a730bcb4754543889eb23b98e7435de7a0757752d",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-menu",
+      "name": "Menú",
+      "path": "assets/icons/menu.svg",
+      "category": "Interfaz",
+      "bytes": 279,
+      "sha256": "af6491988ac1ba30dc5414f485bc48713e957e1edb0fbef4a0dd8691c3c21598",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-volume-2",
+      "name": "Sonido activo",
+      "path": "assets/icons/volume-2.svg",
+      "category": "Interfaz",
+      "bytes": 476,
+      "sha256": "fb404f9c128a0579de67b399177631e5edb3502fdc247ceb30e8b15754b46071",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-volume-x",
+      "name": "Sonido desactivado",
+      "path": "assets/icons/volume-x.svg",
+      "category": "Interfaz",
+      "bytes": 443,
+      "sha256": "f382e421b7aae01172989f2b749ee87e44c0c82c16970b13a9ad5a323b613be0",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "icons-x",
+      "name": "Cerrar",
+      "path": "assets/icons/x.svg",
+      "category": "Interfaz",
+      "bytes": 260,
+      "sha256": "4a9cdab38fbb96162e7dace28e33f4ca0e49d8963a6162abc3d4691b7d675117",
+      "kind": "icon",
+      "mimeType": "image/svg+xml",
+      "viewBox": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sourceKind": "third-party",
+      "source": "Lucide",
+      "licensePath": "assets/icons/LICENSE-lucide.txt",
+      "notes": "Icono SVG de Lucide; conservar su licencia al distribuir."
+    },
+    {
+      "id": "audio-camp-ambience-loop",
+      "name": "Ambiente suave · Bucle de 12 s",
+      "path": "assets/audio/camp-ambience-loop.wav",
+      "category": "Audio",
+      "bytes": 2116844,
+      "sha256": "8e89ce4f9553968276e18bcde55eab531e84102526584f70e472a389495cbbe4",
+      "kind": "audio",
+      "mimeType": "audio/wav",
+      "sourceKind": "original-synthesis",
+      "durationSeconds": 12.0,
+      "sampleRate": 44100,
+      "channels": 2,
+      "loop": true,
+      "recommendedGain": 0.45,
+      "notes": "Textura ambiental sintetica suave, evocacion abstracta de brisa y agua; no es una grabacion de campo."
+    },
+    {
+      "id": "audio-discovery",
+      "name": "Descubrimiento",
+      "path": "assets/audio/discovery.wav",
+      "category": "Audio",
+      "bytes": 75014,
+      "sha256": "fc1ed4c1727691121943a4340d7c6c38a72fe722278854060501e4937669146c",
+      "kind": "audio",
+      "mimeType": "audio/wav",
+      "sourceKind": "original-synthesis",
+      "durationSeconds": 0.85,
+      "sampleRate": 44100,
+      "channels": 1,
+      "loop": false,
+      "recommendedGain": 0.65,
+      "notes": "Detalle descubierto; reproducir una sola vez por evento."
+    },
+    {
+      "id": "audio-step-soft",
+      "name": "Paso suave",
+      "path": "assets/audio/step-soft.wav",
+      "category": "Audio",
+      "bytes": 9746,
+      "sha256": "c4b171627b017e63877884680b6975719c4a9d07dc11cf2661b791eb9fa06a91",
+      "kind": "audio",
+      "mimeType": "audio/wav",
+      "sourceKind": "original-synthesis",
+      "durationSeconds": 0.11,
+      "sampleRate": 44100,
+      "channels": 1,
+      "loop": false,
+      "recommendedGain": 0.65,
+      "notes": "Paso suave opcional; no repetir si el personaje esta detenido."
+    },
+    {
+      "id": "audio-ui-close",
+      "name": "Cerrar una ficha",
+      "path": "assets/audio/ui-close.wav",
+      "category": "Audio",
+      "bytes": 31796,
+      "sha256": "51b1e7917f8ccc2d412a8f43689d0a343e060afb7bb3f1ae2b48302e07362ff9",
+      "kind": "audio",
+      "mimeType": "audio/wav",
+      "sourceKind": "original-synthesis",
+      "durationSeconds": 0.36,
+      "sampleRate": 44100,
+      "channels": 1,
+      "loop": false,
+      "recommendedGain": 0.65,
+      "notes": "Cierre de una ficha o regreso al mapa."
+    },
+    {
+      "id": "audio-ui-open",
+      "name": "Abrir una ficha",
+      "path": "assets/audio/ui-open.wav",
+      "category": "Audio",
+      "bytes": 37088,
+      "sha256": "39acf450fe9e377bdbe4b123b1efa520301de5943fa737bcedcf6c11dabd0651",
+      "kind": "audio",
+      "mimeType": "audio/wav",
+      "sourceKind": "original-synthesis",
+      "durationSeconds": 0.42,
+      "sampleRate": 44100,
+      "channels": 1,
+      "loop": false,
+      "recommendedGain": 0.65,
+      "notes": "Apertura de un destino o ficha."
+    },
+    {
+      "id": "fonts-Lexend-Variable",
+      "name": "Lexend · Texto y controles",
+      "path": "assets/fonts/Lexend-Variable.ttf",
+      "category": "Tipografía",
+      "bytes": 175756,
+      "sha256": "3add53e641fbc81da64da4bb254285e2831b52b029527bc0714e2b9610832ee6",
+      "kind": "font",
+      "mimeType": "font/ttf",
+      "family": "Lexend",
+      "sourceKind": "third-party",
+      "license": "SIL Open Font License 1.1",
+      "licensePath": "assets/fonts/Lexend-OFL.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/lexend/Lexend%5Bwght%5D.ttf",
+      "stylesheet": "assets/fonts/fonts.css",
+      "notes": "Fuente local; no se incluye como imagen en la galería."
+    },
+    {
+      "id": "fonts-PixelifySans-Variable",
+      "name": "Pixelify Sans · Títulos",
+      "path": "assets/fonts/PixelifySans-Variable.ttf",
+      "category": "Tipografía",
+      "bytes": 79160,
+      "sha256": "9ba86cd010a4de309d263ceff8e8044092c9db7efda869620cb9ff1c4389e8a5",
+      "kind": "font",
+      "mimeType": "font/ttf",
+      "family": "Pixelify Sans",
+      "sourceKind": "third-party",
+      "license": "SIL Open Font License 1.1",
+      "licensePath": "assets/fonts/PixelifySans-OFL.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/PixelifySans%5Bwght%5D.ttf",
+      "stylesheet": "assets/fonts/fonts.css",
+      "notes": "Fuente local; no se incluye como imagen en la galería."
+    }
+  ],
+  "supportingFiles": [
+    "assets/audio/README.md",
+    "assets/audio/metadataaudio.json",
+    "assets/audio/source.py",
+    "assets/brand/official/README.md",
+    "assets/character/avatar-movement-atlas.json",
+    "assets/decoration/camp-props-atlas.json",
+    "assets/effects/camp-effects-atlas.json",
+    "assets/fonts/Lexend-METADATA.pb",
+    "assets/fonts/Lexend-OFL.txt",
+    "assets/fonts/PixelifySans-METADATA.pb",
+    "assets/fonts/PixelifySans-OFL.txt",
+    "assets/fonts/fonts.css",
+    "assets/fonts/sources.json",
+    "assets/fonts/validation.json",
+    "assets/icons/LICENSE-lucide.txt",
+    "assets/icons/README.md",
+    "assets/icons/icons.json",
+    "assets/icons/sources.json",
+    "assets/ui-theme.css"
+  ],
+  "worldLayout": "config/world-layout.json",
+  "preview": "preview/index.html",
+  "limits": [
+    "Las composiciones son referencias de distribución; no representan navegación ni colisiones implementadas.",
+    "Los atlas contienen coordenadas verificadas y ciclos iniciales que deben revisarse en el contexto final.",
+    "El arte tiene apariencia pixelada; no se afirma una cuadrícula lógica uniforme de producción manual.",
+    "El material profesional pendiente se describe en docs/CONTENIDO_PENDIENTE.md."
+  ]
+}

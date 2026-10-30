@@ -1,0 +1,39 @@
+@import url("./fonts/fonts.css");
+
+:root {
+  --camp-ink: #102e3c;
+  --camp-paper: #fff4df;
+  --camp-sky: #91cff0;
+  --camp-pine: #315747;
+  --camp-wood: #a36b41;
+  --camp-accent: #eb654f;
+  --camp-font-body: "Lexend", system-ui, sans-serif;
+  --camp-font-display: "Pixelify Sans", monospace;
+  --camp-motion-duration: 160ms;
+}
+
+.camp-prose {
+  color: var(--camp-ink);
+  background: var(--camp-paper);
+  font-family: var(--camp-font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+.camp-display { font-family: var(--camp-font-display); }
+.camp-pixel-image { image-rendering: pixelated; }
+.camp-action {
+  color: var(--camp-ink);
+  background: var(--camp-accent);
+  font: inherit;
+  border: 2px solid var(--camp-ink);
+  padding: .75rem 1rem;
+}
+.camp-action:focus-visible {
+  outline: 3px solid var(--camp-ink);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --camp-motion-duration: 0ms; }
+}

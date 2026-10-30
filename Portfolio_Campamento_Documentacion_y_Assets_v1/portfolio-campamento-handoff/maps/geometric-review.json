@@ -1,0 +1,1012 @@
+{
+  "proposal_version": "0.1",
+  "status": "static_geometry_review",
+  "method": "point_inside_polygon_and_exact_segment_clearance; weighted_reference_graph_shortest_paths",
+  "scope": "schematic_planning_geometry_only",
+  "asset_registration_verified": false,
+  "runtime_verified": false,
+  "measured_route_times": false,
+  "manual_free_ground_joining_verified": false,
+  "all_passed": true,
+  "layouts": [
+    {
+      "layout_id": "desktop",
+      "all_passed": true,
+      "check_count": 27,
+      "checks": [
+        {
+          "id": "node-spawn",
+          "passed": true,
+          "boundary_clearance": 147.14,
+          "obstacle_clearance": 110.54,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-hub",
+          "passed": true,
+          "boundary_clearance": 178.68,
+          "obstacle_clearance": 138.29,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-north",
+          "passed": true,
+          "boundary_clearance": 166.21,
+          "obstacle_clearance": 80.0,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-projects",
+          "passed": true,
+          "boundary_clearance": 158.2,
+          "obstacle_clearance": 42.0,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-west",
+          "passed": true,
+          "boundary_clearance": 164.47,
+          "obstacle_clearance": 54.32,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-about",
+          "passed": true,
+          "boundary_clearance": 193.99,
+          "obstacle_clearance": 47.0,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-southwest",
+          "passed": true,
+          "boundary_clearance": 127.56,
+          "obstacle_clearance": 80.0,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-journey",
+          "passed": true,
+          "boundary_clearance": 83.05,
+          "obstacle_clearance": 48.02,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-east",
+          "passed": true,
+          "boundary_clearance": 140.28,
+          "obstacle_clearance": 60.85,
+          "required_clearance": 16
+        },
+        {
+          "id": "node-contact",
+          "passed": true,
+          "boundary_clearance": 92.91,
+          "obstacle_clearance": 45.0,
+          "required_clearance": 16
+        },
+        {
+          "id": "arrival-projects",
+          "passed": true,
+          "required_clearance": 32,
+          "boundary_clearance": 158.2,
+          "obstacle_clearance": 42.0
+        },
+        {
+          "id": "arrival-about",
+          "passed": true,
+          "required_clearance": 32,
+          "boundary_clearance": 193.99,
+          "obstacle_clearance": 47.0
+        },
+        {
+          "id": "arrival-journey",
+          "passed": true,
+          "required_clearance": 32,
+          "boundary_clearance": 83.05,
+          "obstacle_clearance": 48.02
+        },
+        {
+          "id": "arrival-contact",
+          "passed": true,
+          "required_clearance": 32,
+          "boundary_clearance": 92.91,
+          "obstacle_clearance": 45.0
+        },
+        {
+          "id": "corridor-spawn-hub",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 147.14,
+          "obstacle_clearance": 110.54
+        },
+        {
+          "id": "corridor-hub-north",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 165.3,
+          "obstacle_clearance": 80.0
+        },
+        {
+          "id": "corridor-north-projects",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 158.2,
+          "obstacle_clearance": 42.0
+        },
+        {
+          "id": "corridor-hub-west",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 161.01,
+          "obstacle_clearance": 54.32
+        },
+        {
+          "id": "corridor-west-about",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 164.47,
+          "obstacle_clearance": 37.86
+        },
+        {
+          "id": "corridor-spawn-southwest",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 127.56,
+          "obstacle_clearance": 80.0
+        },
+        {
+          "id": "corridor-southwest-journey",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 83.05,
+          "obstacle_clearance": 46.35
+        },
+        {
+          "id": "corridor-spawn-east",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 140.28,
+          "obstacle_clearance": 49.43
+        },
+        {
+          "id": "corridor-east-contact",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 92.91,
+          "obstacle_clearance": 38.51
+        },
+        {
+          "id": "corridor-hub-east",
+          "passed": true,
+          "required_clearance": 22,
+          "boundary_clearance": 140.28,
+          "obstacle_clearance": 59.21
+        },
+        {
+          "id": "spawn-outside-manual-interaction-zones",
+          "passed": true
+        },
+        {
+          "id": "reference-graph-connected",
+          "passed": true,
+          "reached": 10,
+          "total": 10
+        },
+        {
+          "id": "all-25-terminal-pairs-reachable",
+          "passed": true
+        }
+      ],
+      "terminal_route_lengths": [
+        {
+          "from": "spawn",
+          "to": "spawn",
+          "reference_path": [
+            "spawn"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        },
+        {
+          "from": "spawn",
+          "to": "projects",
+          "reference_path": [
+            "spawn",
+            "hub",
+            "north",
+            "projects"
+          ],
+          "length_logical_units": 204.05,
+          "duration_seconds": null
+        },
+        {
+          "from": "spawn",
+          "to": "about",
+          "reference_path": [
+            "spawn",
+            "hub",
+            "west",
+            "about"
+          ],
+          "length_logical_units": 281.78,
+          "duration_seconds": null
+        },
+        {
+          "from": "spawn",
+          "to": "journey",
+          "reference_path": [
+            "spawn",
+            "southwest",
+            "journey"
+          ],
+          "length_logical_units": 179.56,
+          "duration_seconds": null
+        },
+        {
+          "from": "spawn",
+          "to": "contact",
+          "reference_path": [
+            "spawn",
+            "east",
+            "contact"
+          ],
+          "length_logical_units": 266.26,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "spawn",
+          "reference_path": [
+            "projects",
+            "north",
+            "hub",
+            "spawn"
+          ],
+          "length_logical_units": 204.05,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "projects",
+          "reference_path": [
+            "projects"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "about",
+          "reference_path": [
+            "projects",
+            "north",
+            "hub",
+            "west",
+            "about"
+          ],
+          "length_logical_units": 365.83,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "journey",
+          "reference_path": [
+            "projects",
+            "north",
+            "hub",
+            "spawn",
+            "southwest",
+            "journey"
+          ],
+          "length_logical_units": 383.6,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "contact",
+          "reference_path": [
+            "projects",
+            "north",
+            "hub",
+            "east",
+            "contact"
+          ],
+          "length_logical_units": 435.34,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "spawn",
+          "reference_path": [
+            "about",
+            "west",
+            "hub",
+            "spawn"
+          ],
+          "length_logical_units": 281.78,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "projects",
+          "reference_path": [
+            "about",
+            "west",
+            "hub",
+            "north",
+            "projects"
+          ],
+          "length_logical_units": 365.83,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "about",
+          "reference_path": [
+            "about"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "journey",
+          "reference_path": [
+            "about",
+            "west",
+            "hub",
+            "spawn",
+            "southwest",
+            "journey"
+          ],
+          "length_logical_units": 461.34,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "contact",
+          "reference_path": [
+            "about",
+            "west",
+            "hub",
+            "east",
+            "contact"
+          ],
+          "length_logical_units": 513.08,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "spawn",
+          "reference_path": [
+            "journey",
+            "southwest",
+            "spawn"
+          ],
+          "length_logical_units": 179.56,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "projects",
+          "reference_path": [
+            "journey",
+            "southwest",
+            "spawn",
+            "hub",
+            "north",
+            "projects"
+          ],
+          "length_logical_units": 383.6,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "about",
+          "reference_path": [
+            "journey",
+            "southwest",
+            "spawn",
+            "hub",
+            "west",
+            "about"
+          ],
+          "length_logical_units": 461.34,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "journey",
+          "reference_path": [
+            "journey"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "contact",
+          "reference_path": [
+            "journey",
+            "southwest",
+            "spawn",
+            "east",
+            "contact"
+          ],
+          "length_logical_units": 445.82,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "spawn",
+          "reference_path": [
+            "contact",
+            "east",
+            "spawn"
+          ],
+          "length_logical_units": 266.26,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "projects",
+          "reference_path": [
+            "contact",
+            "east",
+            "hub",
+            "north",
+            "projects"
+          ],
+          "length_logical_units": 435.34,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "about",
+          "reference_path": [
+            "contact",
+            "east",
+            "hub",
+            "west",
+            "about"
+          ],
+          "length_logical_units": 513.08,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "journey",
+          "reference_path": [
+            "contact",
+            "east",
+            "spawn",
+            "southwest",
+            "journey"
+          ],
+          "length_logical_units": 445.82,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "contact",
+          "reference_path": [
+            "contact"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        }
+      ],
+      "lengths_scope": "shortest_paths_on_reference_network_only_not_arbitrary_free_ground_routes",
+      "runtime_verified": false
+    },
+    {
+      "layout_id": "mobile",
+      "all_passed": true,
+      "check_count": 27,
+      "checks": [
+        {
+          "id": "node-spawn",
+          "passed": true,
+          "boundary_clearance": 241.26,
+          "obstacle_clearance": 99.07,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-hub",
+          "passed": true,
+          "boundary_clearance": 235.08,
+          "obstacle_clearance": 102.66,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-north",
+          "passed": true,
+          "boundary_clearance": 177.2,
+          "obstacle_clearance": 95.0,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-projects",
+          "passed": true,
+          "boundary_clearance": 146.82,
+          "obstacle_clearance": 41.0,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-west",
+          "passed": true,
+          "boundary_clearance": 204.29,
+          "obstacle_clearance": 56.66,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-about",
+          "passed": true,
+          "boundary_clearance": 129.38,
+          "obstacle_clearance": 52.0,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-southwest",
+          "passed": true,
+          "boundary_clearance": 175.64,
+          "obstacle_clearance": 60.07,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-journey",
+          "passed": true,
+          "boundary_clearance": 133.12,
+          "obstacle_clearance": 52.2,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-east",
+          "passed": true,
+          "boundary_clearance": 148.69,
+          "obstacle_clearance": 31.14,
+          "required_clearance": 14
+        },
+        {
+          "id": "node-contact",
+          "passed": true,
+          "boundary_clearance": 90.83,
+          "obstacle_clearance": 51.0,
+          "required_clearance": 14
+        },
+        {
+          "id": "arrival-projects",
+          "passed": true,
+          "required_clearance": 28,
+          "boundary_clearance": 146.82,
+          "obstacle_clearance": 41.0
+        },
+        {
+          "id": "arrival-about",
+          "passed": true,
+          "required_clearance": 28,
+          "boundary_clearance": 129.38,
+          "obstacle_clearance": 52.0
+        },
+        {
+          "id": "arrival-journey",
+          "passed": true,
+          "required_clearance": 28,
+          "boundary_clearance": 133.12,
+          "obstacle_clearance": 52.2
+        },
+        {
+          "id": "arrival-contact",
+          "passed": true,
+          "required_clearance": 28,
+          "boundary_clearance": 90.83,
+          "obstacle_clearance": 51.0
+        },
+        {
+          "id": "corridor-spawn-hub",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 235.08,
+          "obstacle_clearance": 99.07
+        },
+        {
+          "id": "corridor-hub-north",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 177.2,
+          "obstacle_clearance": 95.0
+        },
+        {
+          "id": "corridor-north-projects",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 146.82,
+          "obstacle_clearance": 41.0
+        },
+        {
+          "id": "corridor-hub-west",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 204.29,
+          "obstacle_clearance": 56.66
+        },
+        {
+          "id": "corridor-west-about",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 129.38,
+          "obstacle_clearance": 42.66
+        },
+        {
+          "id": "corridor-spawn-southwest",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 175.64,
+          "obstacle_clearance": 60.07
+        },
+        {
+          "id": "corridor-southwest-journey",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 133.12,
+          "obstacle_clearance": 45.41
+        },
+        {
+          "id": "corridor-spawn-east",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 148.69,
+          "obstacle_clearance": 31.08
+        },
+        {
+          "id": "corridor-east-contact",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 90.83,
+          "obstacle_clearance": 29.61
+        },
+        {
+          "id": "corridor-hub-east",
+          "passed": true,
+          "required_clearance": 18,
+          "boundary_clearance": 148.69,
+          "obstacle_clearance": 30.03
+        },
+        {
+          "id": "spawn-outside-manual-interaction-zones",
+          "passed": true
+        },
+        {
+          "id": "reference-graph-connected",
+          "passed": true,
+          "reached": 10,
+          "total": 10
+        },
+        {
+          "id": "all-25-terminal-pairs-reachable",
+          "passed": true
+        }
+      ],
+      "terminal_route_lengths": [
+        {
+          "from": "spawn",
+          "to": "spawn",
+          "reference_path": [
+            "spawn"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        },
+        {
+          "from": "spawn",
+          "to": "projects",
+          "reference_path": [
+            "spawn",
+            "hub",
+            "north",
+            "projects"
+          ],
+          "length_logical_units": 201.69,
+          "duration_seconds": null
+        },
+        {
+          "from": "spawn",
+          "to": "about",
+          "reference_path": [
+            "spawn",
+            "hub",
+            "west",
+            "about"
+          ],
+          "length_logical_units": 206.38,
+          "duration_seconds": null
+        },
+        {
+          "from": "spawn",
+          "to": "journey",
+          "reference_path": [
+            "spawn",
+            "southwest",
+            "journey"
+          ],
+          "length_logical_units": 165.28,
+          "duration_seconds": null
+        },
+        {
+          "from": "spawn",
+          "to": "contact",
+          "reference_path": [
+            "spawn",
+            "east",
+            "contact"
+          ],
+          "length_logical_units": 187.56,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "spawn",
+          "reference_path": [
+            "projects",
+            "north",
+            "hub",
+            "spawn"
+          ],
+          "length_logical_units": 201.69,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "projects",
+          "reference_path": [
+            "projects"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "about",
+          "reference_path": [
+            "projects",
+            "north",
+            "hub",
+            "west",
+            "about"
+          ],
+          "length_logical_units": 296.07,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "journey",
+          "reference_path": [
+            "projects",
+            "north",
+            "hub",
+            "spawn",
+            "southwest",
+            "journey"
+          ],
+          "length_logical_units": 366.97,
+          "duration_seconds": null
+        },
+        {
+          "from": "projects",
+          "to": "contact",
+          "reference_path": [
+            "projects",
+            "north",
+            "hub",
+            "east",
+            "contact"
+          ],
+          "length_logical_units": 380.57,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "spawn",
+          "reference_path": [
+            "about",
+            "west",
+            "hub",
+            "spawn"
+          ],
+          "length_logical_units": 206.38,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "projects",
+          "reference_path": [
+            "about",
+            "west",
+            "hub",
+            "north",
+            "projects"
+          ],
+          "length_logical_units": 296.07,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "about",
+          "reference_path": [
+            "about"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "journey",
+          "reference_path": [
+            "about",
+            "west",
+            "hub",
+            "spawn",
+            "southwest",
+            "journey"
+          ],
+          "length_logical_units": 371.66,
+          "duration_seconds": null
+        },
+        {
+          "from": "about",
+          "to": "contact",
+          "reference_path": [
+            "about",
+            "west",
+            "hub",
+            "east",
+            "contact"
+          ],
+          "length_logical_units": 385.25,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "spawn",
+          "reference_path": [
+            "journey",
+            "southwest",
+            "spawn"
+          ],
+          "length_logical_units": 165.28,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "projects",
+          "reference_path": [
+            "journey",
+            "southwest",
+            "spawn",
+            "hub",
+            "north",
+            "projects"
+          ],
+          "length_logical_units": 366.97,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "about",
+          "reference_path": [
+            "journey",
+            "southwest",
+            "spawn",
+            "hub",
+            "west",
+            "about"
+          ],
+          "length_logical_units": 371.66,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "journey",
+          "reference_path": [
+            "journey"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        },
+        {
+          "from": "journey",
+          "to": "contact",
+          "reference_path": [
+            "journey",
+            "southwest",
+            "spawn",
+            "east",
+            "contact"
+          ],
+          "length_logical_units": 352.84,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "spawn",
+          "reference_path": [
+            "contact",
+            "east",
+            "spawn"
+          ],
+          "length_logical_units": 187.56,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "projects",
+          "reference_path": [
+            "contact",
+            "east",
+            "hub",
+            "north",
+            "projects"
+          ],
+          "length_logical_units": 380.57,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "about",
+          "reference_path": [
+            "contact",
+            "east",
+            "hub",
+            "west",
+            "about"
+          ],
+          "length_logical_units": 385.25,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "journey",
+          "reference_path": [
+            "contact",
+            "east",
+            "spawn",
+            "southwest",
+            "journey"
+          ],
+          "length_logical_units": 352.84,
+          "duration_seconds": null
+        },
+        {
+          "from": "contact",
+          "to": "contact",
+          "reference_path": [
+            "contact"
+          ],
+          "length_logical_units": 0,
+          "duration_seconds": null
+        }
+      ],
+      "lengths_scope": "shortest_paths_on_reference_network_only_not_arbitrary_free_ground_routes",
+      "runtime_verified": false
+    }
+  ],
+  "limitations": [
+    "No image-pixel collision mask was extracted.",
+    "No speed, cadence, accessibility, performance or real responsive layout was tested.",
+    "Reference paths do not implement route planning from every possible manually reached point.",
+    "Bridge walkability is excluded from this principal-route model."
+  ],
+  "source_geometry_sha256": "c960adfec749f52917aece5351f61cb26795ee51d0ad8a99b6a238a128073941",
+  "metadata_update": {
+    "date": "2026-10-29",
+    "decision_id": "DEC-28",
+    "document_revision": "0.2",
+    "reference_geometry_version": "0.1",
+    "reason": "Record base-layout adoption without altering the checked geometry.",
+    "previous_source_geometry_sha256": "e9ee36e326d3ed4d67fda8d45c2d94c601400efae5432e9070dfe1298bff5463",
+    "layouts_unchanged": true,
+    "calculated_results_unchanged": true,
+    "checks_reexecuted": false,
+    "note": "Only source-document approval metadata changed. The original geometric calculations remain applicable to identical layouts; this update does not record new tests or runtime verification."
+  }
+}

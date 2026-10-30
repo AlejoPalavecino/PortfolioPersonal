@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "camp-emblem",
+  "file": "camp-emblem-master.png",
+  "created_on": "2026-10-29",
+  "kind": "generated_raster_master",
+  "design_direction": "Carpa coral frente a montañas oscuras, según cabecera de revisión2 adoptada por Alejo.",
+  "source_generation_filename": "exec-3c7885a0-1446-45d3-9ac7-fb058b581f30.png",
+  "reference": "../../mockups/03-inicio-movil-v2.png",
+  "dimensions_and_alpha": {
+    "width": 1774,
+    "height": 887,
+    "mode": "RGBA",
+    "format": "PNG",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_nonzero_bbox": [
+      25,
+      33,
+      1746,
+      873
+    ],
+    "transparent_pixels": 1087129,
+    "opaque_pixels": 2528,
+    "partial_alpha_pixels": 483881,
+    "low_alpha_pixels_1_to_10": 14744
+  },
+  "bytes": 516270,
+  "sha256": "ca2f5f129927f943557e47ad9664537c5f73ec6c735c42156db8ba5eea2fade0",
+  "use": "Símbolo del acceso Volver al campamento en navbar de escritorio y móvil.",
+  "state": "prepared_master_for_integration",
+  "web_derivative_status": "pending_implementation",
+  "inspection_notes": [
+    "Se retiró el halo amplio de la primera generación; esa variante no se incluye en la entrega.",
+    "El PNG tiene transparencia real y espacios interiores transparentes.",
+    "Hay píxeles marginales de alpha bajo; revisar contorno y exportación al tamaño de uso sobre fondos claros y oscuros.",
+    "El archivo es un maestro raster de alta resolución, no un SVG ni una exportación web ya optimizada.",
+    "Mantener proporciones y no incrustar el nombre ni los controles en la imagen.",
+    "No reemplaza automáticamente el monograma AP o favicon del kit."
+  ],
+  "accessible_control_name": "Volver al campamento",
+  "generation_prompts": "generation-prompts.json"
+}

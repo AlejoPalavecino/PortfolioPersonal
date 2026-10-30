@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "project": "Portfolio Campamento creativo · Alejo Palavecino",
+  "generated_on": "2026-10-29",
+  "milestone": "07 · Pantallas principales",
+  "status": "historical_revision",
+  "method": "built_in_image_gen",
+  "approved_decision": "DEC-13: ficha de proyecto integrada en el campamento.",
+  "proposed_decisions": [
+    "Composición detallada y proporciones de las cuatro vistas.",
+    "Ver proyectos como acción principal y Contactar como secundaria.",
+    "Altura de cabecera y franja ilustrada móvil."
+  ],
+  "screens": [
+    {
+      "id": "S01",
+      "name": "Inicio de escritorio",
+      "file": "01-inicio-escritorio.png",
+      "kind": "static_generated_mockup",
+      "source_generation_filename": "exec-40afda44-2d7a-4f0d-bc06-5e5bcf714d2d.png",
+      "target_logical_frame": {
+        "width": 1440,
+        "height": 1024,
+        "purpose": "Referencia de composición; no tamaño obligatorio ni breakpoint."
+      },
+      "actual_image": {
+        "width": 1487,
+        "height": 1058,
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "bytes": 2764800,
+      "sha256": "9e75e4e81bce7fb988462c47e89bec172279822f685e4341a24e0c147f737067",
+      "visual_inspection_note": "Cuatro destinos y avatar presentes; jerarquía Ver proyectos / Contactar propuesta.",
+      "user_review_status": "pending"
+    },
+    {
+      "id": "S02",
+      "name": "Ficha integrada de escritorio",
+      "file": "02-ficha-escritorio.png",
+      "kind": "static_generated_mockup",
+      "source_generation_filename": "exec-321a6019-b135-444a-8ed3-e1b78a5509cc.png",
+      "target_logical_frame": {
+        "width": 1440,
+        "height": 1024,
+        "purpose": "Referencia de composición; no tamaño obligatorio ni breakpoint."
+      },
+      "actual_image": {
+        "width": 1487,
+        "height": 1058,
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "bytes": 1885844,
+      "sha256": "dca815fa4812e79d8f34a7dbede15ab2bcc4e5091a92cee0f6c62cba957b337e",
+      "visual_inspection_note": "Ficha crema con contexto de paisaje; captura de FoxMind explícitamente pendiente.",
+      "user_review_status": "pending"
+    },
+    {
+      "id": "S03",
+      "name": "Inicio móvil",
+      "file": "03-inicio-movil.png",
+      "kind": "static_generated_mockup",
+      "source_generation_filename": "exec-edc60c66-3157-48f9-b6c3-55755dd2bbd1.png",
+      "target_logical_frame": {
+        "width": 390,
+        "height": 844,
+        "purpose": "Referencia de composición; no tamaño obligatorio ni breakpoint."
+      },
+      "actual_image": {
+        "width": 853,
+        "height": 1844,
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "bytes": 2781182,
+      "sha256": "e3f98a79030bc3986876f2c7bce96c03f1fa5b1633c36f502c4a8fda9f76b9d8",
+      "visual_inspection_note": "Escena recompuesta en vertical; cuatro enlaces de navegación en dos filas y cuatro destinos.",
+      "user_review_status": "pending"
+    },
+    {
+      "id": "S04",
+      "name": "Ficha integrada móvil",
+      "file": "04-ficha-movil.png",
+      "kind": "static_generated_mockup",
+      "source_generation_filename": "exec-76923b6a-2bc0-493c-8258-83656cab2ba6.png",
+      "target_logical_frame": {
+        "width": 390,
+        "height": 844,
+        "purpose": "Referencia de composición; no tamaño obligatorio ni breakpoint."
+      },
+      "actual_image": {
+        "width": 853,
+        "height": 1844,
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "bytes": 1729684,
+      "sha256": "b8470a7db26faf0d1b24720192c632e76b09f8ad809913e8ff4f6c4b0750c7ab",
+      "visual_inspection_note": "Versión refinada: cabecera coherente con S03 y ajuste de la proporción entre franja ilustrada y lectura.",
+      "user_review_status": "pending"
+    }
+  ],
+  "reference": {
+    "file": "references/selected-concept-received.png",
+    "sha256": "7d903d5376b82ff3ccecae70dfc488a1a100e31e553352011a624901daceb223",
+    "kit_reference": "../../portfolio-campamento/source/selected-concept.png",
+    "rgba_pixels_match_kit_reference": true
+  },
+  "inspection": {
+    "type": "visual_content_and_composition_only",
+    "performed": true,
+    "user_approval": "pending",
+    "application_qa": "not_performed",
+    "acceptance_criteria_status": "AC-01 a AC-25 pendientes.",
+    "notes": [
+      "La generación no valida funcionamiento, navegación, adaptación responsive, contraste o accesibilidad.",
+      "Mantener la misma escena y estado al abrir fichas; las variaciones de paisaje entre imágenes no especifican cambios de mundo.",
+      "Reconstruir textos y controles como interfaz web con nombres y estados claros según 02.",
+      "Los PNG son referencias; el desarrollo usa los assets separados del kit.",
+      "Las fichas muestran una porción del caso; el contenido restante continúa mediante desplazamiento vertical.",
+      "No hay capturas reales de FoxMind en estas maquetas; la reserva está identificada y no se publica como evidencia."
+    ]
+  },
+  "s04_refinement": {
+    "final_file": "04-ficha-movil.png",
+    "initial_generation_filename": "exec-db6706a7-c078-425a-9a12-e9083eb183c9.png",
+    "initial_output_in_bundle": false,
+    "header_reference": "03-inicio-movil.png",
+    "changes": [
+      "Cabecera clara, enlaces oscuros y subrayado coral para Proyectos.",
+      "Reequilibrio de la franja ilustrada y el inicio de la lectura."
+    ],
+    "exact_requested_geometry_guaranteed": false
+  },
+  "source_prompts": "generation-prompts-v1.json",
+  "original_personal_photo_included": false,
+  "revision": 1
+}

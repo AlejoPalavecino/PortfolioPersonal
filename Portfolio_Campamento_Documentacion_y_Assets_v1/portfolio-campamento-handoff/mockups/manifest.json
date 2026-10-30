@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.1",
+  "project": "Portfolio Campamento creativo · Alejo Palavecino",
+  "generated_on": "2026-10-29",
+  "milestone": "07 · Pantallas principales",
+  "revision": 2,
+  "status": "visual_direction_adopted_content_milestone_active",
+  "method": "built_in_image_gen",
+  "approved_decisions": {
+    "DEC-13": "Ficha de proyecto integrada en el campamento.",
+    "DEC-14": "Proporción general de la ficha presentada; no implica medidas CSS exactas ni aprobación global de móvil.",
+    "DEC-15": "Emblema de carpa y montaña en la cabecera; nombre completo una vez en el hero.",
+    "DEC-16": "Composición móvil de revisión 2 adoptada: emblema, Contacto, CV y Menú. Estados de interacción y medidas exactas pendientes de implementar y comprobar."
+  },
+  "requested_change": {
+    "DEC-15": "Evitar repetición de nombre entre navbar y hero; mejorar distribución móvil."
+  },
+  "proposed_decisions": [
+    "Jerarquía editorial Ver proyectos / Contactar del hero.",
+    "Estados de interacción y medidas adaptables especificados en 02; sin comprobación funcional."
+  ],
+  "screens": [
+    {
+      "id": "S01",
+      "name": "Inicio de escritorio",
+      "file": "01-inicio-escritorio-v2.png",
+      "revision": 2,
+      "kind": "static_generated_mockup",
+      "source_generation_filename": "exec-cf1f083d-0ae3-4a64-9a36-47ad4a0bda60.png",
+      "target_logical_frame": {
+        "width": 1440,
+        "height": 1024,
+        "purpose": "Orientación de composición; no resolución ni breakpoint obligatorio."
+      },
+      "actual_image": {
+        "width": 1485,
+        "height": 1059,
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "bytes": 2675163,
+      "sha256": "bffb2a3cf134c8ec4fef886a698ec53a51cde8d2b0c6299637476880e64e1072",
+      "visual_inspection_note": "Emblema de carpa y montaña en lugar de ALEJO; nombre completo solo en la presentación; cuatro enlaces de escritorio conservados.",
+      "user_review_status": "visual_direction_adopted"
+    },
+    {
+      "id": "S02",
+      "name": "Ficha integrada de escritorio",
+      "file": "02-ficha-escritorio-v2.png",
+      "revision": 2,
+      "kind": "static_generated_mockup",
+      "source_generation_filename": "exec-3036ee4f-7c9d-4529-8412-c3dd800959da.png",
+      "target_logical_frame": {
+        "width": 1440,
+        "height": 1024,
+        "purpose": "Orientación de composición; no resolución ni breakpoint obligatorio."
+      },
+      "actual_image": {
+        "width": 1487,
+        "height": 1058,
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "bytes": 1921490,
+      "sha256": "de39657703b7c9fc54c23c2b9ff1e737d7cafe116c2c71395c5308213614b3ce",
+      "visual_inspection_note": "Mismo emblema; proporción general y composición de lectura conservadas; reserva de captura explícita.",
+      "user_review_status": "visual_direction_adopted"
+    },
+    {
+      "id": "S03",
+      "name": "Inicio móvil",
+      "file": "03-inicio-movil-v2.png",
+      "revision": 2,
+      "kind": "static_generated_mockup",
+      "source_generation_filename": "exec-e22c3116-c500-4acd-9694-d3d8c2da14c8.png",
+      "target_logical_frame": {
+        "width": 390,
+        "height": 844,
+        "purpose": "Orientación de composición; no resolución ni breakpoint obligatorio."
+      },
+      "actual_image": {
+        "width": 853,
+        "height": 1844,
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "bytes": 2722806,
+      "sha256": "aaaf563476a66111629d21e0242d2edad39c6efb9f0b2922b7206a7aee05a09b",
+      "visual_inspection_note": "Cabecera de una fila con Contacto, CV y Menú; nombre completo una vez; presentación más compacta y cuatro destinos presentes.",
+      "user_review_status": "visual_direction_adopted"
+    },
+    {
+      "id": "S04",
+      "name": "Ficha integrada móvil",
+      "file": "04-ficha-movil-v2.png",
+      "revision": 2,
+      "kind": "static_generated_mockup",
+      "source_generation_filename": "exec-70eac016-0bd7-4a89-8cd4-2551019a93f1.png",
+      "target_logical_frame": {
+        "width": 390,
+        "height": 844,
+        "purpose": "Orientación de composición; no resolución ni breakpoint obligatorio."
+      },
+      "actual_image": {
+        "width": 853,
+        "height": 1844,
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "bytes": 1753265,
+      "sha256": "909d0fc285c4facb842c12551ad8b89929639f10e7af3aa8e6dd274d19f98f61",
+      "visual_inspection_note": "Cabecera coherente con S03 y comienzo de lectura más arriba; ancho de ficha conservado y captura de FoxMind reservada.",
+      "user_review_status": "visual_direction_adopted"
+    }
+  ],
+  "previous_revision": {
+    "manifest": "manifest-v1.json",
+    "prompts": "generation-prompts-v1.json",
+    "role": "Comparación; los cuatro archivos sin sufijo -v2 no definen la cabecera vigente."
+  },
+  "reference": {
+    "file": "references/selected-concept-received.png",
+    "sha256": "7d903d5376b82ff3ccecae70dfc488a1a100e31e553352011a624901daceb223",
+    "kit_reference": "../../portfolio-campamento/source/selected-concept.png",
+    "rgba_pixels_match_kit_reference": true
+  },
+  "inspection": {
+    "type": "visual_content_and_composition_only",
+    "performed": true,
+    "application_qa": "not_performed",
+    "acceptance_criteria_status": "AC-01 a AC-25 pendientes.",
+    "notes": [
+      "Se observa la eliminación de la palabra ALEJO en las cuatro cabeceras; el nombre completo permanece en las dos presentaciones.",
+      "S03 y S04 comparten una cabecera de una fila con Contacto, CV y Menú cerrado.",
+      "El ancho general de la ficha se conserva; la nueva distribución superior móvil recupera espacio para el contenido.",
+      "Las alturas y tamaños del PNG son aproximaciones visuales y no garantizan las medidas orientativas solicitadas; la franja móvil final se ajusta con contenido y texto ampliado.",
+      "Las áreas táctiles, estados de menú, foco y desplazamiento se especifican en 02 y requieren implementación.",
+      "Las pequeñas variaciones del paisaje entre renders no implican cambiar de escena al abrir contenido.",
+      "Las capturas de FoxMind siguen siendo una reserva identificada; no representan una pantalla real del producto.",
+      "La revisión no acredita navegación, contraste, accesibilidad, adaptación funcional ni rendimiento."
+    ],
+    "user_approval": "Emblema y cabecera de revisión 2 adoptados; no confirma hechos profesionales ni comportamiento implementado."
+  },
+  "source_prompts": "generation-prompts.json",
+  "original_personal_photo_included": false,
+  "approved_on": "2026-10-29",
+  "next_milestone": "08 · Contenido profesional y casos",
+  "remaining_reviews": [
+    "Parecido individual del avatar.",
+    "Datos profesionales y contenido editorial del hito08.",
+    "Implementación y AC-01 a AC-25."
+  ],
+  "supplementary_emblem_asset": "../assets/brand/camp-emblem-master.png"
+}

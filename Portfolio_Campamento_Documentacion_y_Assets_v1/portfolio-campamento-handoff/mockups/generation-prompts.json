@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.1",
+  "revision": 2,
+  "generated_on": "2026-10-29",
+  "method": "built_in_image_gen",
+  "purpose": "Corregir la duplicación del nombre y refinar las proporciones móviles de las cuatro vistas del mismo portfolio.",
+  "user_feedback": {
+    "approved": "Proporción general de la ficha.",
+    "requested": "Evitar repetición de Alejo en navbar y hero; mejorar proporciones móviles.",
+    "proposal": "Emblema de campamento y cabecera móvil con Contacto, CV y Menú."
+  },
+  "previous_revision": "generation-prompts-v1.json",
+  "screens": [
+    {
+      "id": "S01",
+      "file": "01-inicio-escritorio-v2.png",
+      "target_frame": [
+        1440,
+        1024
+      ],
+      "references": [
+        {
+          "file": "01-inicio-escritorio.png",
+          "role": "edit_target"
+        },
+        {
+          "file": "03-inicio-movil-v2.png",
+          "role": "header_emblem_reference_only"
+        }
+      ],
+      "prompt": "Use case: compositing\nAsset type: desktop homepage UI mockup, highly constrained header edit.\nINPUT IMAGE 1 is the edit target. INPUT IMAGE 2 supplies ONLY the tiny coral tent and navy mountains emblem visible at its upper left.\nOutput ONE desktop mockup with exactly image 1's landscape aspect ratio, about 1487 x 1058 pixels. No browser/device frame.\n\nReplace ONLY the word \"ALEJO\" at the upper left of image 1's global navigation with the same small coral tent / dark navy mountains emblem from image 2. No letters, wordmark, name or monogram in the navbar. Keep it discreet, approximately 28-32 logical pixels wide, with the same baseline area and left alignment as the current navigation brand. Preserve the blue-sky header backdrop of image 1; do not import the cream mobile header.\nThe emblem is a home control. Leave the desktop navigation links \"Proyectos\", \"Sobre mí\", \"Trayectoria\", \"Contacto\" and \"CV ↓\" visible across the right exactly as in image 1. DO NOT replace desktop links with a Menú button.\n\nPreserve EVERYTHING ELSE from image 1 as closely as possible: all positions, camp layout, four destination labels, professional text, hero name \"Alejo Palavecino\" on two lines, pixel title, typography, CTA buttons \"Ver proyectos →\" and \"Contactar\", avatar, landscape, mountains, lake, workshop, tent, desk, radio cabin, colors, controls, illustration detail and image proportions. The user likes the composition; this is a brand repetition correction, not a redesign. No added copy, panels, sections, logos, metrics or background changes. Show the full name once, only in the hero."
+    },
+    {
+      "id": "S02",
+      "file": "02-ficha-escritorio-v2.png",
+      "target_frame": [
+        1440,
+        1024
+      ],
+      "references": [
+        {
+          "file": "02-ficha-escritorio.png",
+          "role": "edit_target"
+        },
+        {
+          "file": "03-inicio-movil-v2.png",
+          "role": "header_emblem_reference_only"
+        }
+      ],
+      "prompt": "Use case: compositing\nAsset type: desktop integrated project-sheet UI mockup, exact header-brand correction.\nINPUT IMAGE 1 is the edit target. INPUT IMAGE 2 supplies ONLY the tiny coral tent and dark navy mountains emblem at its upper left.\nOutput ONE desktop mockup matching image 1's landscape ratio and resolution, about 1487 x 1058 pixels. No browser or device.\n\nMake ONE change: replace the word \"ALEJO\" in the top-left GLOBAL NAVIGATION with the same tiny coral tent / navy mountains emblem from image 2. No letters, personal name or monogram next to it. About 28-32 logical pixels wide, discreet. Preserve the sky background behind it. Keep the desktop links \"Proyectos\", \"Sobre mí\", \"Trayectoria\", \"Contacto\" and \"CV ↓\" exactly where they are. Do NOT copy the mobile navigation layout or add a Menú button.\n\nThe user explicitly APPROVED the proportion of the cream project sheet. Preserve its width, height, position, margins, stepped corners, colors, typography and ALL content. Do not resize or recompose the sheet. Keep every original visible label: back to Projects, camp return, FoxMind title, subtitle, Mi rol, Cofundador y desarrollador, Enfoque, Conversemos, El problema, Mi aporte, Decisiones y aprendizajes.\nKeep the exact honest image placeholder \"Captura real de FoxMind\" and \"Material pendiente de incorporar\"; never invent a FoxMind screenshot.\nPreserve all scenery, context, illustration details and colors. No new claims, brands, dates or metrics. Only the top-left wordmark becomes the small emblem."
+    },
+    {
+      "id": "S03",
+      "file": "03-inicio-movil-v2.png",
+      "target_frame": [
+        390,
+        844
+      ],
+      "references": [
+        {
+          "file": "03-inicio-movil.png",
+          "role": "edit_target"
+        }
+      ],
+      "prompt": "Use case: compositing\nAsset type: targeted revision of an existing mobile portfolio website mockup.\nInput image 1 is the EDIT TARGET. Produce ONE refined mobile homepage at the same portrait aspect ratio, about 853 x 1844 pixels, no device frame or surrounding annotation.\n\nUser-approved direction: warm Andean pixel-art camp, personal avatar, four destinations, existing colors. Requested correction: remove the repeated ALEJO brand from navigation and improve mobile proportions. Preserve the camp's buildings, destinations, identity, mood, illustration quality, avatar appearance and all professional copy. Change the header and rebalance the presentation above the camp. Do not introduce new sections, logos for FoxMind, badges, claims or extra people.\n\nNEW GLOBAL HEADER:\nA calm pale cream/sky SINGLE ROW, visually about 60 logical mobile pixels high for a 390px-wide viewport. Remove the large word ALEJO completely from this header. At far left replace it with a tiny crisp pixel emblem: a coral tent in front of two dark navy mountain peaks, approx 26-30 logical px, no letters, no name, no wordmark, no enclosing ornamental badge. It is a discreet home control, not a second hero illustration.\nAt right, in the SAME ROW, show:\n\"Contacto\" as a small clear dark link\n\"CV ↓\" as a compact outlined control\n\"Menú ☰\" as a compact outlined control with the full readable word Menú.\nAll controls comfortably spaced, around 44px logical touch height. Keep header balanced, with space between emblem and the three controls. Remove the old always-visible 2x2 navigation grid entirely: the new Menú button is CLOSED in this image. No duplicate navigation row. No expanded menu.\n\nHERO REFINEMENT:\nKeep \"Alejo Palavecino\" only ONCE, in the hero, on two lines:\n\"Alejo\"\n\"Palavecino\"\nRetain the pixel display style, dark navy #102E3C, but at a balanced approximately 32-36 logical px, never excessively large. Left-aligned with about 20 logical px side margins.\nThen exact text, clean Lexend-like font:\n\"Desarrollo software.\"\n\"Transformo ideas en productos.\"\nThen the quieter specialty line:\n\"Full stack · Automatización · IA aplicada\"\nTwo buttons in one row with the SAME 44-48px logical height:\nprimary coral \"Ver proyectos →\"\nsecondary cream outlined \"Contactar\"\nPreserve their content and order. The primary is wider. Use compact but comfortable vertical spacing. Header plus hero should finish around 270-290 logical pixels from the top, leaving the camp visible early. These are composition goals, do not distort text or art to fit exact coordinates.\n\nCAMP:\nPreserve the selected colorful pixel-art Andean environment, lake, mountains, waterfall, workshop, tent/campfire, desk/journal, radio cabin, vegetation, small green-sweater male avatar with ochre backpack.\nKeep exactly four clearly readable destination labels:\n\"Proyectos\", \"Sobre mí\", \"Trayectoria\", \"Contacto\".\nRecompose only as needed to balance the new compact top region. Do not force all content into a cramped view; keep an airy navigable scene.\nKeep bottom hint \"Tocá un lugar para conocer más\" and small sound/motion controls, but remove the old mouse-shaped hint icon; use a tiny touch/hand indicator or no icon.\nPreserve palette #102E3C ink, #FFF4DF paper, coral #EB654F, blue sky, green/ochre pixel landscape.\nNo additional Alejo text anywhere. No extra brand. Professional, playful and legible."
+    },
+    {
+      "id": "S04",
+      "file": "04-ficha-movil-v2.png",
+      "target_frame": [
+        390,
+        844
+      ],
+      "references": [
+        {
+          "file": "04-ficha-movil.png",
+          "role": "edit_target"
+        },
+        {
+          "file": "03-inicio-movil-v2.png",
+          "role": "shared_mobile_header_reference"
+        }
+      ],
+      "prompt": "Use case: compositing\nAsset type: integrated mobile project sheet, refined compact navigation and top spacing.\nINPUT IMAGE 1 is the EDIT TARGET. INPUT IMAGE 2 is the already-refined MOBILE HOME and supplies the exact global header to match.\nOutput ONE portrait mobile website mockup at image 1's same ratio, about 853 x 1844 pixels. No device, browser or explanatory annotation.\n\nUSER-APPROVED INVARIANT: the nearly-full-width cream project reading sheet. Preserve its width, side margins, paper color, dark ink, stepped corners, type style and natural readable text size. Keep all case copy intact. Content can continue below the viewport. Do not shrink the whole sheet to fit a complete article.\n\nCHANGE THE TOP:\nReplace image 1's tall ALEJO + 2x2 links header with image 2's compact SINGLE-ROW cream header. At left use the identical small coral tent and navy mountains emblem, with NO name or letters. At right keep \"Contacto\", \"CV ↓\", and \"Menú ☰\" in the same row, like image 2. Menú is closed. Remove the old permanently visible four-link grid completely.\nBelow the new header keep a COMPACT illustrated band of the Andean camp: mountains and a hint of workshop roof, approximately 80-100 logical px high at a 390px-wide viewport. The header is about 56-64 logical px. The reading sheet should therefore begin around 150-170 logical px from the top (about 330-370 pixels at output size). Avoid a tall scenic introduction.\nTranslate the cream sheet upward into the recovered space, preserving its approved width and text scale. Let it extend naturally downward beyond the viewport if needed. Keep narrow landscape margins.\n\nExact copy to preserve in order:\n\"← Proyectos\" and \"Campamento\"\n\"PROYECTO DESTACADO\"\n\"FoxMind\"\n\"Plataforma educativa con inteligencia artificial.\"\n\"Cofundador y desarrollador.\"\nIn ONE empty light-blue image placeholder:\n\"Captura real de FoxMind\"\n\"Material pendiente de incorporar\"\nThen:\n\"El problema\"\n\"Acompañar distintos ritmos de aprendizaje y el trabajo docente.\"\n\"Mi aporte\"\n\"Producto, análisis funcional y desarrollo full stack.\"\n\nDo not invent a FoxMind UI, screenshot, logo, stage, date, metric or extra case text. No Alejo name in this case header. Maintain the warm pixel-art Andean camp, paper #FFF4DF, ink #102E3C and coral #EB654F. This must clearly be the same website and same global header as image 2."
+    }
+  ],
+  "notes": [
+    "Maquetas estáticas para revisión; no validación de aplicación.",
+    "Las medidas solicitadas son orientativas; consultar dimensiones observadas en manifest.json.",
+    "La forma final del emblema propuesto y su asset independiente siguen pendientes de revisión.",
+    "La ficha conserva su proporción general aprobada; la nueva cabecera y distribución móvil siguen como propuesta.",
+    "Las capturas reales de FoxMind continúan pendientes; la imagen solo representa una reserva identificada."
+  ],
+  "generation_notes_are_historical": true,
+  "current_review_status_reference": "manifest.json"
+}

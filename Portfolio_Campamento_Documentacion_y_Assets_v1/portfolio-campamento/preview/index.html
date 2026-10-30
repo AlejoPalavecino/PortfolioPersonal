@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campamento creativo · Catálogo de assets</title>
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="viewer.css">
+  <script src="catalog.js" defer></script>
+  <script src="viewer.js" defer></script>
+</head>
+<body data-surface="checker">
+  <header class="header">
+    <div class="eyebrow">ALEJO PALAVECINO / KIT VISUAL</div>
+    <h1 id="title">Campamento creativo</h1>
+    <p id="subtitle">Catálogo local de las piezas del portfolio.</p>
+    <p class="help">Abrí este archivo desde la carpeta descomprimida. Las imágenes se cargan localmente.</p>
+  </header>
+  <main>
+    <div class="toolbar">
+      <nav class="tabs" aria-label="Vista del catálogo">
+        <button id="tab-gallery" class="active" aria-pressed="true">Piezas</button>
+        <button id="tab-scene" aria-pressed="false">Composición</button>
+      </nav>
+      <div class="controls">
+        <label>Fondo <select id="surface"><option value="checker">Transparencia</option><option value="light">Claro</option><option value="dark">Oscuro</option></select></label>
+        <label>Categoría <select id="category"><option value="all">Todas</option></select></label>
+        <button id="motion">Pausar animaciones</button>
+      </div>
+    </div>
+    <div id="status" role="status" class="status"></div>
+    <section id="gallery" class="gallery" aria-label="Piezas del kit"></section>
+    <section id="composition" hidden aria-label="Composición del campamento">
+      <div class="scene-toolbar">
+        <label>Escena <select id="scene-select"></select></label>
+        <label><input type="checkbox" id="scene-bounds"> Mostrar límites</label>
+      </div>
+      <div class="scene-layout">
+        <div class="scene-surface asset-surface"><canvas id="scene-canvas" width="1536" height="1024" aria-label="Composición de los assets"></canvas></div>
+        <aside><h2>Capas</h2><div id="layers"></div><p class="help">Esta composición es un control visual de piezas y escala. No es el portfolio implementado.</p></aside>
+      </div>
+      <p id="scene-notes" class="help"></p>
+    </section>
+    <noscript>Activá JavaScript para explorar el catálogo y reproducir las animaciones.</noscript>
+  </main>
+  <footer>Las animaciones y la composición usan los archivos originales del kit. El visor no modifica las imágenes.</footer>
+</body>
+</html>

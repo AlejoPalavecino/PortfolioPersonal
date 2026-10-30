@@ -1,0 +1,68 @@
+[
+  {
+    "file": "world-backdrop.webp",
+    "bytes": 335032,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "file": "camp-ground.webp",
+    "bytes": 506350,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "file": "camp-foreground.webp",
+    "bytes": 132436,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "file": "poi-projects.webp",
+    "bytes": 100448,
+    "width": 720,
+    "height": 484
+  },
+  {
+    "file": "poi-about.webp",
+    "bytes": 66570,
+    "width": 548,
+    "height": 560
+  },
+  {
+    "file": "poi-journey.webp",
+    "bytes": 63274,
+    "width": 584,
+    "height": 560
+  },
+  {
+    "file": "poi-contact.webp",
+    "bytes": 73272,
+    "width": 565,
+    "height": 560
+  },
+  {
+    "file": "portrait.webp",
+    "bytes": 33458,
+    "width": 480,
+    "height": 480
+  },
+  {
+    "file": "emblem.webp",
+    "bytes": 3562,
+    "width": 160,
+    "height": 78
+  },
+  {
+    "file": "favicon.webp",
+    "bytes": 1614,
+    "width": 57,
+    "height": 64
+  },
+  {
+    "file": "share.webp",
+    "bytes": 201230,
+    "width": 1199,
+    "height": 675
+  }
+]

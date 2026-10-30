@@ -1,0 +1,482 @@
+{
+  "schemaVersion": "1.0",
+  "image": "avatar-movement-atlas.png",
+  "sourceSize": {
+    "w": 1402,
+    "h": 1122
+  },
+  "sha256": "a2f3478040eb893877824f780f8723cd0d40ef54291de2e0e763a4009f3469d9",
+  "coordinateConvention": "Source pixels. x/y are top-left; w/h are crop size; anchors are relative to each crop.",
+  "layout": {
+    "rows": 4,
+    "columns": 5,
+    "rowDirections": [
+      "down",
+      "left",
+      "right",
+      "up"
+    ],
+    "columnStates": [
+      "idle",
+      "walk-1",
+      "walk-2",
+      "walk-3",
+      "walk-4"
+    ]
+  },
+  "fps": 6,
+  "defaultAnimation": "idleDown",
+  "frames": [
+    {
+      "name": "idle-down",
+      "direction": "down",
+      "state": "idle",
+      "row": 0,
+      "column": 0,
+      "x": 145,
+      "y": 28,
+      "w": 131,
+      "h": 255,
+      "anchorX": 64,
+      "anchorY": 252,
+      "solidBounds": {
+        "x": 147,
+        "y": 30,
+        "w": 127,
+        "h": 251
+      }
+    },
+    {
+      "name": "walk-down-1",
+      "direction": "down",
+      "state": "walk",
+      "row": 0,
+      "column": 1,
+      "x": 395,
+      "y": 30,
+      "w": 134,
+      "h": 258,
+      "anchorX": 64,
+      "anchorY": 254,
+      "solidBounds": {
+        "x": 397,
+        "y": 32,
+        "w": 130,
+        "h": 254
+      }
+    },
+    {
+      "name": "walk-down-2",
+      "direction": "down",
+      "state": "walk",
+      "row": 0,
+      "column": 2,
+      "x": 633,
+      "y": 27,
+      "w": 132,
+      "h": 260,
+      "anchorX": 67,
+      "anchorY": 257,
+      "solidBounds": {
+        "x": 635,
+        "y": 29,
+        "w": 128,
+        "h": 256
+      }
+    },
+    {
+      "name": "walk-down-3",
+      "direction": "down",
+      "state": "walk",
+      "row": 0,
+      "column": 3,
+      "x": 875,
+      "y": 30,
+      "w": 139,
+      "h": 256,
+      "anchorX": 69,
+      "anchorY": 254,
+      "solidBounds": {
+        "x": 877,
+        "y": 32,
+        "w": 135,
+        "h": 252
+      }
+    },
+    {
+      "name": "walk-down-4",
+      "direction": "down",
+      "state": "walk",
+      "row": 0,
+      "column": 4,
+      "x": 1125,
+      "y": 27,
+      "w": 133,
+      "h": 261,
+      "anchorX": 69,
+      "anchorY": 256,
+      "solidBounds": {
+        "x": 1127,
+        "y": 29,
+        "w": 129,
+        "h": 257
+      }
+    },
+    {
+      "name": "idle-left",
+      "direction": "left",
+      "state": "idle",
+      "row": 1,
+      "column": 0,
+      "x": 149,
+      "y": 297,
+      "w": 125,
+      "h": 266,
+      "anchorX": 59,
+      "anchorY": 259,
+      "solidBounds": {
+        "x": 151,
+        "y": 299,
+        "w": 121,
+        "h": 262
+      }
+    },
+    {
+      "name": "walk-left-1",
+      "direction": "left",
+      "state": "walk",
+      "row": 1,
+      "column": 1,
+      "x": 390,
+      "y": 298,
+      "w": 138,
+      "h": 262,
+      "anchorX": 66,
+      "anchorY": 257,
+      "solidBounds": {
+        "x": 392,
+        "y": 300,
+        "w": 134,
+        "h": 258
+      }
+    },
+    {
+      "name": "walk-left-2",
+      "direction": "left",
+      "state": "walk",
+      "row": 1,
+      "column": 2,
+      "x": 635,
+      "y": 297,
+      "w": 125,
+      "h": 263,
+      "anchorX": 59,
+      "anchorY": 258,
+      "solidBounds": {
+        "x": 637,
+        "y": 299,
+        "w": 121,
+        "h": 259
+      }
+    },
+    {
+      "name": "walk-left-3",
+      "direction": "left",
+      "state": "walk",
+      "row": 1,
+      "column": 3,
+      "x": 871,
+      "y": 297,
+      "w": 138,
+      "h": 263,
+      "anchorX": 61,
+      "anchorY": 258,
+      "solidBounds": {
+        "x": 873,
+        "y": 299,
+        "w": 134,
+        "h": 259
+      }
+    },
+    {
+      "name": "walk-left-4",
+      "direction": "left",
+      "state": "walk",
+      "row": 1,
+      "column": 4,
+      "x": 1127,
+      "y": 297,
+      "w": 129,
+      "h": 263,
+      "anchorX": 57,
+      "anchorY": 258,
+      "solidBounds": {
+        "x": 1129,
+        "y": 299,
+        "w": 125,
+        "h": 259
+      }
+    },
+    {
+      "name": "idle-right",
+      "direction": "right",
+      "state": "idle",
+      "row": 2,
+      "column": 0,
+      "x": 144,
+      "y": 568,
+      "w": 129,
+      "h": 266,
+      "anchorX": 70,
+      "anchorY": 259,
+      "solidBounds": {
+        "x": 146,
+        "y": 570,
+        "w": 125,
+        "h": 262
+      }
+    },
+    {
+      "name": "walk-right-1",
+      "direction": "right",
+      "state": "walk",
+      "row": 2,
+      "column": 1,
+      "x": 392,
+      "y": 568,
+      "w": 142,
+      "h": 259,
+      "anchorX": 84,
+      "anchorY": 256,
+      "solidBounds": {
+        "x": 394,
+        "y": 570,
+        "w": 138,
+        "h": 255
+      }
+    },
+    {
+      "name": "walk-right-2",
+      "direction": "right",
+      "state": "walk",
+      "row": 2,
+      "column": 2,
+      "x": 640,
+      "y": 568,
+      "w": 129,
+      "h": 263,
+      "anchorX": 70,
+      "anchorY": 257,
+      "solidBounds": {
+        "x": 642,
+        "y": 570,
+        "w": 125,
+        "h": 259
+      }
+    },
+    {
+      "name": "walk-right-3",
+      "direction": "right",
+      "state": "walk",
+      "row": 2,
+      "column": 3,
+      "x": 868,
+      "y": 568,
+      "w": 141,
+      "h": 259,
+      "anchorX": 82,
+      "anchorY": 256,
+      "solidBounds": {
+        "x": 870,
+        "y": 570,
+        "w": 137,
+        "h": 255
+      }
+    },
+    {
+      "name": "walk-right-4",
+      "direction": "right",
+      "state": "walk",
+      "row": 2,
+      "column": 4,
+      "x": 1127,
+      "y": 568,
+      "w": 132,
+      "h": 261,
+      "anchorX": 74,
+      "anchorY": 258,
+      "solidBounds": {
+        "x": 1129,
+        "y": 570,
+        "w": 128,
+        "h": 257
+      }
+    },
+    {
+      "name": "idle-up",
+      "direction": "up",
+      "state": "idle",
+      "row": 3,
+      "column": 0,
+      "x": 145,
+      "y": 839,
+      "w": 130,
+      "h": 251,
+      "anchorX": 66,
+      "anchorY": 248,
+      "solidBounds": {
+        "x": 147,
+        "y": 841,
+        "w": 126,
+        "h": 247
+      }
+    },
+    {
+      "name": "walk-up-1",
+      "direction": "up",
+      "state": "walk",
+      "row": 3,
+      "column": 1,
+      "x": 392,
+      "y": 840,
+      "w": 135,
+      "h": 252,
+      "anchorX": 68,
+      "anchorY": 249,
+      "solidBounds": {
+        "x": 394,
+        "y": 842,
+        "w": 131,
+        "h": 248
+      }
+    },
+    {
+      "name": "walk-up-2",
+      "direction": "up",
+      "state": "walk",
+      "row": 3,
+      "column": 2,
+      "x": 635,
+      "y": 836,
+      "w": 130,
+      "h": 260,
+      "anchorX": 66,
+      "anchorY": 257,
+      "solidBounds": {
+        "x": 637,
+        "y": 838,
+        "w": 126,
+        "h": 256
+      }
+    },
+    {
+      "name": "walk-up-3",
+      "direction": "up",
+      "state": "walk",
+      "row": 3,
+      "column": 3,
+      "x": 869,
+      "y": 839,
+      "w": 140,
+      "h": 257,
+      "anchorX": 70,
+      "anchorY": 254,
+      "solidBounds": {
+        "x": 871,
+        "y": 841,
+        "w": 136,
+        "h": 253
+      }
+    },
+    {
+      "name": "walk-up-4",
+      "direction": "up",
+      "state": "walk",
+      "row": 3,
+      "column": 4,
+      "x": 1121,
+      "y": 837,
+      "w": 134,
+      "h": 259,
+      "anchorX": 68,
+      "anchorY": 256,
+      "solidBounds": {
+        "x": 1123,
+        "y": 839,
+        "w": 130,
+        "h": 255
+      }
+    }
+  ],
+  "animations": {
+    "idleDown": [
+      0
+    ],
+    "walkDown": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "idleLeft": [
+      5
+    ],
+    "walkLeft": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "idleRight": [
+      10
+    ],
+    "walkRight": [
+      11,
+      12,
+      13,
+      14
+    ],
+    "idleUp": [
+      15
+    ],
+    "walkUp": [
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "analysis": {
+    "alphaThreshold": 8,
+    "cropPaddingPixels": 2,
+    "separatorX": [
+      0,
+      333,
+      584,
+      819,
+      1068,
+      1402
+    ],
+    "separatorY": [
+      0,
+      292,
+      566,
+      835,
+      1122
+    ],
+    "anchorMethod": "Horizontal median of solid head pixels in the first 80 source rows of each silhouette; vertical position at the last alpha>128 sole row + 1.",
+    "noImageModification": true,
+    "frameCount": 20,
+    "allFramesInsideSource": true,
+    "realTransparency": true
+  },
+  "qualityNotes": [
+    "La disposición de cuatro filas y cinco columnas se verificó visualmente en el PNG original.",
+    "Los recortes son variables: aplicar una escala común a toda la secuencia y respetar los anclajes. No ajustar cada cuadro a una anchura distinta.",
+    "Los anclajes horizontales siguen la proyección de la cabeza y los verticales alinean la base sólida de los zapatos; revisar el movimiento al tamaño final del personaje.",
+    "El atlas conserva de forma reconocible cabello oscuro, cejas, suéter verde, mochila ocre y pantalón azul. Hay variaciones menores de contorno y proporción entre poses.",
+    "Las cuatro fases de caminata sirven como ciclo inicial. No equivalen a una animación depurada manualmente: comprobar deslizamiento de pies y cambios de volumen durante la integración.",
+    "Existen píxeles marginales de alpha muy bajo. El recorte incluye un margen de dos píxeles alrededor de la silueta detectada; el PNG original queda intacto.",
+    "La imagen no usa una cuadrícula de píxel lógico estrictamente uniforme. Es arte de apariencia pixelada, con escala y exportación aún por fijar en el sitio."
+  ]
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "file": "icons/LICENSE-lucide.txt",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/LICENSE",
+    "bytes": 3208,
+    "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "retrieved_at": "2026-10-29T14:50:46.630216+00:00"
+  },
+  {
+    "file": "icons/map.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/map.svg",
+    "bytes": 516,
+    "sha256": "41300a8ef2c2a4cf36ec3f8a730bcb4754543889eb23b98e7435de7a0757752d",
+    "retrieved_at": "2026-10-29T14:50:46.677076+00:00"
+  },
+  {
+    "file": "icons/book-open.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/book-open.svg",
+    "bytes": 387,
+    "sha256": "9b9bed0ff057283d5c5c5a1c71f8d3e927db26a56639603a92fdf7b25961510e",
+    "retrieved_at": "2026-10-29T14:50:46.752329+00:00"
+  },
+  {
+    "file": "icons/briefcase-business.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/briefcase-business.svg",
+    "bytes": 388,
+    "sha256": "98388a2bf7b9d102d77772d125d26f59ea3bed0d8573a5fc8907003099ae9a54",
+    "retrieved_at": "2026-10-29T14:50:46.836201+00:00"
+  },
+  {
+    "file": "icons/mail.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/mail.svg",
+    "bytes": 316,
+    "sha256": "3236a51d5b8ce9b0528cf2e6ad07e527bd636dded6f5a9d656072052b99caea8",
+    "retrieved_at": "2026-10-29T14:50:46.880993+00:00"
+  },
+  {
+    "file": "icons/download.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/download.svg",
+    "bytes": 318,
+    "sha256": "3daeee13ded5a3afa2198b1bb4e2262d163922f97d96ac6ff9953e8ed4fe039d",
+    "retrieved_at": "2026-10-29T14:50:46.960023+00:00"
+  },
+  {
+    "file": "icons/x.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/x.svg",
+    "bytes": 260,
+    "sha256": "4a9cdab38fbb96162e7dace28e33f4ca0e49d8963a6162abc3d4691b7d675117",
+    "retrieved_at": "2026-10-29T14:50:47.041121+00:00"
+  },
+  {
+    "file": "icons/volume-2.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/volume-2.svg",
+    "bytes": 476,
+    "sha256": "fb404f9c128a0579de67b399177631e5edb3502fdc247ceb30e8b15754b46071",
+    "retrieved_at": "2026-10-29T14:50:47.123171+00:00"
+  },
+  {
+    "file": "icons/volume-x.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/volume-x.svg",
+    "bytes": 443,
+    "sha256": "f382e421b7aae01172989f2b749ee87e44c0c82c16970b13a9ad5a323b613be0",
+    "retrieved_at": "2026-10-29T14:50:47.211954+00:00"
+  },
+  {
+    "file": "icons/arrow-up.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/arrow-up.svg",
+    "bytes": 261,
+    "sha256": "8c22c25874c80bb062bef985d207d8f1d4a4d7847237d0a8cf720a3235968518",
+    "retrieved_at": "2026-10-29T14:50:47.254136+00:00"
+  },
+  {
+    "file": "icons/arrow-down.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/arrow-down.svg",
+    "bytes": 262,
+    "sha256": "2b641c7a59d39450edfed72067fcc9940a1a316a737346af23b4b9103c0689f2",
+    "retrieved_at": "2026-10-29T14:50:47.319379+00:00"
+  },
+  {
+    "file": "icons/arrow-left.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/arrow-left.svg",
+    "bytes": 262,
+    "sha256": "c5f4b88076108eb1a0d95336e1aa7e7bb1419a3a92af96f6247d88cd3456f933",
+    "retrieved_at": "2026-10-29T14:50:47.401950+00:00"
+  },
+  {
+    "file": "icons/arrow-right.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/arrow-right.svg",
+    "bytes": 261,
+    "sha256": "288397fdb73bb4f783cf9eabb726ff47357df1d4e3f1201dd748090579f108b9",
+    "retrieved_at": "2026-10-29T14:50:47.441934+00:00"
+  },
+  {
+    "file": "icons/external-link.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/external-link.svg",
+    "bytes": 332,
+    "sha256": "3891241b8c3bfc3a8a930078f26ffc5a7e9763da6d0162ace2050b28d4c1d1fe",
+    "retrieved_at": "2026-10-29T14:50:47.520143+00:00"
+  },
+  {
+    "file": "icons/menu.svg",
+    "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/menu.svg",
+    "bytes": 279,
+    "sha256": "af6491988ac1ba30dc5414f485bc48713e957e1edb0fbef4a0dd8691c3c21598",
+    "retrieved_at": "2026-10-29T14:50:47.597162+00:00"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "file": "fonts/Lexend-Variable.ttf",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/lexend/Lexend%5Bwght%5D.ttf",
+    "bytes": 175756,
+    "sha256": "3add53e641fbc81da64da4bb254285e2831b52b029527bc0714e2b9610832ee6",
+    "retrieved_at": "2026-10-29T14:50:46.201039+00:00"
+  },
+  {
+    "file": "fonts/Lexend-OFL.txt",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/lexend/OFL.txt",
+    "bytes": 4436,
+    "sha256": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+    "retrieved_at": "2026-10-29T14:50:46.289306+00:00"
+  },
+  {
+    "file": "fonts/Lexend-METADATA.pb",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/lexend/METADATA.pb",
+    "bytes": 949,
+    "sha256": "b49d2fc75e302d8961616bb2005309a8bd76c32787f0769fcb910a8b0f10fcb0",
+    "retrieved_at": "2026-10-29T14:50:46.378204+00:00"
+  },
+  {
+    "file": "fonts/PixelifySans-Variable.ttf",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/PixelifySans%5Bwght%5D.ttf",
+    "bytes": 79160,
+    "sha256": "9ba86cd010a4de309d263ceff8e8044092c9db7efda869620cb9ff1c4389e8a5",
+    "retrieved_at": "2026-10-29T14:50:46.407661+00:00"
+  },
+  {
+    "file": "fonts/PixelifySans-OFL.txt",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/OFL.txt",
+    "bytes": 4488,
+    "sha256": "b66ba46f511a851ab09998b5a5a9fdbb102545a3864cb993095e1745996873a7",
+    "retrieved_at": "2026-10-29T14:50:46.484074+00:00"
+  },
+  {
+    "file": "fonts/PixelifySans-METADATA.pb",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/METADATA.pb",
+    "bytes": 939,
+    "sha256": "adac079f2f599996ffa5952f8fdc66e643db2cdcd9a0bc84ad8ad4b8387567d4",
+    "retrieved_at": "2026-10-29T14:50:46.556526+00:00"
+  }
+]

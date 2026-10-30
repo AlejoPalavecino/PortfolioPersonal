@@ -1,0 +1,170 @@
+[
+  {
+    "file": "arrow-down.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "arrow-left.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "arrow-right.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "arrow-up.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "book-open.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "briefcase-business.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "download.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "external-link.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "mail.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "map.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "menu.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "volume-2.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "volume-x.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  },
+  {
+    "file": "x.svg",
+    "viewBox": [
+      0,
+      0,
+      24,
+      24
+    ],
+    "source": "Lucide",
+    "usage": "UI",
+    "license_file": "LICENSE-lucide.txt"
+  }
+]

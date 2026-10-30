@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "1.0",
+  "image": "camp-props-atlas.png",
+  "sourceSize": {
+    "w": 1536,
+    "h": 1024
+  },
+  "sha256": "9ad972f54e92ff9b7c3a5f1a1bdc53f9e3e71922945e64318a431900d5ad7595",
+  "coordinateConvention": "Source pixels; x/y top-left, w/h crop size. Anchors are relative to each crop.",
+  "layout": {
+    "rows": 2,
+    "columns": 4,
+    "rowSplitY": 602,
+    "names": [
+      "pine",
+      "leafy-tree",
+      "bush",
+      "rocks",
+      "lantern",
+      "plant",
+      "sign",
+      "bench"
+    ]
+  },
+  "fps": 1,
+  "defaultAnimation": "pine",
+  "frames": [
+    {
+      "name": "pine",
+      "row": 0,
+      "column": 0,
+      "x": 44,
+      "y": 18,
+      "w": 363,
+      "h": 564,
+      "anchorX": 184,
+      "anchorY": 557,
+      "solidBounds": {
+        "x": 46,
+        "y": 20,
+        "w": 359,
+        "h": 560
+      }
+    },
+    {
+      "name": "leafy-tree",
+      "row": 0,
+      "column": 1,
+      "x": 438,
+      "y": 167,
+      "w": 333,
+      "h": 408,
+      "anchorX": 170,
+      "anchorY": 395,
+      "solidBounds": {
+        "x": 440,
+        "y": 169,
+        "w": 329,
+        "h": 404
+      }
+    },
+    {
+      "name": "bush",
+      "row": 0,
+      "column": 2,
+      "x": 794,
+      "y": 366,
+      "w": 314,
+      "h": 224,
+      "anchorX": 158,
+      "anchorY": 212,
+      "solidBounds": {
+        "x": 796,
+        "y": 368,
+        "w": 310,
+        "h": 220
+      }
+    },
+    {
+      "name": "rocks",
+      "row": 0,
+      "column": 3,
+      "x": 1175,
+      "y": 417,
+      "w": 328,
+      "h": 165,
+      "anchorX": 165,
+      "anchorY": 154,
+      "solidBounds": {
+        "x": 1177,
+        "y": 419,
+        "w": 324,
+        "h": 161
+      }
+    },
+    {
+      "name": "lantern",
+      "row": 1,
+      "column": 0,
+      "x": 100,
+      "y": 614,
+      "w": 207,
+      "h": 351,
+      "anchorX": 87,
+      "anchorY": 339,
+      "solidBounds": {
+        "x": 102,
+        "y": 616,
+        "w": 203,
+        "h": 347
+      }
+    },
+    {
+      "name": "plant",
+      "row": 1,
+      "column": 1,
+      "x": 465,
+      "y": 719,
+      "w": 214,
+      "h": 242,
+      "anchorX": 113,
+      "anchorY": 234,
+      "solidBounds": {
+        "x": 467,
+        "y": 721,
+        "w": 210,
+        "h": 238
+      }
+    },
+    {
+      "name": "sign",
+      "row": 1,
+      "column": 2,
+      "x": 799,
+      "y": 653,
+      "w": 248,
+      "h": 308,
+      "anchorX": 101,
+      "anchorY": 298,
+      "solidBounds": {
+        "x": 801,
+        "y": 655,
+        "w": 244,
+        "h": 304
+      }
+    },
+    {
+      "name": "bench",
+      "row": 1,
+      "column": 3,
+      "x": 1120,
+      "y": 732,
+      "w": 378,
+      "h": 242,
+      "anchorX": 189,
+      "anchorY": 237,
+      "solidBounds": {
+        "x": 1122,
+        "y": 734,
+        "w": 374,
+        "h": 238
+      }
+    }
+  ],
+  "animations": {
+    "pine": [
+      0
+    ],
+    "leafy-tree": [
+      1
+    ],
+    "bush": [
+      2
+    ],
+    "rocks": [
+      3
+    ],
+    "lantern": [
+      4
+    ],
+    "plant": [
+      5
+    ],
+    "sign": [
+      6
+    ],
+    "bench": [
+      7
+    ]
+  },
+  "analysis": {
+    "alphaThreshold": 8,
+    "cropPaddingPixels": 2,
+    "separatorX": [
+      0,
+      422,
+      782,
+      1114,
+      1536
+    ],
+    "separatorY": [
+      0,
+      602,
+      1024
+    ],
+    "noImageModification": true,
+    "anchorMethod": "Ground-contact positions selected from the original artwork; tree anchors follow trunk bases; other anchors locate the lower footprint.",
+    "allFramesInsideSource": true
+  },
+  "qualityNotes": [
+    "Se verificaron visualmente ocho objetos. La separación real entre filas está alrededor de y=602, no y=512.",
+    "Las sombras de apoyo están integradas en cada recorte. Los valores de anclaje son una propuesta de colocación que se ajusta al terreno durante la integración.",
+    "El atlas contiene transparencia alpha real. Los colores amplios visibles en algunas previsualizaciones pueden corresponder a RGB oculto detrás de alpha 0.",
+    "Los objetos tienen tamaños diferentes; conservar proporciones y una escala de mundo coherente al colocarlos."
+  ]
+}

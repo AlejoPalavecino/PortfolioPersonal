@@ -1,0 +1,1551 @@
+{
+  "meta": {
+    "schema_version": "1.8.0",
+    "locale": "es-AR",
+    "updated_at": "2026-10-29",
+    "status": "editorial_draft_with_partial_user_confirmation",
+    "site_implemented": false,
+    "current_facts_verified": false,
+    "note": "Borrador editorial actualizado con las confirmaciones de Alejo y la distribución base adoptada del Hito 10 de mapa jugable. DEC-26 confirma caminata manual y selección de sección por clic con desplazamiento y apertura al llegar. DEC-27 registra el avance de planificación y DEC-28 adopta el claro central, la posición central del personaje y la organización relativa de los cuatro destinos en las referencias de escritorio y celular. Las coordenadas, huellas y radios se conservan como referencias ajustables durante la integración; los tiempos y las reglas complementarias de 09 siguen como propuestas. No hay implementación ni comprobación funcional. Se conservan los focos profesionales y las políticas de publicación de los casos; las confirmaciones del usuario se distinguen de la verificación independiente. El JSON original del kit permanece como fuente histórica.",
+    "content_revision": "1.8",
+    "functionally_verified": false,
+    "current_facts_confirmation": "partial_user_confirmation",
+    "preferred_working_copy": true,
+    "derived_from": {
+      "file": "content/portfolio.es.json",
+      "path_base": "original_kit",
+      "schema_version": "1.0.0",
+      "sha256": "d228548d4004e9a474e5f106c7fcb1fe356c1f201b389de68a02c3c27bbc7d8d"
+    },
+    "path_bases": {
+      "this_directory": ".",
+      "original_kit": "../../portfolio-campamento",
+      "handoff": ".."
+    },
+    "path_semantics": {
+      "base_paths_are_relative_to": "directory_containing_this_json",
+      "references_are": "package_filesystem_references_not_public_urls",
+      "legacy_asset_default_base": "original_kit",
+      "legacy_package_root_alias": "original_kit",
+      "original_kit_and_handoff_are_siblings": true,
+      "public_url_mapping_status": "pending_implementation"
+    },
+    "reference_documents": [
+      {
+        "file": "01_PRODUCTO_Y_DECISIONES.md",
+        "path_base": "handoff"
+      },
+      {
+        "file": "02_EXPERIENCIA_Y_PANTALLAS.md",
+        "path_base": "handoff"
+      },
+      {
+        "file": "04_CONTENIDO_Y_PENDIENTES.md",
+        "path_base": "handoff"
+      },
+      {
+        "file": "08_HITO_CONTENIDO_PROFESIONAL.md",
+        "path_base": "handoff"
+      },
+      {
+        "file": "09_HITO_EXPERIENCIA_E_INTERACCIONES.md",
+        "path_base": "handoff"
+      },
+      {
+        "file": "03_DIRECCION_VISUAL_Y_ASSETS.md",
+        "path_base": "handoff"
+      },
+      {
+        "file": "10_HITO_MAPA_JUGABLE.md",
+        "path_base": "handoff"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "cv-provided",
+      "type": "user_provided_document",
+      "filename": "CV_Alejo_Palavecino_ES.pdf",
+      "package_path": "content/cv-alejo-palavecino-es.pdf",
+      "pages": [
+        1
+      ],
+      "document_date": null,
+      "reviewed_on": "2026-10-29",
+      "externally_verified": false,
+      "path_base": "original_kit"
+    },
+    {
+      "id": "portfolio-brief",
+      "type": "user_instructions",
+      "summary": "Portfolio personal con experiencia de juego pixel art, concepto Campamento creativo y objetivo dual de empleo y clientes."
+    },
+    {
+      "id": "user-visual-revision2-2026-10-29",
+      "type": "user_instructions",
+      "confirmed_on": "2026-10-29",
+      "summary": "Alejo adoptó la dirección visual de la revisión 2: ficha integrada y su proporción general, emblema de carpa y montaña, nombre completo una vez en la presentación y cabecera móvil con Contacto, CV y Menú.",
+      "scope": "visual_direction_only",
+      "functionally_verified": false
+    },
+    {
+      "id": "user-content-confirmation-2026-10-29",
+      "type": "user_provided_confirmation",
+      "confirmed_on": "2026-10-29",
+      "summary": "Alejo prioriza desarrollo full stack, análisis y automatización/IA; confirma oferta general de desarrollo a medida y servicios relacionados, e interés por Tech Lead, PO y roles afines. Confirma FoxMind previo a pruebas piloto y posterga sus capturas. Selecciona como segundo caso un sistema de control de stock y facturación con conexión a ARCA.",
+      "confirmation_scope": [
+        "prioridades profesionales",
+        "oferta general relacionada",
+        "intereses de roles adicionales",
+        "estado prepiloto de FoxMind",
+        "capturas de FoxMind diferidas",
+        "selección y alcance general declarado del segundo caso"
+      ],
+      "functionally_verified": false,
+      "externally_verified": false
+    },
+    {
+      "id": "dossier-editorial-2026-10-29",
+      "type": "editorial_proposal",
+      "prepared_on": "2026-10-29",
+      "summary": "Redacción y organización de contenido a partir del CV, las decisiones visuales y las confirmaciones de Alejo. Incluye jerarquía Ver proyectos/Contactar, agrupación de servicios y títulos descriptivos; no transforma propuestas en hechos confirmados.",
+      "reference_documents": [
+        {
+          "file": "04_CONTENIDO_Y_PENDIENTES.md",
+          "path_base": "handoff"
+        },
+        {
+          "file": "08_HITO_CONTENIDO_PROFESIONAL.md",
+          "path_base": "handoff"
+        }
+      ]
+    },
+    {
+      "id": "user-flower-followup-2026-10-29",
+      "type": "user_provided_confirmation",
+      "confirmed_on": "2026-10-29",
+      "summary": "Alejo confirma que el segundo caso fue realizado para la librería Flower, que el sistema no tiene nombre propio, que trabajó solo y desarrolló el sistema completo, y que la conexión con ARCA factura automáticamente las ventas de la librería.",
+      "confirmation_scope": [
+        "cliente Flower y tipo de negocio librería",
+        "ausencia de nombre propio del sistema",
+        "desarrollo completo realizado individualmente por Alejo",
+        "facturación automática de las ventas de Flower mediante la conexión con ARCA"
+      ],
+      "functionally_verified": false,
+      "externally_verified": false
+    },
+    {
+      "id": "user-flower-production-2026-10-29",
+      "type": "user_provided_confirmation",
+      "confirmed_on": "2026-10-29",
+      "summary": "Alejo confirma React, Node.js y PostgreSQL para Flower. Ante la consulta sobre uso actual y entorno de ARCA, confirma que está en producción y funcionando.",
+      "production_confirmation_quote": "Sí está en producción funcionando",
+      "confirmation_scope": [
+        "tecnologías React, Node.js y PostgreSQL",
+        "sistema en producción y en uso real",
+        "entorno de producción de la conexión con ARCA"
+      ],
+      "confirmation_context": "La respuesta sobre producción se recibió ante una pregunta que incluía el uso del sistema y el entorno de la conexión con ARCA.",
+      "functionally_verified": false,
+      "externally_verified": false
+    },
+    {
+      "id": "user-foxmind-scope-2026-10-29",
+      "type": "user_provided_confirmation",
+      "confirmed_on": "2026-10-29",
+      "summary": "Alejo confirma que FoxMind no es un proyecto abierto, que puede mostrar algunas capturas y nada más, y que se ha encargado del desarrollo completo hasta ahora, incluida la integración de IA.",
+      "confirmation_scope": [
+        "desarrollo completo realizado por Alejo hasta la etapa actual",
+        "integración de IA incluida en ese desarrollo",
+        "proyecto no abierto",
+        "material de exhibición limitado a algunas capturas seleccionadas por Alejo"
+      ],
+      "publication_scope": "Resumen profesional general, rol y estado acompañados únicamente por las capturas que Alejo seleccione.",
+      "functionally_verified": false,
+      "externally_verified": false
+    },
+    {
+      "id": "editorial-interactions-2026-10-29",
+      "type": "editorial_proposal",
+      "prepared_on": "2026-10-29",
+      "status": "prepared_recommended_proposal",
+      "summary": "Propuesta de detalles de experiencia del Hito 09 a partir de DEC-26: selección de destinos con caminata automática, controles de exploración manual, adaptación táctil, recorrido breve, omisión y cancelación, lectura estable, ambiente y recuperación. La dirección de caminar y abrir al llegar está confirmada por una fuente de usuario separada. Los detalles, la aplicación del recorrido al cambiar entre secciones y la jerarquía del hero no tienen aprobación específica.",
+      "scope": "interaction_specification_only",
+      "user_approval_status": "editorial_details_not_explicitly_approved",
+      "implementation_status": "not_implemented",
+      "functionally_verified": false,
+      "reference_documents": [
+        {
+          "file": "09_HITO_EXPERIENCIA_E_INTERACCIONES.md",
+          "path_base": "handoff"
+        },
+        {
+          "file": "02_EXPERIENCIA_Y_PANTALLAS.md",
+          "path_base": "handoff"
+        }
+      ]
+    },
+    {
+      "id": "user-navigation-2026-10-29",
+      "type": "user_provided_confirmation",
+      "confirmed_on": "2026-10-29",
+      "summary": "Alejo quiere poder caminar como en un juego y que, al hacer clic en una sección, el personaje camine hasta ella y la sección se abra recién al llegar.",
+      "decision_id": "DEC-26",
+      "confirmation_scope": [
+        "caminata manual como experiencia de juego",
+        "selección de una sección mediante clic",
+        "desplazamiento automático del personaje hacia la sección seleccionada",
+        "apertura de la sección al llegar al destino"
+      ],
+      "not_confirmed_by_this_response": [
+        "teclas concretas",
+        "control manual táctil o joystick",
+        "tiempo de recorrido",
+        "acción para omitir o cancelar el recorrido",
+        "comportamiento al cambiar de sección desde una ficha",
+        "movimiento reducido y recuperación de fallos",
+        "jerarquía de acciones del hero"
+      ],
+      "functionally_verified": false,
+      "implementation_status": "not_implemented"
+    },
+    {
+      "id": "user-map-advance-2026-10-29",
+      "type": "user_instructions",
+      "confirmed_on": "2026-10-29",
+      "decision_id": "DEC-27",
+      "summary": "Alejo pide continuar al siguiente hito: la preparación del mapa jugable del campamento.",
+      "confirmation_scope": [
+        "avance al hito de mapa jugable"
+      ],
+      "not_confirmed_by_this_response": [
+        "posiciones y geometría del mapa",
+        "todas las reglas de detalle del Hito 09",
+        "tiempos medidos, implementación o pruebas"
+      ],
+      "functionally_verified": false
+    },
+    {
+      "id": "editorial-map-2026-10-29",
+      "type": "editorial_proposal",
+      "prepared_on": "2026-10-29",
+      "status": "prepared_reference_with_base_layout_adopted",
+      "summary": "Referencia documental del Hito 10: claro central con cuatro ramales, suelo, huellas, inicio y llegadas, con marcos propios de planificación para escritorio y móvil. La distribución base fue adoptada mediante DEC-28; los datos geométricos se ajustarán al terreno ilustrado y se comprobarán en la implementación.",
+      "scope": "map_planning_only",
+      "user_approval_status": "base_layout_adopted_via_user_map_adoption_source",
+      "implementation_status": "not_implemented",
+      "functionally_verified": false,
+      "reference_documents": [
+        {
+          "file": "10_HITO_MAPA_JUGABLE.md",
+          "path_base": "handoff"
+        },
+        {
+          "file": "maps/world-navigation-proposal.json",
+          "path_base": "handoff"
+        },
+        {
+          "file": "maps/README.md",
+          "path_base": "handoff"
+        }
+      ],
+      "approval_source_id": "user-map-adoption-2026-10-29"
+    },
+    {
+      "id": "user-map-adoption-2026-10-29",
+      "type": "user_provided_confirmation",
+      "confirmed_on": "2026-10-29",
+      "decision_id": "DEC-28",
+      "summary": "Alejo respondió «Si me cierra bien» a la pregunta sobre adoptar esta distribución como mapa base: personaje en el claro central, taller con protagonismo y los otros tres destinos alrededor. Se adoptan las relaciones espaciales representadas en las láminas de escritorio y celular.",
+      "confirmation_scope": [
+        "distribución base del campamento alrededor de un claro central",
+        "personaje en una posición central al entrar",
+        "taller de Proyectos arriba a la derecha con protagonismo visual",
+        "carpa y fogón de Sobre mí a la izquierda",
+        "bitácora de Trayectoria abajo a la izquierda",
+        "radio de Contacto abajo a la derecha",
+        "referencias de escritorio y celular como base de distribución"
+      ],
+      "not_confirmed_by_this_response": [
+        "coordenadas, huellas y radios exactos como valores definitivos de implementación",
+        "todas las reglas complementarias del Hito 09 y los controles táctiles",
+        "tiempos reales de recorrido, implementación o pruebas",
+        "publicación del portfolio"
+      ],
+      "integration_scope": "Los ajustes geométricos para alinear terreno, recursos y escala del avatar corresponden al agente de desarrollo; solo cambios materiales de la organización adoptada requieren volver a la definición de diseño.",
+      "functionally_verified": false
+    }
+  ],
+  "identity": {
+    "name": "Alejo Palavecino",
+    "short_name": "Alejo",
+    "headline_from_cv": "Desarrollador Full Stack | Automatización e IA | Análisis Funcional",
+    "location_from_cv": {
+      "city": "Godoy Cruz",
+      "province": "Mendoza",
+      "current_status": "pending_confirmation"
+    },
+    "source_ids": [
+      "cv-provided"
+    ],
+    "official_personal_logo": null,
+    "portrait_asset": "assets/character/alejo-portrait.png",
+    "avatar_asset": "assets/character/avatar-movement-atlas.png",
+    "avatar_reference_photo_included": false,
+    "avatar_metadata": "assets/character/avatar-movement-atlas.json",
+    "personal_monogram_asset": "assets/brand/favicon-master.png",
+    "personal_monogram_status": "generated_for_this_portfolio",
+    "asset_path_base": "original_kit",
+    "professional_positioning": {
+      "label": "Desarrollo full stack · Análisis funcional · Automatización e IA",
+      "priority_status": "confirmed_by_user",
+      "wording_status": "editorial_proposal",
+      "source_ids": [
+        "user-content-confirmation-2026-10-29",
+        "dossier-editorial-2026-10-29"
+      ]
+    },
+    "navigation_emblem": {
+      "asset": "assets/brand/camp-emblem-master.png",
+      "path_base": "handoff",
+      "visual_direction_status": "adopted_by_user",
+      "resource_status": "generated_master_for_integration",
+      "accessible_name": "Volver al campamento",
+      "source_ids": [
+        "user-visual-revision2-2026-10-29"
+      ],
+      "web_derivative_status": "pending_implementation"
+    }
+  },
+  "hero": {
+    "eyebrow": null,
+    "title": "Desarrollo software. Transformo ideas en productos.",
+    "description": "Full stack · Análisis · Automatización e IA",
+    "primary_action": {
+      "label": "Ver proyectos",
+      "target": "#proyectos",
+      "status": "editorial_proposal"
+    },
+    "secondary_action": {
+      "label": "Contactar",
+      "target": "#contacto",
+      "status": "editorial_proposal"
+    },
+    "copy_status": "editorial_proposal_based_on_confirmed_priorities",
+    "source_ids": [
+      "cv-provided",
+      "portfolio-brief",
+      "user-visual-revision2-2026-10-29",
+      "user-content-confirmation-2026-10-29",
+      "dossier-editorial-2026-10-29"
+    ],
+    "show_eyebrow": false,
+    "name": "Alejo Palavecino",
+    "name_placement": "hero_only_no_name_wordmark_in_navigation",
+    "action_hierarchy_status": "editorial_proposal_pending_review"
+  },
+  "navigation": [
+    {
+      "id": "projects",
+      "label": "Proyectos",
+      "target": "#proyectos"
+    },
+    {
+      "id": "about",
+      "label": "Sobre mí",
+      "target": "#sobre-mi"
+    },
+    {
+      "id": "journey",
+      "label": "Trayectoria",
+      "target": "#trayectoria"
+    },
+    {
+      "id": "contact",
+      "label": "Contacto",
+      "target": "#contacto"
+    }
+  ],
+  "world": {
+    "name": "Campamento creativo",
+    "style": "pixel_art",
+    "perspective": "elevated_three_quarter",
+    "lighting": "warm_daylight",
+    "destinations": [
+      {
+        "id": "projects",
+        "label": "Proyectos",
+        "object": "taller",
+        "content_target": "#proyectos",
+        "asset": "assets/destinations/poi-projects.png",
+        "featured_project_id": "foxmind"
+      },
+      {
+        "id": "about",
+        "label": "Sobre mí",
+        "object": "carpa_y_fogon",
+        "content_target": "#sobre-mi",
+        "asset": "assets/destinations/poi-about.png"
+      },
+      {
+        "id": "journey",
+        "label": "Trayectoria",
+        "object": "mesa_bitacora",
+        "content_target": "#trayectoria",
+        "asset": "assets/destinations/poi-journey.png"
+      },
+      {
+        "id": "contact",
+        "label": "Contacto",
+        "object": "puesto_comunicacion",
+        "content_target": "#contacto",
+        "asset": "assets/destinations/poi-contact.png"
+      }
+    ],
+    "labels_render_as": "html_text",
+    "mandatory_unlocks": false,
+    "sound_enabled_by_default": false,
+    "movement_reduction_required": true,
+    "implementation_status": "specified_not_implemented",
+    "asset_path_base": "original_kit"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "body": "Soy estudiante de Ingeniería en Sistemas de Información y desarrollador de software. Me interesa construir productos que conecten una necesidad concreta con una solución clara. Trabajo en desarrollo full stack, análisis funcional, automatización e inteligencia artificial aplicada. Soy cofundador de FoxMind, una plataforma educativa orientada a personalizar el aprendizaje y acompañar el trabajo docente.",
+    "copy_status": "editorial_proposal_based_on_cv_and_confirmed_priorities",
+    "source_ids": [
+      "cv-provided",
+      "user-content-confirmation-2026-10-29",
+      "dossier-editorial-2026-10-29"
+    ],
+    "additional_personal_story": ""
+  },
+  "professional_focus": {
+    "employment": {
+      "title": "Oportunidades laborales",
+      "body": "Me interesan oportunidades de desarrollo full stack, análisis funcional y automatización/IA, junto con responsabilidades relacionadas con la evolución de producto y la coordinación técnica.",
+      "cta": "Conversar sobre una oportunidad",
+      "desired_roles": [
+        "Desarrollo full stack",
+        "Análisis funcional",
+        "Automatización e IA aplicada"
+      ],
+      "availability": null,
+      "work_mode_preference": null,
+      "copy_status": "editorial_proposal_based_on_confirmed_interests",
+      "desired_roles_status": "confirmed_priority_areas_with_editorial_role_labels",
+      "desired_roles_source_ids": [
+        "user-content-confirmation-2026-10-29"
+      ],
+      "additional_role_interests": [
+        {
+          "label": "Tech Lead",
+          "interest_status": "confirmed_by_user",
+          "experience_status": "not_established_by_available_material",
+          "seniority": null,
+          "source_ids": [
+            "user-content-confirmation-2026-10-29"
+          ]
+        },
+        {
+          "label": "Product Owner",
+          "interest_status": "confirmed_by_user",
+          "experience_status": "not_established_by_available_material",
+          "seniority": null,
+          "source_ids": [
+            "user-content-confirmation-2026-10-29"
+          ]
+        }
+      ],
+      "open_to_related_roles": true,
+      "additional_role_interests_are_experience_claims": false
+    },
+    "clients": {
+      "title": "Proyectos para tu negocio",
+      "body": "Desarrollo a medida y servicios relacionados con análisis, automatización e inteligencia artificial aplicada, con alcance definido para cada proyecto.",
+      "cta": "Consultar por un proyecto",
+      "service_offerings_confirmed": false,
+      "service_scope": [
+        {
+          "id": "custom-development",
+          "title": "Desarrollo a medida",
+          "summary": "Sistemas y herramientas de software adaptados a una necesidad concreta.",
+          "status": "editorial_grouping_of_confirmed_general_offer",
+          "source_ids": [
+            "user-content-confirmation-2026-10-29",
+            "dossier-editorial-2026-10-29"
+          ]
+        },
+        {
+          "id": "analysis-product-definition",
+          "title": "Análisis y definición de producto",
+          "summary": "Relevamiento de necesidades, organización de requisitos y definición de flujos.",
+          "status": "editorial_grouping_of_confirmed_general_offer",
+          "source_ids": [
+            "cv-provided",
+            "user-content-confirmation-2026-10-29",
+            "dossier-editorial-2026-10-29"
+          ]
+        },
+        {
+          "id": "automation-integrations",
+          "title": "Automatización e integraciones",
+          "summary": "Automatización de tareas y conexión entre herramientas según el alcance de cada proyecto.",
+          "status": "editorial_grouping_of_confirmed_general_offer",
+          "source_ids": [
+            "user-content-confirmation-2026-10-29",
+            "dossier-editorial-2026-10-29"
+          ]
+        },
+        {
+          "id": "applied-ai",
+          "title": "IA aplicada",
+          "summary": "Evaluación e incorporación de inteligencia artificial en flujos o productos con una función definida.",
+          "status": "editorial_grouping_of_confirmed_general_offer",
+          "source_ids": [
+            "cv-provided",
+            "user-content-confirmation-2026-10-29",
+            "dossier-editorial-2026-10-29"
+          ]
+        }
+      ],
+      "rates": null,
+      "copy_status": "editorial_proposal_based_on_confirmed_general_offer",
+      "general_offer": "Desarrollo a medida y servicios relacionados con full stack, análisis y automatización/IA.",
+      "general_offer_confirmed": true,
+      "general_offer_source_ids": [
+        "user-content-confirmation-2026-10-29"
+      ],
+      "service_offerings_confirmation_scope": "La oferta general está confirmada; esta agrupación editorial y sus alcances concretos siguen sujetos a definición.",
+      "delivery_scope_status": "to_be_defined_per_project"
+    },
+    "source_ids": [
+      "cv-provided",
+      "portfolio-brief",
+      "user-content-confirmation-2026-10-29",
+      "dossier-editorial-2026-10-29"
+    ],
+    "priority_areas": [
+      "Desarrollo full stack",
+      "Análisis funcional",
+      "Automatización e IA"
+    ],
+    "priority_status": "confirmed_by_user"
+  },
+  "skills": [
+    {
+      "group": "Lenguajes",
+      "items": [
+        "Java",
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "C++"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Frontend",
+      "items": [
+        "React",
+        "Next.js",
+        "UX/UI",
+        "Diseño de flujos"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Backend y datos",
+      "items": [
+        "Node.js",
+        "FastAPI",
+        "Spring Boot",
+        "APIs REST",
+        "PostgreSQL"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Calidad y DevOps",
+      "items": [
+        "JUnit",
+        "TDD",
+        "Pruebas E2E",
+        "Docker",
+        "Git",
+        "GitHub Actions"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Desarrollo asistido por IA",
+      "items": [
+        "OpenCode",
+        "Gentle-AI",
+        "SDD",
+        "Engram",
+        "MCPs",
+        "Subagentes",
+        "Skills"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "group": "Análisis funcional",
+      "items": [
+        "Relevamiento",
+        "Definición de requisitos",
+        "Especificación de funcionalidades",
+        "Modelado de flujos",
+        "Automatización de procesos"
+      ],
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "experience-foxmind",
+      "organization": "FoxMind",
+      "role": "Cofundador y responsable del desarrollo",
+      "location_from_cv": "Mendoza",
+      "start_year": 2024,
+      "end_year": null,
+      "period_label_from_cv": "2024 - Actualidad",
+      "currently_active": null,
+      "current_status": "pending_confirmation",
+      "responsibilities_from_cv": [
+        "Participación en análisis funcional, definición de producto, UX/UI, arquitectura y desarrollo de la plataforma.",
+        "Desarrollo de funcionalidades para aulas, carpetas de estudio, Foxy IA, monitoreo de riesgo, agendas y herramientas para docentes.",
+        "Uso de SDD y TDD en funcionalidades complejas, con apoyo de OpenCode y Gentle-AI."
+      ],
+      "source_ids": [
+        "cv-provided",
+        "user-foxmind-scope-2026-10-29"
+      ],
+      "role_from_cv": "Cofundador, Product Builder y Desarrollador Full Stack",
+      "role_status": "editorial_wording_based_on_cv_and_confirmed_contribution",
+      "public_summary": "Me encargué del desarrollo completo de FoxMind hasta esta etapa, incluida la integración de IA.",
+      "public_summary_status": "editorial_wording_of_user_confirmed_contribution",
+      "responsibilities_from_cv_status": "historical_internal_reference_only",
+      "publication_policy": {
+        "project_id": "foxmind",
+        "inherit_project_publication_scope": true,
+        "public_content_fields": [
+          "organization",
+          "role",
+          "public_summary"
+        ],
+        "responsibilities_from_cv_usage": "historical_internal_reference_only",
+        "period_fields_usage": "review_with_professional_data_before_publication",
+        "note": "La sección Trayectoria respeta el mismo alcance de FoxMind. Usar el resumen público preparado; no publicar módulos, arquitectura o herramientas desde las responsabilidades históricas del CV."
+      }
+    },
+    {
+      "id": "experience-freelance",
+      "organization": "Trabajo independiente",
+      "role": "Desarrollador Web Freelance",
+      "location_from_cv": "Mendoza",
+      "start_year": 2022,
+      "end_year": 2025,
+      "responsibilities_from_cv": [
+        "Desarrollo de landing pages, catálogos y formularios de contacto o WhatsApp.",
+        "SEO básico, despliegue y hosting administrado.",
+        "Relevamiento de necesidades, comunicación con clientes y entregas iterativas."
+      ],
+      "named_case_studies": [],
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "foxmind",
+      "title": "FoxMind",
+      "featured": true,
+      "category": "Tecnología educativa",
+      "summary": "Plataforma educativa orientada a personalizar el aprendizaje y apoyar el trabajo docente. Actualmente se encuentra en la etapa previa a pruebas piloto.",
+      "role_from_cv": "Cofundador, Product Builder y Desarrollador Full Stack",
+      "problem": "El proyecto busca acompañar distintos ritmos de aprendizaje y abordar parte de la carga operativa del trabajo docente.",
+      "my_contribution": "Me encargué del desarrollo completo de FoxMind hasta esta etapa, incluida la integración de IA.",
+      "team_role_details": "",
+      "key_decisions": [],
+      "technologies_from_cv": [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Modelos de IA"
+      ],
+      "current_technologies_verified": false,
+      "stage_from_cv": "Etapa previa a pruebas piloto",
+      "current_stage": "Etapa previa a pruebas piloto",
+      "current_stage_status": "confirmed_by_user",
+      "outcomes": [],
+      "metrics": [],
+      "screenshots": [],
+      "cover_image": null,
+      "official_logo": null,
+      "official_foxy_asset": null,
+      "links": {
+        "website_from_cv": "https://foxmind.site",
+        "website_verified": false,
+        "repository": null,
+        "demo": null,
+        "website_source_ids": [
+          "cv-provided"
+        ],
+        "website_publication_status": "historical_reference_only_not_selected_for_publication",
+        "public_links_enabled": false
+      },
+      "recognition_ids": [
+        "ilan-2026"
+      ],
+      "publication_status": "prepared_pending_selected_screenshots_and_final_review",
+      "source_ids": [
+        "cv-provided",
+        "user-content-confirmation-2026-10-29",
+        "user-foxmind-scope-2026-10-29",
+        "dossier-editorial-2026-10-29"
+      ],
+      "problem_status": "editorial_general_summary_based_on_cv",
+      "current_stage_confirmation": {
+        "confirmed_on": "2026-10-29",
+        "source_ids": [
+          "user-content-confirmation-2026-10-29"
+        ],
+        "scope": "Estado del proyecto declarado por Alejo; no acredita pruebas piloto realizadas ni funcionamiento de módulos."
+      },
+      "current_version_identifier": null,
+      "current_version_status": "contextualize_when_selected_screenshots_are_provided",
+      "functionally_verified": false,
+      "screenshots_status": "awaiting_user_selected_screenshots",
+      "screenshots_source_ids": [
+        "user-content-confirmation-2026-10-29",
+        "user-foxmind-scope-2026-10-29"
+      ],
+      "screenshots_note": "Alejo puede mostrar algunas capturas. Se utilizarán únicamente las que seleccione, con un pie breve y contexto de la versión mostrada cuando las aporte. Las capturas son la evidencia prevista para este caso; no se requiere material adicional.",
+      "public_ready": false,
+      "pending_fields": [
+        "capturas seleccionadas por Alejo",
+        "contexto y pies de las capturas, con identificación de la versión mostrada cuando se aporten",
+        "revisión editorial final"
+      ],
+      "summary_status": "editorial_general_summary_based_on_cv_and_confirmed_stage",
+      "role": "Cofundador y responsable del desarrollo",
+      "role_status": "editorial_wording_based_on_cv_and_confirmed_contribution",
+      "role_source_ids": [
+        "cv-provided",
+        "user-foxmind-scope-2026-10-29"
+      ],
+      "my_contribution_status": "confirmed_by_user",
+      "my_contribution_wording_status": "editorial_wording_of_user_confirmation",
+      "my_contribution_source_ids": [
+        "user-foxmind-scope-2026-10-29"
+      ],
+      "my_contribution_confirmed_on": "2026-10-29",
+      "contribution_scope": {
+        "complete_development_to_current_stage": true,
+        "ai_integration_included": true,
+        "status": "confirmed_by_user",
+        "source_ids": [
+          "user-foxmind-scope-2026-10-29"
+        ],
+        "team_arrangement_status": "not_specified"
+      },
+      "problem_display_label": "Objetivo del proyecto",
+      "technologies_status": "historical_cv_information_not_reconfirmed",
+      "technologies_publication_status": "outside_current_case_exhibition_scope",
+      "project_access_status": "not_open_confirmed_by_user",
+      "sharing_scope": "general_summary_and_selected_screenshots_only",
+      "sharing_scope_status": "confirmed_by_user",
+      "sharing_scope_source_ids": [
+        "user-foxmind-scope-2026-10-29"
+      ],
+      "publication_policy": {
+        "scope": "general_summary_role_stage_and_user_selected_screenshots",
+        "source_ids": [
+          "user-foxmind-scope-2026-10-29"
+        ],
+        "public_content_fields": [
+          "title",
+          "category",
+          "summary",
+          "role",
+          "problem",
+          "my_contribution",
+          "current_stage",
+          "screenshots",
+          "cover_image"
+        ],
+        "screenshots_selected_by": "Alejo",
+        "cover_image_source": "one_of_user_selected_screenshots_if_used",
+        "public_links_enabled": false,
+        "website_from_cv_usage": "historical_internal_reference_only",
+        "technologies_from_cv_usage": "historical_internal_reference_only",
+        "technical_details_in_current_public_scope": false,
+        "note": "Presentar una ficha breve con alcance general, rol, estado y capturas seleccionadas. No convertir datos históricos o detalles internos en contenido público automáticamente."
+      },
+      "evidence_policy": {
+        "mode": "screenshots_only",
+        "allows_screenshots_only": true,
+        "selection_by": "Alejo",
+        "image_context": "brief_caption_and_version_context_when_images_are_provided",
+        "additional_material_required": false,
+        "do_not_request": [
+          "repository",
+          "source_code",
+          "demo",
+          "architecture",
+          "model_details"
+        ],
+        "source_ids": [
+          "user-foxmind-scope-2026-10-29"
+        ]
+      },
+      "editorial_base_status": "prepared",
+      "confirmed_scope_status": "confirmed_by_user",
+      "editorial_copy_fields": [
+        "title",
+        "category",
+        "summary",
+        "role",
+        "problem",
+        "my_contribution",
+        "current_stage"
+      ],
+      "internal_notes": [
+        "El aporte general está confirmado: desarrollo completo hasta la etapa actual, incluida la integración de IA. No volver a pedir ejemplos funcionales ni demostraciones para resolver este dato.",
+        "La confirmación no establece que Alejo haya trabajado solo ni acredita otros roles, módulos o un estado de producción. El rol de cofundador se conserva con la fuente del CV y el proyecto mantiene su etapa previa a pruebas piloto.",
+        "Las tecnologías del CV y el enlace histórico se conservan como información interna. No se heredan las confirmaciones de tecnologías de Flower ni se amplía la ficha con arquitectura, modelos, módulos internos, código o enlaces no seleccionados para exhibición.",
+        "La ficha pública admite el resumen profesional general, el rol, el estado y las capturas que Alejo seleccione. No se necesita repositorio, código, demo ni material técnico adicional.",
+        "functionally_verified:false registra que no se realizó una comprobación independiente; no anula la confirmación de Alejo sobre su aporte.",
+        "La base editorial está preparada. public_ready permanece en false hasta recibir las capturas seleccionadas, añadir su contexto breve y realizar la revisión editorial final."
+      ]
+    },
+    {
+      "id": "project-02",
+      "title": "Sistema de stock y facturación para Flower",
+      "featured": false,
+      "category": "Sistemas de gestión",
+      "summary": "Sistema de control de stock y facturación para la librería Flower, desarrollado de forma individual con React, Node.js y PostgreSQL. Está en producción y la conexión con ARCA factura automáticamente las ventas de la librería.",
+      "role": "Desarrollo integral individual",
+      "problem": "Control de stock y facturación de ventas para la librería Flower",
+      "my_contribution": "Desarrollé el sistema completo de forma individual.",
+      "key_decisions": [],
+      "technologies": [
+        "React",
+        "Node.js",
+        "PostgreSQL"
+      ],
+      "current_stage": "En producción",
+      "outcomes": [],
+      "metrics": [],
+      "screenshots": [],
+      "cover_image": null,
+      "links": {
+        "website": null,
+        "repository": null,
+        "demo": null
+      },
+      "publication_status": "editorial_base_complete_pending_real_evidence_and_final_review",
+      "source_ids": [
+        "user-content-confirmation-2026-10-29",
+        "user-flower-followup-2026-10-29",
+        "user-flower-production-2026-10-29",
+        "dossier-editorial-2026-10-29"
+      ],
+      "title_status": "editorial_descriptive_title_for_system_without_proper_name",
+      "official_name": null,
+      "category_status": "editorial_label",
+      "summary_status": "editorial_summary_of_user_confirmed_scope_technologies_and_production",
+      "selection_status": "selected_by_user_for_editorial_development",
+      "selection_confirmed_on": "2026-10-29",
+      "scope_reported_by_user": [
+        "Control de stock",
+        "Facturación",
+        "Facturación automática de las ventas de la librería Flower mediante la conexión con ARCA"
+      ],
+      "scope_confirmation": {
+        "status": "reported_by_user",
+        "source_ids": [
+          "user-content-confirmation-2026-10-29",
+          "user-flower-followup-2026-10-29"
+        ],
+        "functionally_verified": false
+      },
+      "client_or_context": "Librería Flower",
+      "target_users": null,
+      "period": null,
+      "role_status": "confirmed_by_user",
+      "current_stage_status": "confirmed_by_user",
+      "current_technologies_verified": false,
+      "functionally_verified": false,
+      "arca_connection": {
+        "reported_by_user": true,
+        "source_ids": [
+          "user-content-confirmation-2026-10-29",
+          "user-flower-followup-2026-10-29",
+          "user-flower-production-2026-10-29"
+        ],
+        "scope": "Facturación automática de las ventas de la librería Flower",
+        "environment": "production",
+        "provider_or_api": null,
+        "functionally_verified": false,
+        "tests_or_evidence": [],
+        "status_note": "Alejo confirmó que la conexión con ARCA factura automáticamente las ventas de Flower y, ante la consulta sobre uso y entorno, que el sistema está en producción y funcionando. La función y el entorno están confirmados por el usuario; no se realizó una comprobación funcional independiente.",
+        "scope_status": "reported_by_user",
+        "scope_source_ids": [
+          "user-flower-followup-2026-10-29"
+        ],
+        "environment_status": "confirmed_by_user",
+        "environment_source_ids": [
+          "user-flower-production-2026-10-29"
+        ],
+        "environment_confirmed_on": "2026-10-29"
+      },
+      "screenshots_status": "pending_real_evidence",
+      "public_ready": false,
+      "pending_fields": [
+        "evidencia real",
+        "revisión editorial final"
+      ],
+      "name_status": "confirmed_no_proper_name",
+      "name_source_ids": [
+        "user-flower-followup-2026-10-29"
+      ],
+      "role_source_ids": [
+        "user-flower-followup-2026-10-29"
+      ],
+      "my_contribution_status": "editorial_wording_of_user_confirmed_contribution",
+      "my_contribution_source_ids": [
+        "user-flower-followup-2026-10-29"
+      ],
+      "client": {
+        "name": "Flower",
+        "type": "librería",
+        "status": "confirmed_by_user",
+        "source_ids": [
+          "user-flower-followup-2026-10-29"
+        ]
+      },
+      "development_context": {
+        "worked_alone": true,
+        "developed_complete_system": true,
+        "status": "confirmed_by_user",
+        "source_ids": [
+          "user-flower-followup-2026-10-29"
+        ]
+      },
+      "editorial_copy_fields": [
+        "title",
+        "summary",
+        "role",
+        "problem",
+        "my_contribution",
+        "technologies",
+        "current_stage"
+      ],
+      "internal_notes": [
+        "El sistema no tiene nombre propio, según Alejo. official_name:null representa esa ausencia confirmada; no es un dato que deba volver a preguntarse.",
+        "El título y los textos del caso son redacciones editoriales basadas en las confirmaciones. El campo heredado problem contiene un objetivo del alcance declarado y se presenta con problem_display_label: Objetivo del sistema; no afirma un problema previo ni un proceso manual.",
+        "Cliente, tipo de negocio, aporte individual, tecnologías, uso real, estado en producción, función de la conexión con ARCA y entorno de producción ya fueron confirmados. No volver a incluirlos como preguntas pendientes.",
+        "functionally_verified:false y current_technologies_verified:false indican ausencia de comprobación independiente. No anulan la confirmación de Alejo de que el sistema funciona en producción ni la de las tecnologías utilizadas.",
+        "La base editorial está completa. public_ready permanece en false hasta incorporar evidencia real y realizar la revisión editorial final. El período, el contexto adicional, las decisiones, los aprendizajes y los enlaces se conservan como enriquecimientos opcionales."
+      ],
+      "optional_enrichment_fields": [
+        "período de desarrollo",
+        "contexto adicional de la necesidad abordada",
+        "decisiones principales de desarrollo",
+        "aprendizajes y resultados respaldados",
+        "enlaces publicables, si existen"
+      ],
+      "problem_display_label": "Objetivo del sistema",
+      "problem_status": "editorial_objective_based_on_confirmed_scope",
+      "problem_source_ids": [
+        "user-content-confirmation-2026-10-29",
+        "user-flower-followup-2026-10-29",
+        "dossier-editorial-2026-10-29"
+      ],
+      "technologies_status": "confirmed_by_user",
+      "technologies_source_ids": [
+        "user-flower-production-2026-10-29"
+      ],
+      "technologies_confirmed_on": "2026-10-29",
+      "current_technologies_verification_scope": "independent_verification_not_performed",
+      "current_stage_source_ids": [
+        "user-flower-production-2026-10-29"
+      ],
+      "current_stage_confirmed_on": "2026-10-29",
+      "usage": {
+        "in_real_use": true,
+        "working": true,
+        "description": "En producción y funcionando para la librería Flower.",
+        "status": "reported_by_user",
+        "source_ids": [
+          "user-flower-production-2026-10-29"
+        ],
+        "confirmed_on": "2026-10-29",
+        "functionally_verified": false
+      },
+      "editorial_base_status": "complete",
+      "core_facts_status": "confirmed_by_user",
+      "core_facts_source_ids": [
+        "user-content-confirmation-2026-10-29",
+        "user-flower-followup-2026-10-29",
+        "user-flower-production-2026-10-29"
+      ],
+      "editorial_review_status": "pending_final_review"
+    },
+    {
+      "id": "project-03",
+      "title": "",
+      "featured": false,
+      "category": "",
+      "summary": "",
+      "role": "",
+      "problem": "",
+      "my_contribution": "",
+      "key_decisions": [],
+      "technologies": [],
+      "current_stage": null,
+      "outcomes": [],
+      "metrics": [],
+      "screenshots": [],
+      "cover_image": null,
+      "links": {
+        "website": null,
+        "repository": null,
+        "demo": null
+      },
+      "publication_status": "optional_not_selected_not_publishable",
+      "source_ids": [],
+      "optional": true,
+      "required_for_first_publication": false,
+      "selection_status": "not_selected_optional",
+      "public_ready": false
+    }
+  ],
+  "project_candidates_from_cv": [
+    {
+      "id": "candidate-aforo",
+      "title": "Automatización de sección de aforo",
+      "description_from_cv": "Desarrollo con Arduino de una solución para medición y mejor gestión del agua, impulsada junto a Irrigación.",
+      "date": null,
+      "current_stage": null,
+      "links": [],
+      "media": [],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "id": "candidate-agrotech",
+      "title": "Agrotech",
+      "description_from_cv": "Iniciativa orientada a soluciones tecnológicas para el agro, con prototipos desarrollados principalmente sobre Arduino.",
+      "date": null,
+      "current_stage": null,
+      "links": [],
+      "media": [],
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "id": "candidate-herbario",
+      "title": "Herbario Digital",
+      "description_from_cv": "Plataforma informativa sobre especies vegetales creada con Google Sites en 2018 y utilizada por la organización impulsora, según el CV.",
+      "year": 2018,
+      "current_stage": null,
+      "organization_name": null,
+      "links": [],
+      "media": [],
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "qualification": "Ingeniería en Sistemas de Información",
+      "institution": "Universidad Tecnológica Nacional",
+      "start_year": 2023,
+      "status_from_cv": "En curso",
+      "year_level_from_cv": "4.º año",
+      "progress_from_cv": "Más del 50 % aprobado",
+      "estimated_graduation_year_from_cv": 2028,
+      "current_status": "pending_confirmation",
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "qualification": "Programación Web Full Stack",
+      "institution": "Egg Corporation",
+      "start_year": 2021,
+      "end_year": 2022,
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "qualification": "Desarrollo de Apps Móviles",
+      "institution": "Universidad Complutense de Madrid",
+      "year": 2020,
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "qualification": "Técnico en Producción Agropecuaria",
+      "institution": "Escuela de Agricultura, UNCuyo",
+      "start_year": 2017,
+      "end_year": 2022,
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "recognitions": [
+    {
+      "id": "ilan-2026",
+      "title_from_cv": "1.er puesto del Premio ILAN a la Innovación Universitaria con FoxMind",
+      "date_from_cv": "2026-04-15",
+      "evidence_link": null,
+      "image": null,
+      "verification_status": "reported_in_cv_not_externally_verified",
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "level_from_cv": "Nativo",
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "language": "Inglés",
+      "level_from_cv": "B2",
+      "certification": null,
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "additional_experience_from_cv": [
+    {
+      "activity": "Emprendimiento e-commerce",
+      "start_year": 2021,
+      "end_year": 2023,
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "activity": "Atención al cliente",
+      "year": 2023,
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    {
+      "activity": "Trabajo rural",
+      "start_year": 2019,
+      "end_year": 2022,
+      "source_ids": [
+        "cv-provided"
+      ]
+    }
+  ],
+  "contact": {
+    "title": "Conversemos",
+    "body": "Si tenés una oportunidad laboral o una idea para desarrollar, podés escribirme.",
+    "email": "alejopalavecino12@gmail.com",
+    "email_source_ids": [
+      "cv-provided"
+    ],
+    "phone": null,
+    "employment_subject": "Oportunidad laboral - Alejo Palavecino",
+    "project_subject": "Consulta por un proyecto - Alejo Palavecino",
+    "social_links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/alejo-palavecino",
+        "verified": false,
+        "source_ids": [
+          "cv-provided"
+        ]
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/AlejoPalavecino",
+        "verified": false,
+        "source_ids": [
+          "cv-provided"
+        ]
+      }
+    ],
+    "cv": {
+      "label": "Descargar CV",
+      "file_path": "content/cv-alejo-palavecino-es.pdf",
+      "path_base": "original_kit",
+      "status": "included_user_provided_original",
+      "source_ids": [
+        "cv-provided"
+      ]
+    },
+    "copy_status": "editorial_proposal_based_on_cv"
+  },
+  "ui_copy": {
+    "explore_hint": "Elegí un lugar y el personaje caminará hasta allí.",
+    "keyboard_hint": "Flechas o WASD para moverte. Enter o E junto a un lugar para abrirlo. Escape para salir del recorrido.",
+    "open_projects": "Ver proyectos",
+    "open_foxmind": "Conocer FoxMind",
+    "open_about": "Conocer a Alejo",
+    "open_journey": "Abrir bitácora",
+    "open_contact": "Contactar",
+    "close_panel": "Cerrar",
+    "back_to_camp": "Volver al campamento",
+    "visited": "Visitado",
+    "sound_on": "Activar sonido",
+    "sound_off": "Desactivar sonido",
+    "reduce_motion": "Reducir movimiento",
+    "open_mobile_menu": "Menú",
+    "close_mobile_menu": "Cerrar",
+    "header_contact": "Contacto",
+    "back_to_projects": "Volver a Proyectos",
+    "copy_email_success": "Correo copiado",
+    "explore_action": "Explorar el campamento",
+    "enable_motion": "Activar movimiento",
+    "copy_email_failure": "No pudimos copiar el correo. Podés seleccionarlo y copiarlo manualmente.",
+    "scene_loading": "Cargando el campamento…",
+    "scene_error": "No pudimos cargar el campamento. Podés seguir explorando el portfolio desde el menú.",
+    "retry_scene": "Reintentar escena",
+    "route_status": "Yendo a {sección}…",
+    "open_now": "Abrir ahora",
+    "cancel_route": "Cancelar recorrido",
+    "resume_route": "Continuar recorrido",
+    "route_paused": "Recorrido en pausa.",
+    "route_unavailable": "No pudimos completar el recorrido. Abrimos la sección para que puedas continuar.",
+    "ground_walk_status": "Caminando…"
+  },
+  "rendering_rules": {
+    "text_in_html": true,
+    "hide_empty_projects": true,
+    "hide_links_without_target": true,
+    "hide_unsubstantiated_metrics": true,
+    "never_render_null_as_copy": true,
+    "do_not_treat_cv_current_claims_as_currently_verified": true,
+    "hide_incomplete_projects": true,
+    "never_render_internal_notes_or_statuses_as_public_copy": true,
+    "show_name_once_in_initial_presentation": true,
+    "never_convert_role_interests_into_experience_claims": true,
+    "never_treat_user_report_as_functional_validation": true,
+    "never_infer_arca_operational_or_regulatory_scope": true,
+    "resolve_package_references_before_mapping_public_urls": true
+  },
+  "header": {
+    "visual_direction_status": "adopted_by_user",
+    "source_ids": [
+      "user-visual-revision2-2026-10-29"
+    ],
+    "brand": {
+      "kind": "camp_emblem",
+      "identity_asset_reference": "navigation_emblem",
+      "target": "#campamento",
+      "accessible_name": "Volver al campamento",
+      "show_personal_name": false
+    },
+    "desktop": {
+      "visible_navigation_ids": [
+        "projects",
+        "about",
+        "journey",
+        "contact"
+      ],
+      "cv_visible": true
+    },
+    "mobile": {
+      "layout": "single_row_adaptable_to_available_width_and_text_size",
+      "visible_actions": [
+        {
+          "id": "contact",
+          "label": "Contacto",
+          "target": "#contacto"
+        },
+        {
+          "id": "cv",
+          "label": "CV",
+          "content_reference": "contact.cv"
+        },
+        {
+          "id": "menu",
+          "label": "Menú",
+          "expanded_label": "Cerrar"
+        }
+      ],
+      "menu_navigation_ids": [
+        "projects",
+        "about",
+        "journey",
+        "contact"
+      ],
+      "menu_state_in_mockups": "closed",
+      "menu_presentation_specification": "disclosure_in_document_flow",
+      "contact_and_cv_remain_visible_in_project_detail": true
+    },
+    "behavior_reference": {
+      "file": "02_EXPERIENCIA_Y_PANTALLAS.md",
+      "path_base": "handoff"
+    },
+    "interaction_status": "specified_not_implemented",
+    "functionally_verified": false
+  },
+  "project_publication_policy": {
+    "minimum_complete_cases_for_first_publication": 1,
+    "priority_project_id": "foxmind",
+    "selected_additional_project_ids": [
+      "project-02"
+    ],
+    "third_case_required": false,
+    "incomplete_case_policy": "exclude_from_public_version_keep_identified_in_review_material",
+    "minimum_case_content": [
+      "nombre y resumen",
+      "problema",
+      "participación propia",
+      "estado",
+      "evidencia real"
+    ],
+    "metrics_required": false,
+    "project_specific_policies_take_precedence": true,
+    "project_scope_applies_to_related_experience": true
+  },
+  "ui_copy_usage_notes": {
+    "keyboard_hint": "Solo se presenta en escritorio con la escena enfocada, los controles de recorrido habilitados y movimiento reducido desactivado. Las prioridades de teclado y del menú se definen en 09 y 02.",
+    "close_panel": "Campo heredado: no sustituye los regresos de las fichas. Usar close_mobile_menu para el cierre del desplegable.",
+    "all_internal_notes": "Metadatos y notas de revisión no son textos públicos.",
+    "explore_action": "Acción contextual del campamento para el recorrido opcional por teclado en escritorio. Da foco a la escena cuando sus controles están disponibles; permanece separada de los CTA del hero y no es una puerta de entrada al contenido.",
+    "enable_motion": "Habilita la ambientación y los controles compatibles según la propuesta. El avatar espera una nueva entrada para desplazarse.",
+    "ambient_controls": "En móvil, sonido y movimiento se ubican dentro de Menú debajo de los cuatro enlaces, sin una fila adicional en la cabecera. En escritorio permanecen disponibles en la interfaz común durante la lectura.",
+    "copy_email_failure": "Se muestra si falla la copia del correo; mantiene la dirección disponible para seleccionarla y copiarla manualmente. No es una confirmación de envío.",
+    "scene_feedback": "Los mensajes de carga o fallo no bloquean el contenido. Reintentar escena afecta a la escena sin recargar la lectura ni activar sonido por sorpresa.",
+    "visited": "Marca cosmética durante la sesión actual; no desbloquea contenido ni requiere completar un recorrido.",
+    "interaction_copy_status": "prepared_recommended_proposal_core_navigation_confirmed",
+    "interaction_source_ids": [
+      "user-navigation-2026-10-29",
+      "editorial-interactions-2026-10-29"
+    ],
+    "explore_hint": "Describe la navegación normal desde un destino cuando la escena está disponible y el movimiento habilitado. Con movimiento reducido o escena no disponible se comunica la apertura directa sin prometer una caminata.",
+    "route_status": "Sustituir {sección} por el rótulo del destino actual. Mostrar una sola intención de navegación; los cambios de objetivo reemplazan la anterior y no acumulan anuncios por cada paso.",
+    "open_now": "Disponible para el destino seleccionado durante una ruta activa o pausada. Cancela el recorrido y abre esa sección una sola vez sin teletransportar al personaje.",
+    "cancel_route": "Detiene el recorrido y cancela cualquier apertura pendiente. Recupera la vista de origen y su foco/lectura; el avatar conserva su posición válida actual. Las prioridades de Escape están en 02.",
+    "resume_route": "Se ofrece al regresar de una pestaña oculta si había un recorrido pausado. Solo una acción explícita reanuda el recorrido; Abrir ahora y Cancelar recorrido siguen disponibles.",
+    "route_unavailable": "Aviso breve ante imposibilidad de completar una ruta. La sección solicitada se abre como recuperación; no afirmar que el personaje llegó si no lo hizo. La carga o fallo general de escena conserva sus mensajes propios.",
+    "route_controls_scope": "Abrir ahora y los estados de destino corresponden a una selección de sección. Caminar hacia un punto del suelo no programa apertura de contenido.",
+    "ground_walk_status": "Estado propuesto para un desplazamiento hacia un punto del suelo transitable, sin destino de contenido ni apertura pendiente. No ofrece Abrir ahora; la cancelación y la pausa siguen las reglas de 02."
+  },
+  "interaction_specification": {
+    "milestone": "09",
+    "status": "core_direction_confirmed_details_proposed",
+    "source_ids": [
+      "user-navigation-2026-10-29",
+      "editorial-interactions-2026-10-29"
+    ],
+    "reference": {
+      "file": "09_HITO_EXPERIENCIA_E_INTERACCIONES.md",
+      "path_base": "handoff"
+    },
+    "detailed_behavior_reference": {
+      "file": "02_EXPERIENCIA_Y_PANTALLAS.md",
+      "path_base": "handoff"
+    },
+    "metadata_only": true,
+    "user_approval_status": "manual_walking_and_click_walk_open_on_arrival_confirmed_only",
+    "implementation_status": "not_implemented",
+    "functionally_verified": false,
+    "recommended_behavior_summary": {
+      "primary_navigation": "select_section_walk_valid_route_stop_at_destination_then_open_once_without_extra_confirmation",
+      "section_navigation_sources": [
+        "world_object",
+        "destination_label",
+        "navigation_link",
+        "mobile_menu_link",
+        "hero_section_action"
+      ],
+      "switch_section_while_reading": "show_camp_then_walk_to_new_section_and_open_on_arrival",
+      "select_current_open_section": "preserve_reading_without_new_route",
+      "already_at_destination": "open_without_artificial_walk_or_wait",
+      "actions_without_extra_route": [
+        "open_project_detail",
+        "back_to_projects",
+        "back_to_camp",
+        "browser_back",
+        "cv",
+        "email",
+        "external_link"
+      ],
+      "desktop_manual_avatar": "arrows_or_wasd_only_with_scene_focus_motion_enabled_and_no_content_open",
+      "manual_proximity_action": "one_nearby_destination_shows_action_enter_or_e_opens_proximity_alone_does_not",
+      "explore_action": "contextual_desktop_scene_action_gives_focus_separate_from_hero",
+      "movement_hints": "desktop_only_while_scene_has_focus_and_avatar_controls_are_enabled",
+      "walkable_ground_selection": "click_or_short_tap_replaces_current_route_and_pending_opening_walks_to_valid_point_then_stops_without_content",
+      "mobile_navigation": "touch_destination_walks_then_opens_touch_walkable_ground_moves_to_point_no_joystick_proposed",
+      "mobile_gestures": "scroll_and_zoom_remain_native_and_do_not_initiate_walk",
+      "automatic_movement_focus": "does_not_require_scene_focus_or_capture_keyboard_navigation",
+      "new_destination_during_route": "replace_target_from_current_position_no_queue_and_no_stale_section_opening",
+      "manual_input_during_route": "scene_focused_manual_input_cancels_automatic_route_and_pending_opening_then_takes_control",
+      "cancel_route": "stop_at_current_position_restore_origin_view_scroll_and_available_focus_no_avatar_teleport",
+      "escape_priority": "editing_or_control_own_close_then_mobile_menu_then_cancel_route_or_one_content_return",
+      "open_now": "cancel_route_open_latest_selected_section_once_keep_current_valid_avatar_position",
+      "route_feedback": "show_destination_status_open_now_and_cancel_route_without_blocking_navigation",
+      "mobile_menu": "disclosure_in_document_flow_four_links_then_sound_and_motion_controls_no_extra_header_row",
+      "mobile_menu_section_selection": "close_menu_start_section_navigation_focus_content_only_when_it_opens",
+      "desktop_ambient_controls": "common_interface_accessible_while_reading",
+      "scene_while_reading": "scene_and_avatar_static_with_scene_input_paused",
+      "manual_focus_loss": "stop_manual_movement_clear_held_keys_require_new_input",
+      "automatic_focus_loss": "scene_focus_loss_alone_does_not_cancel_route",
+      "hidden_tab": "pause_route_and_audio_no_surprise_opening_on_return_offer_continue_or_cancel_and_open_now_only_for_section_target",
+      "sound": "opt_in_off_by_default_continues_between_sections_pauses_when_tab_hidden",
+      "sound_preference_scope": "current_visit_only",
+      "reduced_motion": "static_scene_immediate_section_opening_avatar_movement_disabled",
+      "enable_reduced_motion_during_route": "cancel_movement_open_latest_selected_section_if_any_otherwise_stop_ground_walk_without_content",
+      "enable_motion": "restore_ambient_motion_wait_for_new_movement_input_do_not_resume_old_route",
+      "scene_loading_failure_or_no_valid_route": "open_requested_content_directly_without_waiting_for_scene_or_navigation_recovery",
+      "browser_history": "record_opened_content_views_not_route_steps_redirections_or_cancelled_routes_browser_back_cancels_pending_opening_before_restoring_history",
+      "visited_badges": "cosmetic_current_session_only_set_when_content_opens",
+      "same_destination_during_route": "continue_existing_route_without_restart_or_duplicate_opening"
+    },
+    "note": "Metadatos documentales para el agente, no configuración ejecutable ni rutas públicas. DEC-26 confirma solo el núcleo de caminata manual y clic con apertura al llegar. Los detalles recomendados se describen en 09 y 02 y requieren revisión; no cambian los CTA del hero, las confirmaciones profesionales ni las políticas de publicación.",
+    "confirmed_direction": {
+      "decision_id": "DEC-26",
+      "source_id": "user-navigation-2026-10-29",
+      "manual_exploration": "walk_as_in_a_game",
+      "section_selection": "click_selects_destination_avatar_walks_and_section_opens_on_arrival",
+      "supersedes": "DEC-08_immediate_section_opening_as_default_proposal"
+    },
+    "recommended_details_status": "proposed_not_explicitly_approved",
+    "route_timing_target": {
+      "status": "editorial_design_target_not_measured_or_universal_standard",
+      "typical_seconds": [
+        1,
+        2
+      ],
+      "longer_route_target_max_seconds": 3,
+      "approach": "Compact map and reachable entrances; preserve coherent walking speed instead of accelerating unnaturally. Validate in the prototype.",
+      "scope": "automatic_destination_routes_not_free_manual_exploration"
+    }
+  },
+  "map_specification": {
+    "milestone": "10",
+    "status": "base_layout_adopted_geometry_reference",
+    "source_ids": [
+      "user-map-advance-2026-10-29",
+      "editorial-map-2026-10-29",
+      "user-map-adoption-2026-10-29"
+    ],
+    "metadata_only": true,
+    "user_approval_status": "base_layout_adopted_DEC_28",
+    "implementation_status": "not_implemented",
+    "functionally_verified": false,
+    "references": {
+      "milestone": {
+        "file": "10_HITO_MAPA_JUGABLE.md",
+        "path_base": "handoff"
+      },
+      "geometry": {
+        "file": "maps/world-navigation-proposal.json",
+        "path_base": "handoff"
+      },
+      "geometry_readme": {
+        "file": "maps/README.md",
+        "path_base": "handoff"
+      },
+      "geometric_review": {
+        "file": "maps/geometric-review.json",
+        "path_base": "handoff"
+      },
+      "asset_integration": {
+        "file": "03_DIRECCION_VISUAL_Y_ASSETS.md",
+        "path_base": "handoff"
+      }
+    },
+    "coordinate_system": {
+      "origin": "top_left",
+      "units": "logical_planning_units",
+      "scope": "playable_area_excluding_header_hero_and_far_landscape",
+      "desktop_reference_size": [
+        1000,
+        650
+      ],
+      "mobile_reference_size": [
+        600,
+        760
+      ],
+      "is_css_pixel_configuration": false,
+      "directly_aligned_to_source_bitmap": false
+    },
+    "recommended_layout_summary": {
+      "structure": "central_clearing_with_four_short_branches",
+      "spawn": "central_junction_facing_toward_workshop",
+      "destinations": {
+        "projects": "upper_right_workshop",
+        "about": "left_tent_and_campfire",
+        "journey": "lower_left_logbook_table",
+        "contact": "lower_right_radio_reachable_from_land_on_accessible_river_bank"
+      },
+      "contact_requires_bridge_or_new_island": false,
+      "automatic_routes": "guide_branches_connect_arrival_zones_without_crossing_obstacle_footprints",
+      "manual_movement": "all_valid_ground_not_only_reference_route_lines",
+      "mobile_relationships": "preserve_relative_destination_order_and_clear_central_passage"
+    },
+    "mobile_presentation_proposal": {
+      "status": "proposed_not_explicitly_approved",
+      "offscreen_scene_on_route_start": "bring_camp_block_into_view_once_preserving_header_and_route_controls",
+      "continuous_camera_follow": false,
+      "page_scroll_and_zoom": "remain_under_visitor_control",
+      "labels_and_controls": "readable_interface_not_scaled_with_whole_bitmap",
+      "reduced_motion": "open_content_directly_without_visual_travel"
+    },
+    "terrain_constraint": "camp-ground.png is one illustration, not independent tiles; align final footprints and corridors with its actual clearings and paths or adapt the terrain before integration.",
+    "verification": {
+      "scope": "static_geometry_of_the_documented_proposal_only",
+      "report_status": "consult_referenced_geometric_review_for_performed_checks",
+      "runtime_verified": false,
+      "source_art_alignment_verified": false,
+      "route_durations_measured": false
+    },
+    "note": "Documentación para el agente, no código de navegación ni configuración ejecutable. DEC-28 adopta la distribución base de escritorio y celular. Las láminas conservan el rótulo Propuesta 0.1 como identificación de la referencia adoptada. Las medidas y las huellas se ajustan al terreno ilustrado durante la integración; no requieren una aprobación individual de cada coordenada. Los tiempos y controles complementarios de 09 conservan su estado propuesto; la ejecución y las pruebas permanecen pendientes.",
+    "adopted_layout_scope": {
+      "decision_id": "DEC-28",
+      "source_id": "user-map-adoption-2026-10-29",
+      "reference_geometry_version": "0.1",
+      "central_clearing": true,
+      "central_avatar_start": true,
+      "workshop_prominence": true,
+      "relative_destination_positions": {
+        "projects": "upper_right",
+        "about": "left",
+        "journey": "lower_left",
+        "contact": "lower_right"
+      },
+      "desktop_and_mobile_references": "adopted_as_base_layout",
+      "exact_geometry": "adjustable_integration_reference_not_final_implementation_values"
+    },
+    "integration_change_management": "Adaptar encuadre, huellas, llegadas y escala para respetar la distribución adoptada; los ajustes geométricos rutinarios corresponden a integración. Volver a diseño solo ante cambios materiales de organización."
+  }
+}

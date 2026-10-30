@@ -1,0 +1,21 @@
+/* Fuentes locales. Mantener los archivos OFL junto con esta distribucion. */
+@font-face {
+  font-family: 'Lexend';
+  src: url('./Lexend-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pixelify Sans';
+  src: url('./PixelifySans-Variable.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-body: 'Lexend', system-ui, sans-serif;
+  --font-display: 'Pixelify Sans', 'Lexend', sans-serif;
+}

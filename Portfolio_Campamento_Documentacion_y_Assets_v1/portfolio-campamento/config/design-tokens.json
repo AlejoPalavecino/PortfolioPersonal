@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "name": "Campamento creativo",
+  "status": "proposed_ui_tokens",
+  "color": {
+    "ink": "#102E3C",
+    "sky": "#91CFF0",
+    "mountain": "#5F8DB8",
+    "water": "#287C98",
+    "pine": "#315747",
+    "leaf": "#789451",
+    "sand": "#E6CB97",
+    "wood": "#A36B41",
+    "terracotta": "#B85C45",
+    "warmLight": "#F2C47C",
+    "paper": "#FFF4DF",
+    "accent": "#EB654F",
+    "actionText": "#102E3C"
+  },
+  "typography": {
+    "body": {"family": "Lexend", "fallback": "system-ui, sans-serif", "weightRange": [100, 900]},
+    "display": {"family": "Pixelify Sans", "fallback": "monospace", "weightRange": [400, 700]},
+    "bodySizeRem": 1,
+    "bodyLineHeight": 1.6,
+    "maxReadingWidthCh": 65
+  },
+  "spacingPx": [4, 8, 12, 16, 24, 32, 48, 64],
+  "motion": {"spriteFps": 6, "uiTransitionMs": 160, "respectReducedMotion": true},
+  "audio": {"enabledByDefault": false},
+  "notes": [
+    "Los colores son una propuesta de interfaz compatible con el arte, no una extracción exacta de píxeles.",
+    "Comprobar contraste en cada combinación final de texto y superficie.",
+    "Los textos y rótulos del sitio se implementan como HTML."
+  ]
+}
