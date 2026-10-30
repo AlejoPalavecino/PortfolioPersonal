@@ -1,5 +1,7 @@
 # Versión local de revisión 0.1.0
 
+**Actualización 30/10/2026:** Alejo encargó después publicar desde `main` en GitHub Pages. La revisión ahora está online en <https://alejopalavecino.github.io/PortfolioPersonal/>; configuración y comprobación pública (AC-25 sobre esta revisión) en [PUBLICACION.md](PUBLICACION.md). Las referencias de este documento a publicación todavía no encargada describen el alcance original del 29/10, no el estado actual. Los pendientes editoriales se conservan.
+
 Portfolio de Alejo Palavecino a partir del Dossier 1.0. Se conserva el campamento, la ficha crema integrada, la cabecera con emblema y el mapa adoptado. La salida estática se genera en `dist/`; el arranque y mantenimiento se explican en el [README](../README.md).
 
 ## Recorrido de revisión

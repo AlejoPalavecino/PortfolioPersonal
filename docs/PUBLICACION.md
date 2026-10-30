@@ -29,3 +29,14 @@ Conforme a las instrucciones de infraestructura del proyecto, se instalaron las 
 Pendientes de contenido, identidad, mezcla de audio y cobertura parcial: [entrega 0.1.0](ENTREGA-0.1.0.md). Esta publicación permite revisar online el resultado; no marca los 30 criterios como aprobados.
 
 Documentación oficial comprobada: [Vite static deploy](https://vite.dev/guide/static-deploy.html#github-pages), [fuente de publicación de GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+## Verificación pública — 30/10/2026
+
+- Primera ejecución de Pages completada correctamente: [run 41103528115](https://github.com/AlejoPalavecino/PortfolioPersonal/actions/runs/41103528115). Repositorio público, HTTPS forzado, origen `main`, build de tipo `workflow`.
+- Checks locales y de CI: 22 pruebas aprobadas (incluidas 7 de publicación), linter y build de la subruta. Gitleaks staged sin hallazgos antes de cada commit.
+- QA pública en ego(lite): hero, imágenes y fuentes; autoruta a Proyectos, ficha FoxMind y regreso; recarga de `#proyectos/foxmind`; Contacto y tres enlaces de correo; descarga real del PDF desde la URL pública.
+- Los 15 recursos observados (JS, CSS, fuentes, imágenes, frames y WAV) respondieron 200 bajo `/PortfolioPersonal/`. El CV también respondió 200 y se obtuvo la descarga real. No se realizó una auditoría exhaustiva de consola.
+- Móvil emulado 390 × 844: ancho documental 390, menú operable, movimiento reducido y apertura de Sobre mí, retrato cargado y sin superposición. El rótulo de revisión se corrigió para ocupar espacio en hero/ficha, en lugar de flotar sobre el menú.
+- `robots=noindex,nofollow` y la identificación de revisión permanecen activos. La mezcla audible, los dispositivos físicos y los pendientes de contenido no se dan por aprobados.
+
+Capturas online: [móvil](evidence/pages-mobile.png), [menú](evidence/pages-menu.png). Los guiones en `tools/qa/pages-qa*.ego.mjs` registran la sesión; sus referencias de Space/snapshot son evidencia histórica, no pruebas repetibles entre sesiones.
