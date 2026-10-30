@@ -1,0 +1,187 @@
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+
+}
+
+@media (max-width:700px) {
+  .world-scroll {
+    overflow: visible;
+  }
+
+  .world {
+    aspect-ratio: 1000/700;
+  }
+
+  .world-label {
+    font-size: .68rem;
+    padding: .35rem .45rem;
+    min-height: 44px;
+  }
+
+  .label-projects {
+    left: 55%;
+    top: 25%;
+  }
+
+  .label-about {
+    left: 4%;
+    top: 41%;
+  }
+
+  .label-journey {
+    left: 13%;
+    top: 67%;
+  }
+
+  .label-contact {
+    left: 70%;
+    top: 57%;
+  }
+
+  .world-hint {
+    bottom: -3rem;
+    font-size: .72rem;
+  }
+
+  .settings {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    justify-content: center;
+    padding: 1rem;
+    background: #174d70;
+  }
+
+  .landscape {
+    min-height: 850px;
+  }
+
+  .route-controls {
+    bottom: 1rem;
+  }
+
+}
+
+.world-label {
+  z-index: 1000;
+}
+
+.header {
+  position: fixed;
+  background: #a9ddf1e8;
+  backdrop-filter: blur(8px);
+}
+
+.world-scroll {
+  width: min(100%,1200px);
+  margin-top: -175px;
+}
+
+.poi-projects {
+  width: 32%;
+  left: 49%;
+  top: 18%;
+}
+
+.poi-about {
+  width: 22%;
+  left: 10%;
+  top: 17%;
+}
+
+.poi-journey {
+  width: 19%;
+  left: 25%;
+  top: 46%;
+}
+
+.poi-contact {
+  width: 20%;
+  left: 66%;
+  top: 36%;
+}
+
+@media (max-width:700px) {
+  .header {
+    position: sticky;
+    flex-wrap: wrap;
+    background: #fff7e7;
+  }
+
+  .mobile-menu {
+    position: static;
+    order: 4;
+    width: 100%;
+    box-shadow: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .mobile-menu button {
+    flex: 1 1 40%;
+  }
+
+  .world-scroll {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .world {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .poi-projects {
+    width: 32%;
+    left: 49%;
+    top: 18%;
+  }
+
+  .poi-about {
+    width: 22%;
+    left: 10%;
+    top: 17%;
+  }
+
+  .poi-journey {
+    width: 19%;
+    left: 25%;
+    top: 46%;
+  }
+
+  .poi-contact {
+    width: 20%;
+    left: 66%;
+    top: 36%;
+  }
+
+}
+
+@media (max-width:700px) {
+  .mobile-menu .settings {
+    position: static;
+    width: 100%;
+    background: transparent;
+    padding: .5rem 0;
+    justify-content: flex-start;
+  }
+
+  .mobile-menu .settings button {
+    font-size: .75rem;
+  }
+
+}
+
+.poi {
+  pointer-events: auto;
+  cursor: pointer;
+}
+

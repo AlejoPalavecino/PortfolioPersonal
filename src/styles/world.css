@@ -1,0 +1,183 @@
+.placeholder {
+  min-height: 280px;
+  background: #dceef7;
+  border: 2px dashed #87b8d3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: .5rem;
+  padding: 1rem;
+}
+
+.placeholder span {
+  font-size: 4rem;
+  color: #4f7693;
+}
+
+.placeholder small {
+  color: #527998;
+}
+
+.case-layout aside {
+  padding-left: 1.5rem;
+  border-left: 1px solid #b6cacc;
+}
+
+.case-layout aside .primary {
+  margin-top: 1rem;
+}
+
+.case-copy h3 {
+  border-top: 1px solid #c9d7d5;
+  padding-top: 1rem;
+}
+
+.about-layout img {
+  width: 100%;
+  max-width: 250px;
+}
+
+.timeline article {
+  border-top: 1px solid #c9d7d5;
+  padding: .5rem 0;
+}
+
+.contact-actions {
+  margin: 2rem 0;
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+@media (max-width:700px) {
+  .header {
+    min-height: 72px;
+    padding: .7rem 1rem;
+    gap: .5rem;
+  }
+
+  .brand img {
+    width: 64px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .header-actions {
+    gap: .5rem;
+  }
+
+  .mobile-contact,.menu-toggle {
+    display: block;
+  }
+
+  .mobile-contact {
+    font-size: .85rem;
+  }
+
+  .cv,.menu-toggle {
+    font-size: .85rem;
+    padding: .55rem;
+    border: 2px solid #092b40;
+    border-radius: 5px;
+    background: transparent;
+  }
+
+  .mobile-menu {
+    display: flex;
+    right: 1rem;
+    top: 65px;
+    background: #fff7e7;
+    border: 2px solid #092b40;
+    padding: .5rem;
+    min-width: 180px;
+  }
+
+  .mobile-menu button {
+    text-align: left;
+    min-height: 44px;
+    border: 0;
+    background: none;
+  }
+
+  .landscape {
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  .hero {
+    padding: 3rem 1.5rem 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem,13vw,5.5rem);
+  }
+
+  .hero-line {
+    font-size: 1.35rem;
+  }
+
+  .hero-detail {
+    font-size: .9rem;
+  }
+
+  .world-scroll {
+    overflow-x: auto;
+    margin: 0;
+    scrollbar-width: thin;
+  }
+
+  .world {
+    max-width: none;
+  }
+
+  .panel {
+    top: 230px;
+    width: 94%;
+    padding: 1.5rem;
+    min-height: 80vh;
+  }
+
+  .panel h2 {
+    font-size: 3.5rem;
+  }
+
+  .panel-nav {
+    font-size: .85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-grid,.case-layout,.about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .case-layout aside {
+    border-left: 0;
+    padding: 0;
+  }
+
+  .placeholder {
+    min-height: 220px;
+  }
+
+  .settings {
+    font-size: .7rem;
+  }
+
+  .route-controls {
+    max-width: 95%;
+    white-space: normal;
+    font-size: .75rem;
+  }
+
+  .route-controls span {
+    display: block;
+    flex-basis: 100%;
+  }
+
+}
+
