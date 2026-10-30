@@ -22,6 +22,7 @@ function header(): string {
 
 function hero(): string {
   return `<section class="hero" aria-label="Presentación">
+    <p class="review-badge">Versión de revisión</p>
     <h1>Alejo<br>Palavecino</h1>
     <p class="hero-line">Desarrollo software.<br>Transformo ideas en productos.</p>
     <p class="hero-detail">Full stack · Análisis · Automatización e IA</p>

@@ -46,7 +46,8 @@ export function createViews(root: HTMLElement) {
       const fallback = root.querySelector<HTMLElement>('.brand')!
       ;(originFocus?.isConnected && originFocus.offsetParent ? originFocus : fallback).focus({ preventScroll: true })
     } else {
-      panel.innerHTML = next.kind === 'section' ? sectionMarkup(next.section) : caseMarkup(next.id)
+      panel.innerHTML = '<p class="review-badge">Versión de revisión</p>' +
+        (next.kind === 'section' ? sectionMarkup(next.section) : caseMarkup(next.id))
       focusReading(next)
     }
     const changesUrl = next.kind === 'camp' ? !!location.hash : location.hash !== path(next)
