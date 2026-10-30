@@ -1,4 +1,5 @@
-export type * from './types'
+export type { Arrival, Navigation, NavigationState, NavigationEvent, Obstacle, Point, ProjectId, Route, SceneStatus, Section, SectionId, Target, View, World } from './types'
+export { createNavigation, reduceNavigation } from './navigation'
 export { isWalkable, moveSafely, nearbySection } from './geometry'
 export { findPath } from './path'
 export { WORLD } from './world'
