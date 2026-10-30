@@ -1,0 +1,70 @@
+name: Codex Headless Architecture & Security Gate
+
+on:
+  pull_request:
+    branches: [main, develop, staging]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  codex-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks Secret Scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check optional Codex configuration
+        id: codex-config
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -n "$OPENAI_API_KEY" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Node.js & OpenAI Codex CLI
+        if: steps.codex-config.outputs.enabled == 'true'
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+
+      - name: Install Codex CLI
+        if: steps.codex-config.outputs.enabled == 'true'
+        run: npm install -g @openai/codex
+
+      - name: Run Headless Architecture & DoD Review (codex exec)
+        if: steps.codex-config.outputs.enabled == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          mkdir -p ./ci/artifacts
+          git diff origin/${{ github.base_ref }}...HEAD > /tmp/pr_changes.diff
+          cat /tmp/pr_changes.diff | codex --ask-for-approval never exec \
+            --model gpt-6.1-sol \
+            -c model_reasoning_effort="high" \
+            --sandbox read-only \
+            --ephemeral \
+            --json \
+            --output-schema ./ci/schemas/review-report.schema.json \
+            --output-last-message ./ci/artifacts/review-verdict.json \
+            "Audita el diff suministrado por stdin contra AGENTS.md. Verifica Bajo Acoplamiento (GRASP), Regla de Dependencia (Clean Architecture), integridad de tests TDD (prohibido relajar aserciones), sincronización de .env.example y ausencia de vulnerabilidades. Emite el veredicto estrictamente bajo el JSON Schema."
+
+      - name: Enforce Verdict Gate
+        if: steps.codex-config.outputs.enabled == 'true'
+        run: |
+          VERDICT=$(jq -r '.verdict' ./ci/artifacts/review-verdict.json)
+          SUMMARY=$(jq -r '.summary' ./ci/artifacts/review-verdict.json)
+          echo "Veredicto Codex CI: $VERDICT - $SUMMARY"
+          if [ "$VERDICT" != "PASS" ]; then
+            jq -r '.violations[] | "[\(.severity)] \(.category) en \(.file):\(.line) -> \(.issue) | Fix: \(.fix)"' ./ci/artifacts/review-verdict.json
+            exit 1
+          fi

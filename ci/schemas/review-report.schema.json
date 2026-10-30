@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CodexArchitectureAndSecurityReview",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["verdict", "summary", "violations"],
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": ["PASS", "FAIL"]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["severity", "category", "file", "line", "issue", "fix"],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": ["HIGH", "MEDIUM", "LOW"]
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "GRASP_COUPLING",
+              "CLEAN_ARCH_BOUNDARY",
+              "SECURITY",
+              "TDD_INTEGRITY",
+              "ENV_DRIFT"
+            ]
+          },
+          "file": { "type": "string" },
+          "line": { "type": "integer" },
+          "issue": { "type": "string" },
+          "fix": { "type": "string" }
+        }
+      }
+    }
+  }
+}

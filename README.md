@@ -1,6 +1,8 @@
 # Portfolio · Campamento creativo
 
-Versión de revisión 0.1.0 de Alejo Palavecino, basada en el Dossier 1.0 del 29/10/2026. Incluye la experiencia navegable y las fichas editoriales de trabajo. La publicación y la aprobación final de contenido siguen fuera de esta entrega local.
+Versión de revisión 0.1.0 de Alejo Palavecino, basada en el Dossier 1.0 del 29/10/2026. Incluye la experiencia navegable y las fichas editoriales de trabajo. Publicación online encargada el 30/10/2026: [ver portfolio](https://alejopalavecino.github.io/PortfolioPersonal/). La aprobación final del contenido sigue pendiente.
+
+Cada push a `main` publica automáticamente mediante GitHub Actions, después de pruebas, linter y build. Configuración y reproducción de la subruta: [publicación](docs/PUBLICACION.md).
 
 ## Abrir la versión
 
