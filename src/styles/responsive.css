@@ -1,0 +1,80 @@
+.world-hint {
+  visibility: hidden;
+}
+
+.world:focus .world-hint,.world:focus-within .world-hint {
+  visibility: visible;
+}
+
+[data-visited]::after {
+  content: ' ✓';
+  color: #246741;
+}
+
+[aria-current=page] {
+  text-decoration: underline;
+  text-underline-offset: .35em;
+}
+
+.avatar {
+  width: 3.7%;
+}
+
+.poi-projects {
+  z-index: 252;
+}
+
+.poi-about {
+  z-index: 310;
+}
+
+.poi-journey {
+  z-index: 420;
+}
+
+.poi-contact {
+  z-index: 365;
+}
+
+@media (max-width:700px) {
+  [data-action=explore] {
+    display: none;
+  }
+
+}
+
+.scene-status {
+  position: fixed;
+  z-index: 1100;
+  bottom: 5rem;
+  left: 1rem;
+  padding: .75rem;
+  background: #fff7e7;
+  border: 2px solid #092b40;
+}
+
+.scene-status[hidden] {
+  display: none;
+}
+
+.avatar {
+  left: 51%;
+  top: 53.85%;
+  transform: translate(-50%,-100%);
+}
+
+@media (max-width:700px) {
+  .mobile-menu .settings button {
+    color: #092b40;
+    background: #fff7e7;
+    border: 2px solid #092b40;
+    font-size: .875rem;
+  }
+  .world-label {
+    font-size: .875rem;
+  }
+  .route-controls {
+    flex-wrap: wrap;
+  }
+}
+
