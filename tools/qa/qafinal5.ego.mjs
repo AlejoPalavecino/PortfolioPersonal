@@ -1,0 +1,10 @@
+const task = await taskSpace(1); const page = task.page('p1');
+await page.goto('http://127.0.0.1:4173'); await page.waitForTimeout(1000);
+await page.click('loc=css:[aria-label="Navegación principal"] [data-section="projects"]');
+await page.click('loc=css:[aria-label="Navegación principal"] [data-section="contact"]');
+console.log('REDIRECT',await page.snapshot({scope:'full_page'}));
+await page.click('text=Abrir ahora');
+console.log('OPEN',await page.snapshot({scope:'full_page'}));
+await page.click('loc=css:[aria-label="Navegación principal"] [data-section="about"]');
+await page.click('text=Cancelar recorrido');
+console.log('CANCEL',await page.snapshot({scope:'full_page'}));

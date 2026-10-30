@@ -1,0 +1,5 @@
+const task = await taskSpace(1); const page = task.page('p1'); await page.focus('loc=css:[role="application"]');
+const pos=()=>page.evaluate(()=>{const e=document.querySelector('.avatar'); return {style:e.getAttribute('style'),src:e.getAttribute('src')}});
+console.log('START',await pos()); await page.keyboard.down('ArrowRight'); await page.waitForTimeout(400); console.log('HELD',await pos()); await page.keyboard.up('ArrowRight'); await page.waitForTimeout(300); console.log('STOP',await pos());
+await page.click('text=Reducir movimiento'); await page.focus('loc=css:[role="application"]'); const before=await pos(); await page.keyboard.down('ArrowRight'); await page.waitForTimeout(400); await page.keyboard.up('ArrowRight'); console.log('REDUCED',before,await pos());
+await page.goto('http://127.0.0.1:4173/#proyectos/foxmind'); await page.reload(); await page.waitForTimeout(400); await page.focus('loc=css:a[href="/#main"]'); await page.keyboard.press('Enter'); console.log('SKIP',await page.url(),await page.evaluate(()=>document.querySelector('.panel h2')?.textContent));

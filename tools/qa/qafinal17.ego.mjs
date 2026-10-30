@@ -1,0 +1,1 @@
+const task = await taskSpace(1); const page = task.page('p1'); await page.click('text=Continuar recorrido'); await page.waitForFunction(()=>!!document.querySelector('.panel h2'),undefined,{timeout:10000}); console.log('RESUMED',await page.snapshot({scope:'full_page'}));
