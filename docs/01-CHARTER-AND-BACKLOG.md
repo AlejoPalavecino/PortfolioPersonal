@@ -67,3 +67,18 @@ Las reservas permanecen identificadas en la preview. La publicación anterior de
 | [ ] | GF-4 / verificación y entrega | Matriz A–M, viewports, checks, preview, commit y registro de pendientes. |
 
 `ESTADO_DISENO: LISTO_PARA_TDD_RED`. Operación y estrategia: [playbook](02-PLAYBOOK-AND-OPS.md). Contratos y DoT: [plan vigente](PLAN-GAME-FIRST.md).
+
+## Iteración de calidad — 31 de octubre de 2026
+
+El mapa GF anterior describe la preparación histórica de 0.2.0 y queda reemplazado para esta revisión por [PLAN-QUALITY](PLAN-QUALITY.md). No se cambian los cuatro destinos ni el alcance público de contenido.
+
+| Estado | Unidad | Evidencia |
+| --- | --- | --- |
+| [x] | Geometría, selección y profundidad | Cinco puntos antes/después, muestras sólidas, 16 conexiones entre entradas y 14 aproximaciones instrumentadas. |
+| [x] | Historial, foco, ayuda, movimiento y adaptación | Regreso durante ruta, teclado/foco, cuatro tamaños, motion efectivo, Flower horizontal. |
+| [x] | Ladera y señalética | Terreno nuevo, cámara compartida, tablillas/placa/poste HTML accesibles. |
+| [x] | Superficies y carga | Variantes, transiciones cancelables, prueba rápida/lenta/fallida; finalización tardía de carga lenta no comprobada. |
+| [x] | Infraestructura editorial de credenciales | Colección y rutas, originales preservados, borradores excluidos. |
+| [ ] | Cierre editorial | Material de Alejo: capturas, CV/canales y originales/atribución de credenciales. |
+
+Entrega local `0.3.0-review.1`, sin integración remota ni publicación. Pruebas66/66, lint/build y dos jueces sin severos; límites y capturas en [ENTREGA-QUALITY](ENTREGA-QUALITY.md).

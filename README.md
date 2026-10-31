@@ -1,8 +1,8 @@
 # Campamento creativo · portfolio para explorar
 
-La versión **0.2.0-review.1**, integrada en `main`, transforma el portfolio de Alejo Palavecino en una experiencia de exploración: pantalla inicial, campamento persistente a pantalla completa, cámara móvil y fichas HTML con lectura interna.
+La versión **0.3.0-review.1** prepara una revisión de calidad del campamento: huellas y selección explícitas, ladera continua, señalética, ventanas y carga, y colección editorial de reconocimientos. Ver [entrega de calidad](docs/ENTREGA-QUALITY.md), [contratos](docs/PLAN-QUALITY.md) y [assets](docs/ASSETS-QUALITY.md).
 
-La integración y publicación de esta evolución fueron autorizadas después de la entrega de revisión. `main` es la única rama y alimenta la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/). El contenido editorial mantiene su condición de revisión; los documentos de entrega conservan el estado histórico anterior al merge.
+La revisión se desarrolla en `codex/portfolio-quality`, sin publicar. `main` conserva la versión **0.2.0-review.1** y alimenta la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/). El contenido editorial sigue en revisión.
 
 ## Abrir la revisión
 
@@ -22,7 +22,7 @@ npm run build -- --base=/PortfolioPersonal/
 npm run preview -- --base=/PortfolioPersonal/
 ```
 
-Abrir `/PortfolioPersonal/` en la dirección que imprime Vite. La preview de trabajo de esta entrega usa `http://127.0.0.1:4175/PortfolioPersonal/` mientras el servidor permanezca activo.
+Abrir `/PortfolioPersonal/` en la dirección que imprime Vite. La dirección de la preview final se registra en la entrega de calidad.
 
 ## Recorrido
 

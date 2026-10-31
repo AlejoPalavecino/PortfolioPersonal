@@ -1,5 +1,9 @@
 # Campamento — ingeniería y operación vigente
 
+> Actualización 0.3.0-review.1: los contratos de calidad vigentes están en [PLAN-QUALITY](PLAN-QUALITY.md) y los resultados/límites en [ENTREGA-QUALITY](ENTREGA-QUALITY.md). La geometría es explícita en `DESTINATIONS`; la preparación crítica usa `camp-hillside.webp`. Los apartados siguientes conservan el contexto de 0.2.0 cuando no se indica una actualización.
+
+El catálogo editorial y su incorporación se describen en [CREDENTIALS](CREDENTIALS.md). Exportar gráficos con `npm run assets` ya no sobrescribe el CV; un PDF aprobado se importa con `python tools/import_cv.py RUTA_AL_PDF`. La preferencia interna de movimiento dura el montaje y se combina con la del sistema; los cierres habilitan exploración al comenzar salida, manteniendo el panel inerte.
+
 `ESTADO_DISENO: LISTO_PARA_TDD_RED`. Mantener Vite + TypeScript estricto + DOM/CSS, con núcleo puro y adaptadores de navegador. El encargo game-first del 30/10/2026 autoriza implementar en rama de revisión sin otra entrevista; no autoriza publicar esta evolución desde `main`.
 
 ## Estructura y dependencias
