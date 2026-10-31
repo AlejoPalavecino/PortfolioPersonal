@@ -1,0 +1,7 @@
+const task=await taskSpace(12),page=task.page('p1');
+await page.click('loc=css:.menu-toggle');await page.click('text="Taller · Proyectos"');await page.click('text="Abrir ahora"');
+await page.click('loc=css:[data-case=flower]');await page.keyboard.press('Escape');await page.keyboard.press('Escape');
+await page.waitForTimeout(350);
+console.log('closed',await page.evaluate(()=>({hash:location.hash,panelHidden:document.querySelector('.panel').hidden,panelInert:document.querySelector('.panel').inert,worldInert:document.querySelector('.world').inert,focus:document.activeElement.outerHTML.slice(0,120)})));
+await page.click('loc=css:.menu-toggle');await page.click('text="Radio · Contacto"');await page.click('text="Abrir ahora"');await page.waitForTimeout(350);
+console.log('contact',await page.evaluate(()=>{const p=document.querySelector('.panel'),r=p.getBoundingClientRect();return {hash:location.hash,width:r.width,height:r.height,visible:!p.hidden,title:document.querySelector('#reading-title')?.textContent}}),await page.snapshot());

@@ -1,0 +1,98 @@
+{
+  "evidence_type": "executor observations recorded by coordinator, not raw stdout",
+  "space": 12,
+  "main_bundle": "index-Bi_GUKpP.js",
+  "last_microfix_bundle": "index-lBr5vm9a.js",
+  "css": "index-CYdIkpLU.css",
+  "unit_tests": {
+    "files": 16,
+    "passed": 76
+  },
+  "text200": {
+    "flower320": [
+      281,
+      281
+    ],
+    "flower844": [
+      736,
+      736
+    ],
+    "menu320": [
+      265,
+      265
+    ],
+    "intro844_title": [
+      320,
+      320
+    ],
+    "native_zoom": false,
+    "green_screenshot": false
+  },
+  "normal_viewports": [
+    [
+      1366,
+      768
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      568
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "normal_panel_widths": [
+    1077,
+    351,
+    281,
+    736
+  ],
+  "normal_header_heights": [
+    123,
+    186,
+    213,
+    66
+  ],
+  "ground_clicks": [
+    [
+      500,
+      260
+    ],
+    [
+      795,
+      257
+    ],
+    [
+      305,
+      316
+    ],
+    [
+      415,
+      344
+    ],
+    [
+      675,
+      374
+    ]
+  ],
+  "radio_arrived": [
+    849.9,
+    389.5
+  ],
+  "radio_return_projects": [
+    650,
+    345
+  ],
+  "focus_restore_scroll": 278.39999,
+  "late_load_scroll": 280.7999878,
+  "late_load_and_retry": "passed with unchanged URL, view, focus, scroll, position, route, intro",
+  "resume_focus": "world after resume; manual arrow recovered control",
+  "physical_phone": false,
+  "audio_listening": false,
+  "fps_benchmark": false
+}

@@ -1,0 +1,5 @@
+const task=await taskSpace(12),page=task.page('p1');
+const state=()=>page.evaluate(()=>({focus:document.activeElement?.outerHTML.slice(0,180),hash:location.hash,pos:document.querySelector('#app').dataset.position}));
+await page.keyboard.press('Tab'); console.log('tab-label',await state()); await page.keyboard.press('Enter');
+await page.waitForFunction(()=>location.hash==='#proyectos',undefined,{timeout:30000}); console.log('arrived',await state(),await page.snapshot());
+for(let i=0;i<12;i++){await page.keyboard.press('Tab');const s=await state();console.log('tab',i+1,s);if(s.focus.includes('data-case="flower"'))break}

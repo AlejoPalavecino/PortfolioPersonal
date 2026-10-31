@@ -1,0 +1,5 @@
+const task=await taskSpace(12),page=task.page('p2');
+for(const [w,h] of [[1366,768],[390,844],[320,568],[844,390]]){
+ await page.cdp('Emulation.setDeviceMetricsOverride',{width:w,height:h,deviceScaleFactor:1,mobile:false});await page.goto('http://127.0.0.1:4195/PortfolioPersonal/#proyectos/flower');await page.reload();await page.waitForSelector('loc=css:.panel-scroll',{state:'visible'});
+ console.log(w,h,await page.evaluate(()=>{const p=document.querySelector('.panel-scroll'),h=document.querySelector('.panel-header'),title=document.querySelector('#reading-title');return{viewport:[innerWidth,innerHeight],doc:[document.documentElement.clientWidth,document.documentElement.scrollWidth],panel:[p.clientWidth,p.scrollWidth],header:[h.clientHeight,h.scrollHeight,getComputedStyle(h).overflowY],title:title.textContent,bundle:[...document.scripts].map(s=>s.src)}}));
+}

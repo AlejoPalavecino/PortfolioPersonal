@@ -1,0 +1,9 @@
+const task=await taskSpace(12),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:844,height:390,deviceScaleFactor:1,mobile:false});
+await page.goto('http://127.0.0.1:4195/PortfolioPersonal/#proyectos');await page.reload();await page.waitForSelector('loc=css:.panel-scroll',{state:'visible'});
+await page.evaluate(()=>{const p=document.querySelector('.panel-scroll');p.scrollTop=p.scrollHeight;p.focus({preventScroll:true})});
+const s=()=>page.evaluate(()=>{const p=document.querySelector('.panel-scroll'),a=document.activeElement,r=a.getBoundingClientRect();return {hash:location.hash,scroll:p.scrollTop,focus:a.className,visible:r.bottom>0&&r.top<innerHeight}});
+console.log('before',await s());
+await page.click('loc=css:.menu-toggle');await page.click('text="Radio · Contacto"');console.log('other',await s());
+await page.evaluate(()=>history.back());await page.waitForFunction(()=>location.hash==='#proyectos',undefined,{timeout:10000});
+console.log('restored',await s(),await page.snapshot());

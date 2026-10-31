@@ -1,0 +1,5 @@
+const task=await taskSpace(12),page=task.page('p1');
+const state=()=>page.evaluate(()=>({focus:document.activeElement?.outerHTML.slice(0,220),hash:location.hash,phase:document.querySelector('#app').dataset.phase}));
+console.log('initial',await state());
+for(let i=0;i<8;i++){await page.keyboard.press('Tab');const s=await state();console.log('tab',i+1,s);if(s.focus.includes('data-action="enter"'))break}
+await page.keyboard.press('Enter');console.log('enter',await state(),await page.snapshot());

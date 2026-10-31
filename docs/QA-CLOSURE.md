@@ -40,7 +40,7 @@ El mismo endpoint sin mode informa estado y recursos retenidos. `mode=release` d
 
 ## Automatización de navegador
 
-`tools/qa/closure-load.mjs` exporta `runLoadRegression(task, origin)` para ego-browser. Recibe un TaskSpace **autorizado** del ejecutor, no crea ni recupera Spaces por su cuenta. Ejecuta retención→lectura→listo y fallo→reintento→lectura→listo, y compara estado antes/después. Su sintaxis se comprobó; la interacción efectivamente ejecutada en esta sesión está preservada en `evidence/closure/browser/late.test.mjs.txt` y `retry.test.mjs.txt`. No se presenta el nuevo wrapper portable como otra ejecución de navegador.
+`tools/qa/closure-load.mjs` exporta `runLoadRegression(task, origin)` para ego-browser. Recibe un TaskSpace **autorizado** del ejecutor, no crea ni recupera Spaces por su cuenta. Ejecuta retención→lectura→listo y fallo→reintento→lectura→listo, y compara estado antes/después. El wrapper portable se ejecutó satisfactoriamente al retomar el Space autorizado; la interacción inicial también está preservada en `evidence/closure/browser/late.test.mjs.txt` y `retry.test.mjs.txt`. El wrapper desplaza Flower antes de pulsar su control real cuando queda fuera del viewport bajo; ambos escenarios y todas sus aserciones pasaron en la compilación Bi_GUKpP. El único delta posterior fue el foco de Continuar, ajeno al loader.
 
 Los scripts `.txt` son registros de las rondas ejecutadas y contienen los IDs, puertos y rutas temporales de esa sesión; no deben ejecutarse a ciegas ni recuperar un Space finalizado sin autorización. Para una nueva ejecución se usa un Space propio autorizado y el servidor reproducible anterior.
 

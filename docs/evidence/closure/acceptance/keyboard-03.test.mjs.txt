@@ -1,0 +1,8 @@
+const task=await taskSpace(12),page=task.page('p1');
+const s=()=>page.evaluate(()=>({focus:document.activeElement?.outerHTML.slice(0,180),hash:location.hash,pos:document.querySelector('#app').dataset.position,menu:!document.querySelector('.mobile-menu').hidden}));
+await page.keyboard.press('Enter');console.log('flower',await s());
+const before=await s();await page.keyboard.down('ArrowLeft');await page.waitForTimeout(800);await page.keyboard.up('ArrowLeft');console.log('reading-arrow',before,await s());
+await page.keyboard.press('Escape'); console.log('esc-list',await s());await page.keyboard.press('Escape');console.log('esc-camp',await s());
+for(let i=0;i<18;i++){await page.keyboard.press('Tab');const state=await s();console.log('tab',i+1,state);if(state.focus.includes('menu-toggle'))break}
+await page.keyboard.press('Enter');console.log('menu',await s());const a=await s();await page.keyboard.down('ArrowLeft');await page.waitForTimeout(800);await page.keyboard.up('ArrowLeft');console.log('menu-arrow',a,await s());
+await page.keyboard.press('Escape');console.log('menu-escape',await s(),await page.snapshot());

@@ -1,0 +1,8 @@
+Recorded executor observations, not raw tool stdout.
+GREEN200 capture unavailable: Page.screenshot timed out.
+Page.bringToFront + Page.captureScreenshot JPEG fromSurface=true timed out.
+Browser.getWindowForTarget confirmed normal, not minimized.
+Page.captureScreenshot JPEG60 fromSurface=false optimizeForSpeed also timed out.
+Only RED images are archived here. GREEN evidence is layout metrics and executed scripts.
+Scripts retain their session ids/ports; some include attempts interrupted by viewport changes or rAF timeouts.
+Only observed arrivals listed in ACEPTACION-CLOSURE.md count as completed. Do not replay against a finished Space without authorization.

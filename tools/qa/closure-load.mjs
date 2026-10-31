@@ -27,6 +27,7 @@ export async function runLoadRegression(task, origin = 'http://127.0.0.1:4195') 
       await page.goto(`${origin}/PortfolioPersonal/`);
       if (failed) await page.waitForFunction(() => document.querySelector('#app').dataset.phase === 'direct');
       await page.click('text="Ver portfolio sin recorrer"');
+      await page.evaluate(() => document.querySelector('button[data-case="flower"]').scrollIntoView({ block: 'center' }));
       await page.click('loc=css:button[data-case="flower"]');
       if (failed) {
         await control('hold');

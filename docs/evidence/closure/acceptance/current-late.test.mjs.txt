@@ -1,0 +1,12 @@
+const task=await taskSpace(12),page=task.page('p1');const control=mode=>fetch(`http://127.0.0.1:4195/_qa?mode=${mode}`);
+for(const fail of [false,true]){
+ await page.cdp('Emulation.setDeviceMetricsOverride',{width:1366,height:768,deviceScaleFactor:1,mobile:false});
+ await control(fail?'fail':'hold');await page.evaluate(()=>sessionStorage.removeItem('camp-entered'));await page.goto('http://127.0.0.1:4195/PortfolioPersonal/');await page.reload();
+ if(fail)await page.waitForFunction(()=>document.querySelector('.loading-status')?.textContent?.includes('No se pudo'),undefined,{timeout:15000});
+ await page.click('text="Ver portfolio sin recorrer"');await page.click('loc=css:[data-case=flower]');
+ if(fail){await control('hold');await page.click('loc=css:.panel-header [data-action=retry]')}
+ await page.cdp('Emulation.setDeviceMetricsOverride',{width:844,height:390,deviceScaleFactor:1,mobile:false});await page.focus('loc=css:.panel-scroll a.primary');await page.waitForTimeout(500);
+ const s=()=>page.evaluate(()=>{const app=document.querySelector('#app'),p=document.querySelector('.panel-scroll'),a=document.activeElement,r=a.getBoundingClientRect();return{hash:location.hash,phase:app.dataset.phase,reading:app.dataset.reading,pos:app.dataset.position,routing:app.dataset.routing,scroll:p.scrollTop,active:a.outerHTML,visible:r.top>=0&&r.bottom<=innerHeight,intro:document.querySelector('.intro').hidden,load:app.dataset.load}});
+ const before=await s();await control('release');await page.waitForFunction(()=>document.querySelector('#app').dataset.load==='28/28',undefined,{timeout:15000});const after=await s();console.log(fail?'retry':'held',before,after);
+ for(const k of ['hash','phase','reading','pos','routing','scroll','active','visible','intro'])if(before[k]!==after[k])throw Error(`${k} changed`);if(!before.visible||before.scroll<=0||before.load==='28/28')throw Error('precondition failed');
+}
