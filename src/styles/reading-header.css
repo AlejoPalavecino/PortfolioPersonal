@@ -10,12 +10,23 @@
 
 .panel-header .panel-nav {
   display:flex;
-  gap:16px;
+  flex-wrap:wrap;
+  gap:8px 16px;
   justify-content:space-between;
+}
+
+.panel-header .panel-nav > * {
+  flex:1 1 8rem;
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
 }
 
 .panel-header h2 {
   font:700 clamp(28px,4vw,42px)/1.1 Pixelify;
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
   margin:8px 0 0;
 }
 

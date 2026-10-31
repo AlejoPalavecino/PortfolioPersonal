@@ -6,6 +6,7 @@
     column-gap:24px;
     align-items:center;
   }
+  .intro-card > * { min-width:0; max-width:100%; overflow-wrap:anywhere; }
   .intro-kicker,.intro-card h1,.intro-subtitle,.intro-card>p:not(.loading-status) {
     grid-column:1;
   }

@@ -49,10 +49,17 @@
   overscroll-behavior:contain;
   padding:18px;
   display:grid;
+  grid-template-columns:minmax(0,1fr);
   gap:9px;
   background:#f7e6c3;
   border:4px solid #633f2c;
   box-shadow:0 8px 0 #342c29;
+}
+
+.mobile-menu > *, .mobile-menu button, .mobile-menu button span {
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
 }
 
 .mobile-menu strong {

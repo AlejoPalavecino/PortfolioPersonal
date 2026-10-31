@@ -32,6 +32,7 @@
 .intro-links {
   display:flex;
   justify-content:center;
+  flex-wrap:wrap;
   gap:22px;
   margin-top:18px;
   font-size:14px;
