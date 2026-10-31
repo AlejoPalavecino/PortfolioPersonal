@@ -19,7 +19,9 @@ function selectTarget(state: Navigation, target: Target): Navigation {
 }
 
 function restore(state: Navigation, view: View): Navigation {
-  const visited = view.kind === 'section' && !state.visited.includes(view.section) ? [...state.visited, view.section] : state.visited
+  const section = view.kind === 'section' ? view.section
+    : view.kind === 'recognitions' || view.kind === 'credential' ? 'journey' : null
+  const visited = section && !state.visited.includes(section) ? [...state.visited, section] : state.visited
   return { ...state, view, visited, route: null, revision: state.revision + (state.route ? 1 : 0) }
 }
 

@@ -4,6 +4,7 @@ export type SectionId = Section
 export type ProjectId = 'foxmind' | 'flower'
 export type SceneStatus = 'loading' | 'ready' | 'failed'
 export type View = { kind: 'camp' } | { kind: 'section'; section: Section } | { kind: 'project'; project: ProjectId }
+  | { kind: 'recognitions' } | { kind: 'credential'; id: string }
 export type Target = { kind: 'section'; section: Section } | { kind: 'ground'; point: Point }
 export type Route = { id: number; target: Target; origin: View; status: 'active' | 'paused' }
 export type Navigation = { position: Point; view: View; route: Route | null; visited: readonly Section[]; scene: SceneStatus; reducedMotion: boolean; revision: number }

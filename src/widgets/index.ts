@@ -1,3 +1,5 @@
+export { credentialMarkup, recognitionsMarkup } from './credentials'
+
 import { cases, email, services, type CaseId, type Section } from '../entities'
 import { assetUrl } from '../shared'
 

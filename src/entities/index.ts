@@ -1,3 +1,6 @@
+export { credentials, credentialById, publishedCredentials, credentialAssetIsSafe } from './credentials'
+export type { Credential, CredentialKind, EditorialState } from './credentials'
+
 export const sections = {
   projects: 'Proyectos', about: 'Sobre mí', journey: 'Trayectoria', contact: 'Contacto',
 } as const
