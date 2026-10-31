@@ -1,5 +1,7 @@
 # Campamento explorable — revisión 0.2.0-review.1
 
+**Actualización posterior a la entrega:** Alejo autorizó integrar todo en `main` y dejar una única rama. La integración fast-forward de `bc9381c` se subió a GitHub y se eliminó `feat/game-first-camp`; GitHub Pages se actualiza mediante el workflow de `main`. El resto del documento registra la entrega de revisión anterior a esa autorización, con sus pendientes todavía vigentes.
+
 La nueva experiencia se entrega en `feat/game-first-camp`, sobre el commit de referencia `57e2ed8dfaf53ef4da779f7fed28c782ba417404`. El relevamiento y `git fetch origin` no encontraron avances posteriores que integrar. `main` y la publicación existente se conservan: esta evolución no se publicó.
 
 ## Abrir y probar

@@ -1,8 +1,8 @@
 # Campamento creativo · portfolio para explorar
 
-La versión **0.2.0-review.1**, en la rama `feat/game-first-camp`, transforma el portfolio de Alejo Palavecino en una experiencia de exploración: pantalla inicial, campamento persistente a pantalla completa, cámara móvil y fichas HTML con lectura interna.
+La versión **0.2.0-review.1**, integrada en `main`, transforma el portfolio de Alejo Palavecino en una experiencia de exploración: pantalla inicial, campamento persistente a pantalla completa, cámara móvil y fichas HTML con lectura interna.
 
-Esta evolución es una revisión local. La [publicación actual](https://alejopalavecino.github.io/PortfolioPersonal/) sigue correspondiendo a `main` y al commit de referencia `57e2ed8`; esta rama no se publicó ni reemplaza automáticamente ese sitio.
+La integración y publicación de esta evolución fueron autorizadas después de la entrega de revisión. `main` es la única rama y alimenta la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/). El contenido editorial mantiene su condición de revisión; los documentos de entrega conservan el estado histórico anterior al merge.
 
 ## Abrir la revisión
 
@@ -55,4 +55,4 @@ FoxMind y Flower son casos de revisión hasta integrar capturas reales elegidas 
 
 La dirección vigente y sus contratos están en [PLAN-GAME-FIRST](docs/PLAN-GAME-FIRST.md), el [charter](docs/01-CHARTER-AND-BACKLOG.md) y el [playbook](docs/02-PLAYBOOK-AND-OPS.md). La instrucción de cambio completa se conserva en [el brief](docs/briefs/2026-10-30-game-first.md). Los documentos de 0.1.0 y el dossier son antecedentes históricos donde contradigan esta dirección.
 
-Cada push a `main` publica mediante `.github/workflows/pages.yml`; por eso esta revisión se mantiene separada. El pase a `main` y la publicación de la nueva experiencia se resuelven en el flujo de revisión autorizado. Mantener `noindex` y los faltantes identificados hasta la revisión editorial correspondiente.
+Cada push a `main` publica mediante `.github/workflows/pages.yml`, después de pruebas, linter y build. La evolución game-first ya fue integrada por instrucción de Alejo. Mantener `noindex` y los faltantes identificados hasta la revisión editorial correspondiente.
