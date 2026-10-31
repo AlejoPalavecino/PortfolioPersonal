@@ -45,10 +45,7 @@ function expand(world: World, node: Node, nodeKey: string, to: Point, nodes: Map
   }
 }
 
-export function findPath(world: World, from: Point, to: Point): Point[] | null {
-  if (!isWalkable(world, from) || !isWalkable(world, to) || world.cellSize <= 0) return null
-  if (dist(from, to) === 0) return [from]
-  if (segmentClear(world, from, to)) return [from, to]
+function searchGrid(world: World, from: Point, to: Point): Point[] | null {
   const nodes = initialNodes(world, from, to), open = new Set(nodes.keys()), closed = new Set<string>()
   while (open.size) {
     let best: string | null = null
@@ -60,4 +57,13 @@ export function findPath(world: World, from: Point, to: Point): Point[] | null {
     expand(world, node, id, to, nodes, open, closed)
   }
   return null
+}
+
+export function findPath(world: World, from: Point, to: Point): Point[] | null {
+  if (!isWalkable(world, from) || !isWalkable(world, to) || world.cellSize <= 0) return null
+  if (dist(from, to) === 0) return [from]
+  if (segmentClear(world, from, to)) return [from, to]
+  const path = searchGrid(world, from, to)
+  if (path || world.cellSize <= 4) return path
+  return searchGrid({ ...world, cellSize: Math.max(4, world.cellSize / 2) }, from, to)
 }
