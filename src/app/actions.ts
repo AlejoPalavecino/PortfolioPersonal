@@ -43,7 +43,10 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
     if (action === 'home' || action === 'back') { closeMenu(root, session); returnToCamp(controller, views, session); return }
     if (action === 'projects') { controller.dispatch({ type: 'back-projects' }); return }
     if (action === 'cancel') { controller.dispatch({ type: 'cancel' }); if (views.current.kind === 'camp') root.querySelector<HTMLElement>('.world')?.focus() }
-    if (action === 'resume') controller.dispatch({ type: 'resume' })
+    if (action === 'resume') {
+      controller.dispatch({ type: 'resume' })
+      root.querySelector<HTMLElement>('.world')?.focus({ preventScroll: true })
+    }
     if (action === 'open') controller.dispatch({ type: 'open-now' })
     if (action === 'motion') toggleMotion()
     if (action === 'sound') void audio.toggle().then(({ enabled, failed }) => { button.setAttribute('aria-pressed', String(enabled)); button.textContent = failed ? 'No se pudo activar sonido' : enabled ? 'Sonido activado' : 'Sonido apagado' })
