@@ -1,0 +1,12 @@
+const task=await taskSpace(5),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:320,height:568,deviceScaleFactor:1,mobile:false});
+await fetch('http://127.0.0.1:4193/control?mode=fail');
+await page.evaluate(()=>sessionStorage.removeItem('camp-entered'));
+await page.goto('http://127.0.0.1:4193/PortfolioPersonal/');
+await page.waitForFunction(()=>document.querySelector('.loading-status')?.textContent?.includes('No se pudo'),undefined,{timeout:15000});
+await page.click('text="Ver portfolio sin recorrer"');
+await page.evaluate(()=>document.querySelector('.panel-scroll').scrollTop=600);
+await page.click('loc=css:button:has-text("Conocer el proyecto") >> nth=1');
+const result=await page.evaluate(()=>{const panel=document.querySelector('.panel'),head=panel.querySelector('header'),body=panel.querySelector('.panel-scroll');return {header:head&&{height:head.clientHeight,scrollHeight:head.scrollHeight,overflow:getComputedStyle(head).overflowY},body:{height:body.clientHeight,scrollHeight:body.scrollHeight}}});
+console.log(result);
+if(result.header && result.header.scrollHeight>result.header.height) throw Error('RED: cabecera tiene scroll independiente con error visible');

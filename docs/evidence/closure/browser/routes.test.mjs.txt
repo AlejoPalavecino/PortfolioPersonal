@@ -1,0 +1,8 @@
+const task=await taskSpace(5),page=task.page('p1');await page.reload(); await page.waitForFunction(()=>document.querySelector('#app')?.dataset.load==='28/28',undefined,{timeout:15000});
+for(const [target,hash] of [['Taller · Proyectos','#proyectos'],['Carpa · Sobre mí','#sobre-mi'],['Bitácora · Trayectoria','#trayectoria'],['Radio · Contacto','#contacto']]){
+ await page.click('loc=css:button.menu-toggle'); await page.click(`text="${target}"`);
+ const route=await page.evaluate(()=>document.querySelector('[role=status]')?.textContent);
+ await page.waitForFunction(h=>location.hash===h,hash,{timeout:30000});
+ console.log(target,route,'arrived',await page.evaluate(()=>({hash:location.hash,title:document.querySelector('#reading-title')?.textContent})));
+ await page.click('loc=css:button[aria-label="Volver al campamento"]');
+}

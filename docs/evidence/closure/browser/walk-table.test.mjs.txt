@@ -1,0 +1,6 @@
+const task=await taskSpace(5),page=task.page('p1');await page.reload();await page.waitForFunction(()=>document.querySelector('#app')?.dataset.load==='28/28',undefined,{timeout:15000});await page.focus('loc=css:.world');
+try{await page.keyboard.down('ArrowDown');await page.waitForFunction(()=>Number(document.querySelector('#app').dataset.position.split(',')[1])>=485,undefined,{timeout:15000})}finally{await page.keyboard.up('ArrowDown')}
+try{await page.keyboard.down('ArrowLeft');await page.waitForFunction(()=>Number(document.querySelector('#app').dataset.position.split(',')[0])<=345,undefined,{timeout:15000})}finally{await page.keyboard.up('ArrowLeft')}
+await page.keyboard.down('ArrowUp');await page.waitForTimeout(2000);await page.keyboard.up('ArrowUp');
+console.log(await page.evaluate(()=>({p:document.querySelector('#app').dataset.position,hidden:document.querySelector('.avatar-occlusion').hidden})));
+await page.screenshot({path:'C:/Users/alejo/AppData/Local/Temp/portfolio-closure-final/manual-mesa.png'});

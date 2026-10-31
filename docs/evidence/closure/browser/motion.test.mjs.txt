@@ -1,0 +1,14 @@
+const task=await taskSpace(5),page=task.page('p1');
+await fetch('http://127.0.0.1:4193/control?mode=release');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1366,height:768,deviceScaleFactor:1,mobile:false});
+await page.cdp('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'no-preference'}]});
+await page.goto('http://127.0.0.1:4193/PortfolioPersonal/');
+await page.evaluate(()=>{localStorage.removeItem('camp:motion:v1');sessionStorage.removeItem('camp-entered')});
+await page.reload(); await page.waitForFunction(()=>document.querySelector('#app')?.getAttribute('data-load')==='28/28',undefined,{timeout:15000});
+await page.click('text="Entrar al campamento →"'); await page.click('loc=css:button.menu-toggle');
+await page.click('text="Reducir movimiento"');
+const state=()=>page.evaluate(()=>({user:document.querySelector('#app')?.getAttribute('data-user-motion'),motion:document.querySelector('#app')?.getAttribute('data-motion'),stored:localStorage.getItem('camp:motion:v1'),animations:document.querySelector('#app')?.getAnimations({subtree:true}).filter(a=>a.playState==='running').length,button:document.querySelector('[data-action=motion]')?.textContent}));
+console.log('manual',await state()); await page.reload(); await page.waitForFunction(()=>document.querySelector('#app')?.getAttribute('data-load')==='28/28',undefined,{timeout:15000}); console.log('reload',await state());
+await page.cdp('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+await page.click('loc=css:button.menu-toggle'); await page.click('loc=css:[data-action=motion]'); console.log('system-only',await state());
+await page.cdp('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'no-preference'}]}); console.log('none',await state());

@@ -1,0 +1,6 @@
+const task=await taskSpace(5),page=task.page('p1');
+const script=await page.cdp('Page.addScriptToEvaluateOnNewDocument',{source:"Object.defineProperty(window, 'localStorage', { configurable: true, get() { throw new DOMException('blocked','SecurityError') } })"});
+await page.goto('http://127.0.0.1:4193/PortfolioPersonal/'); await page.reload();
+await page.waitForFunction(()=>document.querySelector('#app')?.dataset.load==='28/28',undefined,{timeout:15000});
+console.log('blocked',await page.evaluate(()=>({motion:document.querySelector('#app').dataset.motion,phase:document.querySelector('#app').dataset.phase,load:document.querySelector('#app').dataset.load})),await page.snapshot());
+await page.cdp('Page.removeScriptToEvaluateOnNewDocument',{identifier:script.identifier});

@@ -1,0 +1,7 @@
+const task=await taskSpace(5),page=task.page('p1'); await page.reload(); await page.waitForFunction(()=>document.querySelector('#app')?.dataset.load==='28/28',undefined,{timeout:15000}); await page.focus('loc=css:.world');
+console.log('start',await page.evaluate(()=>({p:document.querySelector('#app').dataset.position,phase:document.querySelector('#app').dataset.phase})));
+try { await page.keyboard.down('ArrowUp'); await page.waitForFunction(()=>Number(document.querySelector('#app').dataset.position.split(',')[1])<=242,undefined,{timeout:15000}); } finally {await page.keyboard.up('ArrowUp')}
+console.log('up',await page.evaluate(()=>document.querySelector('#app').dataset.position));
+try { await page.keyboard.down('ArrowRight'); await page.waitForFunction(()=>Number(document.querySelector('#app').dataset.position.split(',')[0])>=575,undefined,{timeout:15000}); } finally {await page.keyboard.up('ArrowRight')}
+console.log('right',await page.evaluate(()=>({p:document.querySelector('#app').dataset.position,hidden:document.querySelector('.avatar-occlusion').hidden})));
+await page.screenshot({path:'C:/Users/alejo/AppData/Local/Temp/portfolio-closure-final/manual-taller-target.png'});

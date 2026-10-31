@@ -1,0 +1,15 @@
+const task=await taskSpace(5),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:844,height:390,deviceScaleFactor:1,mobile:false});
+await fetch('http://127.0.0.1:4193/control?mode=hold');
+await page.evaluate(()=>sessionStorage.removeItem('camp-entered'));
+await page.goto('http://127.0.0.1:4193/PortfolioPersonal/');
+await page.click('text="Ver portfolio sin recorrer"');
+await page.click('loc=css:button:has-text("Conocer el proyecto") >> nth=1');
+await page.focus('loc=css:.panel-scroll a.primary'); await page.waitForTimeout(1000);
+const state=()=>page.evaluate(()=>{const app=document.querySelector('#app'),body=document.querySelector('.panel-scroll'),active=document.activeElement,rect=active.getBoundingClientRect();return {hash:location.hash,phase:app.dataset.phase,reading:app.dataset.reading,load:app.dataset.load,position:app.dataset.position,scroll:body.scrollTop,active:active.outerHTML.slice(0,160),visible:rect.top>=0&&rect.bottom<=innerHeight,intro:document.querySelector('.intro').hidden}});
+const before=await state(); console.log('before',before);
+await fetch('http://127.0.0.1:4193/control?mode=release');
+await page.waitForFunction(()=>document.querySelector('#app')?.getAttribute('data-load')==='28/28',undefined,{timeout:15000});
+const after=await state();console.log('after',after);
+for(const key of ['hash','phase','reading','position','scroll','active','visible','intro']) if(before[key]!==after[key]) throw Error(`${key} changed`);
+if(!before.visible||before.scroll<=0) throw Error('focus/scroll precondition missing');
