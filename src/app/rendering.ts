@@ -4,12 +4,13 @@ import { assetUrl } from '../shared'
 import type { createController } from './controller'
 import type { createViews } from './views'
 import { createWorldCamera } from './camera'
+import { renderScene } from './scene-rendering'
 
 type State = ReturnType<typeof createController>['state']
 type Frame = { name: string; w: number; h: number; anchorX: number; anchorY: number }
 
 function renderAccess(root: HTMLElement, state: State) {
-  const active = state.view.kind === 'section' ? state.view.section : state.view.kind === 'project' ? 'projects' : null
+  const active = state.view.kind === 'section' ? state.view.section : state.view.kind === 'project' ? 'projects' : state.view.kind === 'recognitions' || state.view.kind === 'credential' ? 'journey' : null
   root.querySelectorAll<HTMLButtonElement>('[data-section]').forEach(button => {
     const section = button.dataset.section as Section
     button.toggleAttribute('data-visited', state.visited.includes(section))
@@ -21,9 +22,6 @@ function renderAccess(root: HTMLElement, state: State) {
   root.querySelector<HTMLElement>('.world')!.tabIndex = unavailable ? -1 : 0
   root.querySelector<HTMLElement>('.world')!.dataset.available = String(!unavailable)
   root.querySelector<HTMLElement>('.scene-status')!.hidden = state.scene !== 'failed'
-  const motion = root.querySelector<HTMLButtonElement>('[data-action=motion]')!
-  motion.setAttribute('aria-pressed', String(state.reducedMotion))
-  motion.textContent = state.reducedMotion ? 'Activar movimiento' : 'Reducir movimiento'
 }
 
 function renderRoute(root: HTMLElement, state: State) {
@@ -55,6 +53,7 @@ export function createRenderer(root: HTMLElement, views: ReturnType<typeof creat
       avatar.style.transform = `translate(${state.position.x - frame.anchorX * .28}px, ${state.position.y - frame.anchorY * .28}px)`
     }
     avatar.style.zIndex = String(Math.floor(state.position.y))
+    renderScene(root, state)
     getCamera().update(state.position, state.view.kind !== 'camp' || !root.querySelector<HTMLElement>('.mobile-menu')!.hidden, state.reducedMotion)
     root.dataset.position = `${state.position.x.toFixed(1)},${state.position.y.toFixed(1)}`
     const nearby = nearbySection(WORLD, state.position)
@@ -70,6 +69,7 @@ export function createRenderer(root: HTMLElement, views: ReturnType<typeof creat
     renderRoute(root, state)
     if (state.view.kind === 'section') views.show(state.view)
     else if (state.view.kind === 'project') views.show({ kind: 'case', id: state.view.project })
+    else if (state.view.kind === 'recognitions' || state.view.kind === 'credential') views.show(state.view)
     else views.show({ kind: 'camp' }, false)
   }
   return { render, get camera() { return getCamera() }, setFrames(value: readonly Frame[]) { frames = value }, async loadFrames(ready: () => void) {

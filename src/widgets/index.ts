@@ -1,7 +1,8 @@
-export { credentialMarkup, recognitionsMarkup } from './credentials'
-
 import { cases, email, services, type CaseId, type Section } from '../entities'
 import { assetUrl } from '../shared'
+import { journeyTabs } from './credentials'
+
+export { credentialMarkup, recognitionsMarkup } from './credentials'
 
 const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`
 const back = '<button class="text-button" data-action="back">← Volver al campamento</button>'
@@ -35,6 +36,7 @@ function about(): string {
 
 function journey(): string {
   return `<span class="eyebrow">LA BITÁCORA</span><h2>Trayectoria</h2>
+    ${journeyTabs('journey')}
     <p class="lead">Un recorrido entre el desarrollo, el análisis y los productos.</p>
     <div class="timeline">
       <article><h3>FoxMind</h3><p>Cofundador y responsable del desarrollo hasta la etapa actual, incluida la integración de IA. El producto se encuentra previo a pruebas piloto.</p></article>

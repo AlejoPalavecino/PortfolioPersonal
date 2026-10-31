@@ -34,3 +34,5 @@ export function reduceExperience(state: Experience, event: ExperienceEvent): Exp
     case 'set-motion': return { ...state, reducedMotion: event.reduced }
   }
 }
+
+export function effectiveReducedMotion(system: boolean, user: boolean): boolean { return system || user }

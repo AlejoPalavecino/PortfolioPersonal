@@ -17,9 +17,9 @@ export function mount(root: HTMLElement) {
   const controller = createController(renderer.render)
   const session = createSession(root, controller)
   const audio = createAudio()
-  bindPreferences(controller, session)
+  const toggleMotion = bindPreferences(root, controller, session)
   const loader = prepareScene(state => { renderer.setFrames(state.frames); session.loading(state) })
-  bindActions(root, controller, views, audio, session, () => loader.retry())
+  bindActions(root, controller, views, audio, session, () => loader.retry(), toggleMotion)
   bindEvents(root, controller, views, audio, session, renderer.camera)
   views.restoreUrl(controller)
 }

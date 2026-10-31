@@ -6,7 +6,7 @@ export function createWorldCamera(root: HTMLElement) {
   const world = root.querySelector<HTMLElement>('.world')!
   let size = { width: viewport.clientWidth, height: viewport.clientHeight }
   let focus: Point = WORLD.spawn
-  const scale = () => size.width < 700 ? 1.08 : Math.max(.75, Math.min(size.width / 1000, size.height / 650))
+  const scale = () => size.width < 700 ? 1.08 : Math.max(.75, size.width / 1000, size.height / 650)
   let camera: Camera = createCamera(WORLD, size, focus, scale())
   let last = 0, locked = false, reduced = false
   const paint = () => {

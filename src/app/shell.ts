@@ -1,18 +1,11 @@
 import { sections } from '../entities'
 import { assetUrl } from '../shared'
+import { worldMarkup } from './world-markup'
 
 const labels: Record<string, string> = { projects: 'Taller · Proyectos', about: 'Carpa · Sobre mí', journey: 'Bitácora · Trayectoria', contact: 'Radio · Contacto' }
 const links = () => Object.entries(sections).map(([id]) =>
   `<button data-section="${id}"><span>${labels[id]}</span><span class="visited-mark" aria-hidden="true">✓</span></button>`).join('')
 
-function world(): string {
-  const objects = Object.keys(sections).map(id => `<img class="poi poi-${id}" data-poi="${id}" src="${assetUrl(`poi-${id}.webp`)}" alt="">`).join('')
-  const buttons = Object.entries(sections).map(([id, label]) => `<button class="world-label label-${id}" data-section="${id}">${label}</button>`).join('')
-  return `<div class="world-scroll"><div class="world" tabindex="0" role="application" aria-label="Campamento interactivo">
-    <img class="ground" src="${assetUrl('camp-ground.webp')}" alt="">${objects}${buttons}
-    <img class="avatar" width="131" height="255" src="${assetUrl('avatar/idle-down.webp')}" alt="">
-  </div></div>`
-}
 function hud(): string {
   return `<div class="hud-left"><button class="brand" data-action="home" aria-label="Volver al campamento"><img src="${assetUrl('emblem.webp')}" alt=""></button>
     <button class="menu-toggle" data-action="menu" aria-expanded="false">☰ <span>Campamento</span></button></div>
@@ -22,7 +15,7 @@ function hud(): string {
     </nav>`
 }
 function intro(): string {
-  return `<section class="intro" aria-label="Bienvenida"><div class="intro-card"><span class="intro-kicker">CAMPAMENTO CREATIVO</span><h1>Alejo Palavecino</h1>
+  return `<section class="intro" aria-label="Bienvenida"><div class="intro-card"><div class="loading-vignette" aria-hidden="true"><img src="${assetUrl('avatar/idle-down.webp')}" alt=""><span class="loading-lantern"></span></div><span class="intro-kicker">CAMPAMENTO CREATIVO</span><h1>Alejo Palavecino</h1>
     <p class="intro-subtitle">Un portfolio para explorar.</p><p>Full stack · Análisis · Automatización e IA</p>
     <p class="loading-status" role="status">Preparando el campamento…</p><button class="retry-intro" data-action="retry" hidden>Reintentar carga</button>
     <button class="enter-button" data-action="enter" disabled>Entrar al campamento →</button>
@@ -31,8 +24,8 @@ function intro(): string {
   </div></section>`
 }
 export function shell(): string {
-  return `<main id="main"><div class="landscape">${world()}</div>${hud()}
-    <div class="help-card" role="status"><p class="world-hint" tabindex="0">Elegí un destino para caminar. También podés explorar con WASD o las flechas.</p><button data-action="dismiss-help" aria-label="Cerrar ayuda">×</button></div>
-    <div class="route-controls" hidden><span role="status" aria-live="polite">En camino…</span><button data-action="resume" hidden>Continuar recorrido</button><button data-action="open">Abrir ahora</button><button data-action="cancel">Cancelar recorrido</button></div>
+  return `<main id="main"><div class="landscape">${worldMarkup()}</div>${hud()}
+    <div class="help-card" role="status"><p class="tutorial-hint" tabindex="-1">Elegí un destino para caminar. También podés explorar con WASD o las flechas.</p><button data-action="dismiss-help" aria-label="Cerrar ayuda">×</button></div>
+    <p class="world-hint" role="status" hidden></p><div class="route-controls" hidden><span role="status" aria-live="polite">En camino…</span><button data-action="resume" hidden>Continuar recorrido</button><button data-action="open">Abrir ahora</button><button data-action="cancel">Cancelar recorrido</button></div>
     <section class="panel" hidden></section><p class="scene-status" role="status" hidden>El campamento no pudo cargarse. <button data-action="retry">Reintentar escena</button></p>${intro()}</main>`
 }

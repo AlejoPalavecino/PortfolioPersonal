@@ -4,7 +4,7 @@ export type { SpriteFrame } from './frames'
 
 export type ScenePreparation = { generation: number; status: 'idle' | 'loading' | 'ready' | 'failed'; completed: number; total: number; timedOut: boolean; error: string | null; frames: readonly SpriteFrame[] }
 export type ScenePorts = { metadata(): Promise<unknown>; image(file: string): Promise<void>; navigation(): Promise<void> }
-const images = ['world-backdrop.webp', 'camp-ground.webp', 'poi-projects.webp', 'poi-about.webp', 'poi-journey.webp', 'poi-contact.webp']
+const images = ['world-backdrop.webp', 'camp-hillside.webp', 'poi-projects.webp', 'poi-about.webp', 'poi-journey.webp', 'poi-contact.webp']
 
 export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePreparation) => void, timeoutMs = 8000) {
   let state: ScenePreparation = { generation: 0, status: 'idle', completed: 0, total: 28, timedOut: false, error: null, frames: [] }

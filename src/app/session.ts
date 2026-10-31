@@ -21,7 +21,7 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     if (state.phase === 'explore') awaitingEntry = false
     root.querySelector<HTMLElement>('.hud-left')!.inert = !intro.hidden
     root.querySelector<HTMLElement>('.hud-right')!.inert = !intro.hidden
-    root.querySelector<HTMLElement>('.world')!.inert = !intro.hidden || !root.querySelector<HTMLElement>('.panel')!.hidden
+    root.querySelector<HTMLElement>('.world')!.inert = !intro.hidden || root.dataset.reading === 'true'
     enter.disabled = state.preparation !== 'ready'
   }
   const loading = (load: ScenePreparation) => {

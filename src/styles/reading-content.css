@@ -132,7 +132,7 @@
   min-height:44px;
   padding:10px 16px;
   border:2px solid #743d2c;
-  background:#f05646;
+  background:#a93529;
   color:#fff;
   text-decoration:none;
   border-radius:4px;
@@ -172,3 +172,12 @@
     font-size:42px;
   }
 }
+
+.primary:hover, .primary:focus-visible { background: #81281f; color: #fff; }
+
+.journey-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; border-bottom: 2px solid #c7ad89; }
+.journey-tabs button { min-height: 44px; padding: 8px 12px; text-decoration: none; }
+.journey-tabs [aria-current="page"] { font-weight: 700; border-bottom: 3px solid #76503a; }
+.credential-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+.credential-evidence img, .credential-evidence iframe { max-width: 100%; width: 100%; border: 1px solid #bca98a; }
+.credential-evidence iframe { min-height: 55vh; }

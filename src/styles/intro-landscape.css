@@ -2,7 +2,7 @@
   .intro-card {
     width:min(720px,100%);
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
     column-gap:24px;
     align-items:center;
   }
@@ -12,6 +12,7 @@
   .loading-status,.enter-button,.direct-button,.intro-links,.retry-intro {
     grid-column:2;
   }
+  .loading-vignette { display:none; }
   .intro-kicker {
     grid-row:1;
   }

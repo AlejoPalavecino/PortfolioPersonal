@@ -11,7 +11,7 @@ export function closeMenu(root: HTMLElement, session: Session) {
   const button = root.querySelector<HTMLButtonElement>('.menu-toggle')!
   button.setAttribute('aria-expanded', 'false'); session.update({ type: 'overlay', overlay: 'none' })
 }
-export function bindActions(root: HTMLElement, controller: Controller, views: ReturnType<typeof createViews>, audio: ReturnType<typeof createAudio>, session: Session, retry: () => void) {
+export function bindActions(root: HTMLElement, controller: Controller, views: ReturnType<typeof createViews>, audio: ReturnType<typeof createAudio>, session: Session, retry: () => void, toggleMotion: () => void) {
   root.addEventListener('click', event => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button'); if (!button) return
     const section = button.dataset.section as Section | undefined, action = button.dataset.action, id = button.dataset.case
@@ -24,6 +24,10 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
       if (document.activeElement === button && !button.offsetParent) root.querySelector<HTMLButtonElement>(controller.state.route ? '[data-action=open]' : '.menu-toggle')?.focus()
       return
     }
+    const credential = button.dataset.credential
+    if (credential) { controller.dispatch({ type: 'restore', view: { kind: 'credential', id: credential } }); return }
+    if (action === 'recognitions') { controller.dispatch({ type: 'restore', view: { kind: 'recognitions' } }); return }
+    if (action === 'journey') { controller.dispatch({ type: 'restore', view: { kind: 'section', section: 'journey' } }); return }
     if (id === 'foxmind' || id === 'flower') { controller.dispatch({ type: 'open-project', project: id }); return }
     if (action === 'enter') { session.enter(); return }
     if (action === 'direct') { session.direct(); controller.dispatch({ type: 'select-section', section: 'projects', arrived: true }); return }
@@ -31,17 +35,17 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
     if (action === 'help') {
       closeMenu(root, session)
       root.querySelector<HTMLElement>('.help-card')!.hidden = false
-      root.querySelector<HTMLElement>('.world-hint')!.focus({ preventScroll: true })
+      root.querySelector<HTMLElement>('.tutorial-hint')!.focus({ preventScroll: true })
       return
     }
-    if (action === 'dismiss-help') { root.querySelector<HTMLElement>('.help-card')!.hidden = true; return }
+    if (action === 'dismiss-help') { root.querySelector<HTMLElement>('.help-card')!.hidden = true; root.querySelector<HTMLElement>('[data-action=help]')?.focus(); return }
     if (action === 'retry') { retry(); return }
-    if (action === 'home' || action === 'back') { returnToCamp(controller, views, session); return }
+    if (action === 'home' || action === 'back') { closeMenu(root, session); returnToCamp(controller, views, session); return }
     if (action === 'projects') { controller.dispatch({ type: 'back-projects' }); return }
-    if (action === 'cancel') controller.dispatch({ type: 'cancel' })
+    if (action === 'cancel') { controller.dispatch({ type: 'cancel' }); if (views.current.kind === 'camp') root.querySelector<HTMLElement>('.world')?.focus() }
     if (action === 'resume') controller.dispatch({ type: 'resume' })
     if (action === 'open') controller.dispatch({ type: 'open-now' })
-    if (action === 'motion') { const reduced = !controller.state.reducedMotion; controller.dispatch({ type: 'set-motion', reduced }); session.update({ type: 'set-motion', reduced }) }
+    if (action === 'motion') toggleMotion()
     if (action === 'sound') void audio.toggle().then(({ enabled, failed }) => { button.setAttribute('aria-pressed', String(enabled)); button.textContent = failed ? 'No se pudo activar sonido' : enabled ? 'Sonido activado' : 'Sonido apagado' })
   })
 }

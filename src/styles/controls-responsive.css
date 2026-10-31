@@ -16,7 +16,7 @@
 }
 
 .enter-button {
-  background:#e65b44;
+  background:#a93529;
   color:white;
 }
 
@@ -136,3 +136,5 @@
   border:2px solid #68422d;
   padding:8px 16px;
 }
+
+.enter-button:not(:disabled):hover, .enter-button:not(:disabled):focus-visible { background:#81281f; color:#fff; }

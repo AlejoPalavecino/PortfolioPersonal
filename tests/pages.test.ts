@@ -19,7 +19,7 @@ describe.each(['/', '/PortfolioPersonal/'])('recursos con BASE_URL %s', (base) =
     vi.stubEnv('BASE_URL', base)
     const markup = shell() + sectionMarkup('about') + sectionMarkup('contact')
     const urls = [...markup.matchAll(/(?:src|href)="([^"]*assets\/[^"]+)"/g)].map(match => match[1])
-    expect(urls).toContain(`${base}assets/camp-ground.webp`)
+    expect(urls).toContain(`${base}assets/camp-hillside.webp`)
     expect(urls).toContain(`${base}assets/avatar/idle-down.webp`)
     expect(urls).toContain(`${base}assets/portrait.webp`)
     expect(urls).toContain(`${base}assets/cv-alejo-palavecino-es.pdf`)

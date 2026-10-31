@@ -1,4 +1,5 @@
-import type { Section } from '../entities'
+import { hitDestination } from '../core/domain'
+import { effectiveReducedMotion } from '../core/experience'
 import type { createController } from './controller'
 import type { createViews, View } from './views'
 import type { createAudio } from './audio'
@@ -10,10 +11,25 @@ import { restoreHistoryView } from './history'
 
 type Controller = ReturnType<typeof createController>
 type Session = ReturnType<typeof createSession>
-export function bindPreferences(controller: Controller, session: Session) {
+export function bindPreferences(root: HTMLElement, controller: Controller, session: Session) {
   const motion = matchMedia('(prefers-reduced-motion: reduce)')
-  controller.dispatch({ type: 'set-motion', reduced: motion.matches })
-  motion.addEventListener('change', event => { controller.dispatch({ type: 'set-motion', reduced: event.matches }); session.update({ type: 'set-motion', reduced: event.matches }) })
+  let user = false
+  const apply = () => {
+    const reduced = effectiveReducedMotion(motion.matches, user)
+    root.dataset.userMotion = String(user); root.dataset.motion = reduced ? 'reduced' : 'full'
+    if (reduced) {
+      root.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel())
+      const panel = root.querySelector<HTMLElement>('.panel')
+      if (panel && root.dataset.reading === 'false') panel.hidden = true
+    }
+    const button = root.querySelector<HTMLButtonElement>('[data-action=motion]')!
+    button.setAttribute('aria-pressed', String(user))
+    button.setAttribute('aria-description', motion.matches ? 'El sistema solicita reducir movimiento.' : 'Preferencia de movimiento del portfolio.')
+    controller.dispatch({ type: 'set-motion', reduced }); session.update({ type: 'set-motion', reduced })
+    button.textContent = motion.matches ? (user ? 'Movimiento reducido: sistema y preferencia' : 'Movimiento reducido por el sistema') : user ? 'Activar movimiento' : 'Reducir movimiento'
+  }
+  motion.addEventListener('change', apply); apply()
+  return () => { user = !user; apply() }
 }
 export function bindEvents(root: HTMLElement, controller: Controller, views: ReturnType<typeof createViews>, audio: ReturnType<typeof createAudio>, session: Session, camera: ReturnType<typeof createWorldCamera>) {
   const world = root.querySelector<HTMLElement>('.world')!
@@ -26,10 +42,11 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
   world.addEventListener('click', e => { if (dragged) { e.preventDefault(); e.stopPropagation() } }, true)
   world.addEventListener('click', e => {
     if (dragged || (e.target as HTMLElement).closest('button') || session.state.phase !== 'explore' || session.state.overlay !== 'none') return
-    const poi = (e.target as HTMLElement).closest<HTMLElement>('[data-poi]')
-    if (poi) { views.saveFocus(); controller.select(poi.dataset.poi as Section); help.hidden = true; return }
+    const point = camera.point(e.clientX, e.clientY)
+    const destination = hitDestination(point)
+    if (destination) { views.saveFocus(); controller.select(destination); help.hidden = true; return }
     if (controller.state.reducedMotion || controller.state.scene !== 'ready') return
-    if (controller.ground(camera.point(e.clientX, e.clientY))) help.hidden = true
+    if (controller.ground(point)) help.hidden = true
   })
   bindKeyboard(world, controller, () => session.state.phase === 'explore' && session.state.overlay === 'none')
   world.addEventListener('keydown', event => { if (session.state.phase === 'explore' && /^(ArrowUp|ArrowDown|ArrowLeft|ArrowRight|w|a|s|d|e|Enter)$/i.test(event.key)) help.hidden = true })
@@ -37,9 +54,11 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape' || event.defaultPrevented || event.isComposing || (event.target as HTMLElement)?.closest('input,textarea,select')) return
     if (!root.querySelector<HTMLElement>('.mobile-menu')!.hidden) { closeMenu(root, session); root.querySelector<HTMLButtonElement>('.menu-toggle')!.focus() }
-    else if (!help.hidden && session.state.phase === 'explore' && !controller.state.route) help.hidden = true
-    else if (controller.state.route) controller.dispatch({ type: 'cancel' })
+    else if (!help.hidden && session.state.phase === 'explore' && !controller.state.route) { help.hidden = true; root.querySelector<HTMLElement>('[data-action=help]')?.focus() }
+    else if (controller.state.route) { controller.dispatch({ type: 'cancel' }); if (views.current.kind === 'camp') root.querySelector<HTMLElement>('.world')?.focus() }
     else if (views.current.kind === 'case') controller.dispatch({ type: 'back-projects' })
+    else if (views.current.kind === 'credential') controller.dispatch({ type: 'restore', view: { kind: 'recognitions' } })
+    else if (views.current.kind === 'recognitions') controller.dispatch({ type: 'restore', view: { kind: 'section', section: 'journey' } })
     else if (views.current.kind !== 'camp') { returnToCamp(controller, views, session) }
   })
   document.addEventListener('visibilitychange', () => { if (document.hidden) { controller.dispatch({ type: 'pause' }); audio.pause(); const sound = root.querySelector<HTMLButtonElement>('[data-action=sound]')!; if (sound.getAttribute('aria-pressed') === 'true') sound.textContent = 'Continuar sonido' } })
