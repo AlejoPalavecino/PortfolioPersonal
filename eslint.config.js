@@ -29,6 +29,8 @@ export default tseslint.config(
       'boundaries/elements': [
         { type: 'app', pattern: 'src/main.ts', mode: 'full' },
         { type: 'domain', pattern: 'src/core/domain/**', mode: 'full' },
+        { type: 'domain', pattern: 'src/core/camera/**', mode: 'full' },
+        { type: 'domain', pattern: 'src/core/experience/**', mode: 'full' },
         { type: 'shared', pattern: 'src/shared/**', mode: 'full' },
         { type: 'shared', pattern: 'src/styles/**', mode: 'full' },
         { type: 'entity', pattern: 'src/entities/**', mode: 'full' },
