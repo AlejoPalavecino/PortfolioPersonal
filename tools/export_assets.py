@@ -49,6 +49,7 @@ for name in ('Lexend-Variable.ttf', 'PixelifySans-Variable.ttf', 'Lexend-OFL.txt
     shutil.copy2(KIT / 'assets/fonts' / name, OUT / name)
 for name in ('camp-ambience-loop.wav', 'ui-open.wav', 'step-soft.wav'):
     shutil.copy2(KIT / 'assets/audio' / name, OUT / name)
-shutil.copy2(KIT / 'content/cv-alejo-palavecino-es.pdf', OUT / 'cv-alejo-palavecino-es.pdf')
+# The professional CV has an independent editorial lifecycle. Graphics exports
+# must never replace it with the historical dossier PDF. Use import_cv.py.
 (OUT / 'export-report.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
 print(json.dumps({'exports': len(report), 'image_bytes': sum(r['bytes'] for r in report)}))

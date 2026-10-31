@@ -3,3 +3,5 @@ export { createNavigation, reduceNavigation } from './navigation'
 export { isWalkable, moveSafely, nearbySection } from './geometry'
 export { findPath } from './path'
 export { WORLD } from './world'
+
+export { DESTINATIONS, hitDestination, isOccluded } from './destinations'
