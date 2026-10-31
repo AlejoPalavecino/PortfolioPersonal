@@ -1,5 +1,3 @@
-@import './base.css';
-@import './layout.css';
-@import './world.css';
-@import './panel.css';
-@import './responsive.css';
+@import './game.css';
+@import './game-panel.css';
+@import './game-adaptation.css';

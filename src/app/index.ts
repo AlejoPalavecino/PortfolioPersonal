@@ -4,16 +4,22 @@ import { shell } from './shell'
 import { createViews } from './views'
 import { createRenderer } from './rendering'
 import { bindEvents, bindPreferences } from './events'
-import { loadScene } from './load-scene'
+import { bindActions } from './actions'
+import { prepareScene } from './load-scene'
+import { createSession } from './session'
+import { observeViewport } from './viewport'
 
 export function mount(root: HTMLElement) {
   root.innerHTML = shell()
-  const views = createViews(root)
+  observeViewport(root)
+  const views = createViews(root, { onView: view => session.update({ type: view.kind === 'camp' ? 'camp' : 'read' }) })
   const renderer = createRenderer(root, views)
   const controller = createController(renderer.render)
-  bindPreferences(root, controller)
-  bindEvents(root, controller, views, createAudio())
+  const session = createSession(root, controller)
+  const audio = createAudio()
+  bindPreferences(controller, session)
+  const loader = prepareScene(state => { renderer.setFrames(state.frames); session.loading(state) })
+  bindActions(root, controller, views, audio, session, () => loader.retry())
+  bindEvents(root, controller, views, audio, session, renderer.camera)
   views.restoreUrl(controller)
-  loadScene(root, controller)
-  void renderer.loadFrames(() => renderer.render(controller.state, false, 'down'))
 }

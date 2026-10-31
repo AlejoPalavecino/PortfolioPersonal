@@ -3,6 +3,7 @@ import { sections, type Section } from '../entities'
 import { assetUrl } from '../shared'
 import type { createController } from './controller'
 import type { createViews } from './views'
+import { createWorldCamera } from './camera'
 
 type State = ReturnType<typeof createController>['state']
 type Frame = { name: string; w: number; h: number; anchorX: number; anchorY: number }
@@ -12,12 +13,13 @@ function renderAccess(root: HTMLElement, state: State) {
   root.querySelectorAll<HTMLButtonElement>('[data-section]').forEach(button => {
     const section = button.dataset.section as Section
     button.toggleAttribute('data-visited', state.visited.includes(section))
+    button.toggleAttribute('data-selected', state.route?.target.kind === 'section' && state.route.target.section === section)
     if (active === section) button.setAttribute('aria-current', 'page')
     else button.removeAttribute('aria-current')
   })
   const unavailable = state.reducedMotion || state.scene !== 'ready'
   root.querySelector<HTMLElement>('.world')!.tabIndex = unavailable ? -1 : 0
-  root.querySelector<HTMLElement>('[data-action=explore]')!.hidden = unavailable
+  root.querySelector<HTMLElement>('.world')!.dataset.available = String(!unavailable)
   root.querySelector<HTMLElement>('.scene-status')!.hidden = state.scene !== 'failed'
   const motion = root.querySelector<HTMLButtonElement>('[data-action=motion]')!
   motion.setAttribute('aria-pressed', String(state.reducedMotion))
@@ -36,30 +38,41 @@ function renderRoute(root: HTMLElement, state: State) {
 
 export function createRenderer(root: HTMLElement, views: ReturnType<typeof createViews>) {
   const avatar = root.querySelector<HTMLImageElement>('.avatar')!
-  let frames: Frame[] = []
+  let frames: readonly Frame[] = []
+  let previous = ''
+  let worldCamera: ReturnType<typeof createWorldCamera> | undefined
+  const getCamera = () => worldCamera ??= createWorldCamera(root)
   const render = (state: State, moving: boolean, direction: string) => {
     const name = moving ? `walk-${direction}-${Math.floor(performance.now() / 167) % 4 + 1}` : `idle-${direction}`
     const frame = frames.find(item => item.name === name)
     if (frame) {
-      avatar.src = assetUrl(`avatar/${frame.name}.webp`)
-      avatar.style.width = `${frame.w * .28 / 10}%`
-      avatar.style.transform = `translate(${-frame.anchorX / frame.w * 100}%, ${-frame.anchorY / frame.h * 100}%)`
+      if (avatar.dataset.frame !== name) {
+        avatar.dataset.frame = name
+        avatar.src = assetUrl(`avatar/${frame.name}.webp`)
+        avatar.style.width = `${frame.w * .28}px`
+      }
+      avatar.style.left = '0'; avatar.style.top = '0'
+      avatar.style.transform = `translate(${state.position.x - frame.anchorX * .28}px, ${state.position.y - frame.anchorY * .28}px)`
     }
-    avatar.style.left = `${state.position.x / WORLD.width * 100}%`
-    avatar.style.top = `${state.position.y / WORLD.height * 100}%`
     avatar.style.zIndex = String(Math.floor(state.position.y))
+    getCamera().update(state.position, state.view.kind !== 'camp' || !root.querySelector<HTMLElement>('.mobile-menu')!.hidden, state.reducedMotion)
+    root.dataset.position = `${state.position.x.toFixed(1)},${state.position.y.toFixed(1)}`
     const nearby = nearbySection(WORLD, state.position)
     const hint = root.querySelector<HTMLElement>('.world-hint')!
-    hint.textContent = nearby ? `Cerca de ${sections[nearby]}. Enter o E para abrir`
-      : 'Flechas o WASD para caminar. Enter o E junto a una entrada. Tab para salir.'
+    const key = JSON.stringify([state.view, state.route, state.scene, state.reducedMotion, state.visited, nearby])
+    if (key === previous) return
+    previous = key
+    const touch = matchMedia('(pointer: coarse)').matches
+    hint.textContent = touch ? 'Tocá un destino para caminar hasta él. También podés tocar un punto del camino.' : nearby ? `Cerca de ${sections[nearby]}. E / Enter para abrir` : 'Elegí un destino para caminar. También podés explorar con WASD o las flechas.'
     hint.hidden = state.reducedMotion || state.scene !== 'ready'
+    root.dataset.routing = String(!!state.route)
     renderAccess(root, state)
     renderRoute(root, state)
     if (state.view.kind === 'section') views.show(state.view)
     else if (state.view.kind === 'project') views.show({ kind: 'case', id: state.view.project })
     else views.show({ kind: 'camp' }, false)
   }
-  return { render, async loadFrames(ready: () => void) {
+  return { render, get camera() { return getCamera() }, setFrames(value: readonly Frame[]) { frames = value }, async loadFrames(ready: () => void) {
     try {
       const response = await fetch(assetUrl('avatar/frames.json'))
       if (response.ok) { frames = await response.json() as Frame[]; ready() }

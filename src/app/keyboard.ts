@@ -5,10 +5,10 @@ const moves: Record<string, [number, number]> = {
   arrowleft: [-1, 0], a: [-1, 0], arrowright: [1, 0], d: [1, 0],
 }
 
-export function bindKeyboard(world: HTMLElement, controller: ReturnType<typeof createController>) {
+export function bindKeyboard(world: HTMLElement, controller: ReturnType<typeof createController>, enabled: () => boolean = () => true) {
   const held = new Set<string>()
   let last = 0
-  const active = () => document.activeElement === world && !document.hidden &&
+  const active = () => enabled() && document.activeElement === world && !document.hidden &&
     controller.state.scene === 'ready' && !controller.state.reducedMotion && controller.state.view.kind === 'camp'
   const stop = () => { if (held.size) { held.clear(); controller.stopManual() } }
   const tick = (time: number) => {
