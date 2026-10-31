@@ -1,5 +1,7 @@
 # Campamento — ingeniería y operación vigente
 
+> Cierre 0.3.1-review.1: preferencia manual persistente `camp:motion:v1` aplicada antes de DOM; lectura con un scroll; ghost con máscara alfa. Stack y matriz de fronteras preservados con ESLint10/boundaries7; auditoría completa en CI preparada, sin ejecutar remoto. [Reproducción exacta](QA-CLOSURE.md), [dependencias](DEPENDENCIES-CLOSURE.md) y [estado parcial](ENTREGA-CLOSURE.md) tienen precedencia sobre descripciones históricas.
+
 > Actualización 0.3.0-review.1: los contratos de calidad vigentes están en [PLAN-QUALITY](PLAN-QUALITY.md) y los resultados/límites en [ENTREGA-QUALITY](ENTREGA-QUALITY.md). La geometría es explícita en `DESTINATIONS`; la preparación crítica usa `camp-hillside.webp`. Los apartados siguientes conservan el contexto de 0.2.0 cuando no se indica una actualización.
 
 El catálogo editorial y su incorporación se describen en [CREDENTIALS](CREDENTIALS.md). Exportar gráficos con `npm run assets` ya no sobrescribe el CV; un PDF aprobado se importa con `python tools/import_cv.py RUTA_AL_PDF`. La preferencia interna de movimiento dura el montaje y se combina con la del sistema; los cierres habilitan exploración al comenzar salida, manteniendo el panel inerte.

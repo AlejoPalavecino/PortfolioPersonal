@@ -1,8 +1,8 @@
 # Campamento creativo · portfolio para explorar
 
-La versión **0.3.0-review.1** prepara una revisión de calidad del campamento: huellas y selección explícitas, ladera continua, señalética, ventanas y carga, y colección editorial de reconocimientos. Ver [entrega de calidad](docs/ENTREGA-QUALITY.md), [contratos](docs/PLAN-QUALITY.md) y [assets](docs/ASSETS-QUALITY.md).
+La versión local **0.3.1-review.1** corrige dependencias, persiste movimiento reducido y mejora lectura/oclusión. La aceptación interactiva sigue parcial: ver [entrega de cierre](docs/ENTREGA-CLOSURE.md), [dependencias](docs/DEPENDENCIES-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
 
-La versión **0.3.0-review.1** está integrada en `main`, con integración y publicación autorizadas después de la entrega de revisión. `main` es la única rama y alimenta la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/). El contenido editorial sigue en revisión.
+`main` y la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/) conservan **0.3.0-review.1**. La nueva revisión está en `codex/portfolio-closure`, sin push ni publicación autorizados. El contenido editorial sigue en revisión.
 
 ## Abrir la revisión
 
