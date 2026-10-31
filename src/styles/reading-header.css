@@ -1,0 +1,51 @@
+.panel-header {
+  display:block;
+  flex:none;
+  max-height:45%;
+  overflow:auto;
+}
+
+.panel-header .eyebrow {
+  display:block;
+}
+
+.panel-header .panel-nav {
+  display:flex;
+  gap:16px;
+  justify-content:space-between;
+}
+
+.panel-header h2 {
+  font:700 clamp(28px,4vw,42px)/1.1 Pixelify;
+  margin:8px 0 0;
+}
+
+.panel-scroll {
+  min-height:0;
+  flex:1;
+}
+
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.services-grid article {
+  padding:12px;
+  border:1px solid #d7c6aa;
+}
+
+.services-grid h4 {
+  margin:0;
+  font-size:16px;
+}
+
+@media(max-width:700px) {
+  .services-grid {
+    grid-template-columns:1fr;
+  }
+  .panel-header h2 {
+    font-size:28px;
+  }
+}

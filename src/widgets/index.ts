@@ -1,4 +1,4 @@
-import { cases, email, type CaseId, type Section } from '../entities'
+import { cases, email, services, type CaseId, type Section } from '../entities'
 import { assetUrl } from '../shared'
 
 const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`
@@ -15,6 +15,7 @@ function projectCard(id: CaseId): string {
 function projects(): string {
   return `<span class="eyebrow">EL TALLER</span><h2>Proyectos</h2>
     <p class="lead">Ideas que toman forma en productos de software.</p>
+    <p class="review-note">Casos en revisión. Las capturas reales se incorporarán después de su selección.</p>
     <div class="project-grid">${projectCard('foxmind')}${projectCard('flower')}</div>`
 }
 
@@ -25,7 +26,9 @@ function about(): string {
       <p>Trabajo en desarrollo full stack, análisis funcional, automatización e inteligencia artificial aplicada. Soy cofundador de FoxMind, una plataforma educativa orientada a personalizar el aprendizaje y acompañar el trabajo docente.</p>
       <h3>Lo que me interesa</h3>
       <p>Construir productos, comprender problemas y colaborar en la evolución de ideas.</p>
-    </div><img src="${assetUrl('portrait.webp')}" alt="Retrato ilustrado de Alejo"></div>`
+    </div><img src="${assetUrl('portrait.webp')}" alt="Retrato ilustrado de Alejo"></div>
+    <h3>Cómo puedo ayudarte</h3><p>Desarrollo a medida y servicios relacionados, con alcance definido para cada proyecto.</p>
+    <div class="services-grid">${services.map(service => `<article><h4>${service.title}</h4><p>${service.description}</p></article>`).join('')}</div>`
 }
 
 function journey(): string {
@@ -60,8 +63,8 @@ export function caseMarkup(id: CaseId): string {
     <span class="eyebrow">PROYECTO DESTACADO</span><h2>${item.title}</h2><p class="lead">${item.subtitle}</p>
     <div class="case-layout">
       <div class="placeholder"><span aria-hidden="true">▧</span>
-        <strong>Captura real de ${id === 'foxmind' ? 'FoxMind' : 'Flower'}</strong>
-        <small>Material pendiente de incorporar · versión de revisión</small>
+        <strong>Evidencia visual en preparación</strong>
+        <small>Se incorporarán capturas reales de ${id === 'foxmind' ? 'FoxMind' : 'Flower'} seleccionadas para este caso. Versión de revisión.</small>
       </div>
       <aside><h3>Mi rol</h3><p>${item.role}</p><h3>Estado</h3><p>${item.status}</p>
         <a class="primary" href="${mail('Consulta sobre un proyecto')}">Conversemos →</a>
