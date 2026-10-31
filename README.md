@@ -1,39 +1,58 @@
-# Portfolio · Campamento creativo
+# Campamento creativo · portfolio para explorar
 
-Versión de revisión 0.1.0 de Alejo Palavecino, basada en el Dossier 1.0 del 29/10/2026. Incluye la experiencia navegable y las fichas editoriales de trabajo. Publicación online encargada el 30/10/2026: [ver portfolio](https://alejopalavecino.github.io/PortfolioPersonal/). La aprobación final del contenido sigue pendiente.
+La versión **0.2.0-review.1**, en la rama `feat/game-first-camp`, transforma el portfolio de Alejo Palavecino en una experiencia de exploración: pantalla inicial, campamento persistente a pantalla completa, cámara móvil y fichas HTML con lectura interna.
 
-Cada push a `main` publica automáticamente mediante GitHub Actions, después de pruebas, linter y build. Configuración y reproducción de la subruta: [publicación](docs/PUBLICACION.md).
+Esta evolución es una revisión local. La [publicación actual](https://alejopalavecino.github.io/PortfolioPersonal/) sigue correspondiendo a `main` y al commit de referencia `57e2ed8`; esta rama no se publicó ni reemplaza automáticamente ese sitio.
 
-## Abrir la versión
+## Abrir la revisión
 
-Requiere Node.js 22.12 o posterior y npm.
+Requiere Node.js 22.12 o posterior y npm. No necesita backend, cuentas, base de datos ni claves.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Abrí la dirección local que imprime Vite. Para comprobar la salida de producción:
+Para revisar exactamente la subruta de GitHub Pages:
 
 ```sh
 npm test
 npm run lint
-npm run build
-npm run preview
+npm run build -- --base=/PortfolioPersonal/
+npm run preview -- --base=/PortfolioPersonal/
 ```
 
-## Actualizar
+Abrir `/PortfolioPersonal/` en la dirección que imprime Vite. La preview de trabajo de esta entrega usa `http://127.0.0.1:4175/PortfolioPersonal/` mientras el servidor permanezca activo.
 
-- Textos y casos: `src/entities/`, con selección explícita de contenido público del JSON editorial del handoff. No copiar ese JSON completo a `public/`: contiene fuentes y referencias internas.
-- CV de revisión: `public/assets/cv-alejo-palavecino-es.pdf`. Sustituir por el PDF final elegido y comprobar la descarga. El exportador vuelve a copiar el original del dossier.
-- Imágenes: maestros en `Portfolio_Campamento_Documentacion_y_Assets_v1/`; derivados en `public/assets/`. Para regenerarlos, instalar Pillow y ejecutar `npm run assets`.
-- Geometría y reglas: `src/core/domain/`; pruebas en `tests/`. Los cambios de terreno requieren comprobar el suelo ilustrado además de las pruebas geométricas.
-- Presentación: estilos y widgets en `src/`; instrucciones de arquitectura y operación en `docs/`.
+## Recorrido
 
-## Revisión editorial
+1. La presentación permanece visible al terminar de cargar. Entrar al campamento se habilita con sus recursos críticos listos.
+2. Elegir un destino desde el mundo o el menú inicia el recorrido y abre su contenido al llegar. WASD/flechas permiten explorar con foco en el mundo; Enter/E abre una entrada cercana.
+3. El menú superpuesto pausa una ruta. Reanudar es explícito; también se puede cambiar de destino, cancelar o abrir ahora.
+4. Las fichas conservan el paisaje, usan scroll propio y recuperan contexto al regresar. El acceso directo y los enlaces de sección no obligan a caminar ni a repetir la introducción.
 
-FoxMind y Flower son fichas de revisión hasta recibir las capturas reales elegidas y cerrar sus textos. No publicar un caso incompleto. FoxMind conserva solo resumen general, aporte, rol, etapa y capturas autorizadas; no se agregan demo, repositorio, arquitectura ni acceso al producto.
+## Actualizar el proyecto
 
-Alejo debe confirmar canales, datos profesionales vigentes y PDF definitivo. Flower ya tiene confirmados el desarrollo integral individual, React, Node.js, PostgreSQL, producción y facturación automática mediante ARCA: esos datos no necesitan nueva consulta.
+| Responsabilidad | Ubicación |
+|---|---|
+| Navegación, colisiones y rutas | `src/core/domain/` |
+| Cámara y conversión de coordenadas | `src/core/camera/` y `src/app/camera.ts` |
+| Estados de inicio, lectura y acceso directo | `src/core/experience/` y `src/app/session.ts` |
+| Preparación crítica y reintentos | `src/shared/scene-loader/` y `src/app/load-scene.ts` |
+| HUD, controles y presentación | `src/app/shell.ts`, `actions.ts`, `events.ts`, `keyboard.ts` |
+| Paneles, historial y foco | `src/app/views.ts` |
+| Textos, proyectos y servicios | `src/entities/index.ts`; presentación compartida en `src/widgets/index.ts` |
+| Estilos actuales | `src/styles/main.css`: escena, HUD/intro, controles, lectura y adaptación |
+| URL de recursos | `assetUrl` en `src/shared/index.ts`; conservar base de Vite |
 
-Consultar `docs/` para evidencias, ajustes materiales y pendientes. El proyecto no requiere variables de entorno, base de datos, claves de API ni servicios externos.
+El loader prepara 28 operaciones reales: metadatos, validación de navegación, seis imágenes del mundo y veinte sprites. Audio, PDF y evidencias de proyectos no bloquean la entrada. A los ocho segundos ofrece una alternativa clara, sin una espera mínima artificial. Fallo y reintento conservan el acceso profesional.
+
+El PDF aportado está en `public/assets/cv-alejo-palavecino-es.pdf`. Reemplazarlo por el definitivo y comprobar su descarga. El exportador `npm run assets` requiere Python/Pillow y vuelve a copiar el CV original del dossier; los originales se conservan en `Portfolio_Campamento_Documentacion_y_Assets_v1/`.
+
+## Contenido y publicación
+
+FoxMind y Flower son casos de revisión hasta integrar capturas reales elegidas y cerrar su edición. FoxMind conserva únicamente el alcance público autorizado; no se agregan demo, repositorio, arquitectura ni detalles internos. Flower utiliza sus datos confirmados y describe la automatización de la **facturación** de las ventas mediante ARCA.
+
+La dirección vigente y sus contratos están en [PLAN-GAME-FIRST](docs/PLAN-GAME-FIRST.md), el [charter](docs/01-CHARTER-AND-BACKLOG.md) y el [playbook](docs/02-PLAYBOOK-AND-OPS.md). La instrucción de cambio completa se conserva en [el brief](docs/briefs/2026-10-30-game-first.md). Los documentos de 0.1.0 y el dossier son antecedentes históricos donde contradigan esta dirección.
+
+Cada push a `main` publica mediante `.github/workflows/pages.yml`; por eso esta revisión se mantiene separada. El pase a `main` y la publicación de la nueva experiencia se resuelven en el flujo de revisión autorizado. Mantener `noindex` y los faltantes identificados hasta la revisión editorial correspondiente.

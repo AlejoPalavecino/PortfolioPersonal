@@ -1,159 +1,74 @@
-# Campamento — contrato y operación
+# Campamento — ingeniería y operación vigente
 
-`ESTADO_DISENO: LISTO_PARA_TDD_RED`. Implementar un sitio estático con Vite, TypeScript estricto y DOM/CSS modular. Núcleo puro sin DOM, audio, temporizadores ni dependencias de infraestructura. El dossier autoriza los detalles reversibles aquí definidos; la versión local de revisión no equivale a publicación ni a contenido aprobado.
+`ESTADO_DISENO: LISTO_PARA_TDD_RED`. Mantener Vite + TypeScript estricto + DOM/CSS, con núcleo puro y adaptadores de navegador. El encargo game-first del 30/10/2026 autoriza implementar en rama de revisión sin otra entrevista; no autoriza publicar esta evolución desde `main`.
 
-## Stack y mantenimiento
+## Estructura y dependencias
 
-| Opción | Fiabilidad, tipos y concurrencia | Mantenimiento / decisión |
-|---|---|---|
-| Vite + TypeScript + DOM | Unión discriminada para estados/eventos; núcleo determinista; build estático. Una sola intención de ruta elimina carreras de callbacks. | Elegida: pocas dependencias, adecuada para cuatro secciones y escena 2D; requiere renderizar componentes sin destruir foco/escena. |
-| React + TypeScript | Tipado equivalente y estado declarativo; debe controlar cierres obsoletos y efectos repetidos de animación/audio. | Válida si crece la UI; añade runtime y ciclo de efectos sin necesidad actual. |
-| Astro + TypeScript e isla interactiva | HTML estático de base y aislamiento del código interactivo. | Útil para contenido editorial mayor; añade frontera isla/estado para esta experiencia persistente pequeña. |
-
-Un backend Go/.NET/Rust no aporta una transacción necesaria: no existen cuentas, escritura ni mensajes almacenados. No se introduce servidor por el stack de los proyectos exhibidos. Activar `strict`, `noUncheckedIndexedAccess` y compilación `tsc --noEmit`; Vite por sí solo no acredita tipos. Fijar versiones efectivamente instaladas en lockfile.
-
-Consulta Context7 intentada: cuota mensual agotada; no hay documentación recuperada por esa vía. Las APIs finales se verifican con paquetes instalados, comprobación de tipos y documentación oficial de [Vite](https://vite.dev/guide/) y [build estático](https://vite.dev/guide/static-deploy.html). Esta elección no depende de un benchmark.
-
-## Archivos y fronteras
-
-| Unidad | Responsabilidad y archivos previstos |
+| Módulo | Responsabilidad |
 |---|---|
-| Dominio compartido | `src/core/domain/{index,types,navigation,geometry,pathfinding,world}.ts`; API pública solo por `index.ts`. Cada archivo <200 líneas, función <40; partir antes de crecer. |
-| Composición | `src/app/{main,controller,history,preferences}.ts`; conecta dominio, HTML, RAF, visibilidad y audio. |
-| UI | `src/widgets/{header,camp,reading,route-controls}.ts`; `src/pages/{projects,about,journey,contact,project}.ts`; cada módulo importa otros slices solo por su barril. |
-| Contenido | `src/content/{index,portfolio}.ts`; proyección pública explícita, no importación del dossier editorial completo. |
-| Estilos | `src/styles/` por tokens/base/cabecera/mundo/lectura/responsive, sin archivo monolítico. |
-| Recursos | `tools/export_assets.py` y `public/assets/`; derivados WebP, fuentes, audio y PDF. Maestros del dossier intactos. |
-| Pruebas | `tests/{navigation,geometry,content}.test.ts`; dueño exclusivo `test_runner`. Producción no puede relajarlas. |
+| `src/core/domain/index.ts` | Tipos, navegación, tokens, geometría, A*, colisiones y WORLD existentes. No se duplica otro sistema de rutas. |
+| `src/core/camera/index.ts` | Cámara pura: foco, clamp, seguimiento y conversiones mundo/pantalla. |
+| `src/core/experience/index.ts` | Ciclo intro/preparación/entrada/lectura/directo y overlays, sin DOM ni historial. |
+| `src/shared/scene-loader/index.ts` | Preparación crítica con IO inyectado, progreso real, timeout y generaciones de reintento. |
+| `src/shared/index.ts` | `assetUrl` compatible con BASE_URL y exports compartidos. No depende de app. |
+| `src/app/` | Composición, adaptadores IO, input, RAF, audio, HUD y vistas/historial/foco. Dividir módulos antes de concentrar responsabilidades. |
+| `src/entities` / `src/widgets` | Hechos/proyección pública y markup de secciones/fichas compartido entre juego y modo directo. |
+| `src/styles/` | Viewport, capas, intro, HUD, mundo, panel, responsive y reducción. Retirar reglas viejas de hero/navbar/scroll para evitar cascadas contradictorias. |
 
-Los nombres internos de UI pueden ajustarse sin cambiar la API de dominio. El contrato compartido se establece antes de implementar; después se trabaja por slice. Coordinador posee configuración/derivados, implementador posee `src/`, test runner posee pruebas y arquitecto posee estos dos documentos. Nadie revierte cambios de otros. Unidades de revisión/commit <=400 líneas; no crear worktree sobre esta carpeta compartida sin coordinar una copia aislada. No hay migraciones ni DB.
+Dependencias hacia núcleo; comunicación entre módulos por barril. ESLint boundaries debe reconocer cámara/experience como dominio puro y loader como shared. Meta <200 líneas/archivo y <40/función; unidad de revisión <=400 líneas authored. No hay backend, DB ni Docker `_test`.
 
-## Tipos públicos exactos
+Se conserva la elección de stack: tipos discriminados e IO explícito permiten probar cámara/estados/races sin runtime de juego añadido. React, Astro o un motor nuevo no resuelven una limitación necesaria del encargo actual; no se introducen dependencias por comodidad inicial.
 
-```ts
-type Point = Readonly<{ x: number; y: number }>;
-type SectionId = 'projects' | 'about' | 'journey' | 'contact';
-type ProjectId = 'foxmind' | 'flower';
-type View = { kind: 'camp' }
-  | { kind: 'section'; section: SectionId }
-  | { kind: 'project'; project: ProjectId };
-type SceneStatus = 'loading' | 'ready' | 'failed';
-type Target = { kind: 'section'; section: SectionId }
-  | { kind: 'ground'; point: Point };
-type Route = { id: number; target: Target;
-  status: 'active' | 'paused'; origin: View };
-type NavigationState = {
-  view: View; position: Point; scene: SceneStatus;
-  reducedMotion: boolean; route: Route | null;
-  revision: number; visited: readonly SectionId[];
-};
-type NavigationEvent =
-  | { type: 'select-section'; section: SectionId; arrived?: boolean }
-  | { type: 'select-ground'; point: Point }
-  | { type: 'arrive'; id: number; position: Point }
-  | { type: 'move'; position: Point }
-  | { type: 'cancel' } | { type: 'open-now' }
-  | { type: 'pause' } | { type: 'resume' }
-  | { type: 'set-motion'; reduced: boolean }
-  | { type: 'set-scene'; scene: SceneStatus }
-  | { type: 'route-failed'; id: number }
-  | { type: 'manual' }
-  | { type: 'open-project'; project: ProjectId }
-  | { type: 'back-projects' } | { type: 'camp' }
-  | { type: 'restore'; view: View };
-declare function createNavigation(position: Point): NavigationState;
-declare function reduceNavigation(
-  state: NavigationState, event: NavigationEvent
-): NavigationState;
-```
+## Contratos vigentes
 
-Estado inicial: campamento, escena loading, movimiento habilitado, ruta null, revisión 0 y visitas vacías. El adaptador aplica la preferencia del sistema antes de habilitar movimiento. Ninguna transición muta el estado recibido.
+[PLAN-GAME-FIRST](PLAN-GAME-FIRST.md) contiene firmas exactas y semántica. La navegación existente conserva `createNavigation`, `reduceNavigation`, `WORLD`, `findPath`, `moveSafely`, `nearbySection`, sus eventos y revisión monotónica.
 
-| Evento / condición | Resultado obligatorio |
-|---|---|
-| Seleccionar sección | Lista y sin reducción: ruta activa con token nuevo, vista camp; conserva `origin` de la primera ruta si sustituye otra. Mismo destino activo/pausado no reinicia. |
-| Misma sección abierta | No-op: conserva scroll, foco, posición y visitas. |
-| Escena no lista / reducido / `arrived:true` | Apertura directa y única; invalida cualquier intención anterior. `arrived` solo lo calcula UI mediante zona geométrica, nunca con temporizador. |
-| Arrive | Solo acepta id vigente y ruta activa; actualiza posición. Sección abre y marca visitada; suelo termina en camp sin abrir. Repetidos/obsoletos son no-op. |
-| Reemplazar / cancelar | Nueva ruta invalida token anterior; cancelar vuelve a origin y mantiene posición alcanzada. No añade historial. |
-| Manual | Cancela autoruta y apertura pendiente, queda en camp. Solo se despacha con escena enfocada/activa/lista y sin reducción. |
-| Pause / resume | Pause conserva token/destino/origen. Resume solo por acción explícita; visibilidad recuperada no lo emite. |
-| Movimiento reducido | Activar durante ruta a sección la abre; a suelo la cancela en camp. Desactivar no recupera rutas/teclas antiguas. |
-| Scene loading/failed durante ruta | Ruta a sección abre vigente con aviso; suelo se detiene sin abrir. Terminar carga no navega ni enfoca. |
-| Route-failed | Solo token vigente; sección abre con aviso, suelo cancela. UI anuncia sin inventar sección. |
-| Open-project/back-projects/camp/restore | Inmediatos, invalidan ruta. Restore atiende historial sin volver a escribirlo. `open-now` solo corresponde a target sección. |
-| Select-ground | UI valida suelo, gesto breve y escena activa; dominio ignora si lectura abierta, escena no lista o reducido. Sustituye ruta sin intención de apertura. |
+El adaptador sincroniza lifecycle con navegación: solo `explore` + escena ready + sin overlay + sin reducción permite mover. Una selección en modo directo, carga, fallo o reducción llama al dominio con apertura directa; no simula una ruta. Cada finalización del loader se compara con la generación vigente antes de habilitar escena.
 
-`revision` incrementa al crear o invalidar intención; mover/pausar no crea un token. `visited` añade sin duplicados al abrir sección por cualquier acceso, nunca por proximidad o ruta cancelada; vive solo en memoria de la visita.
+RAF actualiza posición, frame, profundidad y cámara. La representación física puede correr cada frame; HUD, panel, foco, historial y regiones live solo ante cambios de estado relevante. La clave de HUD excluye coordenadas/cuadro actual, pero incluye ruta/id/status, vista, proximidad y preferencias. No reemplazar escena o HTML de lectura continuamente.
 
-## Contrato geométrico
+## Viewport, cámara e input
 
-```ts
-type Arrival = { point: Point; radius: number; proximityRadius: number };
-type Obstacle = { kind: 'polygon'; points: readonly Point[] }
-  | { kind: 'circle'; center: Point; radius: number };
-type World = {
-  width: number; height: number; spawn: Point;
-  boundary: readonly Point[]; obstacles: readonly Obstacle[];
-  arrivals: Readonly<Record<SectionId, Arrival>>;
-  clearance: number; cellSize: number;
-};
-declare const WORLD: World;
-declare function isWalkable(world: World, point: Point): boolean;
-declare function findPath(world: World, from: Point,
-  to: Point): readonly Point[] | null;
-declare function moveSafely(world: World, from: Point, delta: Point): Point;
-declare function nearbySection(world: World, point: Point): SectionId | null;
-```
+El shell ocupa viewport disponible con `100dvh` y alternativa `100vh`; safe areas se reservan para HUD/paneles. No hay min-height de página, margen negativo para mapa ni scrollIntoView/scrollTo de ventana para abrir, recorrer o leer. Intro/panel/menu permiten scroll interno si el texto ampliado no cabe.
 
-Coordenadas del apoyo de pies en marco lógico 1000×650 alineado al terreno completo. En móvil se conserva ese mismo terreno con ajuste responsive/encuadre; no se reordenan sus plataformas. Es una decisión reversible de integración frente al marco móvil de planificación 600×760. Debe conservar destinos reconocibles, orden espacial y controles HTML legibles; si el encuadre no lo consigue se ajusta/deriva el terreno y se documenta.
+Mundo/objetos/avatar comparten escala y origen lógico; HUD queda fuera del transform. Cámara usa viewport útil descontando áreas reservadas para mantener visible al personaje. Desktop muestra amplitud; móvil usa zoom cercano y follow limitado. Escalas/holguras se afinan en 320–390 px y horizontal.
 
-`clearance` representa radio corporal y holgura combinados. `isWalkable` exige coordenadas finitas, separación del borde y exclusión de obstáculos inflados. No usar márgenes transparentes del PNG como colisión. Spawn, entradas y suelo admitido pertenecen a un componente conectado.
+Input de suelo: restar el rectángulo del viewport útil a clientX/clientY y aplicar `screenToWorld`; no dividir por ancho del mundo transformado. Toque solo si fue breve y no hubo arrastre/multitouch/scroll; conservar pinch zoom. Rótulos HTML mantienen legibilidad, proyectados con cámara o compensando escala.
 
-`findPath` acepta extremos libres arbitrarios; devuelve from y to incluidos, `[from]` si coinciden, o null si no hay camino/extremos inválidos. Cada segmento completo debe ser transitable con holgura: prohibido cortar esquinas con diagonales. Estrategia prevista: A* en malla pequeña y conexión comprobada de extremos, con suavizado solo por segmentos libres. La red de diez nodos del dossier es orientación, no encierra al movimiento libre.
+WASD/flechas y Enter/E solo en escena enfocada y habilitada. Blur, overlay, lectura, ocultación y reducción limpian teclas. Abrir menú/ayuda/ajustes despacha pause si había ruta y suspende manual; cerrar no emite resume. Elegir otro destino cierra overlay y crea nueva intención. Continuar es explícito.
 
-`moveSafely` parte de posición válida, subdivide el desplazamiento y frena en el último punto válido, incluso con un delta grande; no atraviesa obstáculos por salto de frame. La entrada diagonal se normaliza a la misma rapidez. `nearbySection` solo considera posición válida y llegada alcanzable dentro de proximidad; menor distancia, desempate fijo projects/about/journey/contact. No abre contenido.
+## Panel, foco e historial
 
-El controlador usa `requestAnimationFrame`, distancia/velocidad y delta acotado, no timeout de apertura. Comprobar zona al avanzar; al llegar orienta/reposo y despacha arrive con token capturado. La nueva intención deja obsoleto el cálculo anterior. Orden de profundidad por apoyo Y; cuadros y anclajes individuales del atlas. No dividirlo en celdas uniformes.
+Lectura como región HTML integrada, no modal: mundo inactivo, HUD disponible, sin aria-modal ni atrapar Tab. Título/regreso accesibles; panel con scroll interno y páginas largas completas. Si se elige diálogo modal real, debe gestionar foco e inert acordes y revisarse el contrato.
 
-## Historial, foco y permisos de entrada
+Contextos separados: avatar, cámara, vista, scrollTop del panel y foco de origen. Primera ruta guarda contexto; sustituir no lo sobrescribe. Cancelar restaura vista/lectura y mantiene posición física; cámara recuperada debe contener esa posición en área útil o ajustarse lo mínimo necesario. Cerrar una ficha normal recupera cámara/posición/foco de apertura. Lista→proyecto→lista conserva scrollTop y tarjeta.
 
-Hashes previstos: `#campamento`, `#proyectos`, `#sobre-mi`, `#trayectoria`, `#contacto`, `#proyectos/foxmind`, `#proyectos/flower`. Carga inicial/deep-link restaura directamente, normaliza hash inválido a camp sin caminata. La URL solo cambia al abrir contenido real; no al empezar/sustituir/cancelar rutas, abrir menú o cambiar preferencias.
+Se conservan hashes `#proyectos`, `#sobre-mi`, `#trayectoria`, `#contacto`, `#proyectos/foxmind` y `#proyectos/flower`. Deep-link abre contenido inmediatamente sin intro ni espera gráfica. Historia registra vistas y modo juego/directo, no frames, rutas pendientes, overlays ni loader. Popstate/hashchange cancelan intención y restauran sin añadir historial. No impedir salir con Atrás.
 
-El adaptador guarda `{view, scrollY, focusId}` antes de la primera ruta y para lista→detalle. Redirigir conserva ese contexto; cancelar lo restaura con foco visible o emblema Campamento. Abrir contenido enfoca su título `tabindex=-1`. Volver a Proyectos restaura tarjeta y scroll. Regresos usan historial previo válido si corresponde; si no existe, reemplazan por destino seguro, sin crear ciclos. `popstate/hashchange` cancela ruta y restaura la vista histórica directamente; jamás crea otra entrada. No interceptar Atrás para impedir salir.
+Escape resuelve una acción: edición/control propio, overlay, ruta, detalle→lista o panel→contexto previo. Foco a elemento conectado/visible; fallback Menú del campamento. Intro reconocida una vez por sesión tras Enter mediante sessionStorage seguro; si falla, memoria sin bloqueo. Carga tardía no abandona lectura/directo ni roba foco.
 
-Escena es un control enfocable accesible solo durante camp listo y movimiento habilitado; teclado de movimiento se escucha allí. Blur, Tab, ocultación de pestaña, lectura y reducción limpian teclas. La autoruta continúa al perder foco de escena. Escena inactiva durante lectura también sale del orden Tab. No reconstruir cabecera/escena completa en cada frame.
+## Loader y ambiente
 
-Escape consume una sola acción: edición/composición/control propio; después Menú; después cancelar ruta; después detalle→lista/sección→camp cuando foco está en lectura; en escena sale del control manual al emblema. Un paisaje clicado no cierra ficha. Menú móvil se despliega en flujo, conserva Tab normal, informa aria-expanded; elegir sección lo cierra y lleva el foco a Abrir ahora si el disparador quedó oculto. Cambiar ajustes lo mantiene abierto.
+Críticos: seis imágenes de mundo + metadata avatar +20 frames + validación de navegación: 28 operaciones reales. Cargar y decodificar imágenes antes de ready; conservar referencias preparadas para que primera caminata no descubra sprites. Audio, CV, retrato y evidencias no bloquean entrada.
 
-## Audio, fallos y publicación
+IO comprueba respuesta JSON, estructura de 20 frames, Image/decode/cache y WORLD/entradas/conectividad. Completed solo cuenta éxitos; falla crítica produce aviso/reintento/directo. A los 8 s pendientes se marca lento y enfatiza continuar directo, sin espera mínima ni fingir éxito. Retry cambia generación y descarta callbacks/timers viejos; dispose invalida todo.
 
-Un solo ambiente reutilizable por visita. Entrada siempre silenciosa; activar solo por gesto. Pausar en pestaña oculta; al volver solo puede reanudar si preferencia voluntaria sigue activa. Si play() falla, control indica inactivo, conserva UI y permite reintentar. Lectura no reinicia audio. Movimiento reducido respeta sistema y ajuste visible, detiene desplazamientos/efectos/cámara y oculta ayuda/exploración por teclado.
-
-Fallos decorativos no bloquean contenido. Fallo principal o ruta inviable resuelve última sección con aviso breve y cancela tokens; suelo fallido no abre nada. Reintentar no altera vista/foco/preferencias. Captura ausente mantiene texto y reserva solo en revisión; archivo/enlace conocido ausente se oculta antes de publicar.
-
-No copiar directorios del dossier al directorio público. Recursos previstos: `/assets/world-backdrop.webp`, `camp-ground.webp`, `poi-{projects,about,journey,contact}.webp`, `portrait.webp`, `emblem.webp`, `avatar/{frame.name}.webp` y `avatar/frames.json`; fuentes/audio bajo `/assets/`. Mapear explícitamente el PDF aportado a una ruta pública y comprobarlo. Una proyección pública de FoxMind omite stack y enlaces históricos; Flower conserva su stack confirmado. No confundir el enlace del cliente/proyecto con el stack del portfolio.
+Sonido apagado por visita, una instancia y activación por gesto. Ocultar pestaña pausa movimiento/audio; volver no reanuda rutas ni teclas retenidas. Continuar audio sigue siendo explícito. Reducción respeta sistema/ajuste visible: sin caminar/follow/ambiente continuo ni transiciones decorativas.
 
 ## DoR, DoT y DoD
 
-DoR cumplido: reglas de datos, estados, fallos, concurrencia, permisos y GRASP auditadas. No hay escrituras remotas ni atomicidad DB. Único escritor del estado en main thread; token monotónico protege la última intención. Los faltantes editoriales conocidos siguen en [Charter](01-CHARTER-AND-BACKLOG.md), sin bloquear E1/E2.
+DoR: dirección y alcance explícitos; datos/estados/fallos/concurrencia/permisos/GRASP auditados. Sin escrituras remotas; generation del loader y revision de navegación independientes. Pendientes editoriales no bloquean la revisión.
 
-| Prueba significativa (test_runner) | Debe demostrar |
-|---|---|
-| Navegación unitaria | Última sección gana; llegada vieja/repetida/pausada ignorada; origin conservado al sustituir; cancelación restaura vista y posición; manual borra apertura. |
-| Estados y alternativas | Pausa/reanudación explícita; reducción activa en sección/suelo; fallo/carga sin apertura tardía; misma sección no-op; visita única solo al abrir; regresos inmediatos. |
-| Geometría unitaria | Spawn/4 entradas libres; caminos entre entradas y muestras libres; todos los segmentos respetan clearance; esquinas y delta grande sin atravesar; diagonales normalizadas; suelo inválido rechazado. |
-| Contenido/build | Bundle sin metadatos/notas internas ni enlaces/stack históricos de FoxMind; Flower correcto; tercero vacío omitido; enlace PDF existe y archivo empieza con firma PDF; tipos y build sin errores. |
-| Integración navegador | UI→intención→ruta→llegada→contenido; redirección rápida; cancel desde detalle con scroll/foco; historial sin cola; fallo imagen/ruta y reintento; mailto/asuntos y PDF reales. |
-| ego(lite), escritorio | Space dedicado, snapshot y capturas; hero/cabecera/ficha según v2; rutas a los cuatro destinos, teclado contextual, Enter/E, Tab/Escape, audio y pestaña oculta. |
-| ego(lite), móvil | 390 px y ancho menor, ficha con franja, Contacto/CV/Menú visibles, destinos y suelo al toque, scroll/zoom, controles de ruta, texto ampliado y movimiento reducido. |
+DoT: tests de cámara/lifecycle/loader más suites existentes. Integración ego(lite), Space dedicado, comprobación funcional y capturas. Viewports 1366×768, 1280×720, 390×844, 360×640, 320×568 y móvil horizontal; texto ampliado/teclado. Preview bajo `/PortfolioPersonal/`. Cada resultado indica entorno/límite; sin teléfono físico, queda pendiente.
 
-No se requieren pruebas Docker `_test`: el sistema no utiliza base de datos. Añadirlas solo si cambia el alcance. Test runner crea pruebas RED primero; implementador no las edita. Tras dos fallos consecutivos del mismo error, escalar causa al arquitecto.
+Comandos reales: `npm ci`, `npm test`, `npm run lint`, `npm run build`; build incluye `tsc --noEmit`. Preview subruta: `npm run build -- --base=/PortfolioPersonal/` y `npm run preview -- --base=/PortfolioPersonal/`. No hay script separado typecheck. No regenerar maestros ni añadir dependencias sin necesidad.
 
-Comandos previstos, confirmar contra package.json real: `npm install`, `npm run dev -- --host 127.0.0.1`, `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`, `npm run preview -- --host 127.0.0.1`. Documentar puertos/dependencias efectivamente usados al entregar. El build produce `dist/`; no requiere servicio de aplicación ni Docker. Validar fronteras con eslint-plugin-boundaries y revisar plantilla local antes de integrar configuración.
+DoD: tests verdes, lint/tipos/build, revisión de diff/fronteras, Gitleaks staged, preview/capturas, commit local y docs. AC históricos no se cierran por arquitectura; registrar criterios A–M comprobados/parciales/pendientes y conservar faltantes editoriales. Contrato/tareas en [plan](PLAN-GAME-FIRST.md).
 
-DoD técnico: tests significativos verdes, tipos/linter/build sin errores, revisión de diff y entorno, evidencias UI reales, docs/Engram sincronizados y `gitleaks protect --staged` antes de commit. Registrar una herramienta ausente como limitación; nunca afirmar una ejecución no realizada. Commit local autorizado; push/PR/publicación requieren el encargo correspondiente. AC-18/19/20 pueden seguir pendientes por contenido y AC-25 hasta URL pública. La entrega siempre distingue estructura terminada, comportamiento comprobado y material pendiente.
+## Equipo y publicación
 
-## Supuestos y ajustes registrados
+Rama de revisión del coordinador. Core worker posee cámara/experience/scene-loader; UI worker app/estilos; root widgets/entities, configuración, README/publicación y evidencias; test runner solo pruebas; arquitecto estos docs. Nadie edita pruebas ajenas, hace reset o revierte cambios de otros. Worktree es opción para equipos aislados, no necesidad para esta partición compartida.
 
-2026-10-29: perfil `solo` provisional; Vite/TS/DOM y proyección editorial manual; hash routing por hosting estático; geometría única alineada al terreno frente al marco móvil abstracto. Estas decisiones son reversibles y preservan DEC-13/14/15/16/26/28. Objetivos de tiempo siguen pendientes de medición. No se registra aprobación individual de recomendaciones ni pruebas ejecutadas desde este documento.
+Cada push a `main` despliega Pages: esta evolución permanece fuera hasta revisión/publicación autorizada. `assetUrl`, BASE_URL y metadatos públicos se conservan. [PUBLICACION](PUBLICACION.md) explica despliegue existente; sus evidencias 0.1.0 son históricas, no validación de la rama nueva.
+
+Engram identifica `portfolioalejo`, pero búsquedas arch/overview y slice/campamento devuelven unknown_project. No sobrescribir ni duplicar memoria tras ese fallo; contrato durable en Git/docs hasta resolver identidad.
