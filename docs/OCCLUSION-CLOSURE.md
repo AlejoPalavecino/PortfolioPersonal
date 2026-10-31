@@ -1,0 +1,5 @@
+# Cierre de oclusión
+
+La silueta usa la transparencia del sprite del destino situado delante del avatar. La máscara comparte coordenadas y escala con el mundo; la imagen original mantiene su profundidad y la silueta solo aparece donde el arte la tapa. La selección conserva las áreas de oclusión y profundidades existentes. Si dos áreas coinciden, se elige el destino de mayor profundidad; un empate conserva el orden declarado.
+
+Antes: una caminata real a taller (580,238) y mesa (342.5,463.9) mostró silueta fuera de los sólidos. Después se repitieron caminatas legítimas, sin inyectar posiciones: taller (578.4,229.2) conserva cabeza normal sobre techo y silueta recortada; mesa (331.7,461.9) se detiene al aproximarse al sólido y no pinta ghost en el hueco entre patas. Las capturas actuales están en evidence/closure/before y after. Son muestras puntuales, no repetición exacta de todas las coordenadas ni barrido completo; los demás bordes/esquinas siguen parciales en ENTREGA-CLOSURE.md. La transparencia de la máscara alinea sus píxeles con el sprite; no se cambiaron huellas para disimular colisiones.

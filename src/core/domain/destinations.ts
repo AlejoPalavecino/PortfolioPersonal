@@ -53,6 +53,12 @@ export function hitDestination(point: Point): Section | null {
   return (Object.keys(DESTINATIONS) as Section[]).find(section => contains(point, DESTINATIONS[section].interaction)) ?? null
 }
 
+export function occludingDestination(point: Point): Section | null {
+  return (Object.keys(DESTINATIONS) as Section[])
+    .filter(section => point.y < DESTINATIONS[section].depthY && contains(point, DESTINATIONS[section].occlusion))
+    .sort((a, b) => DESTINATIONS[b].depthY - DESTINATIONS[a].depthY)[0] ?? null
+}
+
 export function isOccluded(point: Point): boolean {
-  return Object.values(DESTINATIONS).some(destination => point.y < destination.depthY && contains(point, destination.occlusion))
+  return occludingDestination(point) !== null
 }
