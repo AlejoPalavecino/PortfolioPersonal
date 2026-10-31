@@ -1,0 +1,23 @@
+{
+  "typescript": {
+    "current": "5.9.3",
+    "wanted": "5.9.3",
+    "latest": "7.0.2",
+    "dependent": "PortfolioAlejo",
+    "location": "C:\\Users\\alejo\\Documents\\ProyectosAlejo\\PortfolioAlejo\\node_modules\\typescript"
+  },
+  "vite": {
+    "current": "7.3.7",
+    "wanted": "7.3.7",
+    "latest": "8.3.5",
+    "dependent": "PortfolioAlejo",
+    "location": "C:\\Users\\alejo\\Documents\\ProyectosAlejo\\PortfolioAlejo\\node_modules\\vite"
+  },
+  "vitest": {
+    "current": "4.1.12",
+    "wanted": "4.1.12",
+    "latest": "5.0.5",
+    "dependent": "PortfolioAlejo",
+    "location": "C:\\Users\\alejo\\Documents\\ProyectosAlejo\\PortfolioAlejo\\node_modules\\vitest"
+  }
+}

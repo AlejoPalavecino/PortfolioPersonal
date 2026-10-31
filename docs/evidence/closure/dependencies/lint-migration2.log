@@ -1,0 +1,26 @@
+npm notice run portfolio-campamento@0.3.0-review.1 lint
+npm notice run eslint src tests
+[boundaries][warning]: [boundaries/dependencies] Detected an unrecognized selector shape in 1 policy at indices: 5.
+  Check the 'from' property. More info: https://www.jsboundaries.dev/docs/rules/dependencies/
+
+[boundaries][warning]: [boundaries/dependencies] Detected deprecated selector properties (category, elementPath, filePath) in 1 policy at indices: 5.
+  Rename elementPath → path, filePath → fileInternalPath, and remove category (use file descriptors instead). More info: https://www.jsboundaries.dev/docs/selectors/element/#deprecated-element-selector-properties
+
+
+Oops! Something went wrong! :(
+
+ESLint: 10.14.0
+
+Error: Invalid entity selector
+Occurred while linting C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\src\app\audio.ts:1
+Rule: "boundaries/dependencies"
+    at normalizeSingleEntitySelector (C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\@boundaries\elements\dist\index.js:3524:9)
+    at C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\@boundaries\elements\dist\index.js:3536:12
+    at memoized (C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\@boundaries\elements\dist\index.js:802:20)
+    at normalizeRuleOptions (C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\eslint-plugin-boundaries\dist\Rules\Dependencies.js:34:66)
+    at evaluatePolicies (C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\eslint-plugin-boundaries\dist\Rules\Dependencies.js:409:32)
+    at evaluatePoliciesAndReport (C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\eslint-plugin-boundaries\dist\Rules\Dependencies.js:483:20)
+    at C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\eslint-plugin-boundaries\dist\Rules\Dependencies.js:557:13
+    at visitors.<computed> (C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\eslint-plugin-boundaries\dist\Rules\Support\DependencyRule.js:44:21)
+    at SourceCodeVisitor.callSync (C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\eslint\lib\linter\source-code-visitor.js:158:6)
+    at applyStep (C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\node_modules\eslint\lib\linter\source-code-traverser.js:332:17)

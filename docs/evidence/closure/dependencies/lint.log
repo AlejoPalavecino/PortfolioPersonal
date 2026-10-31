@@ -1,0 +1,4 @@
+npm notice run portfolio-campamento@0.3.0-review.1 lint
+npm notice run eslint src tests
+"eslint" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.

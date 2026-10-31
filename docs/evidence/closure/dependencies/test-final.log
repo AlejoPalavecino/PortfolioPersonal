@@ -1,0 +1,10 @@
+npm notice run portfolio-campamento@0.3.0-review.1 test
+npm notice run vitest run --silent
+
+ RUN  v4.1.12 C:/Users/alejo/Documents/ProyectosAlejo/PortfolioAlejo
+
+
+ Test Files  14 passed (14)
+      Tests  72 passed (72)
+   Start at  13:52:34
+   Duration  1.59s (transform 5.45s, setup 0ms, import 7.61s, tests 394ms, environment 3ms)

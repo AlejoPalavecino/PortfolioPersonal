@@ -1,0 +1,12 @@
+const path = require('node:path');
+const a = require(path.join(process.env.TEMP, 'portfolio-minimatch10/node_modules/minimatch'));
+const b = require(path.join(process.env.TEMP, 'portfolio-minimatch11/node_modules/minimatch'));
+const patterns = ['src/**/*.ts','tests/**/*.ts','tests/*.ego.mjs','dist/**','public/**','Portfolio_Campamento_Documentacion_y_Assets_v1/**','**/*.ts','!**/*.test.ts','src/{app,core}/**','**/@(index|main).ts','**/[[:alpha:]]*.ts'];
+const files = ['src/main.ts','src/app/index.ts','src/core/domain/world.ts','src/.hidden.ts','tests/foo.test.ts','tests/foo.ego.mjs','dist/index.js','public/.hidden','Portfolio_Campamento_Documentacion_y_Assets_v1/foo','src\\app\\index.ts','src/a-b.ts'];
+let checked=0;
+for (const options of [{},{dot:true},{windowsPathsNoEscape:true},{nocase:true}]) for(const pattern of patterns) for(const file of files) {
+  const x=a.minimatch(file,pattern,options), y=b.minimatch(file,pattern,options);
+  if(x!==y) { console.error(JSON.stringify({pattern,file,options,x,y}));process.exitCode=1; }
+  checked++;
+}
+console.log(`Compared ${checked} minimatch 10.2.6 / 11.0.3 combinations; ${process.exitCode ? 'mismatch' : 'identical'}.`);

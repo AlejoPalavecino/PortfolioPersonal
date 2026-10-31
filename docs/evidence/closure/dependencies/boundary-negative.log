@@ -1,0 +1,7 @@
+npm notice run portfolio-campamento@0.3.0-review.1 npx
+npm notice run eslint --stdin --stdin-filename src/core/domain/world.ts
+
+C:\Users\alejo\Documents\ProyectosAlejo\PortfolioAlejo\src\core\domain\world.ts
+  1:8  error  There is no policy allowing dependencies from elements of type "domain" to elements of type "app"  boundaries/dependencies
+
+✖ 1 problem (1 error, 0 warnings)

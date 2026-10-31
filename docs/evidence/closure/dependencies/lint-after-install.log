@@ -1,0 +1,19 @@
+npm notice run portfolio-campamento@0.3.0-review.1 lint
+npm notice run eslint src tests
+[boundaries][warning]: The 'mode' option in element descriptors is deprecated and will be removed in a future major version.
+  Use 'partialMatch: false' instead of 'mode: "full"'. Remove 'mode: "folder"' (it is the default). More info: https://www.jsboundaries.dev/docs/releases/migration-guides/v6-to-v7/#deprecated-mode-in-element-descriptors
+
+[boundaries][warning]: Rule name "boundaries/no-unknown" is deprecated. Use "boundaries/no-unknown-dependencies" instead.
+  More info: https://www.jsboundaries.dev/docs/releases/migration-guides/v6-to-v7/#no-unknown-renamed-to-no-unknown-dependencies
+
+[boundaries][warning]: Rule name "boundaries/element-types" is deprecated. Use "boundaries/dependencies" instead.
+  More info: https://www.jsboundaries.dev/docs/releases/migration-guides/v5-to-v6/#rule-element-types-renamed-to-dependencies
+
+[boundaries][warning]: [boundaries/element-types] The 'rules' option is deprecated.
+  Please use 'policies' instead. More info: https://www.jsboundaries.dev/docs/releases/migration-guides/v6-to-v7/#rules-option-renamed-to-policies
+
+[boundaries][warning]: [boundaries/element-types] Detected legacy string element selectors in 6 policies at indices: 0, 1, 2, 3, 4, 5.
+  Replace "your-type" with an entity selector, e.g. { element: { type: "your-type" } }. More info: https://www.jsboundaries.dev/docs/releases/migration-guides/v5-to-v6/#object-based-elements-selector-syntax
+
+[boundaries][warning]: [boundaries/element-types] Detected "allow"/"disallow" entries without a "from"/"to" wrapper in 6 policies at indices: 0, 1, 2, 3, 4, 5.
+  Use allow: [{ to: { element: { type: "your-type" } } }] or [{ from: ... }] instead of a bare element selector. More info: https://www.jsboundaries.dev/docs/releases/migration-guides/v5-to-v6/#to-property-in-allowdisallow-rules-is-now-required

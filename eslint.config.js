@@ -26,29 +26,30 @@ export default tseslint.config(
     settings: {
       'import/resolver': { node: { extensions: ['.js', '.ts', '.json', '.css'] } },
       'boundaries/include': ['src/**/*'],
+      'boundaries/files': [{ category: 'app-entry', pattern: 'src/main.ts' }],
       'boundaries/elements': [
-        { type: 'app', pattern: 'src/main.ts', mode: 'full' },
-        { type: 'domain', pattern: 'src/core/domain/**', mode: 'full' },
-        { type: 'domain', pattern: 'src/core/camera/**', mode: 'full' },
-        { type: 'domain', pattern: 'src/core/experience/**', mode: 'full' },
-        { type: 'shared', pattern: 'src/shared/**', mode: 'full' },
-        { type: 'shared', pattern: 'src/styles/**', mode: 'full' },
-        { type: 'entity', pattern: 'src/entities/**', mode: 'full' },
-        { type: 'feature', pattern: 'src/features/**', mode: 'full' },
-        { type: 'widget', pattern: 'src/widgets/**', mode: 'full' },
-        { type: 'app', pattern: 'src/app/**', mode: 'full' }
+        { type: 'domain', pattern: 'src/core/domain/**', partialMatch: false },
+        { type: 'domain', pattern: 'src/core/camera/**', partialMatch: false },
+        { type: 'domain', pattern: 'src/core/experience/**', partialMatch: false },
+        { type: 'shared', pattern: 'src/shared/**', partialMatch: false },
+        { type: 'shared', pattern: 'src/styles/**', partialMatch: false },
+        { type: 'entity', pattern: 'src/entities/**', partialMatch: false },
+        { type: 'feature', pattern: 'src/features/**', partialMatch: false },
+        { type: 'widget', pattern: 'src/widgets/**', partialMatch: false },
+        { type: 'app', pattern: 'src/app/**', partialMatch: false }
       ]
     },
     rules: {
-      'boundaries/no-unknown': 'error',
+      'boundaries/no-unknown-dependencies': 'error',
       'boundaries/no-unknown-files': 'error',
-      'boundaries/element-types': ['error', { default: 'disallow', rules: [
-        { from: 'domain', allow: ['domain'] },
-        { from: 'shared', allow: ['shared', 'domain'] },
-        { from: 'entity', allow: ['entity', 'shared', 'domain'] },
-        { from: 'feature', allow: ['feature', 'entity', 'shared', 'domain'] },
-        { from: 'widget', allow: ['widget', 'feature', 'entity', 'shared', 'domain'] },
-        { from: 'app', allow: ['app', 'widget', 'feature', 'entity', 'shared', 'domain'] }
+      'boundaries/dependencies': ['error', { default: 'disallow', policies: [
+        { from: { element: { type: 'domain' } }, allow: { to: { element: { type: ['domain'] } } } },
+        { from: { element: { type: 'shared' } }, allow: { to: { element: { type: ['shared', 'domain'] } } } },
+        { from: { element: { type: 'entity' } }, allow: { to: { element: { type: ['entity', 'shared', 'domain'] } } } },
+        { from: { element: { type: 'feature' } }, allow: { to: { element: { type: ['feature', 'entity', 'shared', 'domain'] } } } },
+        { from: { element: { type: 'widget' } }, allow: { to: { element: { type: ['widget', 'feature', 'entity', 'shared', 'domain'] } } } },
+        { from: { file: { categories: 'app-entry' } }, allow: { to: { element: { type: ['app', 'widget', 'feature', 'entity', 'shared', 'domain'] } } } },
+        { from: { element: { type: 'app' } }, allow: { to: { element: { type: ['app', 'widget', 'feature', 'entity', 'shared', 'domain'] } } } }
       ] }]
     }
   }

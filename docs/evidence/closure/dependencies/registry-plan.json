@@ -1,0 +1,73 @@
+{
+  "registry": "https://registry.npmjs.org/",
+  "checked_utc": "2026-10-31T16:47:45.5506680Z",
+  "base": "lockfile observed: eslint 9.39.5, @eslint/js 9.39.5, typescript-eslint 8.72.1, eslint-plugin-boundaries 5.4.0, @boundaries/elements 1.2.0, handlebars 4.7.8, vitest 3.2.7, Vite 7.3.7",
+  "targets": [
+    {
+      "basis": "latest audited 4.x line; engine Node ^20 || ^22 || >=24 includes installed Node 24.20; peer Vite ^6|^7|^8 accepts installed Vite 7.3.7; dependencies no longer include tinypool, @vitest/mocker 4.1.12",
+      "package": "vitest",
+      "migration": "Review official Vitest 4 migration guide; run full test suite.",
+      "target": "4.1.12"
+    },
+    {
+      "basis": "registry package metadata pins @boundaries/elements 3.3.0 and handlebars 4.7.10; peer eslint >=6 accepts eslint 9; Node >=18.18",
+      "package": "eslint-plugin-boundaries",
+      "migration": "Review 6/7 migration docs/config API and test boundary rules; do not assume old config unaffected.",
+      "target": "7.4.0"
+    },
+    {
+      "basis": "registry latest; npm audit range ends 4.7.9; boundaries 7.4.0 and @boundaries/elements 3.3.0 both pin 4.7.10",
+      "package": "handlebars",
+      "migration": "No project direct usage identified; verify tree/audit after upgrade.",
+      "target": "4.7.10"
+    },
+    {
+      "basis": "stay major 9 to minimize config API migration; npm outdated current wanted already 9.39.5 while latest 10.14.0",
+      "package": "eslint",
+      "migration": "npm view eslint@9 dist-tags/version separately; latest major 10 requires broader API/runtime review.",
+      "target": "9.x latest stable and matching @eslint/js 9.x"
+    },
+    {
+      "basis": "must match ESLint major 9; latest 10.0.1 peers eslint ^10",
+      "package": "@eslint/js",
+      "migration": "Pin same major with ESLint.",
+      "target": "paired 9.x"
+    },
+    {
+      "basis": "already installed and metadata supports eslint 9 and TS >=4.8.4 <6.1.0; current TS 5.9.3 fits",
+      "package": "typescript-eslint",
+      "migration": "No major migration needed.",
+      "target": "8.72.1"
+    },
+    {
+      "basis": "Vitest 4.1.12 supports Vite 7; Vite 8 is a separate major change with no identified audit need",
+      "package": "vite",
+      "migration": "Do not update to Vite 8 in same safety patch absent compatibility need.",
+      "target": "retain 7.3.7 initially"
+    }
+  ],
+  "outdated": {
+    "latestMajorOnly": [
+      "eslint 10.14.0",
+      "@eslint/js 10.0.1",
+      "eslint-plugin-boundaries 7.4.0",
+      "TypeScript 7.0.2",
+      "Vite 8.3.5",
+      "Vitest 5.0.5"
+    ],
+    "defer": [
+      "ESLint 10 + @eslint/js 10: paired major migration, eslint config/runtime compatibility review",
+      "TypeScript 7: no identified audit need; typescript-eslint peer currently <6.1",
+      "Vite 8: separate major migration; not needed for Vitest 4.1.12"
+    ]
+  },
+  "findings": {
+    "context7": "Previously exhausted quota; official Exa search confirmed Vitest 5 migration requirements Node >=22.12, Vite >=6.4 and changes including strictly top-level vi.mock/unmock/hoisted. Direct Vitest 4 official migration guide not yet verified.",
+    "minimatch": "No minimatch 11 override recommended: ESLint 9 owns minimatch ^3.1.5 and its API/major compatibility is not established merely by Node engine; ESLint 9 current full audit issues are moderate. Avoid cross-major override.",
+    "vitest": "4.1.12 selected over 5.0.5 because fits Vite 7 and removes vulnerable tinypool dependency; both are major from current 3.x and require migration/test review",
+    "current_alerts": "17: critical 3, high 2, moderate 12; all dev tree",
+    "boundaries": "Do not select 6.0.2: it pins handlebars 4.7.9, still in audit range. 7.4.0 pins fixed handlebars 4.7.10."
+  },
+  "residual": "Do not declare closed until post-upgrade npm audit --json and --omit=dev both run. Any remaining high/critical blocks closure; full audit may still show moderate ESLint-family issues. Changes are development-only but CI/build/test exposure remains.",
+  "safe_option": "Minimal closure candidate: update Vitest to 4.1.12 and boundaries plugin to 7.4.0; keep ESLint/@eslint/js major 9, TypeScript 5.9.3, Vite 7.3.7, typescript-eslint 8.72.1. Regenerate lock through npm install --package-lock-only or normal update, then verify audit, npm ci, tests, lint, build. This is a proposal only, no installs performed."
+}
