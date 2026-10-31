@@ -45,11 +45,14 @@ function renderReading(context: Context, view: Exclude<View, { kind: 'camp' }>) 
   const scroll = document.createElement('div')
   scroll.className = 'panel-scroll'; scroll.tabIndex = 0
   scroll.setAttribute('aria-label', `Contenido de ${title}`)
-  scroll.append(...source.childNodes)
-  context.panel.replaceChildren(header, scroll)
+  const content = document.createElement('div')
+  content.className = 'panel-content'
+  content.append(...source.childNodes)
+  scroll.append(header, content)
+  context.panel.replaceChildren(scroll)
   const previous = context.reading.get(key(view))
   scroll.scrollTop = previous?.scroll ?? 0
-  const focus = previous ? controls(context.panel)[previous.focus] ?? heading : heading
+  const focus = previous ? controls(context.panel)[previous.focus] ?? scroll : heading
   focus.focus({ preventScroll: true })
 }
 

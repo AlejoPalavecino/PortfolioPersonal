@@ -1,8 +1,7 @@
 .panel-header {
   display:block;
-  flex:none;
-  max-height:45%;
-  overflow:auto;
+  max-height:none;
+  overflow:visible;
 }
 
 .panel-header .eyebrow {
@@ -48,4 +47,8 @@
   .panel-header h2 {
     font-size:28px;
   }
+}
+
+@media (min-width:701px) and (min-height:800px) {
+  .panel-header { position:sticky; top:0; }
 }

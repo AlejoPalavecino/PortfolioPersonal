@@ -103,7 +103,7 @@
   .panel-header .eyebrow { display: none; }
   .panel-header h2 { font-size: 24px; margin: 2px 0; }
   .panel-header .panel-nav { gap: 4px; }
-  .panel-scroll { padding: 12px 20px 32px; }
+  .panel-content { padding: 12px 20px 32px; }
 }
 @media (max-width: 360px) {
   .intro { min-width: 0; padding-inline: 12px; }
