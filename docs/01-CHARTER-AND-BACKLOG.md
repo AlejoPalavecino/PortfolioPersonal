@@ -1,6 +1,6 @@
 # Campamento explorable — alcance vigente
 
-> Iteración actual: **0.3.1-review.1** en `codex/portfolio-closure`. Dependencias corregidas y persistencia/lectura/oclusión implementadas. Aceptación interactiva parcial; faltan teclado completo, texto ampliado, transparencias y barrido. [Entrega vigente](ENTREGA-CLOSURE.md). Los mapas anteriores se conservan como historia de sus iteraciones, no como evidencia actual.
+> Iteración actual: **0.3.1-review.1** en `codex/portfolio-closure`. Dependencias corregidas y persistencia/lectura/oclusión implementadas. Validación funcional dirigida realizada: teclado completo, texto200, transparencias y contornos por pasos viables; capturas200 bloqueadas por herramienta. Ver ACEPTACION-CLOSURE.md. [Entrega vigente](ENTREGA-CLOSURE.md). Los mapas anteriores se conservan como historia de sus iteraciones, no como evidencia actual.
 
 La evolución solicitada el 30/10/2026 convierte el portfolio en una experiencia de exploración desde su primera pantalla. Conserva la finalidad profesional: empleo y clientes en full stack, análisis, automatización e IA. Se implementa en una rama de revisión, sin publicar esta evolución en `main`.
 

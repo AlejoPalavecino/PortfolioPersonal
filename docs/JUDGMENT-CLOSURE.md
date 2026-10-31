@@ -11,3 +11,7 @@ Dos jueces ciegos inspeccionaron el mismo objetivo inmutable, sin modificar arch
 Severos confirmados: 0; contradicciones: 0; información inicial: 1. No se lanzó actor de corrección de severos. Ambos jueces revisaron el delta hasta `8bc83139ea3d857596011358103a73ff41636c75` y devolvieron `findings: []`. Se completó una revisión acotada; el ajuste resuelve por inspección CJD-01, sin declarar su reproducción visual.
 
 **JUDGMENT: APPROVED ✅** para el código revisado. Este informe no certifica aceptación visual completa ni autoriza publicación. Los cambios posteriores de evidencia/documentación no alteran ese código.
+
+Al retomar QA se añadieron ajustes de texto200, búsqueda de paso estrecho y scroll del helper de prueba. Ambos jueces revisaron el delta inmutable7a3374c→36987e87b1530a3b8adf82b17dc517c8e976f00f y devolvieron findings vacíos. Quedan completadas dos revisiones acotadas; no se amplía ese presupuesto. Los registros finales y límites de aceptación son independientes y están en ACEPTACION-CLOSURE.md.
+
+Microfix L1 posterior: actions.ts despacha resume y enfoca world; test closure-resume-focus pasó RED→GREEN y la interacción final también pasó. Revisión ordinaria separada sobre36987e8→9d6c6b1, exclusivamente actions/test: `LGTM_SIN_HALLAZGOS`. No se presenta como una tercera ronda de Judgment Day ni como un dictamen sobre otros archivos.

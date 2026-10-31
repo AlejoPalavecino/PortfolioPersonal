@@ -1,8 +1,8 @@
 # Cerrar movimiento persistente y carga tardía sin interrumpir la lectura
 
-`ESTADO_DISENO: LISTO_PARA_TDD_RED`
+`ESTADO_DISENO: IMPLEMENTADO_Y_VALIDADO` — contrato original conservado; resultado actual y límites en ACEPTACION-CLOSURE.md.
 
-Este contrato completa los pendientes comprobables de la entrega anterior: la selección manual de movimiento se reinicia en `bindPreferences`, y la conservación de lectura al terminar una carga lenta todavía carece de prueba real. Se conserva TypeScript/Vite, el dominio, la cámara, el loader y sus 28 operaciones. Los resultados históricos de [la entrega anterior](ENTREGA-QUALITY.md) no cuentan como pruebas de esta iteración. Engram MCP no está registrado en este runtime; este documento guarda el contrato sin simular escrituras de memoria.
+Este contrato se definió antes de implementar: la selección manual se reiniciaba en `bindPreferences` y faltaba prueba real de conservación de lectura al terminar una carga lenta. Ambos puntos están ahora implementados/comprobados según ACEPTACION-CLOSURE.md. Se conserva TypeScript/Vite, el dominio, la cámara, el loader y sus28 operaciones. Los resultados históricos de [la entrega anterior](ENTREGA-QUALITY.md) no se usaron como pruebas nuevas. Engram MCP no está registrado en este runtime; este documento guarda el contrato sin simular escrituras de memoria.
 
 ## API_DOT
 

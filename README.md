@@ -1,6 +1,6 @@
 # Campamento creativo · portfolio para explorar
 
-La versión local **0.3.1-review.1** corrige dependencias, persiste movimiento reducido y mejora lectura/oclusión. La aceptación interactiva sigue parcial: ver [entrega de cierre](docs/ENTREGA-CLOSURE.md), [dependencias](docs/DEPENDENCIES-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
+La versión local **0.3.1-review.1** corrige dependencias, persiste movimiento reducido y mejora lectura/oclusión. La validación funcional dirigida está realizada, con límites de captura documentados: ver [entrega de cierre](docs/ENTREGA-CLOSURE.md), [dependencias](docs/DEPENDENCIES-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
 
 `main` y la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/) conservan **0.3.0-review.1**. La nueva revisión está en `codex/portfolio-closure`, sin push ni publicación autorizados. El contenido editorial sigue en revisión.
 
