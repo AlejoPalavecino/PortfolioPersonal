@@ -2,13 +2,13 @@ import { createExperience, reduceExperience, type ExperienceEvent } from '../cor
 import type { ScenePreparation } from '../shared'
 import type { createController } from './controller'
 
-export function createSession(root: HTMLElement, controller: ReturnType<typeof createController>) {
+export function createSession(root: HTMLElement, controller: ReturnType<typeof createController>, reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const intro = root.querySelector<HTMLElement>('.intro')!
   const status = root.querySelector<HTMLElement>('.loading-status')!
   const enter = root.querySelector<HTMLButtonElement>('[data-action=enter]')!
   let entered = false
   try { entered = sessionStorage.getItem('camp-entered') === '1' } catch { /* Storage is optional. */ }
-  let state = createExperience({ entered, direct: !!location.hash, reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches })
+  let state = createExperience({ entered, direct: !!location.hash, reducedMotion })
   let awaitingEntry = !location.hash
   const update = (event: ExperienceEvent) => {
     if (event.type === 'read') awaitingEntry = false

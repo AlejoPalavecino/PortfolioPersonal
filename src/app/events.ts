@@ -8,12 +8,13 @@ import type { createWorldCamera } from './camera'
 import { bindKeyboard } from './keyboard'
 import { closeMenu, returnToCamp } from './actions'
 import { restoreHistoryView } from './history'
+import { writeManualMotion } from './motion-preference'
 
 type Controller = ReturnType<typeof createController>
 type Session = ReturnType<typeof createSession>
-export function bindPreferences(root: HTMLElement, controller: Controller, session: Session) {
+export function bindPreferences(root: HTMLElement, controller: Controller, session: Session, initial: boolean) {
   const motion = matchMedia('(prefers-reduced-motion: reduce)')
-  let user = false
+  let user = initial
   const apply = () => {
     const reduced = effectiveReducedMotion(motion.matches, user)
     root.dataset.userMotion = String(user); root.dataset.motion = reduced ? 'reduced' : 'full'
@@ -29,7 +30,7 @@ export function bindPreferences(root: HTMLElement, controller: Controller, sessi
     button.textContent = motion.matches ? (user ? 'Movimiento reducido: sistema y preferencia' : 'Movimiento reducido por el sistema') : user ? 'Activar movimiento' : 'Reducir movimiento'
   }
   motion.addEventListener('change', apply); apply()
-  return () => { user = !user; apply() }
+  return () => { user = !user; writeManualMotion(user); apply() }
 }
 export function bindEvents(root: HTMLElement, controller: Controller, views: ReturnType<typeof createViews>, audio: ReturnType<typeof createAudio>, session: Session, camera: ReturnType<typeof createWorldCamera>) {
   const world = root.querySelector<HTMLElement>('.world')!
