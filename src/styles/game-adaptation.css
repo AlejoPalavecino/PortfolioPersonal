@@ -1,0 +1,88 @@
+/* HUD controls occupy corners instead of a conventional navigation bar. */
+#app:has(.intro:not([hidden])) .hud-left,
+#app:has(.intro:not([hidden])) .hud-right {
+  visibility: hidden;
+}
+
+#app:has(.intro:not([hidden])) .scene-status {
+  visibility: hidden;
+}
+
+.panel-header .scene-status {
+  position: static;
+  margin: 8px 0 0;
+  font-size: 13px;
+  box-shadow: none;
+}
+
+.panel-header .scene-status button {
+  color: #fff7e7;
+  min-height: 44px;
+}
+
+.panel { top: var(--hud-clearance, 80px); }
+.hud-left, .hud-right { max-width: calc(50% - 24px); }
+.hud-left button, .hud-right button, .hud-right a {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.hud-right { flex-wrap: wrap; justify-content: flex-end; }
+.hud-left .menu-toggle { min-width: 0; }
+
+.help-card { max-height: 25dvh; align-items: flex-start; }
+.help-card p { max-height: calc(25dvh - 24px); overflow: auto; }
+.help-card button { flex: none; min-height: 44px; }
+
+.hud-right [data-action="help"] {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+}
+
+#app[data-routing="true"] .hud-right [data-action="help"] {
+  display: none;
+}
+
+#app[data-reading="true"] .hud-right [data-action="help"] {
+  display: none;
+}
+
+.intro-card, .panel, .mobile-menu {
+  animation: surface-in 260ms cubic-bezier(.22, 1, .36, 1);
+}
+
+@keyframes surface-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 700px) {
+  .hud-left button, .hud-right button, .hud-right a {
+    font-size: 14px;
+    padding: 7px 9px;
+  }
+  .hud-left .brand { display: none; }
+  .hud-left, .hud-right { max-width: calc(50% - 16px); }
+  .hud-right [data-action="help"] {
+    right: max(8px, env(safe-area-inset-right));
+    bottom: max(8px, env(safe-area-inset-bottom));
+    max-width: min(130px, 42vw);
+  }
+  .help-card {
+    left: max(8px, env(safe-area-inset-left));
+    right: calc(min(130px, 42vw) + 16px);
+    bottom: max(8px, env(safe-area-inset-bottom));
+    transform: none;
+    width: auto;
+    max-width: none;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .route-controls { flex-wrap: wrap; }
+  .route-controls span { flex-basis: 100%; }
+  .route-controls button { font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-card, .panel, .mobile-menu { animation: none; }
+}

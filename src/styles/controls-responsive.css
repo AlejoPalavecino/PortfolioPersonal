@@ -1,0 +1,138 @@
+.intro-card p {
+  line-height:1.5;
+}
+
+.loading-status {
+  font-size:13px;
+  color:#526d72;
+}
+
+.enter-button,.direct-button {
+  width:100%;
+  min-height:48px;
+  margin-top:8px;
+  border:2px solid #813c2a;
+  font-weight:700;
+}
+
+.enter-button {
+  background:#e65b44;
+  color:white;
+}
+
+.enter-button:disabled {
+  opacity:.5;
+}
+
+.direct-button {
+  background:#fff9e8;
+  color:#183746;
+}
+
+.intro-links {
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin-top:18px;
+  font-size:14px;
+}
+
+.intro-links button {
+  border:0;
+  background:none;
+  text-decoration:underline;
+}
+
+@media(max-width:700px) {
+  .hud-left,.hud-right {
+    top:max(8px,env(safe-area-inset-top));
+    gap:4px;
+  }
+  .hud-left {
+    left:8px;
+  }
+  .hud-right {
+    right:8px;
+  }
+  .hud-left button,.hud-right button,.hud-right a {
+    padding:7px;
+    font-size:11px;
+  }
+  .brand img {
+    width:38px;
+  }
+  .help-card {
+    bottom:max(10px,env(safe-area-inset-bottom));
+    font-size:11px;
+    width:90%;
+  }
+  .route-controls {
+    bottom:max(10px,env(safe-area-inset-bottom));
+    max-width:96%;
+    white-space:normal;
+    font-size:11px;
+  }
+  .route-controls button {
+    padding:6px;
+    font-size:11px;
+  }
+  .intro-card {
+    padding:22px;
+  }
+  .intro-card h1 {
+    font-size:48px;
+  }
+  .intro-card p {
+    margin:9px 0;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important;
+  }
+}
+
+@media(max-height:500px) and (orientation:landscape) {
+  .intro {
+    place-items:start center;
+    padding:8px 16px;
+  }
+  .intro-card {
+    padding:12px 24px;
+  }
+  .intro-card h1 {
+    font-size:42px;
+    margin:4px 0;
+  }
+  .intro-card p {
+    margin:4px 0;
+    font-size:13px;
+  }
+  .intro-card .intro-subtitle {
+    font-size:17px;
+  }
+  .intro-card .loading-status {
+    font-size:12px;
+  }
+  .intro-card .enter-button,.intro-card .direct-button {
+    min-height:40px;
+    margin-top:4px;
+  }
+  .intro-links {
+    margin-top:6px;
+  }
+}
+
+#app:not([data-phase="explore"]) .help-card,#app[data-routing="true"] .help-card,#app:has(.mobile-menu:not([hidden])) .help-card {
+  display:none;
+}
+
+.retry-intro {
+  min-height:40px;
+  background:#fff8e7;
+  border:2px solid #68422d;
+  padding:8px 16px;
+}
