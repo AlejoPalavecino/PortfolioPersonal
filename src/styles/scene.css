@@ -1,0 +1,171 @@
+@font-face {
+  font-display: swap;
+  font-family:Lexend;
+  src:url('/assets/Lexend-Variable.ttf');
+}
+
+@font-face {
+  font-display: swap;
+  font-family:Pixelify;
+  src:url('/assets/PixelifySans-Variable.ttf');
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html,body,#app,main {
+  width:100%;
+  height:100%;
+  min-height:100%;
+  margin:0;
+}
+
+body {
+  font-family:Lexend,sans-serif;
+  color:#142e3c;
+  background:#6cb3d6;
+  overflow:hidden;
+}
+
+button,a {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+a {
+  color:inherit;
+}
+
+button:focus-visible,a:focus-visible,.world:focus-visible {
+  outline:3px solid #ffce73;
+  outline-offset:3px;
+}
+
+[hidden] {
+  display:none!important;
+}
+
+main {
+  position:relative;
+  height:100dvh;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.landscape {
+  position:absolute;
+  inset:0;
+  background:#98d1e9 url('/assets/world-backdrop.webp') center/cover no-repeat;
+}
+
+.world-scroll {
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  touch-action:pan-x pan-y;
+  isolation:isolate;
+}
+
+.world {
+  position:absolute;
+  left:0;
+  top:0;
+  width:1000px;
+  height:650px;
+  transform-origin:0 0;
+  isolation:isolate;
+}
+
+.ground {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+.poi {
+  position:absolute;
+  object-fit:contain;
+  cursor:pointer;
+}
+
+.poi-projects {
+  width:32%;
+  left:49%;
+  top:18%;
+  z-index:252;
+}
+
+.poi-about {
+  width:22%;
+  left:10%;
+  top:17%;
+  z-index:310;
+}
+
+.poi-journey {
+  width:19%;
+  left:25%;
+  top:46%;
+  z-index:420;
+}
+
+.poi-contact {
+  width:20%;
+  left:66%;
+  top:36%;
+  z-index:365;
+}
+
+.avatar {
+  position:absolute;
+  left:51%;
+  top:53.85%;
+  width:3.7%;
+  height:auto;
+  transform:translate(-50%,-100%);
+  image-rendering:pixelated;
+  pointer-events:none;
+}
+
+.world-label {
+  position:absolute;
+  z-index:1000;
+  min-height:44px;
+  padding:5px 12px;
+  color:#182f3a;
+  background:#fff0cb;
+  border:3px solid #603c29;
+  box-shadow:0 3px #32271f;
+  font:700 18px Pixelify;
+  border-radius:3px;
+}
+
+.world-label:hover,.world-label[data-selected] {
+  background:#ffc367;
+  transform:translateY(-2px);
+}
+
+.label-projects {
+  left:59%;
+  top:32%;
+}
+
+.label-about {
+  left:13%;
+  top:46%;
+}
+
+.label-journey {
+  left:23%;
+  top:70%;
+}
+
+.label-contact {
+  left:69%;
+  top:61%;
+}

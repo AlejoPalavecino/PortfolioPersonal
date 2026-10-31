@@ -1,0 +1,175 @@
+.hud-left,.hud-right {
+  position:absolute;
+  z-index:30;
+  top:max(14px,env(safe-area-inset-top));
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.hud-left {
+  left:max(16px,env(safe-area-inset-left));
+}
+
+.hud-right {
+  right:max(16px,env(safe-area-inset-right));
+}
+
+.hud-left button,.hud-right button,.hud-right a,.mobile-menu button,.settings button,.route-controls button {
+  min-height:44px;
+  padding:8px 12px;
+  border:2px solid #71432c;
+  background:#fff1ce;
+  color:#183746;
+  border-radius:4px;
+  box-shadow:0 3px #4b3022;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+}
+
+.hud-left .brand {
+  padding:4px;
+  background:#fff4d9;
+}
+
+.brand img {
+  display:block;
+  width:55px;
+}
+
+.mobile-menu {
+  position:absolute;
+  z-index:50;
+  top:var(--hud-clearance,78px);
+  left:max(16px,env(safe-area-inset-left));
+  width:min(320px,calc(100% - 32px));
+  max-height:calc(100dvh - var(--hud-clearance,78px) - max(16px,env(safe-area-inset-bottom)));
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  padding:18px;
+  display:grid;
+  gap:9px;
+  background:#f7e6c3;
+  border:4px solid #633f2c;
+  box-shadow:0 8px 0 #342c29;
+}
+
+.mobile-menu strong {
+  font:700 22px Pixelify;
+}
+
+.mobile-menu>button {
+  display:flex;
+  justify-content:space-between;
+  text-align:left;
+}
+
+.visited-mark {
+  visibility:hidden;
+  width:20px;
+  color:#487548;
+}
+
+.mobile-menu [data-visited] .visited-mark {
+  visibility:visible;
+}
+
+.settings {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:6px;
+}
+
+.settings button {
+  font-size:12px;
+}
+
+.help-card,.route-controls,.scene-status {
+  position:absolute;
+  z-index:30;
+  background:#173e52ed;
+  color:#fff6db;
+  border:2px solid #f3d29a;
+  box-shadow:0 4px #31404a;
+  border-radius:4px;
+  padding:10px 14px;
+}
+
+.help-card {
+  bottom:max(18px,env(safe-area-inset-bottom));
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  max-width:min(550px,90%);
+  font-size:13px;
+}
+
+.help-card p {
+  margin:0;
+}
+
+.help-card button {
+  background:none;
+  color:inherit;
+  border:0;
+  font-size:24px;
+}
+
+.route-controls {
+  bottom:max(18px,env(safe-area-inset-bottom));
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  align-items:center;
+  white-space:nowrap;
+  font-size:13px;
+}
+
+.scene-status {
+  left:16px;
+  bottom:16px;
+}
+
+.intro {
+  position:absolute;
+  z-index:100;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:max(16px,env(safe-area-inset-top)) 16px;
+  background:#0c2939a8;
+  overflow:auto;
+}
+
+.intro-card {
+  width:min(540px,100%);
+  padding:clamp(24px,5vw,48px);
+  text-align:center;
+  background:#fff2d8;
+  border:4px solid #66402c;
+  box-shadow:0 8px 0 #422d25,0 18px 40px #0a243d99;
+}
+
+.intro-card h1 {
+  font:700 clamp(46px,7vw,76px)/.9 Pixelify;
+  margin:12px 0 20px;
+  color:#102f3c;
+  text-wrap:balance;
+}
+
+.intro-kicker {
+  font:700 15px Pixelify;
+  letter-spacing:.15em;
+  color:#ac5137;
+}
+
+.intro-subtitle {
+  font-size:22px;
+  font-weight:600;
+  margin:0;
+}
