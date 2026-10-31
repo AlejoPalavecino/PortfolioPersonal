@@ -2,7 +2,7 @@
 
 La versión **0.3.0-review.1** prepara una revisión de calidad del campamento: huellas y selección explícitas, ladera continua, señalética, ventanas y carga, y colección editorial de reconocimientos. Ver [entrega de calidad](docs/ENTREGA-QUALITY.md), [contratos](docs/PLAN-QUALITY.md) y [assets](docs/ASSETS-QUALITY.md).
 
-La revisión se desarrolla en `codex/portfolio-quality`, sin publicar. `main` conserva la versión **0.2.0-review.1** y alimenta la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/). El contenido editorial sigue en revisión.
+La versión **0.3.0-review.1** está integrada en `main`, con integración y publicación autorizadas después de la entrega de revisión. `main` es la única rama y alimenta la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/). El contenido editorial sigue en revisión.
 
 ## Abrir la revisión
 

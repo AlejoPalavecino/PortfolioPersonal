@@ -1,5 +1,7 @@
 # Revisión de calidad 0.3.0-review.1
 
+> Integración posterior autorizada: Alejo solicitó integrar esta versión en `main`, hacer push y eliminar la rama de revisión. Se conserva la entrega siguiente como registro del estado previo a esa autorización. La versión se integra mediante fast-forward; la rama `codex/portfolio-quality` se elimina y el workflow de Pages publica desde `main`. Los pendientes editoriales y límites de pruebas siguen vigentes.
+
 Iteración local del 31 de octubre de 2026, sobre `2ec496ef7cb5e003dbae5f5ecade7f6e14a8a15a`. Al comenzar, `main` y `origin/main` coincidían con la referencia auditada y el árbol estaba limpio: no existían correcciones posteriores para conservar. Esta entrega usa `codex/portfolio-quality`; no altera Pages ni amplía el alcance público de FoxMind.
 
 ## Abrir y revisar
