@@ -134,6 +134,40 @@ main {
 
 /* Decorative artwork never intercepts world-coordinate selection. */
 .poi { pointer-events:none; }
+.world-fx-ground,.world-fx-props {
+  position:absolute;
+  inset:0;
+  width:1000px;
+  height:650px;
+  pointer-events:none;
+  image-rendering:pixelated;
+}
+.world-fx-ground { z-index:160; }
+.world-fx-props { z-index:480; }
+.avatar-shadow {
+  position:absolute;
+  left:0;
+  top:0;
+  width:24px;
+  height:9px;
+  margin-left:-12px;
+  margin-top:-5px;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center, rgba(48,30,16,.38) 0%, rgba(48,30,16,.2) 62%, transparent 78%);
+  pointer-events:none;
+  transform:translate(510px,350px);
+}
+#app[data-reading="true"] .world-scroll {
+  filter:brightness(.86) saturate(.9);
+  transition:filter 220ms ease-out;
+}
+#app[data-entering="true"] .hud-left,#app[data-entering="true"] .hud-right,#app[data-entering="true"] .help-card {
+  animation:camp-enter-hud 460ms ease-out;
+}
+@keyframes camp-enter-hud {
+  from { opacity:0; translate:0 6px; }
+  to { opacity:1; translate:0 0; }
+}
 .avatar-occlusion {
   position:absolute;
   inset:0;

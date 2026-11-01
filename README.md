@@ -1,8 +1,8 @@
 # Campamento creativo · portfolio para explorar
 
-La versión local **0.3.1-review.1** corrige dependencias, persiste movimiento reducido y mejora lectura/oclusión. La validación funcional dirigida está realizada, con límites de captura documentados: ver [entrega de cierre](docs/ENTREGA-CLOSURE.md), [dependencias](docs/DEPENDENCIES-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
+La versión local **0.3.1-review.1** en la rama `feat/audiovisual-camp` incorpora la mejora audiovisual integral (viñeta inicial animada en pixel art con progreso real, locomoción con cadencia por distancia y sombra de contacto, efectos de desplazamiento/tierra, vida ambiental localizada en fogón/agua/faroles, respuesta propia de los cuatro destinos y diseño sonoro espacial y voluntario), conservando las correcciones de cierre y seguridad: ver [entrega audiovisual](docs/ENTREGA-AUDIOVISUAL.md), [entrega de cierre](docs/ENTREGA-CLOSURE.md), [dependencias](docs/DEPENDENCIES-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
 
-`main` y la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/) conservan **0.3.0-review.1**. La nueva revisión está en `codex/portfolio-closure`, sin push ni publicación autorizados. El contenido editorial sigue en revisión.
+`main` y la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/) conservan **0.3.0-review.1**. La nueva revisión está en `feat/audiovisual-camp`, sin push ni publicación autorizados. El contenido editorial sigue en revisión.
 
 ## Abrir la revisión
 

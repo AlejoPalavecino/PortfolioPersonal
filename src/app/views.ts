@@ -1,13 +1,14 @@
 import { credentialById, type CaseId, type Section } from '../entities'
+import type { CueBus } from '../core/fx/cues'
 import { caseMarkup, sectionMarkup, recognitionsMarkup, credentialMarkup } from '../widgets'
 import type { createController } from './controller'
 
 export type View = { kind: 'camp' } | { kind: 'section'; section: Section } | { kind: 'case'; id: CaseId } | { kind: 'recognitions' } | { kind: 'credential'; id: string }
-export type ViewOptions = { onView?: (view: View) => void; onCamp?: () => void }
+export type ViewOptions = { onView?: (view: View) => void; onCamp?: () => void; bus?: CueBus }
 type Reading = { scroll: number; focus: number }
 type Context = {
   root: HTMLElement; panel: HTMLElement; current: View; reading: Map<string, Reading>
-  origin: HTMLElement | null; restoring: boolean; options: ViewOptions; transition: number
+  origin: HTMLElement | null; restoring: boolean; options: ViewOptions; transition: number; closeTimer?: number
 }
 const urls: Record<Section, string> = {
   projects: 'proyectos', about: 'sobre-mi', journey: 'trayectoria', contact: 'contacto',
@@ -24,6 +25,31 @@ function remember(context: Context) {
   context.reading.set(key(context.current), {
     scroll: scroll.scrollTop,
     focus: controls(context.panel).indexOf(document.activeElement as HTMLElement),
+  })
+}
+
+function bindMediaState(container: HTMLElement) {
+  container.querySelectorAll<HTMLImageElement>('img').forEach(img => {
+    if (img.complete && img.naturalWidth > 0) return
+    img.dataset.loading = 'true'
+    const clear = () => { delete img.dataset.loading; delete img.dataset.failed }
+    img.addEventListener('load', clear, { once: true })
+    img.addEventListener('error', () => {
+      delete img.dataset.loading
+      img.dataset.failed = 'true'
+      if (img.nextElementSibling?.classList.contains('media-error')) return
+      const note = document.createElement('p')
+      note.className = 'media-error'
+      note.innerHTML = 'No se pudo cargar la imagen. <button type="button" class="text-button">Reintentar</button>'
+      note.querySelector('button')?.addEventListener('click', () => {
+        note.remove()
+        img.dataset.loading = 'true'
+        delete img.dataset.failed
+        const base = img.src.split('?')[0]!
+        img.src = `${base}?r=${Date.now()}`
+      })
+      img.after(note)
+    })
   })
 }
 
@@ -48,6 +74,7 @@ function renderReading(context: Context, view: Exclude<View, { kind: 'camp' }>) 
   const content = document.createElement('div')
   content.className = 'panel-content'
   content.append(...source.childNodes)
+  bindMediaState(content)
   scroll.append(header, content)
   context.panel.replaceChildren(scroll)
   const previous = context.reading.get(key(view))
@@ -65,10 +92,11 @@ function show(context: Context, next: View, push = true) {
   const wasCamp = context.current.kind === 'camp'
   context.current = next
   const transition = ++context.transition
+  if (context.closeTimer !== undefined) { window.clearTimeout(context.closeTimer); context.closeTimer = undefined }
   context.panel.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel())
   if (next.kind === 'camp' && !context.panel.hidden && context.root.dataset.motion !== 'reduced') {
     context.panel.dataset.transition = 'close'; context.panel.inert = true
-    window.setTimeout(() => { if (context.transition === transition) context.panel.hidden = true }, 200)
+    context.closeTimer = window.setTimeout(() => { if (context.transition === transition) context.panel.hidden = true }, 200)
   } else {
     context.panel.hidden = next.kind === 'camp'; context.panel.inert = false
     context.panel.dataset.transition = wasCamp ? 'open' : 'change'
@@ -77,6 +105,7 @@ function show(context: Context, next: View, push = true) {
   context.root.dataset.reading = String(next.kind !== 'camp')
   context.options.onView?.(next)
   if (next.kind === 'camp') {
+    context.options.bus?.emit('surface-close', {})
     const sceneStatus = context.panel.querySelector<HTMLElement>('.scene-status')
     if (sceneStatus) context.root.querySelector('main')!.append(sceneStatus)
     context.options.onCamp?.()
@@ -84,7 +113,10 @@ function show(context: Context, next: View, push = true) {
     const origin = context.origin?.isConnected && context.origin.offsetParent ? context.origin : fallback
     origin.focus({ preventScroll: true })
   } else {
-    context.panel.dataset.variant = next.kind === 'section' ? next.section : next.kind
+    const kind = next.kind === 'section' ? next.section : next.kind
+    if (wasCamp) context.options.bus?.emit('surface-open', { kind })
+    else context.options.bus?.emit('page-change', { kind })
+    context.panel.dataset.variant = kind
     renderReading(context, next)
     const scroll = context.panel.querySelector<HTMLElement>('.panel-scroll')
     scroll?.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: context.root.dataset.motion === 'reduced' ? 0 : 200 })

@@ -17,7 +17,9 @@ export default tseslint.config(
     languageOptions: {
       globals: Object.fromEntries(['window', 'document', 'navigator', 'location', 'history',
         'HTMLElement', 'HTMLButtonElement', 'HTMLAnchorElement', 'HTMLImageElement',
-        'HTMLInputElement', 'HTMLAudioElement', 'KeyboardEvent', 'PointerEvent', 'Event',
+        'HTMLInputElement', 'HTMLAudioElement', 'HTMLCanvasElement', 'CanvasRenderingContext2D',
+        'AudioContext', 'GainNode', 'StereoPannerNode', 'OscillatorType', 'MutationObserver',
+        'KeyboardEvent', 'PointerEvent', 'Event',
         'Audio', 'Image', 'requestAnimationFrame', 'cancelAnimationFrame', 'performance',
         'matchMedia', 'fetch', 'setTimeout', 'clearTimeout', 'console', 'URL',
         'ResizeObserver', 'IntersectionObserver', 'Element', 'Node'].map(name => [name, 'readonly']))
@@ -31,6 +33,7 @@ export default tseslint.config(
         { type: 'domain', pattern: 'src/core/domain/**', partialMatch: false },
         { type: 'domain', pattern: 'src/core/camera/**', partialMatch: false },
         { type: 'domain', pattern: 'src/core/experience/**', partialMatch: false },
+        { type: 'domain', pattern: 'src/core/fx/**', partialMatch: false },
         { type: 'shared', pattern: 'src/shared/**', partialMatch: false },
         { type: 'shared', pattern: 'src/styles/**', partialMatch: false },
         { type: 'entity', pattern: 'src/entities/**', partialMatch: false },

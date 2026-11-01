@@ -188,6 +188,10 @@
 }
 
 .primary:hover, .primary:focus-visible { background: #81281f; color: #fff; }
+.outline:hover, .outline:focus-visible { background: #f3e2be; }
+button, .primary, .outline { transition: background-color 110ms ease-out, border-color 110ms ease-out, box-shadow 110ms ease-out; }
+.panel-content img[data-loading="true"] { background: #efe1c4; min-height: 120px; }
+.media-error { padding: 10px 12px; border: 2px solid #8a3a29; background: #fff0e8; font-size: 14px; }
 
 .journey-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; border-bottom: 2px solid #c7ad89; }
 .journey-tabs button { min-height: 44px; padding: 8px 12px; text-decoration: none; }

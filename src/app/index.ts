@@ -10,6 +10,10 @@ import { createSession } from './session'
 import { observeViewport } from './viewport'
 import { effectiveReducedMotion } from '../core/experience'
 import { readManualMotion } from './motion-preference'
+import { createCueBus } from '../core/fx/cues'
+import { createLoop } from './loop'
+import { bindIntroFx } from './fx/intro-fx'
+import { bindWorldFx } from './fx/world-fx'
 
 export function mount(root: HTMLElement) {
   const userMotion = readManualMotion()
@@ -18,14 +22,17 @@ export function mount(root: HTMLElement) {
   root.dataset.motion = reducedMotion ? 'reduced' : 'full'
   root.innerHTML = shell()
   observeViewport(root)
-  const views = createViews(root, { onView: view => session.update({ type: view.kind === 'camp' ? 'camp' : 'read' }) })
-  const renderer = createRenderer(root, views)
-  const controller = createController(renderer.render)
-  const session = createSession(root, controller, reducedMotion)
-  const audio = createAudio()
+  const loop = createLoop(), bus = createCueBus()
+  const views = createViews(root, { onView: view => session.update({ type: view.kind === 'camp' ? 'camp' : 'read' }), bus })
+  const renderer = createRenderer(root, views, loop)
+  const controller = createController(renderer.render, loop, bus)
+  const session = createSession(root, controller, reducedMotion, bus)
+  bindIntroFx(root, bus, loop, () => root.dataset.motion === 'reduced')
+  bindWorldFx(root, controller, renderer.camera, bus, loop)
+  const audio = createAudio(bus, () => ({ position: controller.state.position, reading: root.dataset.reading === 'true' }))
   const toggleMotion = bindPreferences(root, controller, session, userMotion)
   const loader = prepareScene(state => { renderer.setFrames(state.frames); session.loading(state) })
   bindActions(root, controller, views, audio, session, () => loader.retry(), toggleMotion)
-  bindEvents(root, controller, views, audio, session, renderer.camera)
+  bindEvents(root, controller, views, audio, session, renderer.camera, loop, bus)
   views.restoreUrl(controller)
 }

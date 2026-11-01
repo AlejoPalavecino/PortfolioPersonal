@@ -29,7 +29,7 @@ function about(): string {
       <p>Trabajo en desarrollo full stack, análisis funcional, automatización e inteligencia artificial aplicada. Soy cofundador de FoxMind, una plataforma educativa orientada a personalizar el aprendizaje y acompañar el trabajo docente.</p>
       <h3>Lo que me interesa</h3>
       <p>Construir productos, comprender problemas y colaborar en la evolución de ideas.</p>
-    </div><img src="${assetUrl('portrait.webp')}" alt="Retrato ilustrado de Alejo"></div>
+    </div><img src="${assetUrl('portrait.webp')}" width="480" height="480" alt="Retrato ilustrado de Alejo"></div>
     <h3>Cómo puedo ayudarte</h3><p>Desarrollo a medida y servicios relacionados, con alcance definido para cada proyecto.</p>
     <div class="services-grid">${services.map(service => `<article><h4>${service.title}</h4><p>${service.description}</p></article>`).join('')}</div>`
 }

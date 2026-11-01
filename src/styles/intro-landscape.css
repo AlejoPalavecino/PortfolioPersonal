@@ -13,7 +13,7 @@
   .loading-status,.enter-button,.direct-button,.intro-links,.retry-intro {
     grid-column:2;
   }
-  .loading-vignette { display:none; }
+  .loading-vignette,.loading-progress { display:none; }
   .intro-kicker {
     grid-row:1;
   }

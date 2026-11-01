@@ -1,0 +1,103 @@
+{
+  "viewports": {
+    "1366x768": {
+      "introBox": {
+        "x": 413,
+        "y": 67.75,
+        "width": 540,
+        "height": 632.5
+      },
+      "state": {
+        "phase": "explore",
+        "fxLevel": "full",
+        "prepared": "true",
+        "shadowPresent": true,
+        "groundCanvas": true,
+        "propsCanvas": true
+      },
+      "errors": []
+    },
+    "390x844": {
+      "introBox": {
+        "x": 16,
+        "y": 101.71875,
+        "width": 358,
+        "height": 640.5625
+      },
+      "state": {
+        "phase": "explore",
+        "fxLevel": "lite",
+        "prepared": "true",
+        "shadowPresent": true,
+        "groundCanvas": true,
+        "propsCanvas": true
+      },
+      "errors": []
+    },
+    "320x568": {
+      "introBox": {
+        "x": 12,
+        "y": 34.0625,
+        "width": 296,
+        "height": 499.875
+      },
+      "state": {
+        "phase": "explore",
+        "fxLevel": "lite",
+        "prepared": "true",
+        "shadowPresent": true,
+        "groundCanvas": true,
+        "propsCanvas": true
+      },
+      "errors": []
+    },
+    "844x390": {
+      "introBox": {
+        "x": 62,
+        "y": 8,
+        "width": 720,
+        "height": 212.1875
+      },
+      "state": {
+        "phase": "explore",
+        "fxLevel": "full",
+        "prepared": "true",
+        "shadowPresent": true,
+        "groundCanvas": true,
+        "propsCanvas": true
+      },
+      "errors": []
+    }
+  },
+  "checks": {
+    "loadFailedAndRetry": {
+      "failedText": "No se pudo preparar el campamento. Podés consultar el portfolio.",
+      "recoveredText": "Listo para explorar"
+    },
+    "interactions": {
+      "soundInitial": "false",
+      "routeStartedDuringEntry": "true",
+      "arrivedAt": "Contacto",
+      "closedOk": true,
+      "soundAfterClick": "true",
+      "soundLabel": "Sonido activado",
+      "reducedState": {
+        "motion": "reduced",
+        "fxLevel": "minimal"
+      }
+    }
+  },
+  "performance": {
+    "desktop": {
+      "samples": 1183,
+      "avgMs": 5.57,
+      "approxFps": 179.7,
+      "p50Ms": 5.6,
+      "p95Ms": 5.8
+    }
+  },
+  "videos": [
+    "docs/evidence/audiovisual/desktop-walkthrough.webm",
+    "docs/evidence/audiovisual/mobile-walkthrough.webm"
+  ]
+}

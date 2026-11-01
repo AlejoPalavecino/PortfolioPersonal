@@ -15,9 +15,9 @@ function hud(): string {
     </nav>`
 }
 function intro(): string {
-  return `<section class="intro" aria-label="Bienvenida"><div class="intro-card"><div class="loading-vignette" aria-hidden="true"><img src="${assetUrl('avatar/idle-down.webp')}" alt=""><span class="loading-lantern"></span></div><span class="intro-kicker">CAMPAMENTO CREATIVO</span><h1>Alejo Palavecino</h1>
+  return `<section class="intro" aria-label="Bienvenida"><div class="intro-card"><div class="loading-vignette" aria-hidden="true"><canvas class="loading-canvas" width="160" height="72"></canvas></div><span class="intro-kicker">CAMPAMENTO CREATIVO</span><h1>Alejo Palavecino</h1>
     <p class="intro-subtitle">Un portfolio para explorar.</p><p>Full stack · Análisis · Automatización e IA</p>
-    <p class="loading-status" role="status">Preparando el campamento…</p><button class="retry-intro" data-action="retry" hidden>Reintentar carga</button>
+    <div class="loading-progress" role="progressbar" aria-label="Preparación del campamento" aria-valuemin="0" aria-valuemax="28" aria-valuenow="0"><span></span></div><p class="loading-status">Preparando el campamento…</p><button class="retry-intro" data-action="retry" hidden>Reintentar carga</button>
     <button class="enter-button" data-action="enter" disabled>Entrar al campamento →</button>
     <button class="direct-button" data-action="direct">Ver portfolio sin recorrer</button>
     <div class="intro-links"><button data-section="contact">Contacto</button><a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>CV ↓</a></div>

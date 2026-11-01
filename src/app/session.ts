@@ -1,15 +1,16 @@
 import { createExperience, reduceExperience, type ExperienceEvent } from '../core/experience'
+import type { CueBus } from '../core/fx/cues'
 import type { ScenePreparation } from '../shared'
 import type { createController } from './controller'
 
-export function createSession(root: HTMLElement, controller: ReturnType<typeof createController>, reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches) {
+export function createSession(root: HTMLElement, controller: ReturnType<typeof createController>, reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches, bus?: CueBus) {
   const intro = root.querySelector<HTMLElement>('.intro')!
   const status = root.querySelector<HTMLElement>('.loading-status')!
   const enter = root.querySelector<HTMLButtonElement>('[data-action=enter]')!
   let entered = false
   try { entered = sessionStorage.getItem('camp-entered') === '1' } catch { /* Storage is optional. */ }
   let state = createExperience({ entered, direct: !!location.hash, reducedMotion })
-  let awaitingEntry = !location.hash
+  let awaitingEntry = !location.hash, slowReported = 0
   const update = (event: ExperienceEvent) => {
     if (event.type === 'read') awaitingEntry = false
     state = reduceExperience(state, event)
@@ -26,6 +27,11 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
   }
   const loading = (load: ScenePreparation) => {
     root.dataset.load = `${load.completed}/${load.total}`
+    if (load.status === 'loading' && load.generation !== state.generation) bus?.emit('prepare-start', {})
+    if (load.status === 'loading') bus?.emit('prepare-progress', { completed: load.completed, total: load.total, task: load.task ?? 'Preparando el campamento' })
+    if (load.timedOut && slowReported !== load.generation) { slowReported = load.generation; bus?.emit('prepare-slow', {}) }
+    if (load.status === 'ready') bus?.emit('prepare-ready', {})
+    if (load.status === 'failed') bus?.emit('prepare-failed', { error: load.error })
     const sceneStatus = root.querySelector<HTMLElement>('.scene-status')!
     const introRetry = root.querySelector<HTMLElement>('.retry-intro')!
     if (load.status !== 'failed' && (sceneStatus.contains(document.activeElement) || introRetry.contains(document.activeElement))) {
@@ -39,7 +45,7 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     if (load.timedOut) update({ type: 'load-slow', generation: load.generation })
     if (load.status === 'ready') { update({ type: 'load-ready', generation: load.generation }); controller.dispatch({ type: 'set-scene', scene: 'ready' }) }
     if (load.status === 'failed') { update({ type: 'load-failed', generation: load.generation }); controller.dispatch({ type: 'set-scene', scene: 'failed' }) }
-    status.textContent = load.status === 'ready' ? 'Listo para explorar' : load.status === 'failed' ? 'No se pudo preparar el campamento. Podés consultar el portfolio.' : load.timedOut ? 'Está tardando. Podés consultar el portfolio mientras tanto.' : `Preparando el campamento… ${load.completed} de ${load.total}`
+    status.textContent = load.status === 'ready' ? 'Listo para explorar' : load.status === 'failed' ? 'No se pudo preparar el campamento. Podés consultar el portfolio.' : load.timedOut ? 'Está tardando. Podés consultar el portfolio mientras tanto.' : `${load.task ?? 'Preparando el campamento'}… ${load.completed} de ${load.total}`
     sceneStatus.hidden = load.status !== 'failed'
     introRetry.hidden = load.status !== 'failed'
   }
@@ -55,6 +61,7 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     update({ type: 'enter' })
     if (state.phase !== 'explore') return
     try { sessionStorage.setItem('camp-entered', '1') } catch { /* Storage is optional. */ }
+    bus?.emit('enter', { reduced: state.reducedMotion })
     root.querySelector<HTMLElement>('.world')!.focus({ preventScroll: true })
   }
   return { update, loading, prepareEntry, direct, get state() { return state }, enter: enterCamp }

@@ -1,11 +1,13 @@
 import { hitDestination } from '../core/domain'
 import { effectiveReducedMotion } from '../core/experience'
+import type { CueBus } from '../core/fx/cues'
 import type { createController } from './controller'
 import type { createViews, View } from './views'
 import type { createAudio } from './audio'
 import type { createSession } from './session'
 import type { createWorldCamera } from './camera'
 import { bindKeyboard } from './keyboard'
+import type { Loop } from './loop'
 import { closeMenu, returnToCamp } from './actions'
 import { restoreHistoryView } from './history'
 import { writeManualMotion } from './motion-preference'
@@ -32,7 +34,7 @@ export function bindPreferences(root: HTMLElement, controller: Controller, sessi
   motion.addEventListener('change', apply); apply()
   return () => { user = !user; writeManualMotion(user); apply() }
 }
-export function bindEvents(root: HTMLElement, controller: Controller, views: ReturnType<typeof createViews>, audio: ReturnType<typeof createAudio>, session: Session, camera: ReturnType<typeof createWorldCamera>) {
+export function bindEvents(root: HTMLElement, controller: Controller, views: ReturnType<typeof createViews>, audio: ReturnType<typeof createAudio>, session: Session, camera: ReturnType<typeof createWorldCamera>, loop?: Loop, bus?: CueBus) {
   const world = root.querySelector<HTMLElement>('.world')!
   const help = root.querySelector<HTMLElement>('.help-card')!
   const touch = matchMedia('(pointer: coarse)').matches
@@ -43,13 +45,14 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
   world.addEventListener('click', e => { if (dragged) { e.preventDefault(); e.stopPropagation() } }, true)
   world.addEventListener('click', e => {
     if (dragged || (e.target as HTMLElement).closest('button') || session.state.phase !== 'explore' || session.state.overlay !== 'none') return
+    camera.finishSettle()
     const point = camera.point(e.clientX, e.clientY)
     const destination = hitDestination(point)
     if (destination) { views.saveFocus(); controller.select(destination); help.hidden = true; return }
     if (controller.state.reducedMotion || controller.state.scene !== 'ready') return
     if (controller.ground(point)) help.hidden = true
   })
-  bindKeyboard(world, controller, () => session.state.phase === 'explore' && session.state.overlay === 'none')
+  bindKeyboard(world, controller, () => session.state.phase === 'explore' && session.state.overlay === 'none', loop)
   world.addEventListener('keydown', event => { if (session.state.phase === 'explore' && /^(ArrowUp|ArrowDown|ArrowLeft|ArrowRight|w|a|s|d|e|Enter)$/i.test(event.key)) help.hidden = true })
   root.addEventListener('click', e => { if ((e.target as HTMLElement).closest('[data-section]') && session.state.phase === 'explore') help.hidden = true })
   document.addEventListener('keydown', event => {
@@ -62,7 +65,17 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
     else if (views.current.kind === 'recognitions') controller.dispatch({ type: 'restore', view: { kind: 'section', section: 'journey' } })
     else if (views.current.kind !== 'camp') { returnToCamp(controller, views, session) }
   })
-  document.addEventListener('visibilitychange', () => { if (document.hidden) { controller.dispatch({ type: 'pause' }); audio.pause(); const sound = root.querySelector<HTMLButtonElement>('[data-action=sound]')!; if (sound.getAttribute('aria-pressed') === 'true') sound.textContent = 'Continuar sonido' } })
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      controller.dispatch({ type: 'pause' })
+      audio.pause()
+      bus?.emit('pause', { reason: 'hidden' })
+      const sound = root.querySelector<HTMLButtonElement>('[data-action=sound]')!
+      if (sound.getAttribute('aria-pressed') === 'true') sound.textContent = 'Continuar sonido'
+    } else {
+      bus?.emit('resume', { reason: 'visible' })
+    }
+  })
   window.addEventListener('popstate', event => restoreHistoryView((event.state as View | null) ?? { kind: 'camp' }, controller, views, session))
   window.addEventListener('hashchange', () => {
     views.restoreUrl(controller)
