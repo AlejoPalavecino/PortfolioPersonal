@@ -1,0 +1,818 @@
+{
+  "package": "camp-rooms-v1",
+  "version": "1.0.0-design",
+  "codeReference": "d08f9c02e0ae3c9a080eb52dd3bdd45346a9c0d3",
+  "runtimeBase": "assets/camp-rooms-v1/",
+  "status": "assets-prepared-integration-pending",
+  "notIncluded": [
+    "font binaries",
+    "real project screenshots",
+    "certificates",
+    "CV",
+    "exterior portal masks",
+    "production application implementation"
+  ],
+  "pixelArt": {
+    "roomSourceCrop": [
+      199,
+      112
+    ],
+    "normalizedBase": [
+      256,
+      144
+    ],
+    "desktopExport": [
+      1536,
+      864
+    ],
+    "upscale": "nearest-neighbor, no additional native detail"
+  },
+  "assets": [
+    {
+      "path": "avatars/alejo-normalized-atlas.json",
+      "bytes": 4453,
+      "sha256": "594c4b6dddd6665e48890eeafc16b83f7e9c53f8e9e3b4b4b3bf9349c54cc43e"
+    },
+    {
+      "path": "avatars/alejo-normalized-atlas.png",
+      "bytes": 1028404,
+      "sha256": "fee7f53e9cdc24215ecd1850ed771cd38394de48898e9d01f8d94d77646a5cb8",
+      "width": 800,
+      "height": 1152,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/idle-down.png",
+      "bytes": 54734,
+      "sha256": "8e0e0f3716db1df61e8c446198f69c9a22a38b1f6423683d6c475ee97f028f6f",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/idle-left.png",
+      "bytes": 50580,
+      "sha256": "206fff019299645afd79608784952525adaf7b86ca1ee6b4110a48d25c453a3b",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/idle-right.png",
+      "bytes": 49965,
+      "sha256": "3dd1b8854b6322ce31efe3b3085213db4cd47ba85f529078ca7ecf4a2ed3baf0",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/idle-up.png",
+      "bytes": 50532,
+      "sha256": "640f56a5f94019275130446697d764764641f7f44c95aec8178d668f9b3b115e",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-down-1.png",
+      "bytes": 52758,
+      "sha256": "a931606e71a3b62b3d8858199066f0ca36817393eaa5af8c24ba07c1b5c1622e",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-down-2.png",
+      "bytes": 53925,
+      "sha256": "b2826c3bcc6671fa12678ac3316fbf9e688dc0f91ae39623b4e0aa308e4d4b79",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-down-3.png",
+      "bytes": 53619,
+      "sha256": "6c7fd450a55b17c557f5ad30b90e28f98463dbce1903fdf8017f5f9b8033ed17",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-down-4.png",
+      "bytes": 53102,
+      "sha256": "647219fc0525c2419da2fab0600d9f203aa72aa4b8186a2ac58133a7d3d50c1d",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-left-1.png",
+      "bytes": 56360,
+      "sha256": "f6ab368e1e3e35a3534921d0b45d369dee16aaf44a5243e098be997f25a9609f",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-left-2.png",
+      "bytes": 49992,
+      "sha256": "16ce877ac3fcc54122275d49a27a26a6c586582bb5f07964fc169f4fbfc0367b",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-left-3.png",
+      "bytes": 55754,
+      "sha256": "e7efe8f92f8574200edffd58c4963063371b12c4cae2fc9f478c13c0352d1c7f",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-left-4.png",
+      "bytes": 52597,
+      "sha256": "783241df68fc8f2b220ddf919e5af03d19a283cd0ab7398736f608c286fb6f1d",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-right-1.png",
+      "bytes": 57337,
+      "sha256": "22445a76467bf65f1f39bb8fd6a6683887d9c8d4dfe687f83a16eb9405d669ec",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-right-2.png",
+      "bytes": 49509,
+      "sha256": "36e79dbca950bfa74cff12a25c8a7c1abb2d27cecf0b1aa716922a2c1dac7604",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-right-3.png",
+      "bytes": 55898,
+      "sha256": "d3fffcc0f76a19953c5ba9e41a77b46efeab1fe9ed6ac3e005377380775bacd1",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-right-4.png",
+      "bytes": 53418,
+      "sha256": "2aebc2de184f8308fd709ee881f1ec35c1d7d23434e3b89dfe27e9e26ae80ac2",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-up-1.png",
+      "bytes": 48876,
+      "sha256": "fb52d98d5fe6519eb5481418c53d53ac6b3883ce96ce86cbd1fcf68696894224",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-up-2.png",
+      "bytes": 49478,
+      "sha256": "82bf295878f36a6b7bd248b6cce2370c718a1990515b667d5afae022beac0c5d",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-up-3.png",
+      "bytes": 50202,
+      "sha256": "da6393089fcab05d29f3cbff3574d283eebde3fb56959f8263879c7c7c7b5afd",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "avatars/walk-up-4.png",
+      "bytes": 49511,
+      "sha256": "5746af5b58943dcf097edabf5a67c79bb8e042e5d9b14f92b4999d019bb2886f",
+      "width": 160,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "data/intro-timeline.json",
+      "bytes": 1217,
+      "sha256": "b77dc7511cb78f4552844b43d55c1d8b5f5bb634bc0efbfa0e2631137999f671"
+    },
+    {
+      "path": "data/palette.json",
+      "bytes": 196,
+      "sha256": "3a2e571ee9d82a73f00858670bdac129a805fb9d8a2ca3523848bd57fc64c0f8"
+    },
+    {
+      "path": "data/rooms.json",
+      "bytes": 3531,
+      "sha256": "456b62793969a77e06a3ff944b485cee2ee9661ed0c07018950493f3367eeebd"
+    },
+    {
+      "path": "fx/canvas-open.png",
+      "bytes": 4761,
+      "sha256": "0ef8a591aa1990accc3ed4edc87f798976eb9455af9d157fd7c7b3df8a74540d",
+      "width": 1024,
+      "height": 112,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "fx/door-close.png",
+      "bytes": 1570,
+      "sha256": "4e7056e4ab2d9f2c89e4fbb895b6dafebec12d63807cfcc46dd2094a8ee91e69",
+      "width": 768,
+      "height": 112,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "fx/door-open.png",
+      "bytes": 1546,
+      "sha256": "b36b0b17b9a0f39e692af9b4353dfc348b680e452b9b8b9790f0731a41934178",
+      "width": 768,
+      "height": 112,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "fx/fire.png",
+      "bytes": 648,
+      "sha256": "95db443d3b36639cd1879f5ccb6fafbcb225b320997dce9c8a01872a2fe53251",
+      "width": 256,
+      "height": 32,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "fx/fx-atlas.json",
+      "bytes": 2246,
+      "sha256": "faf07d92fa878ba7f8b886eb3e9f7347268095f27996a154e618643f1968a423"
+    },
+    {
+      "path": "fx/journal-open.png",
+      "bytes": 1366,
+      "sha256": "c71bf380586b4b746eef6a9fada37f89f1b08b5ae86788c656528e70e65a5085",
+      "width": 1024,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "fx/radio-signal.png",
+      "bytes": 609,
+      "sha256": "d93432ebe018a8d49c5b44251838322876192a6882f6f4421a30e895f08a7dbb",
+      "width": 512,
+      "height": 32,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "fx/smoke.png",
+      "bytes": 391,
+      "sha256": "d80a56f6bfd4ac16670f7b012b3a50ef73297c6c6614d8426cc41378a884be48",
+      "width": 256,
+      "height": 32,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "fx/spark.png",
+      "bytes": 316,
+      "sha256": "6e356f39e96b4b8e71e3252d2fe88bd358eb6a7b9d42aa80c375e73395439f93",
+      "width": 192,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "intro/mountain-arrival-portrait.webp",
+      "bytes": 122726,
+      "sha256": "3ad56a1f0f2906ad39ef66594f69325255c6fef30f6d4c405320fbeab56b4626",
+      "width": 576,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "intro/mountain-arrival.webp",
+      "bytes": 381726,
+      "sha256": "0d436e829d8efb587b864529aad9a3c919f97b95c3f8d981e9c0a618cbedff78",
+      "width": 1536,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/about-desktop.webp",
+      "bytes": 58928,
+      "sha256": "ac88cc61800e27cf6d2951c2fa6869bc3c82ab3033c37c06959b73126c9a3331",
+      "width": 1536,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/about-native.png",
+      "bytes": 51756,
+      "sha256": "1e309dffed0e8925d7ab0b20610337c0882c52cc1e865e5f5e6809d6cb3f1ab5",
+      "width": 256,
+      "height": 144,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/about-portrait.webp",
+      "bytes": 24608,
+      "sha256": "579db066d8ca24b890ded4a9a8a0eb9dba9dba040d4a910f15992e7c12d8eb73",
+      "width": 576,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/contact-desktop.webp",
+      "bytes": 54596,
+      "sha256": "291b9a00ae048c407998d79dafbfa2659d64e53cda10eb79381fc3e2a2b86c25",
+      "width": 1536,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/contact-native.png",
+      "bytes": 48035,
+      "sha256": "1de047a4b96352700d4f0844a59723b6577f9d0ee49a9202ca630a12165826b5",
+      "width": 256,
+      "height": 144,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/contact-portrait.webp",
+      "bytes": 22394,
+      "sha256": "a0890c4b20a19521bc6253a1284f987aa69b8d68c3fb292bcbda750cf738e7d8",
+      "width": 576,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/journey-desktop.webp",
+      "bytes": 57976,
+      "sha256": "93cf7c344c577e5dff748427556d851a439f312a763335827f06247bf9a9d0a3",
+      "width": 1536,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/journey-native.png",
+      "bytes": 51492,
+      "sha256": "23fff31ca3e2ee04bc92f71402b32c2a70bc5db7de970a9bbaa5c85c6929faf1",
+      "width": 256,
+      "height": 144,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/journey-portrait.webp",
+      "bytes": 24264,
+      "sha256": "ed437ac9a706277c40b4f8eff6dca1a31d7faef69b4204c222d847c0af804b3f",
+      "width": 576,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/projects-desktop.webp",
+      "bytes": 57818,
+      "sha256": "22293911d91d87f364fd80829cca3c49bd020ebd6f35602bc655df0630055f9d",
+      "width": 1536,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/projects-native.png",
+      "bytes": 50459,
+      "sha256": "344acd3c76534c51582d30cd8dc735239c0e845efd5f95839f9a5b67dfee41c8",
+      "width": 256,
+      "height": 144,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "rooms/projects-portrait.webp",
+      "bytes": 23394,
+      "sha256": "99f62565222147638b5c8f57316f8eab5bd81c74161104ca2e4749b29e0348d7",
+      "width": 576,
+      "height": 864,
+      "mode": "RGB",
+      "hasTransparency": false
+    },
+    {
+      "path": "signs/about-hover.png",
+      "bytes": 762,
+      "sha256": "12070f11c3b144b5d3504d40bcef6bf61fa5a7194272e162dc3aa8a2048b1d84",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/about-idle.png",
+      "bytes": 724,
+      "sha256": "0e0f815b419be63f613e125ada5f82a2a9b8a5fb73fd8c448bdbb2635cb04c21",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/about-selected.png",
+      "bytes": 796,
+      "sha256": "13b94b21e3c0835d5518ca1d4fea2a938aedd2b1be2341b07ce2c62df67f309e",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/about-visited.png",
+      "bytes": 781,
+      "sha256": "98ae002810e5edbd1d87dd5f00b4a7078d2c335bbea68e078fff5f80e7cfc2de",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/contact-hover.png",
+      "bytes": 676,
+      "sha256": "eb54020edb8e76a28eb070fbf60df4798ff9d4bd0852110d755428c705d80d5e",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/contact-idle.png",
+      "bytes": 644,
+      "sha256": "a7f00232765b964d61f8f6e362177157021a9795fbaf914daad90f77dc921d39",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/contact-selected.png",
+      "bytes": 715,
+      "sha256": "f5e9aafac75a6c77031d0fdbef06dd11008d35402c4c9cb73d9ae540ea82d134",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/contact-visited.png",
+      "bytes": 704,
+      "sha256": "3148d15d78d5c07e174f775fcd3deabae2579919a540bb293a2221fbc18eeba2",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/journey-hover.png",
+      "bytes": 723,
+      "sha256": "a7345775e8e772442fd92d6bd618b647b48627eaca40461c0051360d01719b88",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/journey-idle.png",
+      "bytes": 679,
+      "sha256": "d5f406883bb721a54bfd2bf312866101d033e64bcda0a5d18be81025cc41de93",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/journey-selected.png",
+      "bytes": 760,
+      "sha256": "b90d837c656b37c391827dc2d9071746f9d5ca87d24eafa3479d8ed6486b9176",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/journey-visited.png",
+      "bytes": 732,
+      "sha256": "39c2ca0c97bf53044107e14038a01b165f05e57571a32596dd8367acfe7c726b",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/projects-hover.png",
+      "bytes": 739,
+      "sha256": "cca9e33169a8a9156800044b3ff001eab56bdb65fd86952c8c29f72d18b24ece",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/projects-idle.png",
+      "bytes": 689,
+      "sha256": "e84b7e27844dd6f1052e0accb5d3de7bcb394778848630ae97725bd1c57ff3cb",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/projects-selected.png",
+      "bytes": 768,
+      "sha256": "97184c5afcc598cb63eef14cf93a5d82d145280ebc56c9cd2b940c8132ad30b9",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/projects-visited.png",
+      "bytes": 742,
+      "sha256": "754f450ae4b5e8c0ba911c42ecb57967414b2b32c90fbeea0e9cb353e3eb992d",
+      "width": 160,
+      "height": 72,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "signs/signs-atlas.json",
+      "bytes": 1608,
+      "sha256": "f0c5a357cab7c575695fd75defc9619a28645677766083cd5d8b6482a718d815"
+    },
+    {
+      "path": "signs/signs-atlas.png",
+      "bytes": 5162,
+      "sha256": "0c420dc4c9378747c131592b7d10a5c18288064a06bb477db7a34be418d41f6e",
+      "width": 640,
+      "height": 288,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/frame-journal-9slice.png",
+      "bytes": 465,
+      "sha256": "f4542c54a6a0f0c3caba7364e308eefa59f23751ea2dfdd62622e1ca446f17d4",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/frame-linen-9slice.png",
+      "bytes": 475,
+      "sha256": "e3ca9ed9a1bdfd1eab356c9e8340dfb949a039df0f9c1252fdd87c9da1560ec8",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/frame-radio-9slice.png",
+      "bytes": 472,
+      "sha256": "fa0da81e2add1bffb47fb57cf72d1342eeb1088fd944884a3a66941a42b7d664",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/frame-workbench-9slice.png",
+      "bytes": 467,
+      "sha256": "c73a760a504d373dcee1b5ae8bfa90f844d671b1419d8444760cea79f5e87061",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-about.png",
+      "bytes": 194,
+      "sha256": "2cb18dbaac713cd5542053c11ca9ab4c38f90c1af70217b87ef163c3f9bb1247",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-about@4x.png",
+      "bytes": 370,
+      "sha256": "d0f9afac8d84dd094589b29242ad2d92857a4a2ff8d05689dc5744064a84c84d",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-back.png",
+      "bytes": 164,
+      "sha256": "40c55742af91e3e09acc6f48f946838413e574d2f8bc372358311714ce29411e",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-back@4x.png",
+      "bytes": 308,
+      "sha256": "5d8d51eeb3f24dc131a2c42c6c99b5418fe9d9b73674bcf5e8292d398a7de03a",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-certificate.png",
+      "bytes": 174,
+      "sha256": "0cc88906c57118a1c41aa118c412a310664fcb72ef180adc1c30eb77c3c9764a",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-certificate@4x.png",
+      "bytes": 367,
+      "sha256": "a53425940f3fe0777d203c198906dbe9cb488f1e89c50feb3f872abbb8147e5a",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-contact.png",
+      "bytes": 173,
+      "sha256": "f6124cd96df6eebde5e0627a8bdafcca761a60428971832e10f17e60de9db9c0",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-contact@4x.png",
+      "bytes": 340,
+      "sha256": "7ff72d20ac4ce603f9f8b8e1110295ccc0a76ec3de1bf3e82a46d03af1abd6c1",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-cv.png",
+      "bytes": 159,
+      "sha256": "ede025a449aef73daccee89885905ae2caf56003fe35f7ed9c0b0c31bc13f1cd",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-cv@4x.png",
+      "bytes": 343,
+      "sha256": "eda8244fe84cbbda47849c78a689a0644ec63033736a8b54dd8e227d80b35ff7",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-journey.png",
+      "bytes": 160,
+      "sha256": "4a3758aa2f610178b88d94d546abb369978971851369ccde1542e10475c1f081",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-journey@4x.png",
+      "bytes": 346,
+      "sha256": "25e74f77fba972f7d066a66640052346e6072f4fd6dfeeaf73459764bcaeee7a",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-mail.png",
+      "bytes": 171,
+      "sha256": "e3947a50128ed51cf9c3556ed5e22e63537ad1019545f62f40679ebe4679bf50",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-mail@4x.png",
+      "bytes": 328,
+      "sha256": "5e14d70a7899dc295b402f78b4de49f97b97547ae6b3a10a64abe6da39505c10",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-projects.png",
+      "bytes": 191,
+      "sha256": "663deeb3aa503ab5b207485582a7f0c7166e91805e319d8def841f3fb137f6f9",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-projects@4x.png",
+      "bytes": 355,
+      "sha256": "3d0458d5119f6008493164127449c7582ae79d9e8179d153b0ffb54331f5e43a",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-skip.png",
+      "bytes": 179,
+      "sha256": "e32314fd6759040f1070a6ea9a63df3e9c94a86b19294af0997efe1cea8ec194",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-skip@4x.png",
+      "bytes": 333,
+      "sha256": "ba5089fefc8c9524aec2c0026d895899716b97b200f8e08611d3340e5cd301ac",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-sound.png",
+      "bytes": 199,
+      "sha256": "383953b892c2a3ccbccbfd5a7ea5f9fc2455f48c05d36e62a5cb7343869bbe6c",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "hasTransparency": true
+    },
+    {
+      "path": "ui/icon-sound@4x.png",
+      "bytes": 357,
+      "sha256": "211a805fbb65957839d29a5c94a65a9891872eada2d817c7baddc9faeddb2aa8",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "hasTransparency": true
+    }
+  ]
+}

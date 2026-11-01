@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "codeReference": "d08f9c02e0ae3c9a080eb52dd3bdd45346a9c0d3",
+  "rooms": {
+    "projects": {
+      "title": "Taller de proyectos",
+      "background": "rooms/projects-desktop.webp",
+      "portrait": "rooms/projects-portrait.webp",
+      "basePixels": [
+        256,
+        144
+      ],
+      "sourceCropPixels": [
+        199,
+        112
+      ],
+      "expandedPixels": [
+        1536,
+        864
+      ],
+      "theme": "workbench",
+      "outdoorArrivalReference": [
+        650,
+        345
+      ],
+      "actorAnchorNormalized": [
+        0.22,
+        0.91
+      ],
+      "readingRectNormalized": [
+        0.38,
+        0.13,
+        0.57,
+        0.76
+      ],
+      "mobile": "environment-header-then-single-column",
+      "introFx": "door-open",
+      "walkableInterior": false,
+      "artLayering": "single-flat-background-plus-independent-components",
+      "calibrationStatus": "proposal-not-tested-in-production"
+    },
+    "about": {
+      "title": "Carpa personal",
+      "background": "rooms/about-desktop.webp",
+      "portrait": "rooms/about-portrait.webp",
+      "basePixels": [
+        256,
+        144
+      ],
+      "sourceCropPixels": [
+        199,
+        112
+      ],
+      "expandedPixels": [
+        1536,
+        864
+      ],
+      "theme": "linen",
+      "outdoorArrivalReference": [
+        220,
+        335
+      ],
+      "actorAnchorNormalized": [
+        0.22,
+        0.91
+      ],
+      "readingRectNormalized": [
+        0.38,
+        0.13,
+        0.57,
+        0.76
+      ],
+      "mobile": "environment-header-then-single-column",
+      "introFx": "canvas-open",
+      "walkableInterior": false,
+      "artLayering": "single-flat-background-plus-independent-components",
+      "calibrationStatus": "proposal-not-tested-in-production"
+    },
+    "journey": {
+      "title": "Archivo de expedición",
+      "background": "rooms/journey-desktop.webp",
+      "portrait": "rooms/journey-portrait.webp",
+      "basePixels": [
+        256,
+        144
+      ],
+      "sourceCropPixels": [
+        199,
+        112
+      ],
+      "expandedPixels": [
+        1536,
+        864
+      ],
+      "theme": "journal",
+      "outdoorArrivalReference": [
+        365,
+        477
+      ],
+      "actorAnchorNormalized": [
+        0.22,
+        0.91
+      ],
+      "readingRectNormalized": [
+        0.38,
+        0.13,
+        0.57,
+        0.76
+      ],
+      "mobile": "environment-header-then-single-column",
+      "introFx": "journal-open",
+      "walkableInterior": false,
+      "artLayering": "single-flat-background-plus-independent-components",
+      "calibrationStatus": "proposal-not-tested-in-production"
+    },
+    "contact": {
+      "title": "Puesto de radio",
+      "background": "rooms/contact-desktop.webp",
+      "portrait": "rooms/contact-portrait.webp",
+      "basePixels": [
+        256,
+        144
+      ],
+      "sourceCropPixels": [
+        199,
+        112
+      ],
+      "expandedPixels": [
+        1536,
+        864
+      ],
+      "theme": "radio",
+      "outdoorArrivalReference": [
+        680,
+        405
+      ],
+      "actorAnchorNormalized": [
+        0.22,
+        0.91
+      ],
+      "readingRectNormalized": [
+        0.38,
+        0.13,
+        0.57,
+        0.76
+      ],
+      "mobile": "environment-header-then-single-column",
+      "introFx": "radio-signal",
+      "walkableInterior": false,
+      "artLayering": "single-flat-background-plus-independent-components",
+      "calibrationStatus": "proposal-not-tested-in-production"
+    }
+  }
+}

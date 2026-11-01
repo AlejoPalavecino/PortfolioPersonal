@@ -1,4 +1,7 @@
+import type { Section, View as DomainView } from '../domain'
+
 export type ExperiencePhase = 'intro' | 'loading' | 'ready' | 'explore' | 'read' | 'direct'
+export type SceneStage = 'preparing' | 'intro' | 'exploring' | 'routing' | 'entering' | 'room-loading' | 'interior' | 'exiting'
 export type Experience = { phase: ExperiencePhase; preparation: 'idle' | 'loading' | 'ready' | 'failed'; entered: boolean; direct: boolean; generation: number; slow: boolean; overlay: 'none' | 'menu' | 'help' | 'settings'; reducedMotion: boolean }
 export type ExperienceEvent =
   | { type: 'load-start' | 'load-ready' | 'load-failed' | 'load-slow'; generation: number }
@@ -36,3 +39,116 @@ export function reduceExperience(state: Experience, event: ExperienceEvent): Exp
 }
 
 export function effectiveReducedMotion(system: boolean, user: boolean): boolean { return system || user }
+
+export function roomForView(view: DomainView | { kind: 'case'; id: string }): Section | null {
+  if (view.kind === 'camp') return null
+  if (view.kind === 'section') return view.section
+  if (view.kind === 'project' || view.kind === 'case') return 'projects'
+  if (view.kind === 'recognitions' || view.kind === 'credential') return 'journey'
+  return null
+}
+
+export const INTRO_DURATION_MS = 6800
+
+export type IntroBeatSnapshot = {
+  elapsedMs: number
+  beatIndex: 0 | 1 | 2 | 3 | 4
+  action: 'landscape-reveal' | 'walk-right' | 'idle-down' | 'crossfade-to-existing-world'
+  title: string
+  subtitle: string
+  specialty: string
+  actorFrame: string
+  actorXPercent: number
+  actorYPercent: number
+  actorVisible: boolean
+  crossfade: number
+  completed: boolean
+}
+
+export function sampleIntroTimeline(rawElapsedMs: number): IntroBeatSnapshot {
+  const elapsedMs = Math.max(0, Math.min(INTRO_DURATION_MS, rawElapsedMs))
+  const specialty = 'Full stack · Análisis · Automatización e IA'
+  if (elapsedMs < 1200) {
+    return {
+      elapsedMs,
+      beatIndex: 0,
+      action: 'landscape-reveal',
+      title: 'Campamento creativo',
+      subtitle: '',
+      specialty,
+      actorFrame: 'idle-right',
+      actorXPercent: 6,
+      actorYPercent: 91,
+      actorVisible: elapsedMs >= 450,
+      crossfade: 0,
+      completed: false,
+    }
+  }
+  if (elapsedMs < 2800) {
+    const walkElapsed = elapsedMs - 1200
+    const u = Math.max(0, Math.min(1, walkElapsed / 1600))
+    const stepIndex = (Math.floor(walkElapsed / 130) % 4) + 1
+    return {
+      elapsedMs,
+      beatIndex: 1,
+      action: 'walk-right',
+      title: 'Campamento creativo',
+      subtitle: '',
+      specialty,
+      actorFrame: `walk-right-${stepIndex}`,
+      actorXPercent: 6 + 22 * u,
+      actorYPercent: 91,
+      actorVisible: true,
+      crossfade: 0,
+      completed: false,
+    }
+  }
+  if (elapsedMs < 4800) {
+    return {
+      elapsedMs,
+      beatIndex: 2,
+      action: 'idle-down',
+      title: 'Soy Alejo Palavecino.',
+      subtitle: specialty,
+      specialty,
+      actorFrame: 'idle-down',
+      actorXPercent: 28,
+      actorYPercent: 91,
+      actorVisible: true,
+      crossfade: 0,
+      completed: false,
+    }
+  }
+  if (elapsedMs < 6200) {
+    return {
+      elapsedMs,
+      beatIndex: 3,
+      action: 'idle-down',
+      title: 'Soy Alejo Palavecino.',
+      subtitle: 'Desarrollo software. Transformo ideas en productos.',
+      specialty,
+      actorFrame: 'idle-down',
+      actorXPercent: 28,
+      actorYPercent: 91,
+      actorVisible: true,
+      crossfade: 0,
+      completed: false,
+    }
+  }
+  const crossfade = Math.max(0, Math.min(1, (elapsedMs - 6200) / 600))
+  return {
+    elapsedMs,
+    beatIndex: 4,
+    action: 'crossfade-to-existing-world',
+    title: 'Explorá mi trabajo.',
+    subtitle: 'Desarrollo software. Transformo ideas en productos.',
+    specialty,
+    actorFrame: 'idle-down',
+    actorXPercent: 28,
+    actorYPercent: 91,
+    actorVisible: true,
+    crossfade,
+    completed: elapsedMs >= INTRO_DURATION_MS,
+  }
+}
+

@@ -10,16 +10,20 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
   let entered = false
   try { entered = sessionStorage.getItem('camp-entered') === '1' } catch { /* Storage is optional. */ }
   let state = createExperience({ entered, direct: !!location.hash, reducedMotion })
-  let awaitingEntry = !location.hash, slowReported = 0
+  let awaitingEntry = !location.hash, slowReported = 0, skipRequested = false
   const update = (event: ExperienceEvent) => {
-    if (event.type === 'read') awaitingEntry = false
+    if (event.type === 'read' || event.type === 'direct') { awaitingEntry = false; skipRequested = false }
     state = reduceExperience(state, event)
-    if (event.type === 'load-ready' && awaitingEntry && state.entered && state.preparation === 'ready') {
+    if (event.type === 'load-ready' && awaitingEntry && (state.entered || skipRequested) && state.preparation === 'ready') {
       state = reduceExperience(state, { type: 'enter' })
     }
     root.dataset.phase = state.phase
     intro.hidden = !awaitingEntry || state.phase === 'explore' || state.phase === 'read'
-    if (state.phase === 'explore') awaitingEntry = false
+    if (state.phase === 'explore') {
+      awaitingEntry = false
+      skipRequested = false
+      try { sessionStorage.setItem('camp-entered', '1') } catch { /* Storage is optional. */ }
+    }
     root.querySelector<HTMLElement>('.hud-left')!.inert = !intro.hidden
     root.querySelector<HTMLElement>('.hud-right')!.inert = !intro.hidden
     root.querySelector<HTMLElement>('.world')!.inert = !intro.hidden || root.dataset.reading === 'true'
@@ -58,11 +62,21 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
   const direct = () => { awaitingEntry = false; update({ type: 'direct' }) }
   const enterCamp = () => {
     awaitingEntry = false
+    skipRequested = false
     update({ type: 'enter' })
     if (state.phase !== 'explore') return
     try { sessionStorage.setItem('camp-entered', '1') } catch { /* Storage is optional. */ }
     bus?.emit('enter', { reduced: state.reducedMotion })
     root.querySelector<HTMLElement>('.world')!.focus({ preventScroll: true })
   }
-  return { update, loading, prepareEntry, direct, get state() { return state }, enter: enterCamp }
+  const skipIntro = () => {
+    root.dataset.introSkipped = 'true'
+    if (state.preparation === 'ready') {
+      enterCamp()
+    } else {
+      skipRequested = true
+      root.querySelector<HTMLButtonElement>('[data-action=direct]')?.focus({ preventScroll: true })
+    }
+  }
+  return { update, loading, prepareEntry, direct, skipIntro, get state() { return state }, enter: enterCamp }
 }

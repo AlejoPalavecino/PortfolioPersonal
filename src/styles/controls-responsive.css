@@ -7,12 +7,21 @@
   color:#526d72;
 }
 
+.intro-primary-actions {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:8px;
+}
+
 .enter-button,.direct-button {
   width:100%;
-  min-height:48px;
-  margin-top:8px;
+  min-height:44px;
+  margin-top:0;
+  padding:8px 10px;
   border:2px solid #813c2a;
   font-weight:700;
+  font-size:14px;
 }
 
 .enter-button {
@@ -33,15 +42,20 @@
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:22px;
-  margin-top:18px;
-  font-size:14px;
+  gap:14px;
+  margin-top:12px;
+  font-size:13px;
 }
 
-.intro-links button {
+.intro-links button, .intro-links a {
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
   border:0;
   background:none;
+  color:#183746;
   text-decoration:underline;
+  font-weight:600;
 }
 
 @media(max-width:700px) {
@@ -77,14 +91,45 @@
     padding:6px;
     font-size:11px;
   }
+  .intro-top-bar {
+    justify-content:space-between;
+    gap:6px;
+  }
+  .intro-pause-button,.intro-skip-button {
+    font-size:12px;
+    padding:6px 10px;
+  }
+  .intro-story-banner {
+    margin-top:52px;
+    padding:8px 12px;
+  }
+  .intro-actor {
+    bottom:46%;
+    width:72px;
+  }
   .intro-card {
-    padding:22px;
+    padding:14px;
   }
   .intro-card h1 {
-    font-size:48px;
+    font-size:32px;
+    margin:4px 0 6px;
+  }
+  .intro-subtitle {
+    font-size:15px;
+  }
+  .intro-specialties {
+    font-size:12px;
+    margin:4px 0 6px;
+  }
+  .intro-primary-actions {
+    grid-template-columns:1fr;
+    gap:6px;
   }
   .intro-card p {
-    margin:9px 0;
+    margin:4px 0;
+  }
+  .loading-vignette {
+    display:none;
   }
 }
 

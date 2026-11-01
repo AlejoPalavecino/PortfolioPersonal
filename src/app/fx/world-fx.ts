@@ -3,6 +3,7 @@ import { FX_LIMITS, createFrameMonitor, degrade, initialLevel, type FxLevel } fr
 import type { CueBus } from '../../core/fx/cues'
 import { createParticlePool } from '../../core/fx/particles'
 import { raisesDust } from '../../core/fx/surface'
+import { assetUrl } from '../../shared'
 import type { createWorldCamera } from '../camera'
 import type { createController } from '../controller'
 import type { Loop } from '../loop'
@@ -79,9 +80,40 @@ export function bindWorldFx(
   let arrival: ArrivalPulse | null = null
   let clock = 0, carry = 0, moteTimer = 0
   const entryTimers: number[] = []
+  const thresholdTimers: number[] = []
+  const thresholdStage = root.querySelector<HTMLElement>('.threshold-stage')
+  const thresholdActor = root.querySelector<HTMLImageElement>('.threshold-actor')
+
+  const clearThreshold = () => {
+    while (thresholdTimers.length) window.clearTimeout(thresholdTimers.pop())
+    if (thresholdStage) {
+      thresholdStage.hidden = true
+      delete thresholdStage.dataset.section
+    }
+  }
+
+  const startThreshold = (section: Section) => {
+    clearThreshold()
+    if (reduced() || !thresholdStage) return
+    thresholdStage.hidden = false
+    thresholdStage.dataset.section = section
+    if (thresholdActor) {
+      if (section === 'projects' || section === 'about') {
+        thresholdActor.hidden = false
+        thresholdActor.src = assetUrl('camp-rooms-v1/avatars/walk-up-1.png')
+        thresholdTimers.push(window.setTimeout(() => {
+          if (thresholdActor) thresholdActor.src = assetUrl('camp-rooms-v1/avatars/idle-up.png')
+        }, 140))
+      } else {
+        thresholdActor.hidden = true
+      }
+    }
+    thresholdTimers.push(window.setTimeout(() => clearThreshold(), 320))
+  }
 
   const cancelEntry = () => {
     while (entryTimers.length) window.clearTimeout(entryTimers.pop())
+    clearThreshold()
     delete root.dataset.entering
     camera.finishSettle()
   }
@@ -232,11 +264,15 @@ export function bindWorldFx(
     }),
     bus.on('route-cancel', () => {
       trail = null; tap = null
+      clearThreshold()
       if (level === 'minimal') drawStatic()
     }),
     bus.on('arrive', ({ section }) => {
       trail = null; tap = null
-      if (section) arrival = { section, age: 0, duration: reduced() ? 320 : 680 }
+      if (section) {
+        arrival = { section, age: 0, duration: reduced() ? 320 : 680 }
+        startThreshold(section)
+      }
       if (level === 'minimal') {
         drawStatic()
         if (section) window.setTimeout(() => { arrival = null; drawStatic() }, 320)

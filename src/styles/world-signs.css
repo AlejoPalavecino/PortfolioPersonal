@@ -1,78 +1,189 @@
+/* Exterior camp signs: 4 distinct physical supports (160x72 sprite cells) with real HTML text. */
 .world-label {
-  position:absolute;
-  z-index:1000;
-  min-height:44px;
-  padding:5px 12px;
-  color:#182f3a;
-  background:#fff0cb;
-  border:3px solid #603c29;
-  box-shadow:0 3px #32271f;
-  font:700 18px Pixelify;
-  border-radius:3px;
+  position: absolute;
+  width: 136px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: #21160d;
+  font: 700 15px/1 Pixelify, sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transform: none !important;
+  box-shadow: none;
+  border-radius: 2px;
+  overflow: visible;
 }
 
-.world-label:hover,.world-label[data-selected] {
-  background:#ffc367;
-  transform:translateY(-2px);
+.world-label .sign-plate {
+  position: absolute;
+  left: -12px;
+  top: -14px;
+  width: 160px;
+  height: 72px;
+  background-image: var(--sign-idle);
+  background-size: 160px 72px;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 0 rgba(28, 19, 12, 0.55));
 }
 
+.world-label .sign-text {
+  position: absolute;
+  left: 32px;
+  top: 9px;
+  width: 91px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font: 700 15px/1 Pixelify, sans-serif;
+  color: #1f140c;
+  text-shadow: 0 1px 0 rgba(255, 244, 214, 0.85);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.world-label[data-visited] .sign-plate {
+  background-image: var(--sign-visited);
+}
+
+.world-label:hover .sign-plate,
+.world-label:focus-visible .sign-plate {
+  background-image: var(--sign-hover);
+}
+
+.world-label[data-selected] .sign-plate,
+.world-label[data-nearby] .sign-plate {
+  background-image: var(--sign-selected);
+}
+
+.world-label:hover,
+.world-label:focus-visible,
+.world-label[data-selected],
+.world-label[data-nearby],
+.world-label[data-visited] {
+  transform: none !important;
+  color: #140d08;
+}
+
+.world-label:focus-visible {
+  outline: 3px solid #ffce73;
+  outline-offset: 2px;
+}
+
+/* Calibrated mount positions on each building/prop without covering the avatar at arrival.point */
 .label-projects {
-  left:59%;
-  top:32%;
+  left: 582px;
+  top: 152px;
+  z-index: 324;
 }
 
 .label-about {
-  left:13%;
-  top:46%;
+  left: 112px;
+  top: 268px;
+  z-index: 324;
 }
 
 .label-journey {
-  left:23%;
-  top:70%;
+  left: 274px;
+  top: 414px;
+  z-index: 472;
 }
 
 .label-contact {
-  left:69%;
-  top:61%;
+  left: 712px;
+  top: 266px;
+  z-index: 426;
 }
 
-.world-label {
-  min-height:32px;
-  padding:3px 8px;
-  color:#2d2117;
-  background:#d8a35f;
-  border:2px solid #633b24;
-  box-shadow:inset 0 1px #f4ce88, 0 2px #493021;
-  font:700 15px Pixelify;
-  border-radius:2px;
-  white-space:nowrap;
+/* Threshold entry stage: transient visual actor & prop FX at the building threshold (logical position never enters solids) */
+.threshold-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 475;
 }
-.world-label:hover,.world-label[data-selected],.world-label[data-nearby],.world-label:focus-visible {
-  color:#21170f;
-  background:#f4c77c;
-  transform:none;
+
+.threshold-actor {
+  position: absolute;
+  width: 45px;
+  height: auto;
+  image-rendering: pixelated;
+  pointer-events: none;
+  transform: translate(-50%, -95%);
 }
-.world-label[data-selected],.world-label[data-nearby] {
-  box-shadow:inset 0 0 0 1px #493021, 0 0 0 2px #fff2c6, 0 2px #493021;
+
+.threshold-fx {
+  position: absolute;
+  image-rendering: pixelated;
+  pointer-events: none;
+  background-repeat: no-repeat;
 }
-.world-label[data-visited] { text-decoration:underline; text-decoration-thickness:1px; }
-.label-projects { left:59%; top:29.7%; }
-.label-about { left:13%; top:46%; }
-.label-journey { left:28%; top:61%; }
-.label-contact { left:71%; top:43%; }
-/* The workshop and radio labels sit on their illustrated wood; the tent has its own post. */
-.label-projects { left:60.3%; top:29.7%; }
-.label-contact { left:70%; top:43.7%; }
-.label-journey { left:30%; top:61%; }
-.label-about { left:13%; top:46%; }
-.label-about::after {
-  content:'';
-  position:absolute;
-  z-index:-1;
-  left:calc(50% - 3px);
-  top:100%;
-  width:6px;
-  height:17px;
-  background:#6b4229;
-  border:1px solid #493021;
+
+#app[data-entering-room="projects"] .world > .avatar,
+#app[data-entering-room="about"] .world > .avatar {
+  opacity: 0;
+}
+
+.threshold-stage[data-section="projects"] .threshold-actor {
+  left: 643px;
+  top: 336px;
+  clip-path: inset(12% 0 0 0);
+  animation: threshold-step-workshop 280ms ease-out forwards;
+}
+
+@keyframes threshold-step-workshop {
+  from { transform: translate(-50%, -95%) translate(7px, 9px); opacity: 1; }
+  to { transform: translate(-50%, -95%) translate(0, -10px) scale(0.92); opacity: 0.35; }
+}
+
+.threshold-stage[data-section="about"] .threshold-actor {
+  left: 220px;
+  top: 332px;
+  animation: threshold-step-tent 280ms ease-out forwards;
+}
+
+@keyframes threshold-step-tent {
+  from { transform: translate(-50%, -95%) translate(0, 3px); opacity: 1; }
+  to { transform: translate(-50%, -95%) translate(-4px, -8px) scale(0.94); opacity: 0.45; }
+}
+
+.threshold-stage[data-section="about"] .threshold-fx {
+  left: 176px;
+  top: 238px;
+  width: 96px;
+  height: 84px;
+  background-image: var(--fx-canvas-open);
+  background-size: 768px 84px;
+  animation: fx-steps-8 280ms steps(8) forwards;
+}
+
+.threshold-stage[data-section="journey"] .threshold-fx {
+  left: 312px;
+  top: 356px;
+  width: 96px;
+  height: 72px;
+  background-image: var(--fx-journal-open);
+  background-size: 768px 72px;
+  animation: fx-steps-8 280ms steps(8) forwards;
+}
+
+.threshold-stage[data-section="contact"] .threshold-fx {
+  left: 736px;
+  top: 312px;
+  width: 64px;
+  height: 32px;
+  background-image: var(--fx-radio-signal);
+  background-size: 512px 32px;
+  animation: fx-steps-8 280ms steps(8) infinite;
+}
+
+@keyframes fx-steps-8 {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
 }

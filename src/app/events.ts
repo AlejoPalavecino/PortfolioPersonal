@@ -26,10 +26,17 @@ export function bindPreferences(root: HTMLElement, controller: Controller, sessi
       if (panel && root.dataset.reading === 'false') panel.hidden = true
     }
     const button = root.querySelector<HTMLButtonElement>('[data-action=motion]')!
+    const label = motion.matches ? (user ? 'Movimiento reducido: sistema y preferencia' : 'Movimiento reducido por el sistema') : user ? 'Activar movimiento' : 'Reducir movimiento'
+    const desc = motion.matches ? 'El sistema solicita reducir movimiento.' : 'Preferencia de movimiento del portfolio.'
     button.setAttribute('aria-pressed', String(user))
-    button.setAttribute('aria-description', motion.matches ? 'El sistema solicita reducir movimiento.' : 'Preferencia de movimiento del portfolio.')
+    button.setAttribute('aria-description', desc)
     controller.dispatch({ type: 'set-motion', reduced }); session.update({ type: 'set-motion', reduced })
-    button.textContent = motion.matches ? (user ? 'Movimiento reducido: sistema y preferencia' : 'Movimiento reducido por el sistema') : user ? 'Activar movimiento' : 'Reducir movimiento'
+    button.textContent = label
+    root.querySelectorAll?.<HTMLButtonElement>('[data-action=motion]').forEach(btn => {
+      btn.setAttribute('aria-pressed', String(user))
+      btn.setAttribute('aria-description', desc)
+      btn.textContent = label
+    })
   }
   motion.addEventListener('change', apply); apply()
   return () => { user = !user; writeManualMotion(user); apply() }
@@ -57,6 +64,8 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
   root.addEventListener('click', e => { if ((e.target as HTMLElement).closest('[data-section]') && session.state.phase === 'explore') help.hidden = true })
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape' || event.defaultPrevented || event.isComposing || (event.target as HTMLElement)?.closest('input,textarea,select')) return
+    const intro = root.querySelector<HTMLElement>('.intro')
+    if (intro && !intro.hidden) { session.skipIntro(); return }
     if (!root.querySelector<HTMLElement>('.mobile-menu')!.hidden) { closeMenu(root, session); root.querySelector<HTMLButtonElement>('.menu-toggle')!.focus() }
     else if (!help.hidden && session.state.phase === 'explore' && !controller.state.route) { help.hidden = true; root.querySelector<HTMLElement>('[data-action=help]')?.focus() }
     else if (controller.state.route) { controller.dispatch({ type: 'cancel' }); if (views.current.kind === 'camp') root.querySelector<HTMLElement>('.world')?.focus() }
@@ -72,6 +81,9 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
       bus?.emit('pause', { reason: 'hidden' })
       const sound = root.querySelector<HTMLButtonElement>('[data-action=sound]')!
       if (sound.getAttribute('aria-pressed') === 'true') sound.textContent = 'Continuar sonido'
+      root.querySelectorAll?.<HTMLButtonElement>('[data-action=sound]').forEach(btn => {
+        if (btn.getAttribute('aria-pressed') === 'true') btn.textContent = 'Continuar sonido'
+      })
     } else {
       bus?.emit('resume', { reason: 'visible' })
     }

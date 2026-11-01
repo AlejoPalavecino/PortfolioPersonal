@@ -1,65 +1,187 @@
 .panel-header {
-  display:block;
-  max-height:none;
-  overflow:visible;
+  display: block;
+  max-height: none;
+  overflow: visible;
 }
 
 .panel-header .eyebrow {
-  display:block;
+  display: block;
 }
 
 .panel-header .panel-nav {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px 16px;
-  justify-content:space-between;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  justify-content: space-between;
 }
 
 .panel-header .panel-nav > * {
-  flex:1 1 8rem;
-  min-width:0;
-  max-width:100%;
-  overflow-wrap:anywhere;
+  flex: 1 1 8rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .panel-header h2 {
-  font:700 clamp(28px,4vw,42px)/1.1 Pixelify;
-  min-width:0;
-  max-width:100%;
-  overflow-wrap:anywhere;
-  margin:8px 0 0;
-}
-
-.panel-scroll {
-  min-height:0;
-  flex:1;
+  font: 700 clamp(28px, 3.6vw, 42px)/1.1 Pixelify, sans-serif;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  margin: 6px 0 0;
 }
 
 .services-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.services-grid article {
-  padding:12px;
-  border:1px solid #d7c6aa;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0;
 }
 
 .services-grid h4 {
-  margin:0;
-  font-size:16px;
+  margin: 0 0 4px;
+  font-size: 16px;
 }
 
-@media(max-width:700px) {
+/* Mobile portrait: 24-32dvh environment header + single main scroll container */
+@media (max-width: 700px) {
+  .panel {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .room-topbar {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    flex: none;
+    padding: max(6px, env(safe-area-inset-top)) 8px 6px;
+    background: rgba(16, 33, 40, 0.95);
+    border-bottom: 2px solid #76543c;
+    gap: 5px;
+  }
+
+  .room-badge {
+    display: none;
+  }
+
+  .room-exit-btn,
+  .room-nav-pill,
+  .room-cv-link {
+    font-size: 12px;
+    padding: 6px 8px;
+    min-height: 44px;
+  }
+
+  .room-stage {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    flex: 0 0 clamp(118px, 19dvh, 148px);
+    height: clamp(118px, 19dvh, 148px);
+    z-index: 1;
+    pointer-events: none;
+    border-bottom: 2px solid #5c4330;
+  }
+
+  .room-scenery {
+    background-position: 42% center;
+  }
+
+  .room-shade {
+    background: linear-gradient(180deg, rgba(10, 22, 28, 0.35) 0%, rgba(10, 22, 28, 0.72) 100%);
+  }
+
+  .room-plaque {
+    left: 12px;
+    top: 10px;
+    max-width: 68%;
+  }
+
+  .room-plaque-num {
+    font-size: 20px;
+  }
+
+  .room-plaque-title {
+    font-size: 15px;
+  }
+
+  .room-actor {
+    left: auto;
+    right: 8%;
+    bottom: 4px;
+    width: 52px;
+  }
+
+  .room-fx-contact {
+    left: 48%;
+    top: 24%;
+  }
+
+  .room-bg-fallback {
+    left: 10px;
+    right: 10px;
+    bottom: 8px;
+    max-width: none;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .panel-scroll,
+  .panel[data-room="about"] .panel-scroll,
+  .panel[data-room="journey"] .panel-scroll,
+  .panel[data-room="contact"] .panel-scroll {
+    position: relative;
+    inset: auto;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    max-height: none;
+    overflow-y: auto;
+    z-index: 3;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: 8px 8px max(16px, env(safe-area-inset-bottom));
+  }
+
+  .panel-header {
+    padding: 14px 16px 10px;
+    border: 4px solid var(--room-edge);
+    border-bottom: 2px solid var(--room-card-border);
+    border-radius: 3px 3px 0 0;
+  }
+
+  .panel-content {
+    background: var(--room-paper);
+    border: 4px solid var(--room-edge);
+    border-top: 0;
+    border-radius: 0 0 3px 3px;
+    padding: 16px 16px 32px;
+    box-shadow: 0 8px 0 rgba(16, 16, 18, 0.55);
+  }
+
+  .project-grid,
+  .intent-grid,
+  .case-layout,
+  .about-layout,
+  .archive-spread,
   .services-grid {
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr;
   }
+
   .panel-header h2 {
-    font-size:28px;
+    font-size: 28px;
   }
 }
 
-@media (min-width:701px) and (min-height:800px) {
-  .panel-header { position:sticky; top:0; }
+@media (min-width: 701px) and (min-height: 800px) {
+  .panel-header {
+    position: sticky;
+    top: 0;
+  }
 }

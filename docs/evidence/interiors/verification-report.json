@@ -1,0 +1,543 @@
+{
+  "baseUrl": "http://127.0.0.1:4173/PortfolioPersonal/",
+  "timestamp": "2026-11-01T18:13:46.894Z",
+  "viewports": {
+    "1366x768": {
+      "introCheck": {
+        "skipVisible": true,
+        "pauseVisible": true,
+        "directVisible": true,
+        "cardBox": {
+          "x": 413,
+          "y": 189,
+          "width": 540,
+          "height": 564
+        }
+      },
+      "signsCheck": [
+        {
+          "section": "projects",
+          "mount": "fachada-taller",
+          "label": "Proyectos",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "about",
+          "mount": "poste-suelo",
+          "label": "Sobre mí",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "journey",
+          "mount": "placa-mesa",
+          "label": "Trayectoria",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "contact",
+          "mount": "tablilla-radio",
+          "label": "Contacto",
+          "widthStable": true,
+          "heightStable": true
+        }
+      ],
+      "roomAudits": {
+        "projects": {
+          "reading": true,
+          "room": "projects",
+          "roomTheme": "workbench",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "about": {
+          "reading": true,
+          "room": "about",
+          "roomTheme": "linen",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "journey": {
+          "reading": true,
+          "room": "journey",
+          "roomTheme": "journal",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "contact": {
+          "reading": true,
+          "room": "contact",
+          "roomTheme": "radio",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        }
+      },
+      "requestedRooms": [
+        "projects-desktop.webp",
+        "about-desktop.webp",
+        "journey-desktop.webp",
+        "contact-desktop.webp"
+      ],
+      "consoleErrors": []
+    },
+    "1440x900": {
+      "introCheck": {
+        "skipVisible": true,
+        "pauseVisible": true,
+        "directVisible": true,
+        "cardBox": {
+          "x": 450,
+          "y": 300,
+          "width": 540,
+          "height": 584
+        }
+      },
+      "signsCheck": [
+        {
+          "section": "projects",
+          "mount": "fachada-taller",
+          "label": "Proyectos",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "about",
+          "mount": "poste-suelo",
+          "label": "Sobre mí",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "journey",
+          "mount": "placa-mesa",
+          "label": "Trayectoria",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "contact",
+          "mount": "tablilla-radio",
+          "label": "Contacto",
+          "widthStable": true,
+          "heightStable": true
+        }
+      ],
+      "roomAudits": {
+        "projects": {
+          "reading": true,
+          "room": "projects",
+          "roomTheme": "workbench",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "about": {
+          "reading": true,
+          "room": "about",
+          "roomTheme": "linen",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "journey": {
+          "reading": true,
+          "room": "journey",
+          "roomTheme": "journal",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "contact": {
+          "reading": true,
+          "room": "contact",
+          "roomTheme": "radio",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        }
+      },
+      "requestedRooms": [
+        "projects-desktop.webp",
+        "about-desktop.webp",
+        "journey-desktop.webp",
+        "contact-desktop.webp"
+      ],
+      "consoleErrors": []
+    },
+    "390x844": {
+      "introCheck": {
+        "skipVisible": true,
+        "pauseVisible": true,
+        "directVisible": true,
+        "cardBox": {
+          "x": 16,
+          "y": 405,
+          "width": 358,
+          "height": 423
+        }
+      },
+      "signsCheck": [
+        {
+          "section": "projects",
+          "mount": "fachada-taller",
+          "label": "Proyectos",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "about",
+          "mount": "poste-suelo",
+          "label": "Sobre mí",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "journey",
+          "mount": "placa-mesa",
+          "label": "Trayectoria",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "contact",
+          "mount": "tablilla-radio",
+          "label": "Contacto",
+          "widthStable": true,
+          "heightStable": true
+        }
+      ],
+      "roomAudits": {
+        "projects": {
+          "reading": true,
+          "room": "projects",
+          "roomTheme": "workbench",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "about": {
+          "reading": true,
+          "room": "about",
+          "roomTheme": "linen",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "journey": {
+          "reading": true,
+          "room": "journey",
+          "roomTheme": "journal",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "contact": {
+          "reading": true,
+          "room": "contact",
+          "roomTheme": "radio",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        }
+      },
+      "requestedRooms": [
+        "projects-portrait.webp",
+        "about-portrait.webp",
+        "journey-portrait.webp",
+        "contact-portrait.webp"
+      ],
+      "consoleErrors": []
+    },
+    "320x568": {
+      "introCheck": {
+        "skipVisible": true,
+        "pauseVisible": true,
+        "directVisible": true,
+        "cardBox": {
+          "x": 10,
+          "y": 108,
+          "width": 300,
+          "height": 459
+        }
+      },
+      "signsCheck": [
+        {
+          "section": "projects",
+          "mount": "fachada-taller",
+          "label": "Proyectos",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "about",
+          "mount": "poste-suelo",
+          "label": "Sobre mí",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "journey",
+          "mount": "placa-mesa",
+          "label": "Trayectoria",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "contact",
+          "mount": "tablilla-radio",
+          "label": "Contacto",
+          "widthStable": true,
+          "heightStable": true
+        }
+      ],
+      "roomAudits": {
+        "projects": {
+          "reading": true,
+          "room": "projects",
+          "roomTheme": "workbench",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "about": {
+          "reading": true,
+          "room": "about",
+          "roomTheme": "linen",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "journey": {
+          "reading": true,
+          "room": "journey",
+          "roomTheme": "journal",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "contact": {
+          "reading": true,
+          "room": "contact",
+          "roomTheme": "radio",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        }
+      },
+      "requestedRooms": [
+        "projects-portrait.webp",
+        "about-portrait.webp",
+        "journey-portrait.webp",
+        "contact-portrait.webp"
+      ],
+      "consoleErrors": []
+    },
+    "844x390": {
+      "introCheck": {
+        "skipVisible": true,
+        "pauseVisible": true,
+        "directVisible": true,
+        "cardBox": {
+          "x": 16,
+          "y": 75,
+          "width": 740,
+          "height": 307
+        }
+      },
+      "signsCheck": [
+        {
+          "section": "projects",
+          "mount": "fachada-taller",
+          "label": "Proyectos",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "about",
+          "mount": "poste-suelo",
+          "label": "Sobre mí",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "journey",
+          "mount": "placa-mesa",
+          "label": "Trayectoria",
+          "widthStable": true,
+          "heightStable": true
+        },
+        {
+          "section": "contact",
+          "mount": "tablilla-radio",
+          "label": "Contacto",
+          "widthStable": true,
+          "heightStable": true
+        }
+      ],
+      "roomAudits": {
+        "projects": {
+          "reading": true,
+          "room": "projects",
+          "roomTheme": "workbench",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "about": {
+          "reading": true,
+          "room": "about",
+          "roomTheme": "linen",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "journey": {
+          "reading": true,
+          "room": "journey",
+          "roomTheme": "journal",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        },
+        "contact": {
+          "reading": true,
+          "room": "contact",
+          "roomTheme": "radio",
+          "roomBgState": "ready",
+          "landscapeHidden": true,
+          "panelFullViewport": true,
+          "hasScrollContainer": true,
+          "horizontalOverflow": false
+        }
+      },
+      "requestedRooms": [
+        "projects-desktop.webp",
+        "about-desktop.webp",
+        "journey-desktop.webp",
+        "contact-desktop.webp"
+      ],
+      "consoleErrors": []
+    }
+  },
+  "flows": {
+    "introPauseResume": {
+      "pausedPressed": "true",
+      "resumedPressed": "false"
+    },
+    "desktopWalkthrough": {
+      "introBeatsObserved": [
+        {
+          "phase": "ready",
+          "title": "Campamento creativo",
+          "actor": "/PortfolioPersonal/assets/camp-rooms-v1/avatars/idle-right.png"
+        },
+        {
+          "phase": "ready",
+          "title": "Campamento creativo",
+          "actor": "/PortfolioPersonal/assets/camp-rooms-v1/avatars/walk-right-3.png"
+        },
+        {
+          "phase": "ready",
+          "title": "Soy Alejo Palavecino.",
+          "actor": "/PortfolioPersonal/assets/camp-rooms-v1/avatars/idle-down.png"
+        },
+        {
+          "phase": "ready",
+          "title": "Soy Alejo Palavecino.",
+          "actor": "/PortfolioPersonal/assets/camp-rooms-v1/avatars/idle-down.png"
+        },
+        {
+          "phase": "explore",
+          "title": "Explorá mi trabajo.",
+          "actor": "/PortfolioPersonal/assets/camp-rooms-v1/avatars/idle-down.png"
+        }
+      ],
+      "exploreAfterIntro": {
+        "phase": "explore",
+        "introHidden": true
+      },
+      "workshopArrival": {
+        "room": "projects",
+        "roomBg": "ready",
+        "avatarLeft": "0px",
+        "avatarTop": "0px"
+      },
+      "flowerInSameRoom": {
+        "room": "projects",
+        "variant": "case",
+        "heading": "Sistema de stock y facturación para Flower"
+      },
+      "restoredScroll": 79,
+      "afterWorkshopExit": {
+        "reading": "false",
+        "avatarLeft": "0px",
+        "avatarTop": "0px",
+        "activeDatasetSection": "projects"
+      },
+      "copySuccess": {
+        "btnText": "Correo copiado ✓",
+        "statusState": "copied",
+        "statusText": "Correo copiado al portapapeles: alejopalavecino12@gmail.com"
+      }
+    },
+    "mobileFallbackAndRecovery": {
+      "fallbackState": {
+        "roomBg": "failed",
+        "bannerVisible": true,
+        "bannerText": "Fondo ilustrado no disponible. Mostrando tema sólido del lugar.\n    Reintentar fondo"
+      },
+      "recoveredState": {
+        "roomBg": "ready",
+        "bannerHidden": true
+      }
+    }
+  },
+  "videos": [
+    "docs/evidence/interiors/desktop-interiors-walkthrough.webm",
+    "docs/evidence/interiors/mobile-interiors-walkthrough.webm"
+  ]
+}

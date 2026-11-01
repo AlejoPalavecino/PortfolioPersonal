@@ -67,8 +67,8 @@ export function createController(render: (state: State, pose: Pose) => void, loo
     const target = state.route?.target
     const point = state.position
     direction = 'up'
-    dispatch({ type: 'arrive', id, position: state.position })
     bus?.emit('arrive', { section: target?.kind === 'section' ? target.section : null, point })
+    dispatch({ type: 'arrive', id, position: state.position })
   }
   /** Integrates one frame. Route following and manual input share the same speed ramp. */
   const frame = (_time: number, elapsedMs: number) => {
@@ -121,8 +121,9 @@ export function createController(render: (state: State, pose: Pose) => void, loo
     select(section: Section) {
       const arrival = WORLD.arrivals[section]
       const arrived = Math.hypot(state.position.x - arrival.point.x, state.position.y - arrival.point.y) <= arrival.radius
-      dispatch({ type: 'select-section', section, arrived })
       if (arrived) bus?.emit('arrive', { section, point: state.position })
+      dispatch({ type: 'select-section', section, arrived })
+      if (!arrived) prepare()
     },
     ground(point: Point) {
       if (!isWalkable(WORLD, point)) return false
@@ -142,8 +143,8 @@ export function createController(render: (state: State, pose: Pose) => void, loo
     interact() {
       const section = nearbySection(WORLD, state.position)
       if (!section) return
-      dispatch({ type: 'select-section', section, arrived: true })
       bus?.emit('arrive', { section, point: state.position })
+      dispatch({ type: 'select-section', section, arrived: true })
     },
     dispose() { off?.() },
   }

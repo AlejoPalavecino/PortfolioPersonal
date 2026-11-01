@@ -27,7 +27,7 @@ export function mount(root: HTMLElement) {
   const renderer = createRenderer(root, views, loop)
   const controller = createController(renderer.render, loop, bus)
   const session = createSession(root, controller, reducedMotion, bus)
-  bindIntroFx(root, bus, loop, () => root.dataset.motion === 'reduced')
+  bindIntroFx(root, bus, loop, () => root.dataset.motion === 'reduced', () => session.skipIntro())
   bindWorldFx(root, controller, renderer.camera, bus, loop)
   const audio = createAudio(bus, () => ({ position: controller.state.position, reading: root.dataset.reading === 'true' }))
   const toggleMotion = bindPreferences(root, controller, session, userMotion)

@@ -1,0 +1,334 @@
+{
+  "image": "alejo-normalized-atlas.png",
+  "cell": [
+    160,
+    288
+  ],
+  "grid": [
+    5,
+    4
+  ],
+  "frames": {
+    "idle-down": {
+      "rect": [
+        0,
+        0,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        64,
+        252
+      ]
+    },
+    "walk-down-1": {
+      "rect": [
+        160,
+        0,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        64,
+        254
+      ]
+    },
+    "walk-down-2": {
+      "rect": [
+        320,
+        0,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        67,
+        257
+      ]
+    },
+    "walk-down-3": {
+      "rect": [
+        480,
+        0,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        69,
+        254
+      ]
+    },
+    "walk-down-4": {
+      "rect": [
+        640,
+        0,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        69,
+        256
+      ]
+    },
+    "idle-left": {
+      "rect": [
+        0,
+        288,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        59,
+        259
+      ]
+    },
+    "walk-left-1": {
+      "rect": [
+        160,
+        288,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        66,
+        257
+      ]
+    },
+    "walk-left-2": {
+      "rect": [
+        320,
+        288,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        59,
+        258
+      ]
+    },
+    "walk-left-3": {
+      "rect": [
+        480,
+        288,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        61,
+        258
+      ]
+    },
+    "walk-left-4": {
+      "rect": [
+        640,
+        288,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        57,
+        258
+      ]
+    },
+    "idle-right": {
+      "rect": [
+        0,
+        576,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        70,
+        259
+      ]
+    },
+    "walk-right-1": {
+      "rect": [
+        160,
+        576,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        84,
+        256
+      ]
+    },
+    "walk-right-2": {
+      "rect": [
+        320,
+        576,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        70,
+        257
+      ]
+    },
+    "walk-right-3": {
+      "rect": [
+        480,
+        576,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        82,
+        256
+      ]
+    },
+    "walk-right-4": {
+      "rect": [
+        640,
+        576,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        74,
+        258
+      ]
+    },
+    "idle-up": {
+      "rect": [
+        0,
+        864,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        66,
+        248
+      ]
+    },
+    "walk-up-1": {
+      "rect": [
+        160,
+        864,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        68,
+        249
+      ]
+    },
+    "walk-up-2": {
+      "rect": [
+        320,
+        864,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        66,
+        257
+      ]
+    },
+    "walk-up-3": {
+      "rect": [
+        480,
+        864,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        70,
+        254
+      ]
+    },
+    "walk-up-4": {
+      "rect": [
+        640,
+        864,
+        160,
+        288
+      ],
+      "anchor": [
+        80,
+        276
+      ],
+      "sourceAnchor": [
+        68,
+        256
+      ]
+    }
+  },
+  "note": "Sprites existentes reencuadrados. No son veinte animaciones nuevas. Mantener los originales para locomoción si ya funcionan."
+}

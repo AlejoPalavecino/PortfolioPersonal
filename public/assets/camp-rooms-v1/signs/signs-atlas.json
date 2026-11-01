@@ -1,0 +1,114 @@
+{
+  "image": "signs-atlas.png",
+  "cell": [
+    160,
+    72
+  ],
+  "rows": [
+    "projects",
+    "about",
+    "journey",
+    "contact"
+  ],
+  "columns": [
+    "idle",
+    "hover",
+    "selected",
+    "visited"
+  ],
+  "labelsAsHtml": true,
+  "signs": {
+    "projects": {
+      "frameSize": [
+        160,
+        72
+      ],
+      "labelRect": [
+        44,
+        23,
+        91,
+        18
+      ],
+      "worldAnchor": [
+        80,
+        51
+      ],
+      "mount": "fachada-taller",
+      "states": [
+        "idle",
+        "hover",
+        "selected",
+        "visited"
+      ]
+    },
+    "about": {
+      "frameSize": [
+        160,
+        72
+      ],
+      "labelRect": [
+        44,
+        23,
+        91,
+        18
+      ],
+      "worldAnchor": [
+        80,
+        69
+      ],
+      "mount": "poste-suelo",
+      "states": [
+        "idle",
+        "hover",
+        "selected",
+        "visited"
+      ]
+    },
+    "journey": {
+      "frameSize": [
+        160,
+        72
+      ],
+      "labelRect": [
+        44,
+        23,
+        91,
+        18
+      ],
+      "worldAnchor": [
+        80,
+        51
+      ],
+      "mount": "placa-mesa",
+      "states": [
+        "idle",
+        "hover",
+        "selected",
+        "visited"
+      ]
+    },
+    "contact": {
+      "frameSize": [
+        160,
+        72
+      ],
+      "labelRect": [
+        44,
+        23,
+        91,
+        18
+      ],
+      "worldAnchor": [
+        80,
+        51
+      ],
+      "mount": "tablilla-radio",
+      "states": [
+        "idle",
+        "hover",
+        "selected",
+        "visited"
+      ]
+    }
+  }
+}

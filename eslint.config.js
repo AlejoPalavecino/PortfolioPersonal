@@ -3,7 +3,7 @@ import tseslint from 'typescript-eslint';
 import boundaries from 'eslint-plugin-boundaries';
 
 export default tseslint.config(
-  { ignores: ['dist/**', 'public/**', 'Portfolio_Campamento_Documentacion_y_Assets_v1/**'] },
+  { ignores: ['dist/**', 'public/**', 'Portfolio_Campamento_Documentacion_y_Assets_v1/**', 'Portfolio_Interiores_y_Cinematica_v1/**'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

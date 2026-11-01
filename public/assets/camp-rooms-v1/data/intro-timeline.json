@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "durationMs": 6800,
+  "skipFromMs": 0,
+  "pauseControl": true,
+  "soundByDefault": false,
+  "showOnlyFirstGeneralEntry": true,
+  "skipForDirectLinks": true,
+  "skipForReducedMotion": true,
+  "isLoadingProgress": false,
+  "background": "intro/mountain-arrival.webp",
+  "actorAtlas": "avatars/alejo-normalized-atlas.json",
+  "beats": [
+    {
+      "from": 0,
+      "to": 1200,
+      "action": "landscape-reveal",
+      "text": "Campamento creativo"
+    },
+    {
+      "from": 1200,
+      "to": 2800,
+      "action": "walk-right",
+      "actorFrom": [
+        0.06,
+        0.91
+      ],
+      "actorTo": [
+        0.28,
+        0.91
+      ],
+      "sequence": [
+        "walk-right-1",
+        "walk-right-2",
+        "walk-right-3",
+        "walk-right-4"
+      ],
+      "frameMs": 130
+    },
+    {
+      "from": 2800,
+      "to": 4800,
+      "action": "idle-down",
+      "text": "Soy Alejo Palavecino."
+    },
+    {
+      "from": 4800,
+      "to": 6200,
+      "action": "idle-down",
+      "text": "Desarrollo software. Transformo ideas en productos."
+    },
+    {
+      "from": 6200,
+      "to": 6800,
+      "action": "crossfade-to-existing-world",
+      "text": "Explorá mi trabajo."
+    }
+  ]
+}
