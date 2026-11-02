@@ -23,6 +23,8 @@ export function bindIntroFx(
   const bar = root.querySelector<HTMLElement>('.loading-progress')
   const fill = bar?.querySelector<HTMLElement>('span')
   const actor = root.querySelector<HTMLImageElement>('.intro-actor')
+  const actorStage = root.querySelector<HTMLElement>('.intro-actor-stage')
+  const beatKicker = root.querySelector<HTMLElement>('.intro-beat-kicker')
   const beatTitle = root.querySelector<HTMLElement>('.intro-beat-title')
   const beatSub = root.querySelector<HTMLElement>('.intro-beat-subtitle')
   const pauseBtn = root.querySelector<HTMLButtonElement>('[data-action="intro-pause"]')
@@ -45,16 +47,32 @@ export function bindIntroFx(
   let lastFrame = ''
   let offLoop: (() => void) | null = null
 
+  const KICKERS: Readonly<Record<number, string>> = {
+    0: '01 · AMANECER EN LA MONTAÑA',
+    1: '02 · LLEGADA AL SENDERO',
+    2: '03 · PRESENTACIÓN EN EL CAMPAMENTO',
+    3: '04 · ESPECIALIDAD Y PROPÓSITO',
+    4: '05 · CAMPAMENTO LISTO PARA EXPLORAR',
+  }
+
   const applySnapshot = (ms: number) => {
     const snap = sampleIntroTimeline(ms)
     root.dataset.introBeat = String(snap.beatIndex)
+    root.dataset.introAction = snap.action
+    const kickerText = KICKERS[snap.beatIndex] ?? 'LLEGADA AL CAMPAMENTO'
+    if (beatKicker && beatKicker.textContent !== kickerText) beatKicker.textContent = kickerText
     if (beatTitle && beatTitle.textContent !== snap.title) beatTitle.textContent = snap.title
     if (beatSub) {
       const subText = snap.subtitle || snap.specialty
       if (beatSub.textContent !== subText) beatSub.textContent = subText
     }
+    const leftPct = `${snap.actorXPercent.toFixed(2)}%`
+    if (actorStage) {
+      actorStage.style.left = leftPct
+      actorStage.style.opacity = snap.actorVisible ? '1' : '0'
+    }
     if (actor) {
-      actor.style.left = `${snap.actorXPercent.toFixed(2)}%`
+      actor.style.left = leftPct
       actor.style.opacity = snap.actorVisible ? '1' : '0'
       if (lastFrame !== snap.actorFrame) {
         lastFrame = snap.actorFrame

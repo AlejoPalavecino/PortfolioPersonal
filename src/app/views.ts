@@ -12,8 +12,57 @@ type Context = {
   root: HTMLElement; panel: HTMLElement; current: View; reading: Map<string, Reading>
   origin: HTMLElement | null; restoring: boolean; options: ViewOptions; transition: number
   closeTimer?: number; entryTimer?: number; curtainTimer?: number; poseTimer?: number
+  actorTimers: number[]
   roomLoader: RoomLoader; pendingSpatialSection: Section | null; mountedRoom: Section | null
   offLoader?: () => void
+}
+
+type ActorReaction = Readonly<{ status: string; quote: string; pose?: string }>
+
+const ROOM_ACTOR_DEFAULTS: Readonly<Record<Section, ActorReaction>> = {
+  projects: {
+    status: '🛠️ EN EL TALLER',
+    quote: '¡Bienvenido al taller! Elegí un plano para ver la arquitectura y cómo construí cada sistema.',
+  },
+  about: {
+    status: '⛺ EN LA CARPA',
+    quote: 'Acá podés conocer mi perfil, cómo encaro los problemas y en qué puedo ayudarte.',
+  },
+  journey: {
+    status: '📖 EN EL ARCHIVO',
+    quote: 'En esta bitácora registro mi formación en la UTN, hitos de proyectos y evidencias.',
+  },
+  contact: {
+    status: '📻 EN LA RADIO',
+    quote: 'Equipos listos para transmitir. Elegí un contrato o copiá mi correo directo.',
+  },
+}
+
+const SUBVIEW_ACTOR_QUOTES: Readonly<Record<string, ActorReaction>> = {
+  foxmind: {
+    status: '🦊 CASO · FOXMIND',
+    quote: 'En FoxMind lideré todo el desarrollo técnico de la plataforma educativa y su motor de IA.',
+  },
+  flower: {
+    status: '📦 CASO · FLOWER',
+    quote: 'Flower está en producción real: gestiona stock y emite facturas automáticas con ARCA.',
+  },
+  recognitions: {
+    status: '🏅 EVIDENCIAS',
+    quote: 'Solo publico certificados verificados con su documento original y atribución clara.',
+  },
+  laboral: {
+    status: '📡 CH-01 · EQUIPO',
+    quote: 'Disponible para sumarme a equipos en roles Full Stack, Análisis Funcional o IA aplicada.',
+  },
+  proyecto: {
+    status: '⚡ CH-02 · A MEDIDA',
+    quote: 'Desarrollo sistemas a medida de punta a punta: desde el análisis hasta producción.',
+  },
+  copied: {
+    status: '✓ CANAL COPIADO',
+    quote: '¡Correo copiado al portapapeles! Escribime cuando quieras y coordinamos.',
+  },
 }
 
 const urls: Record<Section, string> = {
@@ -68,12 +117,105 @@ function bindMediaState(container: HTMLElement) {
   })
 }
 
+function clearActorTimers(context: Context) {
+  if (context.poseTimer !== undefined) { window.clearTimeout(context.poseTimer); context.poseTimer = undefined }
+  while (context.actorTimers.length) {
+    const id = context.actorTimers.pop()
+    if (id !== undefined) window.clearTimeout(id)
+  }
+}
+
 function clearTimers(context: Context) {
   if (context.closeTimer !== undefined) { window.clearTimeout(context.closeTimer); context.closeTimer = undefined }
   if (context.entryTimer !== undefined) { window.clearTimeout(context.entryTimer); context.entryTimer = undefined }
   if (context.curtainTimer !== undefined) { window.clearTimeout(context.curtainTimer); context.curtainTimer = undefined }
-  if (context.poseTimer !== undefined) { window.clearTimeout(context.poseTimer); context.poseTimer = undefined }
+  clearActorTimers(context)
   if (context.offLoader) { context.offLoader(); context.offLoader = undefined }
+}
+
+function roomFxMarkup(room: Section): string {
+  if (room === 'projects') {
+    return `<div class="room-fx room-fx-projects" aria-hidden="true">
+      <span class="fx-workshop-glow"></span>
+      <span class="fx-workshop-spark fx-spark-a"></span>
+      <span class="fx-workshop-spark fx-spark-b"></span>
+      <span class="fx-workshop-fire"></span>
+      <span class="fx-workshop-terminal"><i class="fx-led-dot"></i>BUILD · 2 CASOS ACTIVOS</span>
+    </div>`
+  }
+  if (room === 'contact') {
+    return `<div class="room-fx room-fx-contact" aria-hidden="true">
+      <div class="fx-radio-unit">
+        <div class="fx-radio-head">
+          <span class="fx-radio-led"></span>
+          <span class="fx-radio-freq">TX/RX · 142.8 MHz</span>
+        </div>
+        <div class="fx-radio-meter"></div>
+      </div>
+      <div class="fx-radio-waves"><span></span><span></span></div>
+    </div>`
+  }
+  return `<div class="room-fx room-fx-${room}" aria-hidden="true">
+    <span class="fx-ambient-glow"></span>
+    <span class="fx-ambient-spark"></span>
+  </div>`
+}
+
+function updateActorBubble(context: Context, reaction: ActorReaction, glance = false) {
+  const statusEl = context.panel.querySelector?.<HTMLElement>('.room-actor-status')
+  const quoteEl = context.panel.querySelector?.<HTMLElement>('.room-actor-quote')
+  const bubbleEl = context.panel.querySelector?.<HTMLElement>('.room-actor-bubble')
+  const actorEl = context.panel.querySelector?.<HTMLImageElement>('.room-actor')
+  if (statusEl) statusEl.textContent = reaction.status
+  if (quoteEl) quoteEl.textContent = reaction.quote
+  if (bubbleEl && context.root.dataset.motion !== 'reduced') {
+    bubbleEl.dataset.pulse = 'true'
+    const t = window.setTimeout(() => { delete bubbleEl.dataset.pulse }, 220)
+    context.actorTimers.push(t)
+  }
+  if (glance && actorEl && context.root.dataset.motion !== 'reduced') {
+    actorEl.src = assetUrl(`camp-rooms-v1/avatars/${reaction.pose ?? 'idle-right'}.png`)
+    actorEl.dataset.pose = 'glance'
+    const t = window.setTimeout(() => {
+      if (actorEl.isConnected) {
+        actorEl.src = assetUrl('camp-rooms-v1/avatars/idle-down.png')
+        actorEl.dataset.pose = 'idle'
+      }
+    }, 520)
+    context.actorTimers.push(t)
+  }
+}
+
+function defaultReactionForView(view: Exclude<View, { kind: 'camp' }>): ActorReaction {
+  const room = roomForView(view)!
+  if (view.kind === 'case') return SUBVIEW_ACTOR_QUOTES[view.id] ?? ROOM_ACTOR_DEFAULTS[room]
+  if (view.kind === 'recognitions' || view.kind === 'credential') return SUBVIEW_ACTOR_QUOTES.recognitions!
+  return ROOM_ACTOR_DEFAULTS[room]
+}
+
+function bindRoomInteractions(context: Context, content: HTMLElement, view: Exclude<View, { kind: 'camp' }>) {
+  const restoreDefault = () => updateActorBubble(context, defaultReactionForView(view), false)
+  content.querySelectorAll<HTMLElement>('[data-project-card],[data-case]').forEach(el => {
+    const id = el.dataset.projectCard || el.dataset.case
+    if (!id || !SUBVIEW_ACTOR_QUOTES[id]) return
+    const react = () => updateActorBubble(context, SUBVIEW_ACTOR_QUOTES[id]!, true)
+    el.addEventListener('pointerenter', react)
+    el.addEventListener('focusin', react)
+    el.addEventListener('pointerleave', restoreDefault)
+  })
+  content.querySelectorAll<HTMLElement>('[data-intent-card]').forEach(el => {
+    const id = el.dataset.intentCard
+    if (!id || !SUBVIEW_ACTOR_QUOTES[id]) return
+    const react = () => updateActorBubble(context, SUBVIEW_ACTOR_QUOTES[id]!, true)
+    el.addEventListener('pointerenter', react)
+    el.addEventListener('focusin', react)
+    el.addEventListener('pointerleave', restoreDefault)
+  })
+  content.querySelectorAll<HTMLButtonElement>('[data-action="copy-email"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (SUBVIEW_ACTOR_QUOTES.copied) updateActorBubble(context, SUBVIEW_ACTOR_QUOTES.copied, true)
+    })
+  })
 }
 
 function hideCurtain(root: HTMLElement) {
@@ -174,16 +316,29 @@ function buildRoomShell(context: Context, room: Section, animateActor: boolean):
   stage.dataset.room = room
   stage.style.setProperty('--fx-radio-signal', `url("${assetUrl('camp-rooms-v1/fx/radio-signal.png')}")`)
   stage.style.setProperty('--fx-spark', `url("${assetUrl('camp-rooms-v1/fx/spark.png')}")`)
-  const initialPose = animateActor ? (room === 'about' ? 'idle-left' : 'idle-right') : 'idle-down'
+  stage.style.setProperty('--fx-fire', `url("${assetUrl('camp-rooms-v1/fx/fire.png')}")`)
+  stage.style.setProperty('--fx-smoke', `url("${assetUrl('camp-rooms-v1/fx/smoke.png')}")`)
+  const initialPose = animateActor ? (room === 'about' ? 'walk-left-1' : 'walk-right-1') : 'idle-down'
+  const defaultReaction = ROOM_ACTOR_DEFAULTS[room]
   stage.innerHTML = `<div class="room-scenery" aria-hidden="true"></div>
     <div class="room-shade" aria-hidden="true"></div>
-    <div class="room-fx room-fx-${room}" aria-hidden="true"></div>
+    ${roomFxMarkup(room)}
     <div class="room-plaque" aria-hidden="true">
       <span class="room-plaque-num">${meta.number}</span>
       <strong class="room-plaque-title">${meta.title}</strong>
       <span class="room-plaque-sub">${meta.eyebrow}</span>
     </div>
-    <img class="room-actor" src="${assetUrl(`camp-rooms-v1/avatars/${initialPose}.png`)}" width="160" height="288" alt="Alejo en ${meta.title}">`
+    <div class="room-character-dock" aria-hidden="true">
+      <div class="room-actor-bubble">
+        <span class="room-actor-status">${defaultReaction.status}</span>
+        <p class="room-actor-quote">${defaultReaction.quote}</p>
+      </div>
+      <div class="room-actor-pedestal${animateActor ? ' is-entering' : ''}">
+        <span class="room-actor-shadow"></span>
+        <img class="room-actor" data-pose="${animateActor ? 'walking' : 'idle'}" src="${assetUrl(`camp-rooms-v1/avatars/${initialPose}.png`)}" width="160" height="288" alt="Alejo en ${meta.title}">
+        <span class="room-actor-tag">ALEJO · ${meta.shortLabel.toUpperCase()}</span>
+      </div>
+    </div>`
 
   const fallbackBar = document.createElement('div')
   fallbackBar.className = 'room-bg-fallback'
@@ -201,11 +356,28 @@ function buildRoomShell(context: Context, room: Section, animateActor: boolean):
 
   if (animateActor && context.root.dataset.motion !== 'reduced') {
     const actor = stage.querySelector<HTMLImageElement>('.room-actor')
+    const pedestal = stage.querySelector<HTMLElement>('.room-actor-pedestal')
+    const dir = room === 'about' ? 'left' : 'right'
+    const steps: readonly [number, string][] = [
+      [90, `walk-${dir}-2`],
+      [180, `walk-${dir}-3`],
+      [260, `walk-${dir}-4`],
+      [340, `idle-${dir}`],
+    ]
+    for (const [delay, frame] of steps) {
+      context.actorTimers.push(window.setTimeout(() => {
+        if (actor && context.mountedRoom === room) {
+          actor.src = assetUrl(`camp-rooms-v1/avatars/${frame}.png`)
+        }
+      }, delay))
+    }
     context.poseTimer = window.setTimeout(() => {
       if (actor && context.mountedRoom === room) {
         actor.src = assetUrl('camp-rooms-v1/avatars/idle-down.png')
+        actor.dataset.pose = 'idle'
+        pedestal?.classList.remove('is-entering')
       }
-    }, 280)
+    }, 440)
   }
 
   return scroll
@@ -220,10 +392,14 @@ function renderReading(context: Context, view: Exclude<View, { kind: 'camp' }>, 
   const heading = source.querySelector('h2')!
   const title = heading.textContent ?? ''
   const navigation = source.querySelector('.panel-nav')!
+  const sourceEyebrow = source.querySelector('.eyebrow')
+  const eyebrowText = sourceEyebrow?.textContent || meta.eyebrow
+  sourceEyebrow?.remove()
   const header = document.createElement('header')
   const sceneStatus = context.root.querySelector<HTMLElement>('.scene-status')
   header.className = 'panel-header'
-  header.innerHTML = `<span class="eyebrow">${meta.eyebrow}</span>`
+  header.dataset.subview = String(view.kind !== 'section')
+  header.innerHTML = `<div class="panel-header-top"><span class="eyebrow"><img class="panel-header-icon" src="${assetUrl(meta.iconAsset)}" alt="" width="18" height="18"> ${eyebrowText}</span></div>`
   header.append(navigation)
   heading.id = 'reading-title'; heading.tabIndex = -1
   header.append(heading)
@@ -235,6 +411,8 @@ function renderReading(context: Context, view: Exclude<View, { kind: 'camp' }>, 
   content.className = 'panel-content'
   content.append(...source.childNodes)
   bindMediaState(content)
+  bindRoomInteractions(context, content, view)
+  updateActorBubble(context, defaultReactionForView(view), false)
   scroll.replaceChildren(header, content)
 
   const previous = context.reading.get(key(view))
@@ -368,6 +546,7 @@ export function createViews(root: HTMLElement, options: ViewOptions = {}) {
   const context: Context = {
     root, panel, current: { kind: 'camp' }, reading: new Map(),
     origin: null, restoring: false, options, transition: 0,
+    actorTimers: [],
     roomLoader, pendingSpatialSection: null, mountedRoom: null,
   }
 

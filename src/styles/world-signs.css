@@ -137,6 +137,16 @@
   animation: threshold-step-workshop 280ms ease-out forwards;
 }
 
+.threshold-stage[data-section="projects"] .threshold-fx {
+  left: 611px;
+  top: 266px;
+  width: 64px;
+  height: 64px;
+  background-image: var(--fx-door-open);
+  background-size: 512px 64px;
+  animation: fx-steps-8 280ms steps(8) forwards;
+}
+
 @keyframes threshold-step-workshop {
   from { transform: translate(-50%, -95%) translate(7px, 9px); opacity: 1; }
   to { transform: translate(-50%, -95%) translate(0, -10px) scale(0.92); opacity: 0.35; }

@@ -101,9 +101,14 @@ export function bindWorldFx(
       if (section === 'projects' || section === 'about') {
         thresholdActor.hidden = false
         thresholdActor.src = assetUrl('camp-rooms-v1/avatars/walk-up-1.png')
-        thresholdTimers.push(window.setTimeout(() => {
-          if (thresholdActor) thresholdActor.src = assetUrl('camp-rooms-v1/avatars/idle-up.png')
-        }, 140))
+        thresholdTimers.push(
+          window.setTimeout(() => {
+            if (thresholdActor) thresholdActor.src = assetUrl('camp-rooms-v1/avatars/walk-up-2.png')
+          }, 90),
+          window.setTimeout(() => {
+            if (thresholdActor) thresholdActor.src = assetUrl('camp-rooms-v1/avatars/idle-up.png')
+          }, 180),
+        )
       } else {
         thresholdActor.hidden = true
       }

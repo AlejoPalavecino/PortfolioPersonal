@@ -3,11 +3,16 @@
   position: relative;
   width: min(320px, 100%);
   aspect-ratio: 160 / 72;
-  margin: 0 auto 14px;
+  margin: 0 auto 10px;
   border: 3px solid #66402c;
   box-shadow: 0 3px #422d25;
   background: #98d1e9;
   overflow: hidden;
+}
+
+/* When the full-screen pixel arrival cinematic is present, hide the duplicate mini-vignette inside the card */
+.intro-cinematic ~ .intro-card .loading-vignette {
+  display: none;
 }
 
 .loading-canvas {
@@ -17,14 +22,28 @@
   image-rendering: pixelated;
 }
 
+.intro-loader-hud {
+  padding: 8px 10px;
+  margin: 8px 0 10px;
+  background: rgba(24, 52, 66, 0.08);
+  border: 2px solid #bda074;
+}
+
+.loading-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 /* Real progress: width follows completed / total reported by the loader, never a timer. */
 .loading-progress {
-  width: min(320px, 100%);
+  width: 100%;
   height: 12px;
-  margin: 0 auto 8px;
-  border: 2px solid #66402c;
-  background: #ead6ad;
+  margin: 0;
+  border: 2px solid #5c3926;
+  background: #e4cfa3;
   overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(40, 24, 16, 0.25);
 }
 
 .loading-progress span {
@@ -36,7 +55,9 @@
   transition: transform 140ms ease-out;
 }
 
-#app[data-prepared="true"] .loading-progress span { background: repeating-linear-gradient(90deg, #5f9a3c 0 6px, #4a7f2f 6px 8px); }
+#app[data-prepared="true"] .loading-progress span {
+  background: repeating-linear-gradient(90deg, #5f9a3c 0 6px, #4a7f2f 6px 8px);
+}
 
 .sr-only {
   position: absolute;
@@ -51,16 +72,15 @@
 }
 
 @media (max-height: 820px) {
-  .intro-card { padding-block: 22px; }
-  .intro-card h1 { font-size: clamp(40px, 6vw, 60px); margin: 8px 0 12px; }
-  .loading-vignette { width: min(280px, 100%); margin-bottom: 10px; }
+  .intro-card { padding-block: 16px; }
+  .intro-card h1 { font-size: clamp(28px, 3.8vw, 38px); margin: 2px 0 4px; }
 }
+
 @media (max-height: 650px), (max-width: 380px) {
-  .intro-card { padding: 14px 16px; }
-  .intro-card h1 { font-size: clamp(34px, 10vw, 44px); margin: 4px 0 6px; }
-  .intro-card p { margin: 4px 0; }
-  .loading-vignette { width: min(176px, 100%); margin-bottom: 6px; }
-  .loading-progress { width: min(220px, 100%); height: 8px; margin-bottom: 4px; }
-  .enter-button, .direct-button { min-height: 44px; margin-top: 6px; }
-  .intro-links { margin-top: 10px; }
+  .intro-card { padding: 12px 14px; }
+  .intro-card h1 { font-size: clamp(24px, 7vw, 32px); margin: 2px 0 4px; }
+  .intro-card p { margin: 3px 0; }
+  .loading-progress { height: 9px; }
+  .enter-button, .direct-button { min-height: 44px; margin-top: 2px; }
+  .intro-links { margin-top: 8px; }
 }
