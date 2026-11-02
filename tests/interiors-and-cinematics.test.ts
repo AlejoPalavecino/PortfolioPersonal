@@ -140,6 +140,37 @@ describe('carteles exteriores, controles de intro y salas interiores', () => {
     expect(contactHtml).toContain('Abrir cliente de correo')
     expect(contactHtml).toContain('data-action="copy-email"')
   })
+
+  it('presenta intro estilo juego, esquemas de arquitectura en proyectos y contratos en contacto', () => {
+    const introHtml = shell()
+    expect(introHtml).toContain('intro-campfire-fx')
+    expect(introHtml).toContain('intro-actor-stage')
+    expect(introHtml).toContain('intro-beat-dots')
+    expect(introHtml).toContain('intro-card-header')
+    expect(introHtml).toContain('intro-chip')
+    expect(introHtml).toContain('intro-loader-hud')
+
+    const projectsHtml = sectionMarkup('projects')
+    expect(projectsHtml).toContain('workshop-hud-bar')
+    expect(projectsHtml).toContain('CASO #01 · EDTECH & IA')
+    expect(projectsHtml).toContain('CASO #02 · GESTIÓN & ARCA')
+    expect(projectsHtml).toContain('project-schematic')
+    expect(projectsHtml).toContain('project-highlights')
+    expect(projectsHtml).toContain('project-stack-chips')
+
+    const foxmindCase = caseMarkup('foxmind')
+    expect(foxmindCase).toContain('case-metrics-strip')
+    expect(foxmindCase).toContain('case-modules-grid')
+    expect(foxmindCase).toContain('MOD-01')
+
+    const contactHtml = sectionMarkup('contact')
+    expect(contactHtml).toContain('radio-console-bar')
+    expect(contactHtml).toContain('CONTRATO #01 · CANAL EQUIPO')
+    expect(contactHtml).toContain('CONTRATO #02 · CANAL PROYECTO')
+    expect(contactHtml).toContain('contract-specs')
+    expect(contactHtml).toContain('contract-chips')
+    expect(contactHtml).toContain('channel-readout')
+  })
 })
 
 describe('copia de correo con estado real y alternativa manual', () => {
