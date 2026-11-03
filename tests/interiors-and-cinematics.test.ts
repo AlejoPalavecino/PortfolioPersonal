@@ -10,36 +10,46 @@ afterEach(() => {
   vi.restoreAllMocks()
 })
 
-describe('guion de presentación inicial de 6,8 s (intro-timeline)', () => {
-  it('recorre los 5 beats narrativos sin porcentajes falsos', () => {
-    expect(INTRO_DURATION_MS).toBe(6800)
-
+describe('prólogo cinematográfico de 7,8 s (intro-timeline)', () => {
+  it('presenta cinco momentos sin confundir narrativa y progreso de carga', () => {
+    expect(INTRO_DURATION_MS).toBe(7800)
     const beat0 = sampleIntroTimeline(300)
     expect(beat0.beatIndex).toBe(0)
     expect(beat0.action).toBe('landscape-reveal')
     expect(beat0.actorVisible).toBe(false)
     expect(beat0.completed).toBe(false)
+    expect(beat0.storyProgress).toBeGreaterThan(0)
 
-    const beat1 = sampleIntroTimeline(2000)
+    const beat1 = sampleIntroTimeline(2200)
     expect(beat1.beatIndex).toBe(1)
     expect(beat1.action).toBe('walk-right')
-    expect(beat1.actorVisible).toBe(true)
     expect(beat1.actorFrame).toMatch(/^walk-right-/)
+    expect(beat1.actorXPercent).toBeGreaterThan(6)
 
-    const beat2 = sampleIntroTimeline(3500)
+    const beat2 = sampleIntroTimeline(3900)
     expect(beat2.beatIndex).toBe(2)
     expect(beat2.title).toBe('Soy Alejo Palavecino.')
     expect(beat2.actorFrame).toBe('idle-down')
 
-    const beat3 = sampleIntroTimeline(5400)
+    const beat3 = sampleIntroTimeline(5700)
     expect(beat3.beatIndex).toBe(3)
-    expect(beat3.subtitle).toContain('Desarrollo software. Transformo ideas en productos.')
-    expect(beat3.specialty).toContain('Full stack · Análisis · Automatización e IA')
+    expect(beat3.subtitle).toContain('Análisis funcional')
+    expect(beat3.specialty).toContain('Automatización e IA')
 
-    const beat4 = sampleIntroTimeline(6800)
+    const beat4 = sampleIntroTimeline(INTRO_DURATION_MS)
     expect(beat4.beatIndex).toBe(4)
-    expect(beat4.action).toBe('crossfade-to-existing-world')
+    expect(beat4.action).toBe('invite')
     expect(beat4.completed).toBe(true)
+    expect(beat4.storyProgress).toBe(1)
+    expect(beat4.cameraScale).toBe(1)
+    expect(sampleIntroTimeline(999999)).toEqual(beat4)
+  })
+
+  it('ofrece una última pantalla estable incluso con tiempos inválidos', () => {
+    expect(sampleIntroTimeline(Number.NaN)).toEqual(sampleIntroTimeline(0))
+    expect(sampleIntroTimeline(-200).beatIndex).toBe(0)
+    expect(sampleIntroTimeline(6700).beatIndex).toBe(4)
+    expect(sampleIntroTimeline(7600).completed).toBe(false)
   })
 
   it('mapea cada vista a su sala interior o campamento', () => {

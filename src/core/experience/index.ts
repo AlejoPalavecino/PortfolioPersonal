@@ -48,12 +48,16 @@ export function roomForView(view: DomainView | { kind: 'case'; id: string }): Se
   return null
 }
 
-export const INTRO_DURATION_MS = 6800
+/**
+ * Five-beat, non-blocking prologue. Its clock is narrative only: scene preparation
+ * is counted separately, and completing the story never launches the game.
+ */
+export const INTRO_DURATION_MS = 7800
 
 export type IntroBeatSnapshot = {
   elapsedMs: number
   beatIndex: 0 | 1 | 2 | 3 | 4
-  action: 'landscape-reveal' | 'walk-right' | 'idle-down' | 'crossfade-to-existing-world'
+  action: 'landscape-reveal' | 'walk-right' | 'idle-down' | 'invite'
   title: string
   subtitle: string
   specialty: string
@@ -62,93 +66,83 @@ export type IntroBeatSnapshot = {
   actorYPercent: number
   actorVisible: boolean
   crossfade: number
+  storyProgress: number
+  cameraScale: number
+  cameraShiftPercent: number
+  skyLight: number
   completed: boolean
 }
 
+const clamp01 = (value: number) => Math.max(0, Math.min(1, value))
+const progress = (time: number, start: number, end: number) => clamp01((time - start) / (end - start))
+
 export function sampleIntroTimeline(rawElapsedMs: number): IntroBeatSnapshot {
-  const elapsedMs = Math.max(0, Math.min(INTRO_DURATION_MS, rawElapsedMs))
-  const specialty = 'Full stack · Análisis · Automatización e IA'
-  if (elapsedMs < 1200) {
-    return {
-      elapsedMs,
-      beatIndex: 0,
-      action: 'landscape-reveal',
-      title: 'Campamento creativo',
-      subtitle: '',
-      specialty,
-      actorFrame: 'idle-right',
-      actorXPercent: 6,
-      actorYPercent: 91,
-      actorVisible: elapsedMs >= 450,
-      crossfade: 0,
-      completed: false,
-    }
-  }
-  if (elapsedMs < 2800) {
-    const walkElapsed = elapsedMs - 1200
-    const u = Math.max(0, Math.min(1, walkElapsed / 1600))
-    const stepIndex = (Math.floor(walkElapsed / 130) % 4) + 1
-    return {
-      elapsedMs,
-      beatIndex: 1,
-      action: 'walk-right',
-      title: 'Campamento creativo',
-      subtitle: '',
-      specialty,
-      actorFrame: `walk-right-${stepIndex}`,
-      actorXPercent: 6 + 22 * u,
-      actorYPercent: 91,
-      actorVisible: true,
-      crossfade: 0,
-      completed: false,
-    }
-  }
-  if (elapsedMs < 4800) {
-    return {
-      elapsedMs,
-      beatIndex: 2,
-      action: 'idle-down',
-      title: 'Soy Alejo Palavecino.',
-      subtitle: specialty,
-      specialty,
-      actorFrame: 'idle-down',
-      actorXPercent: 28,
-      actorYPercent: 91,
-      actorVisible: true,
-      crossfade: 0,
-      completed: false,
-    }
-  }
-  if (elapsedMs < 6200) {
-    return {
-      elapsedMs,
-      beatIndex: 3,
-      action: 'idle-down',
-      title: 'Soy Alejo Palavecino.',
-      subtitle: 'Desarrollo software. Transformo ideas en productos.',
-      specialty,
-      actorFrame: 'idle-down',
-      actorXPercent: 28,
-      actorYPercent: 91,
-      actorVisible: true,
-      crossfade: 0,
-      completed: false,
-    }
-  }
-  const crossfade = Math.max(0, Math.min(1, (elapsedMs - 6200) / 600))
-  return {
+  const elapsedMs = Number.isFinite(rawElapsedMs) ? Math.max(0, Math.min(INTRO_DURATION_MS, rawElapsedMs)) : 0
+  const advance = elapsedMs / INTRO_DURATION_MS
+  const specialty = 'Full Stack · Análisis funcional · Automatización e IA'
+  const shared = {
     elapsedMs,
-    beatIndex: 4,
-    action: 'crossfade-to-existing-world',
-    title: 'Explorá mi trabajo.',
-    subtitle: 'Desarrollo software. Transformo ideas en productos.',
     specialty,
-    actorFrame: 'idle-down',
-    actorXPercent: 28,
+    storyProgress: advance,
+    cameraScale: 1.065 - 0.065 * advance,
+    cameraShiftPercent: -1.4 * advance,
+    skyLight: 0.32 + 0.48 * progress(elapsedMs, 0, 6800),
     actorYPercent: 91,
-    actorVisible: true,
-    crossfade,
+    crossfade: progress(elapsedMs, 6700, INTRO_DURATION_MS),
     completed: elapsedMs >= INTRO_DURATION_MS,
   }
-}
 
+  if (elapsedMs < 1200) return {
+    ...shared,
+    beatIndex: 0,
+    action: 'landscape-reveal',
+    title: 'Las ideas necesitan un camino.',
+    subtitle: 'Cada proyecto comienza con una necesidad real.',
+    actorFrame: 'idle-right',
+    actorXPercent: 6,
+    actorVisible: elapsedMs >= 320,
+  }
+  if (elapsedMs < 3300) {
+    const u = progress(elapsedMs, 1200, 3300)
+    return {
+      ...shared,
+      beatIndex: 1,
+      action: 'walk-right',
+      title: 'Primero entender. Después construir.',
+      subtitle: 'Analizar el problema es parte de encontrar la solución.',
+      actorFrame: 'walk-right-' + (Math.floor((elapsedMs - 1200) / 135) % 4 + 1),
+      actorXPercent: 6 + 24 * u,
+      actorVisible: true,
+    }
+  }
+  if (elapsedMs < 5100) return {
+    ...shared,
+    beatIndex: 2,
+    action: 'idle-down',
+    title: 'Soy Alejo Palavecino.',
+    subtitle: 'Desarrollador Full Stack y estudiante de Ingeniería en Sistemas en la UTN.',
+    actorFrame: 'idle-down',
+    actorXPercent: 30,
+    actorVisible: true,
+  }
+  if (elapsedMs < 6700) return {
+    ...shared,
+    beatIndex: 3,
+    action: 'idle-down',
+    title: 'De la idea al producto.',
+    subtitle: 'Análisis funcional, desarrollo y tecnologías de IA con propósito.',
+    actorFrame: 'idle-down',
+    actorXPercent: 30,
+    actorVisible: true,
+  }
+  return {
+    ...shared,
+    beatIndex: 4,
+    action: 'invite',
+    title: 'Te invito a recorrer mi trabajo.',
+    subtitle: 'Explorá el campamento o consultá directamente los proyectos.',
+    actorFrame: 'idle-down',
+    actorXPercent: 30,
+    actorVisible: true,
+  }
+}
