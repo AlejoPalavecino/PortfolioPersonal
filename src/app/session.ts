@@ -26,6 +26,10 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
   const update = (event: ExperienceEvent) => {
     if (event.type === 'read' || event.type === 'direct') awaitingEntry = false
     state = reduceExperience(state, event)
+    // A returning visitor who already entered may resume automatically; skipping the film never does.
+    if (event.type === 'load-ready' && awaitingEntry && state.entered && state.preparation === 'ready') {
+      state = reduceExperience(state, { type: 'enter' })
+    }
     root.dataset.phase = state.phase
     intro.hidden = !awaitingEntry || state.phase === 'explore' || state.phase === 'read'
     if (state.phase === 'explore') {
@@ -78,8 +82,8 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     if (state.preparation !== 'ready' || entryTimer !== undefined) return
     const finish = () => {
       entryTimer = undefined
-      intro.classList.remove('is-leaving')
-      intro.removeAttribute('aria-busy')
+      intro.classList?.remove('is-leaving')
+      intro.removeAttribute?.('aria-busy')
       awaitingEntry = false
       update({ type: 'enter' })
       if (state.phase !== 'explore') return
