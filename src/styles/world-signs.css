@@ -16,6 +16,7 @@
   box-shadow: none;
   border-radius: 2px;
   overflow: visible;
+  isolation: isolate;
 }
 
 .world-label .sign-plate {
@@ -30,6 +31,7 @@
   image-rendering: pixelated;
   pointer-events: none;
   filter: drop-shadow(0 2px 0 rgba(28, 19, 12, 0.55));
+  transition: filter 130ms ease-out;
 }
 
 .world-label .sign-text {
@@ -75,6 +77,30 @@
   outline: 3px solid #ffce73;
   outline-offset: 2px;
 }
+
+/* Sprite support stays stationary: only paint/filter changes on interaction.
+   Ground-mounted signs receive a small contact shadow, not a floating glow. */
+.world-label:hover .sign-plate,
+.world-label:focus-visible .sign-plate {
+  filter: brightness(1.08) drop-shadow(0 3px 0 rgba(28, 19, 12, 0.6));
+}
+.world-label[data-selected] .sign-plate,
+.world-label[data-nearby] .sign-plate {
+  filter: brightness(1.06) drop-shadow(0 2px 0 rgba(28, 19, 12, 0.55));
+}
+.world-label[data-mount="poste-suelo"]::before,
+.world-label[data-mount="placa-mesa"]::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  width: 70px;
+  height: 8px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(37, 54, 31, .31), transparent 74%);
+}
+.world-label[data-mount="poste-suelo"]::before { top: 49px; }
+.world-label[data-mount="placa-mesa"]::before { top: 37px; }
 
 /* Calibrated mount positions on each building/prop without covering the avatar at arrival.point */
 .label-projects {
