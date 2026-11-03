@@ -69,7 +69,8 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
     if (action === 'recognitions') { controller.dispatch({ type: 'restore', view: { kind: 'recognitions' } }); return }
     if (action === 'journey') { controller.dispatch({ type: 'restore', view: { kind: 'section', section: 'journey' } }); return }
     if (id === 'foxmind' || id === 'flower') { controller.dispatch({ type: 'open-project', project: id }); return }
-    if (action === 'enter' || action === 'skip-intro') { if (session.skipIntro) session.skipIntro(); else session.enter(); return }
+    if (action === 'enter') { session.enter(); return }
+    if (action === 'skip-intro') { session.skipIntro(); return }
     if (action === 'direct') { session.direct(); controller.dispatch({ type: 'select-section', section: 'projects', arrived: true }); return }
     if (action === 'copy-email') { void copyEmailAddress(root, button); return }
     if (action === 'force-room') { views.forceOpenPendingRoom?.(); return }

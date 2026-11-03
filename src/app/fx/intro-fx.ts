@@ -1,21 +1,20 @@
-import { sampleIntroTimeline } from '../../core/experience'
+import { INTRO_DURATION_MS, sampleIntroTimeline } from '../../core/experience'
 import type { CueBus } from '../../core/fx/cues'
 import { assetUrl } from '../../shared'
 import type { Loop } from '../loop'
 import { createVignette } from './vignette'
 
 /**
- * Connects the real preparation cues and the 6.8 s narrative arrival timeline to the intro.
- * - Real loader progress (completed / total) and the 6.8 s presentation are strictly independent.
+ * Connects real preparation cues and a non-blocking five-beat narrative to the intro.
+ * - Real loader progress (completed / total) and the 7.8 s presentation are strictly independent.
  * - "Omitir presentación" and "Pausar presentación" are operable from frame 0.
- * - Under reduced motion or after completion/skip, the presentation stays in a calm static state.
+ * - Completion/skip holds a final invitation until the visitor chooses to enter.
  */
 export function bindIntroFx(
   root: HTMLElement,
   bus: CueBus,
   loop: Loop,
   reducedMotion: () => boolean,
-  onComplete?: () => void,
 ) {
   const intro = root.querySelector<HTMLElement>('.intro')
   const card = root.querySelector<HTMLElement>('.intro-card')
@@ -27,7 +26,9 @@ export function bindIntroFx(
   const beatKicker = root.querySelector<HTMLElement>('.intro-beat-kicker')
   const beatTitle = root.querySelector<HTMLElement>('.intro-beat-title')
   const beatSub = root.querySelector<HTMLElement>('.intro-beat-subtitle')
+  const beatCount = root.querySelector<HTMLElement>('.intro-beat-count')
   const pauseBtn = root.querySelector<HTMLButtonElement>('[data-action="intro-pause"]')
+  const replayBtn = root.querySelector<HTMLButtonElement>('[data-action="intro-replay"]')
 
   if (!card) return { dispose() {}, refresh() {} }
 
@@ -45,14 +46,15 @@ export function bindIntroFx(
   let paused = false
   let finished = false
   let lastFrame = ''
+  let previousBeat = -1
   let offLoop: (() => void) | null = null
 
   const KICKERS: Readonly<Record<number, string>> = {
-    0: '01 · AMANECER EN LA MONTAÑA',
-    1: '02 · LLEGADA AL SENDERO',
-    2: '03 · PRESENTACIÓN EN EL CAMPAMENTO',
-    3: '04 · ESPECIALIDAD Y PROPÓSITO',
-    4: '05 · CAMPAMENTO LISTO PARA EXPLORAR',
+    0: 'EL PUNTO DE PARTIDA',
+    1: 'EL PROCESO',
+    2: 'QUIÉN SOY',
+    3: 'LO QUE CONSTRUYO',
+    4: 'TU RECORRIDO COMIENZA',
   }
 
   const applySnapshot = (ms: number) => {
@@ -60,11 +62,12 @@ export function bindIntroFx(
     root.dataset.introBeat = String(snap.beatIndex)
     root.dataset.introAction = snap.action
     const kickerText = KICKERS[snap.beatIndex] ?? 'LLEGADA AL CAMPAMENTO'
-    if (beatKicker && beatKicker.textContent !== kickerText) beatKicker.textContent = kickerText
-    if (beatTitle && beatTitle.textContent !== snap.title) beatTitle.textContent = snap.title
-    if (beatSub) {
-      const subText = snap.subtitle || snap.specialty
-      if (beatSub.textContent !== subText) beatSub.textContent = subText
+    if (snap.beatIndex !== previousBeat) {
+      previousBeat = snap.beatIndex
+      if (beatKicker) beatKicker.textContent = kickerText
+      if (beatCount) beatCount.textContent = '0' + (snap.beatIndex + 1) + ' / 05'
+      if (beatTitle) beatTitle.textContent = snap.title
+      if (beatSub) beatSub.textContent = snap.subtitle
     }
     const leftPct = `${snap.actorXPercent.toFixed(2)}%`
     if (actorStage) {
@@ -80,16 +83,21 @@ export function bindIntroFx(
       }
     }
     intro?.style.setProperty('--intro-crossfade', snap.crossfade.toFixed(3))
+    intro?.style.setProperty('--intro-story-progress', snap.storyProgress.toFixed(4))
+    intro?.style.setProperty('--intro-camera-scale', snap.cameraScale.toFixed(4))
+    intro?.style.setProperty('--intro-camera-x', snap.cameraShiftPercent.toFixed(3) + '%')
+    intro?.style.setProperty('--intro-sky-light', snap.skyLight.toFixed(3))
     return snap
   }
 
-  const showStaticEnd = () => {
+  const showEnd = (skipped: boolean) => {
     offLoop?.(); offLoop = null
-    root.dataset.introStage = 'static'
-    applySnapshot(5200)
-    if (pauseBtn) {
-      pauseBtn.hidden = true
-    }
+    finished = true
+    elapsed = INTRO_DURATION_MS
+    root.dataset.introStage = skipped ? 'static' : 'completed'
+    applySnapshot(elapsed)
+    if (pauseBtn) pauseBtn.hidden = true
+    if (replayBtn) replayBtn.hidden = reducedMotion()
   }
 
   const tick = (_time: number, dt: number) => {
@@ -98,30 +106,32 @@ export function bindIntroFx(
       return
     }
     if (reducedMotion() || root.dataset.introSkipped === 'true') {
-      showStaticEnd()
+      showEnd(true)
       return
     }
     if (paused || document.hidden) return
     elapsed += Math.min(dt, 100)
     const snap = applySnapshot(elapsed)
-    if (snap.completed) {
-      finished = true
-      root.dataset.introStage = 'completed'
-      offLoop?.(); offLoop = null
-      if (pauseBtn) pauseBtn.hidden = true
-      onComplete?.()
-    }
+    if (snap.completed) showEnd(false)
   }
 
   const syncTimeline = () => {
     offLoop?.(); offLoop = null
     if (!intro || intro.hidden) return
-    if (reducedMotion() || finished || root.dataset.introSkipped === 'true') {
-      showStaticEnd()
+    if (reducedMotion() || root.dataset.introSkipped === 'true') {
+      showEnd(true)
+      return
+    }
+    if (finished) {
+      root.dataset.introStage = 'completed'
+      if (pauseBtn) pauseBtn.hidden = true
+      if (replayBtn) replayBtn.hidden = false
+      applySnapshot(INTRO_DURATION_MS)
       return
     }
     root.dataset.introStage = 'playing'
     if (pauseBtn) pauseBtn.hidden = false
+    if (replayBtn) replayBtn.hidden = true
     applySnapshot(elapsed)
     offLoop = loop.add(tick)
   }
@@ -136,6 +146,21 @@ export function bindIntroFx(
     }
   }
   pauseBtn?.addEventListener('click', onPauseClick)
+  const onReplayClick = () => {
+    if (reducedMotion()) return
+    elapsed = 0
+    paused = false
+    finished = false
+    previousBeat = -1
+    root.dataset.introPaused = 'false'
+    root.dataset.introSkipped = 'false'
+    if (pauseBtn) {
+      pauseBtn.setAttribute('aria-pressed', 'false')
+      pauseBtn.textContent = 'Pausar presentación'
+    }
+    syncTimeline()
+  }
+  replayBtn?.addEventListener('click', onReplayClick)
 
   const onVisibility = () => {
     if (document.hidden && !finished && !paused && intro && !intro.hidden) {
@@ -173,6 +198,7 @@ export function bindIntroFx(
       offs.forEach(off => off())
       motion.disconnect()
       pauseBtn?.removeEventListener('click', onPauseClick)
+      replayBtn?.removeEventListener('click', onReplayClick)
       document.removeEventListener('visibilitychange', onVisibility)
       vignette?.dispose()
       live.remove()
