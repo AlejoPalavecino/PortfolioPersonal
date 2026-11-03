@@ -182,6 +182,7 @@ main {
   mask-mode:alpha;
 }
 .avatar-ghost {
-  opacity:.48;
-  filter:brightness(0) invert(1) drop-shadow(0 0 2px #18333c);
+  /* A subtle, terrain-coloured silhouette only where the POI has opaque pixels. */
+  opacity:.27;
+  filter:grayscale(.45) brightness(.60) saturate(.65);
 }

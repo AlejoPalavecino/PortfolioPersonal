@@ -58,3 +58,30 @@ describe('geometría del campamento', () => {
   })
 })
 
+
+describe('deslizamiento del personaje contra sólidos', () => {
+  it('continúa sobre el eje libre al llegar en diagonal a una pared', () => {
+    const from = { x: 40, y: 35 }
+    const end = moveSafely(fixture, from, { x: 24, y: 20 })
+    expect(end.x).toBeGreaterThan(from.x)
+    expect(end.x).toBeLessThan(45 - fixture.clearance + 0.01)
+    expect(end.y).toBeGreaterThan(48)
+    expect(isWalkable(fixture, end)).toBe(true)
+  })
+
+  it('no cruza esquinas ni márgenes con movimientos diagonales prolongados', () => {
+    for (const delta of [{ x: 16, y: 12 }, { x: 16, y: -12 }, { x: 35, y: 0 }]) {
+      const from = { x: 40, y: 50 }
+      const end = moveSafely(fixture, from, delta)
+      expect(isWalkable(fixture, end)).toBe(true)
+      // The wall extends beyond the attempted vertical displacement.
+      expect(end.x).toBeLessThan(45 - fixture.clearance + 0.01)
+    }
+  })
+
+  it('descarta entradas no finitas sin modificar la posición', () => {
+    const start = { x: 10, y: 50 }
+    expect(moveSafely(fixture, start, { x: Number.NaN, y: 5 })).toEqual(start)
+    expect(moveSafely(fixture, start, { x: 0, y: Infinity })).toEqual(start)
+  })
+})

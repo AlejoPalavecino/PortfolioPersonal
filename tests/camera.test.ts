@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { createCamera, followCamera, screenToWorld, worldToScreen } from '../src/core/camera'
+import { createCamera, followCamera, responsiveCameraScale, screenToWorld, worldToScreen } from '../src/core/camera'
 
 const world = { width: 1000, height: 650 }
 const viewport = { width: 390, height: 844 }
@@ -50,5 +50,26 @@ describe('cámara y coordenadas', () => {
     expect(followCamera(camera, target, world, { width: 400, height: 300 }, 16, { locked: true })).toEqual(camera)
     expect(followCamera(camera, target, world, { width: 400, height: 300 }, 16, { reducedMotion: true })).toEqual(camera)
     expect(followCamera(camera, target, world, { width: 400, height: 300 }, 0)).toEqual(camera)
+  })
+})
+
+describe('encuadre adaptable al alto del dispositivo', () => {
+  it('conserva la escala de retrato y muestra más suelo en ventanas muy bajas', () => {
+    const portrait = responsiveCameraScale(world, { width: 390, height: 844 })
+    const compact = responsiveCameraScale(world, { width: 390, height: 360 })
+    expect(portrait).toBe(1.08)
+    expect(compact).toBeLessThan(portrait)
+    expect(compact).toBeGreaterThanOrEqual(0.75)
+    expect(responsiveCameraScale(world, { width: 1366, height: 768 })).toBeCloseTo(1.366)
+  })
+
+  it('mantiene inversión precisa de coordenadas con todas las escalas adaptativas', () => {
+    for (const view of [{ width: 320, height: 568 }, { width: 390, height: 360 }, { width: 844, height: 390 }, { width: 1440, height: 900 }]) {
+      const camera = createCamera(world, view, { x: 650, y: 345 }, responsiveCameraScale(world, view))
+      const point = { x: 550, y: 320 }
+      const restored = screenToWorld(worldToScreen(point, camera), camera)
+      expect(restored.x).toBeCloseTo(point.x, 8)
+      expect(restored.y).toBeCloseTo(point.y, 8)
+    }
   })
 })

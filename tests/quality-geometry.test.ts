@@ -32,3 +32,30 @@ describe('contrato de selección y profundidad del campamento', () => {
     },
   )
 })
+
+describe('oclusión por alfa del edificio', () => {
+  it('solo revela la silueta cuando la imagen cargó y el personaje está detrás', async () => {
+    const { renderScene } = await import('../src/app/scene-rendering')
+    const avatar = { src: 'avatar.webp', style: { width: '36px', left: '0', top: '0', transform: 'translate(630px,230px)' } }
+    const ghost = { src: 'old.webp', style: { width: '', left: '', top: '', transform: '' } }
+    const overlay = { hidden: true, style: {} as Record<string, string>, dataset: {} as Record<string, string> }
+    const building = { src: 'poi-projects.webp', currentSrc: 'poi-projects.webp', complete: false, naturalWidth: 0, offsetLeft: 490, offsetTop: 117, offsetWidth: 320, offsetHeight: 180 }
+    const root = {
+      querySelector: (selector: string) =>
+        selector === '.avatar:not(.avatar-ghost)' ? avatar : selector === '.avatar-ghost' ? ghost :
+          selector === '.avatar-occlusion' ? overlay : selector === '[data-poi="projects"]' ? building : null,
+    } as unknown as HTMLElement
+    const state = (x: number, y: number) => ({ position: { x, y }, visited: [], route: null })
+    renderScene(root, state(650, 230))
+    expect(overlay.hidden).toBe(true)
+    building.complete = true
+    building.naturalWidth = 320
+    renderScene(root, state(650, 230))
+    expect(overlay.hidden).toBe(false)
+    expect(overlay.dataset.destination).toBe('projects')
+    expect(overlay.style.maskImage).toContain('poi-projects.webp')
+    expect(ghost.src).toBe(avatar.src)
+    renderScene(root, state(650, 345))
+    expect(overlay.hidden).toBe(true)
+  })
+})
