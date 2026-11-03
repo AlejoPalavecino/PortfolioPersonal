@@ -27,73 +27,76 @@ function roomCurtain(): string {
 }
 
 function intro(): string {
-  return `<section class="intro" aria-label="Bienvenida y presentación inicial">
-    <div class="intro-cinematic" aria-hidden="true">
-      <div class="intro-backdrop" style="--intro-desktop-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival.webp')}');--intro-portrait-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival-portrait.webp')}')"></div>
-      <div class="intro-campfire-fx" style="--fx-fire:url('${assetUrl('camp-rooms-v1/fx/fire.png')}');--fx-smoke:url('${assetUrl('camp-rooms-v1/fx/smoke.png')}')">
+  return `<section class="intro" aria-label="Presentación cinematográfica y acceso al portfolio">
+    <div class="intro-cinematic">
+      <div class="intro-backdrop" aria-hidden="true" style="--intro-desktop-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival.webp')}');--intro-portrait-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival-portrait.webp')}')"></div>
+      <div class="intro-atmosphere" aria-hidden="true"><span class="intro-haze-near"></span><span class="intro-haze-far"></span></div>
+      <div class="intro-campfire-fx" aria-hidden="true" style="--fx-fire:url('${assetUrl('camp-rooms-v1/fx/fire.png')}');--fx-smoke:url('${assetUrl('camp-rooms-v1/fx/smoke.png')}')">
         <span class="intro-fire-glow"></span>
         <span class="intro-fire-smoke"></span>
         <span class="intro-fire-flame"></span>
       </div>
-      <div class="intro-story-banner">
+      <div class="intro-story-banner" aria-live="polite" aria-atomic="true">
         <div class="intro-dialogue-head">
-          <span class="intro-beat-kicker">LLEGADA AL CAMPAMENTO</span>
-          <span class="intro-beat-dots"><i data-beat-dot="0"></i><i data-beat-dot="1"></i><i data-beat-dot="2"></i><i data-beat-dot="3"></i><i data-beat-dot="4"></i></span>
+          <span class="intro-beat-kicker">EL PUNTO DE PARTIDA</span>
+          <span class="intro-beat-count">01 / 05</span>
+          
         </div>
-        <p class="intro-beat-title">Campamento creativo</p>
-        <p class="intro-beat-subtitle">Desarrollo software. Transformo ideas en productos.</p>
+        <p class="intro-beat-title">Las ideas necesitan un camino.</p>
+        <p class="intro-beat-subtitle">Cada proyecto comienza con una necesidad real.</p>
+        <div class="intro-beat-dots" aria-hidden="true"><i data-beat-dot="0"></i><i data-beat-dot="1"></i><i data-beat-dot="2"></i><i data-beat-dot="3"></i><i data-beat-dot="4"></i></div>
+        <div class="intro-story-track" aria-hidden="true"><span></span></div>
       </div>
-      <div class="intro-actor-stage">
+      <div class="intro-actor-stage" aria-hidden="true">
         <span class="intro-actor-shadow"></span>
-        <span class="intro-actor-tag">ALEJO · DEV</span>
+        <span class="intro-actor-tag">ALEJO · DESARROLLADOR</span>
         <img class="intro-actor" src="${assetUrl('camp-rooms-v1/avatars/idle-right.png')}" width="160" height="288" alt="">
       </div>
     </div>
     <div class="intro-top-bar" role="toolbar" aria-label="Controles de presentación">
       <div class="intro-brand-pill" aria-hidden="true">
         <img src="${assetUrl('emblem.webp')}" alt="" width="28" height="28">
-        <span>ALEJO PALAVECINO · PORTFOLIO INTERACTIVO</span>
+        <span>ALEJO PALAVECINO <span class="intro-brand-divider">/</span> PORTFOLIO INTERACTIVO</span>
       </div>
       <div class="intro-top-actions">
         <button type="button" class="intro-pause-button" data-action="intro-pause" aria-pressed="false">Pausar presentación</button>
-        <button type="button" class="intro-skip-button" data-action="skip-intro">Omitir presentación →</button>
+        <button type="button" class="intro-replay-button" data-action="intro-replay" hidden>Repetir presentación</button>
+        <button type="button" class="intro-skip-button" data-action="skip-intro">Omitir presentación</button>
       </div>
     </div>
     <div class="intro-card">
       <div class="intro-card-header">
         <img class="intro-portrait-badge" src="${assetUrl('portrait.webp')}" width="72" height="72" alt="">
         <div class="intro-card-titles">
-          <span class="intro-kicker">CAMPAMENTO CREATIVO · MODO JUEGO &amp; PORTFOLIO</span>
-          <h1>Soy Alejo Palavecino</h1>
-          <p class="intro-subtitle">Desarrollo software. Transformo ideas en productos.</p>
+          <span class="intro-kicker">DESARROLLO DE SOFTWARE · PORTFOLIO</span>
+          <h1>Alejo Palavecino</h1>
+          <p class="intro-subtitle">Transformo ideas en productos que se pueden usar.</p>
         </div>
       </div>
       <p class="intro-specialties" aria-label="Especialidades principales">
-        <span class="intro-chip">Full stack</span>
+        <span class="intro-chip">Full Stack</span>
         <span class="intro-chip-sep" aria-hidden="true">·</span>
-        <span class="intro-chip">Análisis</span>
+        <span class="intro-chip">Análisis funcional</span>
         <span class="intro-chip-sep" aria-hidden="true">·</span>
         <span class="intro-chip">Automatización e IA</span>
       </p>
-      <div class="intro-quest-hint" aria-hidden="true">
-        <span>🗺️ <strong>4 lugares interactivos:</strong> Taller de Proyectos · Carpa Personal · Archivo · Puesto de Radio</span>
-      </div>
+      <p class="intro-quest-hint">Un recorrido por cuatro espacios: <strong>Proyectos, Sobre mí, Trayectoria y Contacto.</strong> Podés explorar o ir directo a la información.</p>
       <div class="intro-loader-hud">
         <div class="loading-vignette" aria-hidden="true"><canvas class="loading-canvas" width="160" height="72"></canvas></div>
         <div class="loading-bar-wrap">
-          <div class="loading-progress" role="progressbar" aria-label="Preparación real de recursos del campamento" aria-valuemin="0" aria-valuemax="28" aria-valuenow="0"><span></span></div>
-          <p class="loading-status">Preparando el campamento…</p>
+          <div class="loading-progress" role="progressbar" aria-label="Carga real de recursos del campamento" aria-valuemin="0" aria-valuemax="28" aria-valuenow="0"><span></span></div>
+          <p class="loading-status">Preparando el escenario…</p>
         </div>
       </div>
       <button class="retry-intro" data-action="retry" hidden>Reintentar carga</button>
       <div class="intro-primary-actions">
-        <button class="enter-button" data-action="enter" disabled>▶ Entrar al campamento →</button>
-        <button class="direct-button" data-action="direct">▤ Ver portfolio sin recorrer</button>
+        <button class="enter-button" data-action="enter" disabled>Entrar al portfolio <span aria-hidden="true">→</span></button>
+        <button class="direct-button" data-action="direct">Ver proyectos directamente</button>
       </div>
       <div class="intro-links">
         <button data-section="projects">Proyectos</button>
         <button data-section="contact">Contacto</button>
-        <a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>CV ↓</a>
+        <a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>Descargar CV</a>
         <button type="button" data-action="sound" aria-pressed="false">Sonido apagado</button>
         <button type="button" data-action="motion" aria-pressed="false">Reducir movimiento</button>
       </div>
