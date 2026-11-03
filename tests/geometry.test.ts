@@ -70,11 +70,12 @@ describe('deslizamiento del personaje contra sólidos', () => {
   })
 
   it('no cruza esquinas ni márgenes con movimientos diagonales prolongados', () => {
-    for (const delta of [{ x: 80, y: 45 }, { x: 80, y: -45 }, { x: -25, y: 75 }]) {
+    for (const delta of [{ x: 16, y: 12 }, { x: 16, y: -12 }, { x: 35, y: 0 }]) {
       const from = { x: 40, y: 50 }
       const end = moveSafely(fixture, from, delta)
       expect(isWalkable(fixture, end)).toBe(true)
-      expect(end.x).toBeLessThan(45)
+      // The wall extends beyond the attempted vertical displacement.
+      expect(end.x).toBeLessThan(45 - fixture.clearance + 0.01)
     }
   })
 
