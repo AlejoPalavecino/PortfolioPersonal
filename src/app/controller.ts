@@ -105,7 +105,9 @@ export function createController(render: (state: State, pose: Pose) => void, loo
     const moved = Math.hypot(next.x - before.x, next.y - before.y)
     if (moved < 1e-4) { speed = 0; if (moving) setMoving(false); return }
     if (!moving) { stopReason = 'release'; heading = desired; setMoving(true) }
-    heading = smoothHeading(heading, desired, elapsedMs)
+    // Face the direction actually travelled when sliding along a solid object.
+    const actualHeading = !route ? normalize(next.x - before.x, next.y - before.y) : desired
+    heading = smoothHeading(heading, actualHeading, elapsedMs)
     direction = facing(direction, heading.x, heading.y)
     const previousDistance = travelled
     travelled += moved

@@ -54,16 +54,30 @@ export function segmentClear(world: World, from: Point, to: Point): boolean {
       : polygonClear(from, to, obstacle.points, world.clearance))
 }
 
+/**
+ * Move by short collision-safe increments. When a diagonal meets a wall, preserve
+ * the unblocked axis instead of stopping both axes. Every accepted segment still
+ * honours the existing boundary, obstacle and clearance rules.
+ */
 export function moveSafely(world: World, from: Point, delta: Point): Point {
-  if (!isWalkable(world, from)) return from
-  const steps = Math.max(1, Math.ceil(Math.hypot(delta.x, delta.y) / Math.max(0.25, Math.min(world.cellSize / 4, world.clearance / 2))))
-  let last = from
-  for (let i = 1; i <= steps; i++) {
-    const point = { x: from.x + delta.x * i / steps, y: from.y + delta.y * i / steps }
-    if (!segmentClear(world, last, point)) break
-    last = point
+  if (!isWalkable(world, from) || !Number.isFinite(delta.x) || !Number.isFinite(delta.y)) return from
+  const stepSize = Math.max(0.25, Math.min(world.cellSize / 4, world.clearance / 2))
+  const steps = Math.max(1, Math.ceil(Math.hypot(delta.x, delta.y) / stepSize))
+  const dx = delta.x / steps, dy = delta.y / steps
+  let position = from
+  for (let i = 0; i < steps; i++) {
+    const direct = { x: position.x + dx, y: position.y + dy }
+    if (segmentClear(world, position, direct)) { position = direct; continue }
+
+    // Sliding is manual locomotion only: A* still uses segmentClear and never cuts corners.
+    const horizontal = { x: position.x + dx, y: position.y }
+    const vertical = { x: position.x, y: position.y + dy }
+    const canX = Math.abs(dx) > 1e-9 && segmentClear(world, position, horizontal)
+    const canY = Math.abs(dy) > 1e-9 && segmentClear(world, position, vertical)
+    if (!canX && !canY) break
+    position = canX && (!canY || Math.abs(dx) >= Math.abs(dy)) ? horizontal : vertical
   }
-  return last
+  return position
 }
 
 export function nearbySection(world: World, point: Point): Section | null {

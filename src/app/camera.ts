@@ -1,4 +1,4 @@
-import { createCamera, followCamera, screenToWorld, type Camera } from '../core/camera'
+import { createCamera, followCamera, responsiveCameraScale, screenToWorld, type Camera } from '../core/camera'
 import { WORLD, type Point } from '../core/domain'
 import type { Loop } from './loop'
 
@@ -18,7 +18,7 @@ export function createWorldCamera(root: HTMLElement, loop?: Loop) {
   const panel = root.querySelector<HTMLElement>('.panel')
   let size = { width: viewport.clientWidth, height: viewport.clientHeight }
   let focus: Point = WORLD.spawn
-  const scale = () => size.width < 700 ? 1.08 : Math.max(.75, size.width / 1000, size.height / 650)
+  const scale = () => responsiveCameraScale(WORLD, size)
   let camera: Camera = createCamera(WORLD, size, focus, scale())
   let locked = false, reduced = false, settle: { start: number; duration: number } | null = null
   let labels: { label: HTMLButtonElement; x: number; y: number; w: number; h: number }[] = []
@@ -31,7 +31,9 @@ export function createWorldCamera(root: HTMLElement, loop?: Loop) {
     const visibleW = size.width / camera.scale, visibleH = size.height / camera.scale
     const maxX = Math.max(0, WORLD.width - visibleW), maxY = Math.max(0, WORLD.height - visibleH)
     const tx = maxX > 0 ? camera.x / maxX : .5, ty = maxY > 0 ? camera.y / maxY : .5
-    landscape.style.backgroundPosition = `${(50 + (.5 - tx) * 6).toFixed(1)}% ${(50 + (.5 - ty) * 4).toFixed(1)}%`
+    // Smaller parallax on phones keeps the scenery connected to the terrain while panning.
+    const amplitude = Math.min(1, Math.max(.45, size.width / 850))
+    landscape.style.backgroundPosition = `${(50 + (.5 - tx) * 6 * amplitude).toFixed(1)}% ${(50 + (.5 - ty) * 4 * amplitude).toFixed(1)}%`
   }
   const paint = () => {
     world.style.transform = `translate(${-camera.x * camera.scale}px, ${-camera.y * camera.scale}px) scale(${camera.scale})`
