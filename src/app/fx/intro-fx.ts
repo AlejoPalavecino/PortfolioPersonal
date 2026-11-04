@@ -1,7 +1,7 @@
 import { sampleIntroTimeline } from '../../core/experience'
 import { INTRO_LINES, visibleDialogue } from '../../core/experience/intro-dialogue'
 import type { CueBus } from '../../core/fx/cues'
-import { assetUrl } from '../../shared'
+import { assetUrl, createRoomLoader } from '../../shared'
 import type { Loop } from '../loop'
 
 /** One mandatory arrival, two exits and an uninterrupted handoff to the world. */
@@ -14,28 +14,40 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
   const accessible = intro.querySelector<HTMLElement>('.intro-dialogue-accessible')!
   const buttons = [...intro.querySelectorAll<HTMLButtonElement>('.intro-primary-actions button')]
   const bar = intro.querySelector<HTMLElement>('.loading-progress')!
+  const boot = intro.querySelector<HTMLElement>('.intro-boot')!
+  const handoff = intro.querySelector<HTMLElement>('.intro-handoff')!
+  const roomLoader = createRoomLoader(async url => { const image = new Image(); image.src = url; await image.decode() })
+  let handoffTimeout: ReturnType<typeof setTimeout> | undefined
+  let failed = false, destinationReady = true
+  const loading = () => root.dataset.prepared !== 'true' && !failed
   let elapsed = 0, departing = 0, selected: HTMLButtonElement | null = null, bypass = false, disposed = false
   let off: (() => void) | null = null
   const paint = () => {
     const instant = reducedMotion()
-    if (instant) elapsed = Math.max(elapsed, 6000)
-    root.dataset.introReady = String(elapsed >= 6000)
+    const waiting = loading()
+    root.dataset.introBoot = String(waiting)
+    boot.hidden = !waiting
+    intro.querySelector<HTMLElement>('.intro-content')!.inert = waiting || !!selected
+    if (instant && !waiting) elapsed = Math.max(elapsed, 6000)
+    root.dataset.introReady = String(!waiting && elapsed >= 6000)
     const snap = sampleIntroTimeline(Math.min(elapsed, 2800))
     root.dataset.introStage = elapsed < 2800 ? 'playing' : 'conversation'
     root.dataset.introAction = snap.action
     intro.querySelector<HTMLElement>('.intro-actor-stage')!.style.setProperty('--arrival-x', `${Math.min(0,(snap.actorXPercent-28)*7)}px`)
-    actor.src = assetUrl(`camp-rooms-v1/avatars/${snap.actorFrame}.png`)
+    const src = assetUrl(`avatar/${snap.actorFrame}.webp`)
+    if (actor.getAttribute('src') !== src) actor.src = src
+    actor.style.opacity = !waiting && snap.actorVisible ? '1' : '0'
     bubble.hidden = elapsed < 2800
     text.textContent = visibleDialogue(INTRO_LINES.greeting.text,elapsed-2800,instant)
     if (!bubble.hidden) accessible.textContent = INTRO_LINES.greeting.text
-    for (const button of buttons) button.disabled = !!selected || elapsed < 6000 || (button.dataset.action === 'enter' && root.dataset.prepared !== 'true')
+    for (const button of buttons) button.disabled = !!selected || waiting || elapsed < 6000 || (button.dataset.action === 'enter' && root.dataset.prepared !== 'true')
   }
   const tick = (_t: number, dt: number) => {
     if (disposed || intro.hidden) { off?.(); off = null; return }
-    if (document.hidden) return
+    if (document.hidden || loading()) return
     if (selected) {
       departing += Math.min(dt,100)
-      if (departing >= (reducedMotion() ? 0 : 900)) {
+      if (destinationReady && departing >= (reducedMotion() ? 0 : 900)) {
         const button = selected; selected = null; bypass = true; button.disabled = false; button.click(); bypass = false
         off?.(); off = null
       }
@@ -44,22 +56,41 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
     elapsed += Math.min(dt,100); paint()
     if (elapsed >= 6000) { off?.(); off = null }
   }
-  const sync = () => { off?.(); off = null; if (!intro.hidden && !disposed) { paint(); if(elapsed < 6000 || selected) off = loop.add(tick) } }
+  const sync = () => { off?.(); off = null; if (!intro.hidden && !disposed) { paint(); if(!loading() && (elapsed < 6000 || selected)) off = loop.add(tick) } }
   const onClick = (e: Event) => {
     const button = (e.target as HTMLElement).closest<HTMLButtonElement>('.intro-primary-actions button')
     if (!button || bypass) return
     e.stopImmediatePropagation()
     if(button.disabled || selected) return
     selected = button; departing = 0
+    handoff.hidden = false
+    const direct = button.dataset.action === 'direct'
+    handoff.querySelector<HTMLElement>('.handoff-title')!.textContent = direct ? 'Preparando el taller de proyectos' : 'Entrando al campamento'
+    handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = direct ? 'Cargando el interior del taller…' : 'Proyectos · Contacto · Trayectoria · Sobre mí'
+    if (direct) {
+      destinationReady = false
+      handoffTimeout = setTimeout(() => { destinationReady = true; handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = 'El taller está tardando. Abriendo el contenido…' }, 8000)
+      void roomLoader.prefetch('projects').then(result => {
+        clearTimeout(handoffTimeout)
+        if (disposed) return
+        destinationReady = true
+        handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = result === 'ready' ? 'Taller listo. Abriendo proyectos…' : 'Abriendo proyectos con fondo alternativo…'
+      })
+    }
     root.dataset.introTransition = button.dataset.action === 'direct' ? 'projects' : 'camp'
     bus.emit('intro-cue',{kind:'depart'}); paint(); off = loop.add(tick)
   }
   intro.addEventListener('click',onClick,true)
-  const progress = (completed:number,total:number) => { bar.setAttribute('aria-valuenow',String(completed)); bar.setAttribute('aria-valuemax',String(total)); bar.querySelector<HTMLElement>('span')!.style.setProperty('--progress',String(total ? completed/total : 0)) }
-  const offs = [bus.on('prepare-start',()=>{root.dataset.prepared='false';progress(0,28);paint()}),bus.on('prepare-progress',({completed,total})=>progress(completed,total)),bus.on('prepare-ready',()=>{root.dataset.prepared='true';progress(28,28);paint()})]
+  const progress = (completed:number,total:number) => { bar.setAttribute('aria-valuenow',String(completed)); bar.setAttribute('aria-valuemax',String(total)); bar.querySelector<HTMLElement>('span')!.style.setProperty('--progress',String(total ? completed/total : 0)); boot.style.setProperty('--boot-progress',String(total ? completed/total : 0)); boot.querySelector<HTMLElement>('.boot-count')!.textContent = `${completed} de ${total} recursos` }
+  const offs = [
+    bus.on('prepare-start',()=>{failed=false;elapsed=0;root.dataset.prepared='false';progress(0,28);sync()}),
+    bus.on('prepare-progress',({completed,total,task})=>{progress(completed,total);boot.querySelector<HTMLElement>('.boot-task')!.textContent=task}),
+    bus.on('prepare-ready',()=>{root.dataset.prepared='true';progress(28,28);sync()}),
+    bus.on('prepare-failed',()=>{failed=true;elapsed=6000;sync()}),
+  ]
   const observer = new MutationObserver(sync)
   observer.observe(root,{attributes:true,attributeFilter:['data-motion']})
   observer.observe(intro,{attributes:true,attributeFilter:['hidden']})
   sync()
-  return {refresh:sync,dispose(){disposed=true;off?.();offs.forEach(fn=>fn());observer.disconnect();intro.removeEventListener('click',onClick,true)}}
+  return {refresh:sync,dispose(){disposed=true;clearTimeout(handoffTimeout);roomLoader.dispose();off?.();offs.forEach(fn=>fn());observer.disconnect();intro.removeEventListener('click',onClick,true)}}
 }

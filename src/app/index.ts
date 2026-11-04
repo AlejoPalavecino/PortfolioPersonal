@@ -12,6 +12,7 @@ import { effectiveReducedMotion } from '../core/experience'
 import { readManualMotion } from './motion-preference'
 import { createCueBus } from '../core/fx/cues'
 import { createLoop } from './loop'
+import { setControlLabel } from './control-label'
 import { bindIntroFx } from './fx/intro-fx'
 import { bindWorldFx } from './fx/world-fx'
 
@@ -39,7 +40,7 @@ export function mount(root: HTMLElement) {
     starting = false
     const icon = root.querySelector<HTMLButtonElement>('.icon-control[data-action=sound]')
     icon?.setAttribute('aria-pressed', String(result.enabled))
-    icon?.setAttribute('aria-label', result.enabled ? 'Apagar sonido' : 'Activar sonido')
+    if (icon) setControlLabel(icon, result.enabled ? 'Apagar sonido' : 'Activar sonido')
   }
   root.addEventListener('click', event => { if ((event.target as HTMLElement).closest('[data-action=sound]')) wanted = false }, true)
   document.addEventListener('pointerdown', event => { if (!(event.target as HTMLElement).closest('[data-action=sound]')) void startSound() })

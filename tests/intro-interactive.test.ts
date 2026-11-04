@@ -9,7 +9,7 @@ import type { FrameFn, Loop } from '../src/app/loop'
 
 const cleanups: (() => void)[] = []
 afterEach(() => { cleanups.splice(0).forEach(fn => fn()); document.body.innerHTML = ''; vi.restoreAllMocks(); vi.unstubAllGlobals() })
-function setup(reduced = false) {
+function setup(reduced = false, ready = true) {
   document.body.innerHTML = `<div id="app">${shell()}</div>`
   const root = document.querySelector<HTMLElement>('#app')!
   Object.defineProperty(document, 'hidden', { configurable: true, value: false })
@@ -19,6 +19,7 @@ function setup(reduced = false) {
   const bus = createCueBus(), complete = vi.fn(), cues: string[] = []
   const unlisten = bus.on('intro-cue', ({ kind }) => cues.push(kind))
   const fx = bindIntroFx(root, bus, loop, () => reduced, complete)
+  if (ready) bus.emit('prepare-ready', {})
   cleanups.push(() => { fx.dispose(); unlisten(); bus.dispose() })
   const click = (selector: string) => root.querySelector<HTMLButtonElement>(selector)!.click()
   const advance = (ms: number) => { for (let n = 0; n < ms; n += 50) for (const fn of [...fns]) fn(n, 50) }
@@ -33,19 +34,35 @@ describe('cinematic arrival', () => {
     expect(s.root.querySelector<HTMLButtonElement>('[data-action="direct"]')!.disabled).toBe(true)
     s.advance(5000)
     expect(s.root.querySelector<HTMLButtonElement>('[data-action="direct"]')!.disabled).toBe(false)
-    expect(s.root.querySelector<HTMLButtonElement>('[data-action="enter"]')!.disabled).toBe(true)
     s.bus.emit('prepare-ready', {})
     expect(s.root.querySelector<HTMLButtonElement>('[data-action="enter"]')!.disabled).toBe(false)
   })
-  it('hands off only after the departure animation and preserves the selected exit', () => {
+  it('hands off only after the departure animation and preserves the selected exit', async () => {
     const s = setup(); s.advance(7000)
     const arrived = vi.fn()
     s.root.addEventListener('click', arrived)
     s.click('[data-action="direct"]')
     expect(arrived).not.toHaveBeenCalled()
+    await new Promise(resolve => setTimeout(resolve, 0))
     s.advance(500); expect(arrived).not.toHaveBeenCalled()
     s.advance(500); expect(arrived).toHaveBeenCalledOnce()
     expect(s.root.dataset.introTransition).toBe('projects')
+  })
+  it('waits for actual preparation, reports real tasks and supports failure recovery', () => {
+    const s = setup(false, false)
+    s.advance(10000)
+    expect(s.root.dataset.introBoot).toBe('true')
+    expect(s.root.querySelector<HTMLElement>('.intro-story-banner')!.hidden).toBe(true)
+    s.bus.emit('prepare-progress', {completed:7,total:28,task:'Cargando el paisaje'})
+    expect(s.root.querySelector('.boot-task')!.textContent).toBe('Cargando el paisaje')
+    expect(s.root.querySelector('.boot-count')!.textContent).toBe('7 de 28 recursos')
+    s.bus.emit('prepare-failed', {error:'offline'})
+    expect(s.root.dataset.introBoot).toBe('false')
+    expect(s.root.querySelector<HTMLButtonElement>('[data-action="direct"]')!.disabled).toBe(false)
+    s.bus.emit('prepare-start', {})
+    expect(s.root.dataset.introBoot).toBe('true')
+    s.bus.emit('prepare-ready', {}); s.advance(6000)
+    expect(s.root.dataset.introReady).toBe('true')
   })
   it('respects reduced motion and removes all subscriptions on disposal', () => {
     const s = setup(true)
