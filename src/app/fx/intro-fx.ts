@@ -20,6 +20,7 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
   const character = stage.querySelector<HTMLButtonElement>('.intro-character')!
   const emote = stage.querySelector<HTMLElement>('.intro-emote')!
   const pause = root.querySelector<HTMLButtonElement>('[data-action="intro-pause"]')!
+  const replay = root.querySelector<HTMLButtonElement>('[data-action="intro-replay"]')
   const bar = root.querySelector<HTMLElement>('.loading-progress')
   const fill = bar?.querySelector<HTMLElement>('span')
   const live = document.createElement('p')
@@ -43,6 +44,7 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
     const src = assetUrl(`camp-rooms-v1/avatars/${snap.actorFrame}.png`)
     if (actor.getAttribute('src') !== src) actor.src = src
     bubble.hidden = elapsed < INTRO_ARRIVAL_MS
+    if (replay) replay.hidden = elapsed < INTRO_ARRIVAL_MS || reducedMotion()
     emote.textContent = INTRO_LINES[dialogue].marker; emote.hidden = bubble.hidden
     const line = INTRO_LINES[dialogue]
     title.textContent = line.title
@@ -97,10 +99,21 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
     paint(); sync()
   }
   const onNext = () => { if (active()) { cue('depart'); onComplete?.() } }
+  const onReplay = () => {
+    if (!active() || reducedMotion()) return
+    elapsed = 0; typedMs = 0; lastStep = -1; lastVoice = -1
+    paused = false; greeted = false; revealAll = false; dialogue = 'greeting'
+    accessible.textContent = ''
+    setPaused(false)
+    // Replay hides its own button, so return keyboard focus to a visible control.
+    pause.focus({ preventScroll: true })
+    sync()
+  }
   const onPause = () => { setPaused(!paused); sync() }
   const onVisibility = () => { if (document.hidden && active()) setPaused(true); sync() }
   replies.addEventListener('click', choose); character.addEventListener('click', onCharacter)
   next.addEventListener('click', onNext); pause.addEventListener('click', onPause)
+  replay?.addEventListener('click', onReplay)
   document.addEventListener('visibilitychange', onVisibility)
   const paintProgress = (completed: number, total: number) => {
     bar?.setAttribute('aria-valuemax', String(total)); bar?.setAttribute('aria-valuenow', String(completed))
@@ -129,6 +142,7 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
       stopped = true; off?.(); offs.forEach(fn => fn()); observer.disconnect(); live.remove()
       replies.removeEventListener('click', choose); character.removeEventListener('click', onCharacter)
       next.removeEventListener('click', onNext); pause.removeEventListener('click', onPause)
+      replay?.removeEventListener('click', onReplay)
       document.removeEventListener('visibilitychange', onVisibility)
     },
   }

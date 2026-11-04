@@ -1,8 +1,10 @@
 # Campamento creativo · portfolio para explorar
 
-La rama `feat/unified-intro-scene` rediseña el inicio como una sola escena central: presentación breve, diálogo sobre el personaje y acciones integradas al paisaje. Elimina la ficha lateral y la información duplicada. Ver [dirección visual y validación](docs/INTRO-ESCENA-UNIFICADA.md).
+El portfolio reúne un campamento jugable y una bienvenida conversada con Alejo. La presentación integra identidad, personaje, diálogo y acciones en una sola escena, con sonido voluntario, pausa, repetición, omisión y acceso directo a proyectos. El diálogo no obliga a entrar por tiempo.
 
-Los cambios están en la [PR #4](https://github.com/AlejoPalavecino/PortfolioPersonal/pull/4), sin integrar ni publicar. La conversación interactiva de la [PR #3](https://github.com/AlejoPalavecino/PortfolioPersonal/pull/3) ya está integrada a `main`; este rediseño conserva sus reglas y controles. La revisión visual de la nueva composición está pendiente.
+La bienvenida interactiva se incorporó en la [PR #3](https://github.com/AlejoPalavecino/PortfolioPersonal/pull/3) y el diseño unificado se desarrolló en la [PR #4](https://github.com/AlejoPalavecino/PortfolioPersonal/pull/4). La propuesta de prólogo lineal anterior de la PR #2 fue sustituida por la experiencia conversada. Ver [dirección visual](docs/INTRO-ESCENA-UNIFICADA.md) y [decisiones de consolidación](docs/CONSOLIDACION-PRS-2026-11-04.md). La validación automatizada no sustituye la inspección visual en dispositivos físicos.
+
+Versión web: [GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/).
 
 Antecedentes: [entrega audiovisual](docs/ENTREGA-AUDIOVISUAL.md), [cierre](docs/ENTREGA-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
 
@@ -49,7 +51,7 @@ Abrir `/PortfolioPersonal/` en la dirección que imprime Vite. La dirección de 
 
 El loader prepara 28 operaciones reales: metadatos, validación de navegación, seis imágenes del mundo y veinte sprites. Audio, PDF y evidencias de proyectos no bloquean la entrada. A los ocho segundos ofrece una alternativa clara, sin una espera mínima artificial. Fallo y reintento conservan el acceso profesional.
 
-El PDF aportado está en `public/assets/cv-alejo-palavecino-es.pdf`. Reemplazarlo por el definitivo y comprobar su descarga. El exportador `npm run assets` requiere Python/Pillow y vuelve a copiar el CV original del dossier; los originales se conservan en `Portfolio_Campamento_Documentacion_y_Assets_v1/`.
+El PDF aportado está en `public/assets/cv-alejo-palavecino-es.pdf`. Reemplazarlo por el definitivo y comprobar su descarga. El exportador `npm run assets` requiere Python/Pillow y no reemplaza automáticamente el CV; su importación se gestiona por separado. Los archivos originales se conservan en `Portfolio_Campamento_Documentacion_y_Assets_v1/`.
 
 ## Contenido y publicación
 

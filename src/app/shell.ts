@@ -46,6 +46,7 @@ function intro(): string {
         <button type="button" data-action="sound" aria-pressed="false">Sonido apagado</button>
         <button type="button" data-action="motion" aria-pressed="false">Reducir movimiento</button>
         <button type="button" class="intro-pause-button" data-action="intro-pause" aria-pressed="false">Pausar presentación</button>
+        <button type="button" class="intro-replay-button" data-action="intro-replay" hidden>Repetir bienvenida</button>
         <button type="button" class="intro-skip-button" data-action="skip-intro">Omitir presentación →</button>
       </div>
     </div>
