@@ -44,7 +44,7 @@ function intro(): string {
       </div>
       <div class="intro-top-actions">
         <button type="button" class="icon-control" data-action="sound" aria-label="Activar sonido" title="Activar sonido" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><g class="sound-waves"><path d="M17 8q5 4 0 8M19 4q9 8 0 16"/></g><path class="sound-slash" d="M3 3l18 18"/></svg></button>
-        <button type="button" class="icon-control" data-action="motion" aria-label="Reducir movimiento" title="Reducir movimiento" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="14" cy="4" r="2"/><g class="walking-person"><path d="M10 9l3-2 3 5 4 1M13 8l-2 7-4 5M11 15l5 2 1 4M10 9l-3 4H4"/></g><path class="motion-slash" d="M3 3l18 18"/></svg></button>
+        <button type="button" class="icon-control" data-action="motion" aria-label="Reducir movimiento" title="Reducir movimiento" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4" r="1.8"/><g class="walking-person"><path d="m10 8 3-1 2 5 4 1M12 8l-2 7-4 6M10 15l5 2 1 4M10 8l-3 4H4"/></g><path class="motion-slash" d="M3 3l18 18"/></svg></button>
       </div>
     </div>
     <div class="intro-boot" role="status" aria-live="polite">

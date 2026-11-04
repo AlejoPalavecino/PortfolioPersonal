@@ -255,3 +255,10 @@
 @media(max-width:760px) { .intro-actor { height:112px; } .intro-primary-actions button { min-height:64px; padding-inline:22px; } }
 @media(min-height:900px) and (min-width:761px) { .intro-actor { height:174px; } }
 @media(min-width:761px) and (max-height:850px) { .intro-actor { height:110px; } }
+
+/* Override both legacy action classes, including their higher-specificity borders. */
+.intro .intro-primary-actions button { border:0; outline:none; box-shadow:none; background:transparent; -webkit-tap-highlight-color:transparent; }
+.intro .intro-primary-actions button:focus-visible { outline:2px dashed #ffe0a0; outline-offset:4px; }
+/* A stable walking silhouette reads clearly at 22px; only the state indicator moves. */
+.intro .icon-control[data-action="motion"] .walking-person { animation:none; }
+.icon-control .motion-slash { stroke:#ffd99b; stroke-width:2.2; }

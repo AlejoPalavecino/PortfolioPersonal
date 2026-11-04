@@ -36,11 +36,11 @@ export function mount(root: HTMLElement) {
   const startSound = async () => {
     if (!wanted || starting || audio.enabled || document.hidden) return
     starting = true
-    const result = await audio.toggle()
+    await audio.toggle()
     starting = false
     const icon = root.querySelector<HTMLButtonElement>('.icon-control[data-action=sound]')
-    icon?.setAttribute('aria-pressed', String(result.enabled))
-    if (icon) setControlLabel(icon, result.enabled ? 'Apagar sonido' : 'Activar sonido')
+    icon?.setAttribute('aria-pressed', String(audio.enabled))
+    if (icon) setControlLabel(icon, audio.enabled ? 'Apagar sonido' : 'Activar sonido')
   }
   root.addEventListener('click', event => { if ((event.target as HTMLElement).closest('[data-action=sound]')) wanted = false }, true)
   document.addEventListener('pointerdown', event => { if (!(event.target as HTMLElement).closest('[data-action=sound]')) void startSound() })
