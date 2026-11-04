@@ -35,19 +35,7 @@ function intro(): string {
         <span class="intro-fire-smoke"></span>
         <span class="intro-fire-flame"></span>
       </div>
-      <div class="intro-story-banner">
-        <div class="intro-dialogue-head">
-          <span class="intro-beat-kicker">LLEGADA AL CAMPAMENTO</span>
-          <span class="intro-beat-dots"><i data-beat-dot="0"></i><i data-beat-dot="1"></i><i data-beat-dot="2"></i><i data-beat-dot="3"></i><i data-beat-dot="4"></i></span>
-        </div>
-        <p class="intro-beat-title">Campamento creativo</p>
-        <p class="intro-beat-subtitle">Desarrollo software. Transformo ideas en productos.</p>
-      </div>
-      <div class="intro-actor-stage">
-        <span class="intro-actor-shadow"></span>
-        <span class="intro-actor-tag">ALEJO · DEV</span>
-        <img class="intro-actor" src="${assetUrl('camp-rooms-v1/avatars/idle-right.png')}" width="160" height="288" alt="">
-      </div>
+      <div class="intro-motes">${Array.from({ length: 12 }, (_, i) => `<i style="--i:${i}"></i>`).join('')}</div>
     </div>
     <div class="intro-top-bar" role="toolbar" aria-label="Controles de presentación">
       <div class="intro-brand-pill" aria-hidden="true">
@@ -55,15 +43,40 @@ function intro(): string {
         <span>ALEJO PALAVECINO · PORTFOLIO INTERACTIVO</span>
       </div>
       <div class="intro-top-actions">
+        <button type="button" data-action="sound" aria-pressed="false">Sonido apagado</button>
         <button type="button" class="intro-pause-button" data-action="intro-pause" aria-pressed="false">Pausar presentación</button>
         <button type="button" class="intro-skip-button" data-action="skip-intro">Omitir presentación →</button>
+      </div>
+    </div>
+    <div class="intro-scene" aria-label="Conversación con Alejo">
+      <div class="intro-scene-caption" aria-hidden="true"><span>PRÓLOGO / 01</span><strong>Un lugar para<br>las buenas ideas.</strong><small>Acercate. Hay mucho por descubrir.</small></div>
+      <div class="intro-actor-stage">
+        <div class="intro-story-banner" id="intro-conversation" hidden>
+          <div class="intro-dialogue-head"><span class="intro-beat-kicker">ALEJO · TU GUÍA</span><span class="intro-beat-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <p class="intro-beat-title">¡Ey, llegaste!</p>
+          <p class="intro-beat-subtitle" aria-hidden="true"></p>
+          <p class="intro-dialogue-accessible sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+          <div class="intro-replies" aria-label="Responder a Alejo">
+            <button type="button" data-intro-reply="camp">Mostrame el campamento</button>
+            <button type="button" data-intro-reply="work">¿Qué construís?</button>
+          </div>
+          <button type="button" class="intro-dialogue-next" data-action="intro-next" hidden>¡Vamos al campamento! →</button>
+          <small class="intro-dialogue-hint">Elegí una respuesta · podés entrar cuando quieras</small>
+        </div>
+        <span class="intro-actor-shadow" aria-hidden="true"></span>
+        <span class="intro-emote" aria-hidden="true" hidden>!</span>
+        <button type="button" class="intro-character" aria-label="Saludar a Alejo" aria-controls="intro-conversation">
+          <img class="intro-actor" src="${assetUrl('camp-rooms-v1/avatars/idle-right.png')}" width="160" height="288" alt="">
+        </button>
+        <span class="intro-actor-tag" aria-hidden="true">ALEJO · DEV</span>
+        <span class="intro-step-dust" aria-hidden="true"></span>
       </div>
     </div>
     <div class="intro-card">
       <div class="intro-card-header">
         <img class="intro-portrait-badge" src="${assetUrl('portrait.webp')}" width="72" height="72" alt="">
         <div class="intro-card-titles">
-          <span class="intro-kicker">CAMPAMENTO CREATIVO · MODO JUEGO &amp; PORTFOLIO</span>
+          <span class="intro-kicker">CAMPAMENTO CREATIVO</span>
           <h1>Soy Alejo Palavecino</h1>
           <p class="intro-subtitle">Desarrollo software. Transformo ideas en productos.</p>
         </div>
@@ -79,7 +92,6 @@ function intro(): string {
         <span>🗺️ <strong>4 lugares interactivos:</strong> Taller de Proyectos · Carpa Personal · Archivo · Puesto de Radio</span>
       </div>
       <div class="intro-loader-hud">
-        <div class="loading-vignette" aria-hidden="true"><canvas class="loading-canvas" width="160" height="72"></canvas></div>
         <div class="loading-bar-wrap">
           <div class="loading-progress" role="progressbar" aria-label="Preparación real de recursos del campamento" aria-valuemin="0" aria-valuemax="28" aria-valuenow="0"><span></span></div>
           <p class="loading-status">Preparando el campamento…</p>
@@ -87,14 +99,13 @@ function intro(): string {
       </div>
       <button class="retry-intro" data-action="retry" hidden>Reintentar carga</button>
       <div class="intro-primary-actions">
-        <button class="enter-button" data-action="enter" disabled>▶ Entrar al campamento →</button>
-        <button class="direct-button" data-action="direct">▤ Ver portfolio sin recorrer</button>
+        <button class="enter-button" data-action="enter" disabled>Entrar al campamento →</button>
+        <button class="direct-button" data-action="direct">Ver portfolio sin recorrer</button>
       </div>
       <div class="intro-links">
         <button data-section="projects">Proyectos</button>
         <button data-section="contact">Contacto</button>
         <a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>CV ↓</a>
-        <button type="button" data-action="sound" aria-pressed="false">Sonido apagado</button>
         <button type="button" data-action="motion" aria-pressed="false">Reducir movimiento</button>
       </div>
     </div>

@@ -122,6 +122,7 @@ export function createAudio(bus?: CueBus, getState?: () => { position: Point; re
     env.connect(sfxGain)
     osc.start(start)
     osc.stop(start + durationSec + 0.01)
+    osc.onended = () => { osc.disconnect(); env.disconnect() }
   }
 
   const playStep = (foot: 'left' | 'right', surface: Surface) => {
@@ -137,6 +138,21 @@ export function createAudio(bus?: CueBus, getState?: () => { position: Point; re
   }
 
   const offs = bus ? [
+    bus.on('intro-cue', ({ kind }) => {
+      if (!canPlay(`intro-${kind}`, kind === 'voice' ? 95 : 120)) return
+      if (kind === 'step') tone(170, 85, 0.065, 0.065, 'triangle')
+      else if (kind === 'voice') tone(330, 290, 0.035, 0.022, 'triangle')
+      else if (kind === 'greeting') {
+        tone(392, 440, 0.14, 0.065, 'sine')
+        tone(659, 659, 0.2, 0.05, 'triangle', 0.1)
+      } else if (kind === 'reply') {
+        tone(523, 659, 0.1, 0.055, 'sine')
+      } else {
+        tone(392, 392, 0.16, 0.06, 'triangle')
+        tone(523, 523, 0.18, 0.05, 'triangle', 0.1)
+        tone(784, 784, 0.26, 0.045, 'sine', 0.2)
+      }
+    }),
     bus.on('step', ({ foot, surface }) => { updateSpatial(); playStep(foot, surface) }),
     bus.on('ground-tap', () => { if (canPlay('tap', 90)) tone(360, 300, 0.07, 0.065, 'sine') }),
     bus.on('destination-selected', ({ section }) => {
@@ -187,6 +203,8 @@ export function createAudio(bus?: CueBus, getState?: () => { position: Point; re
           updateSpatial()
           await ambient.play()
         } catch {
+          ambient.pause()
+          if (synth && synth.ctx.state === 'running') void synth.ctx.suspend()
           enabled = false
           paused = false
           return { enabled, failed: true }

@@ -1,8 +1,10 @@
 # Campamento creativo · portfolio para explorar
 
-La versión local **0.3.1-review.1** en la rama `feat/audiovisual-camp` incorpora la mejora audiovisual integral (viñeta inicial animada en pixel art con progreso real, locomoción con cadencia por distancia y sombra de contacto, efectos de desplazamiento/tierra, vida ambiental localizada en fogón/agua/faroles, respuesta propia de los cuatro destinos y diseño sonoro espacial y voluntario), conservando las correcciones de cierre y seguridad: ver [entrega audiovisual](docs/ENTREGA-AUDIOVISUAL.md), [entrega de cierre](docs/ENTREGA-CLOSURE.md), [dependencias](docs/DEPENDENCIES-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
+La rama `feat/interactive-camp-intro` incorpora una bienvenida conversada: llegada animada, burbujas del personaje, dos respuestas, efectos y señales sonoras voluntarias. El visitante controla el ritmo y conserva los accesos directos. Ver [implementación, análisis y validación](docs/INTRO-INTERACTIVA.md).
 
-`main` y la [publicación de GitHub Pages](https://alejopalavecino.github.io/PortfolioPersonal/) conservan **0.3.0-review.1**. La nueva revisión está en `feat/audiovisual-camp`, sin push ni publicación autorizados. El contenido editorial sigue en revisión.
+Los cambios se revisan en la [PR #3](https://github.com/AlejoPalavecino/PortfolioPersonal/pull/3), creada antes de implementar la mejora. No están integrados a `main` ni publicados. La revisión visual y auditiva en navegador está pendiente; las pruebas, lint y build figuran en la entrega.
+
+Antecedentes: [entrega audiovisual](docs/ENTREGA-AUDIOVISUAL.md), [cierre](docs/ENTREGA-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
 
 ## Abrir la revisión
 
@@ -26,7 +28,7 @@ Abrir `/PortfolioPersonal/` en la dirección que imprime Vite. La dirección de 
 
 ## Recorrido
 
-1. La presentación permanece visible al terminar de cargar. Entrar al campamento se habilita con sus recursos críticos listos.
+1. Alejo llega y conversa mediante burbujas con respuestas elegibles. La presentación permanece visible al terminar de cargar. Entrar al campamento se habilita con sus recursos críticos listos.
 2. Elegir un destino desde el mundo o el menú inicia el recorrido y abre su contenido al llegar. WASD/flechas permiten explorar con foco en el mundo; Enter/E abre una entrada cercana.
 3. El menú superpuesto pausa una ruta. Reanudar es explícito; también se puede cambiar de destino, cancelar o abrir ahora.
 4. Las fichas conservan el paisaje, usan scroll propio y recuperan contexto al regresar. El acceso directo y los enlaces de sección no obligan a caminar ni a repetir la introducción.

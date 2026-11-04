@@ -1,181 +1,135 @@
 import { sampleIntroTimeline } from '../../core/experience'
+import { advanceIntroArrival, INTRO_ARRIVAL_MS, INTRO_LINES, visibleDialogue, type IntroDialogue } from '../../core/experience/intro-dialogue'
 import type { CueBus } from '../../core/fx/cues'
 import { assetUrl } from '../../shared'
 import type { Loop } from '../loop'
-import { createVignette } from './vignette'
 
-/**
- * Connects the real preparation cues and the 6.8 s narrative arrival timeline to the intro.
- * - Real loader progress (completed / total) and the 6.8 s presentation are strictly independent.
- * - "Omitir presentación" and "Pausar presentación" are operable from frame 0.
- * - Under reduced motion or after completion/skip, the presentation stays in a calm static state.
- */
-export function bindIntroFx(
-  root: HTMLElement,
-  bus: CueBus,
-  loop: Loop,
-  reducedMotion: () => boolean,
-  onComplete?: () => void,
-) {
+/** Arrival, dialogue typing and sound share one clock. Loading remains independent. */
+export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedMotion: () => boolean, onComplete?: () => void) {
   const intro = root.querySelector<HTMLElement>('.intro')
   const card = root.querySelector<HTMLElement>('.intro-card')
-  const canvas = root.querySelector<HTMLCanvasElement>('.loading-canvas')
+  if (!intro || !card) return { dispose() {}, refresh() {} }
+  const actor = root.querySelector<HTMLImageElement>('.intro-actor')!
+  const stage = root.querySelector<HTMLElement>('.intro-actor-stage')!
+  const bubble = root.querySelector<HTMLElement>('.intro-story-banner')!
+  const title = bubble.querySelector<HTMLElement>('.intro-beat-title')!
+  const text = bubble.querySelector<HTMLElement>('.intro-beat-subtitle')!
+  const accessible = bubble.querySelector<HTMLElement>('.intro-dialogue-accessible')!
+  const replies = bubble.querySelector<HTMLElement>('.intro-replies')!
+  const next = bubble.querySelector<HTMLButtonElement>('.intro-dialogue-next')!
+  const character = stage.querySelector<HTMLButtonElement>('.intro-character')!
+  const emote = stage.querySelector<HTMLElement>('.intro-emote')!
+  const pause = root.querySelector<HTMLButtonElement>('[data-action="intro-pause"]')!
   const bar = root.querySelector<HTMLElement>('.loading-progress')
   const fill = bar?.querySelector<HTMLElement>('span')
-  const actor = root.querySelector<HTMLImageElement>('.intro-actor')
-  const actorStage = root.querySelector<HTMLElement>('.intro-actor-stage')
-  const beatKicker = root.querySelector<HTMLElement>('.intro-beat-kicker')
-  const beatTitle = root.querySelector<HTMLElement>('.intro-beat-title')
-  const beatSub = root.querySelector<HTMLElement>('.intro-beat-subtitle')
-  const pauseBtn = root.querySelector<HTMLButtonElement>('[data-action="intro-pause"]')
-
-  if (!card) return { dispose() {}, refresh() {} }
-
   const live = document.createElement('p')
-  live.className = 'sr-only'; live.setAttribute('role', 'status')
-  card.append(live)
+  live.className = 'sr-only'; live.setAttribute('role', 'status'); card.append(live)
 
+  let elapsed = 0, typedMs = 0, lastStep = -1, lastVoice = -1
+  let paused = false, stopped = false, greeted = false, revealAll = false
+  let dialogue: IntroDialogue = 'greeting'
+  let off: (() => void) | null = null
+  const active = () => !stopped && !intro.hidden && root.dataset.introSkipped !== 'true'
+  const cue = (kind: 'step' | 'greeting' | 'voice' | 'reply' | 'depart') => {
+    if (active() && !paused && !document.hidden) bus.emit('intro-cue', { kind })
+  }
+  const paint = () => {
+    const snap = sampleIntroTimeline(elapsed)
+    root.dataset.introAction = snap.action
+    root.dataset.introStage = elapsed < INTRO_ARRIVAL_MS ? 'playing' : 'conversation'
+    root.dataset.introDialogue = dialogue
+    stage.style.setProperty('--arrival-x', `${Math.min(0, (snap.actorXPercent - 28) * 7)}px`)
+    character.style.opacity = snap.actorVisible ? '1' : '0'
+    const src = assetUrl(`camp-rooms-v1/avatars/${snap.actorFrame}.png`)
+    if (actor.getAttribute('src') !== src) actor.src = src
+    bubble.hidden = elapsed < INTRO_ARRIVAL_MS
+    emote.textContent = INTRO_LINES[dialogue].marker; emote.hidden = bubble.hidden
+    const line = INTRO_LINES[dialogue]
+    title.textContent = line.title
+    text.textContent = visibleDialogue(line.text, typedMs, revealAll || reducedMotion())
+    // Announce the complete sentence once, never every typed character.
+    if (!bubble.hidden && accessible.textContent !== line.text) accessible.textContent = line.text
+    replies.hidden = dialogue !== 'greeting'; next.hidden = dialogue === 'greeting'
+  }
+  const setPaused = (value: boolean) => {
+    paused = value; root.dataset.introPaused = String(value || document.hidden)
+    pause.setAttribute('aria-pressed', String(value))
+    pause.textContent = value ? 'Continuar presentación' : 'Pausar presentación'
+  }
+  const greet = () => {
+    if (greeted) return
+    greeted = true; elapsed = INTRO_ARRIVAL_MS; cue('greeting')
+  }
+  const tick = (_now: number, dt: number) => {
+    if (!active()) { off?.(); off = null; return }
+    if (paused || document.hidden) return
+    elapsed = advanceIntroArrival(elapsed, dt, false)
+    if (elapsed >= INTRO_ARRIVAL_MS) {
+      greet(); typedMs += Math.min(dt, 100)
+      const voice = Math.floor(typedMs / 110)
+      if (!revealAll && text.textContent !== INTRO_LINES[dialogue].text && voice !== lastVoice) { lastVoice = voice; cue('voice') }
+    } else if (elapsed >= 1200) {
+      const step = Math.floor((elapsed - 1200) / 260)
+      if (step !== lastStep) { lastStep = step; cue('step') }
+    }
+    paint()
+    if (elapsed >= INTRO_ARRIVAL_MS && text.textContent === INTRO_LINES[dialogue].text) { off?.(); off = null }
+  }
+  const sync = () => {
+    off?.(); off = null
+    if (!active()) return
+    if (reducedMotion()) { elapsed = INTRO_ARRIVAL_MS; greeted = true; revealAll = true }
+    paint()
+    if (!reducedMotion() && !paused && !document.hidden) off = loop.add(tick)
+  }
+  const choose = (event: Event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-intro-reply]')
+    if (!button || !active()) return
+    const reply = button.dataset.introReply
+    if (reply !== 'camp' && reply !== 'work') return
+    dialogue = reply; typedMs = 0; lastVoice = -1; revealAll = reducedMotion() || paused
+    cue('reply'); paint(); next.focus({ preventScroll: true }); sync()
+  }
+  const onCharacter = () => {
+    if (!active()) return
+    if (elapsed < INTRO_ARRIVAL_MS) greet()
+    else revealAll = true
+    paint(); sync()
+  }
+  const onNext = () => { if (active()) { cue('depart'); onComplete?.() } }
+  const onPause = () => { setPaused(!paused); sync() }
+  const onVisibility = () => { if (document.hidden && active()) setPaused(true); sync() }
+  replies.addEventListener('click', choose); character.addEventListener('click', onCharacter)
+  next.addEventListener('click', onNext); pause.addEventListener('click', onPause)
+  document.addEventListener('visibilitychange', onVisibility)
   const paintProgress = (completed: number, total: number) => {
     bar?.setAttribute('aria-valuemax', String(total)); bar?.setAttribute('aria-valuenow', String(completed))
     fill?.style.setProperty('--progress', String(total ? completed / total : 0))
-    root.dataset.prepared = completed >= total && total > 0 ? 'true' : 'false'
+    root.dataset.prepared = String(total > 0 && completed >= total)
   }
-
-  let elapsed = 0
-  let paused = false
-  let finished = false
-  let lastFrame = ''
-  let offLoop: (() => void) | null = null
-
-  const KICKERS: Readonly<Record<number, string>> = {
-    0: '01 · AMANECER EN LA MONTAÑA',
-    1: '02 · LLEGADA AL SENDERO',
-    2: '03 · PRESENTACIÓN EN EL CAMPAMENTO',
-    3: '04 · ESPECIALIDAD Y PROPÓSITO',
-    4: '05 · CAMPAMENTO LISTO PARA EXPLORAR',
-  }
-
-  const applySnapshot = (ms: number) => {
-    const snap = sampleIntroTimeline(ms)
-    root.dataset.introBeat = String(snap.beatIndex)
-    root.dataset.introAction = snap.action
-    const kickerText = KICKERS[snap.beatIndex] ?? 'LLEGADA AL CAMPAMENTO'
-    if (beatKicker && beatKicker.textContent !== kickerText) beatKicker.textContent = kickerText
-    if (beatTitle && beatTitle.textContent !== snap.title) beatTitle.textContent = snap.title
-    if (beatSub) {
-      const subText = snap.subtitle || snap.specialty
-      if (beatSub.textContent !== subText) beatSub.textContent = subText
-    }
-    const leftPct = `${snap.actorXPercent.toFixed(2)}%`
-    if (actorStage) {
-      actorStage.style.left = leftPct
-      actorStage.style.opacity = snap.actorVisible ? '1' : '0'
-    }
-    if (actor) {
-      actor.style.left = leftPct
-      actor.style.opacity = snap.actorVisible ? '1' : '0'
-      if (lastFrame !== snap.actorFrame) {
-        lastFrame = snap.actorFrame
-        actor.src = assetUrl(`camp-rooms-v1/avatars/${snap.actorFrame}.png`)
-      }
-    }
-    intro?.style.setProperty('--intro-crossfade', snap.crossfade.toFixed(3))
-    return snap
-  }
-
-  const showStaticEnd = () => {
-    offLoop?.(); offLoop = null
-    root.dataset.introStage = 'static'
-    applySnapshot(5200)
-    if (pauseBtn) {
-      pauseBtn.hidden = true
-    }
-  }
-
-  const tick = (_time: number, dt: number) => {
-    if (!intro || intro.hidden || finished) {
-      offLoop?.(); offLoop = null
-      return
-    }
-    if (reducedMotion() || root.dataset.introSkipped === 'true') {
-      showStaticEnd()
-      return
-    }
-    if (paused || document.hidden) return
-    elapsed += Math.min(dt, 100)
-    const snap = applySnapshot(elapsed)
-    if (snap.completed) {
-      finished = true
-      root.dataset.introStage = 'completed'
-      offLoop?.(); offLoop = null
-      if (pauseBtn) pauseBtn.hidden = true
-      onComplete?.()
-    }
-  }
-
-  const syncTimeline = () => {
-    offLoop?.(); offLoop = null
-    if (!intro || intro.hidden) return
-    if (reducedMotion() || finished || root.dataset.introSkipped === 'true') {
-      showStaticEnd()
-      return
-    }
-    root.dataset.introStage = 'playing'
-    if (pauseBtn) pauseBtn.hidden = false
-    applySnapshot(elapsed)
-    offLoop = loop.add(tick)
-  }
-
-  const onPauseClick = () => {
-    if (finished || reducedMotion()) return
-    paused = !paused
-    root.dataset.introPaused = String(paused)
-    if (pauseBtn) {
-      pauseBtn.setAttribute('aria-pressed', String(paused))
-      pauseBtn.textContent = paused ? 'Continuar presentación' : 'Pausar presentación'
-    }
-  }
-  pauseBtn?.addEventListener('click', onPauseClick)
-
-  const onVisibility = () => {
-    if (document.hidden && !finished && !paused && intro && !intro.hidden) {
-      paused = true
-      root.dataset.introPaused = 'true'
-      if (pauseBtn) {
-        pauseBtn.setAttribute('aria-pressed', 'true')
-        pauseBtn.textContent = 'Continuar presentación'
-      }
-    }
-  }
-  document.addEventListener('visibilitychange', onVisibility)
-
   const offs = [
     bus.on('prepare-start', () => { live.textContent = 'Preparando el campamento.'; paintProgress(0, 28) }),
     bus.on('prepare-progress', ({ completed, total }) => paintProgress(completed, total)),
+    bus.on('prepare-ready', () => { live.textContent = 'Listo para explorar.'; root.dataset.prepared = 'true'; bar?.setAttribute('aria-valuenow', bar.getAttribute('aria-valuemax') ?? '28'); fill?.style.setProperty('--progress', '1') }),
     bus.on('prepare-slow', () => { live.textContent = 'La preparación está tardando. Podés consultar el portfolio mientras tanto.' }),
-    bus.on('prepare-ready', () => { live.textContent = 'Listo para explorar.'; root.dataset.prepared = 'true'; fill?.style.setProperty('--progress', '1') }),
     bus.on('prepare-failed', () => { live.textContent = 'No se pudo preparar el campamento. Podés reintentar o consultar el portfolio.' }),
-    bus.on('enter', () => { finished = true; offLoop?.(); offLoop = null }),
+    bus.on('enter', () => { stopped = true; off?.(); off = null }),
   ]
-  const vignette = canvas ? createVignette(canvas, { bus, loop, reducedMotion }) : null
-  const motion = new MutationObserver(() => {
-    vignette?.refresh?.()
-    syncTimeline()
-  })
-  motion.observe(root, { attributes: true, attributeFilter: ['data-motion', 'data-intro-skipped'] })
-
-  syncTimeline()
-
+  const observer = new MutationObserver(sync)
+  observer.observe(root, { attributes: true, attributeFilter: ['data-motion', 'data-intro-skipped'] })
+  observer.observe(intro, { attributes: true, attributeFilter: ['hidden'] })
+  for (const name of ['idle-down', 'walk-right-1', 'walk-right-2', 'walk-right-3', 'walk-right-4']) {
+    const image = new Image(); image.src = assetUrl(`camp-rooms-v1/avatars/${name}.png`)
+    void image.decode().catch(() => {})
+  }
+  setPaused(false); sync()
   return {
-    refresh() { vignette?.refresh?.(); syncTimeline() },
+    refresh: sync,
     dispose() {
-      offLoop?.(); offLoop = null
-      offs.forEach(off => off())
-      motion.disconnect()
-      pauseBtn?.removeEventListener('click', onPauseClick)
+      stopped = true; off?.(); offs.forEach(fn => fn()); observer.disconnect(); live.remove()
+      replies.removeEventListener('click', choose); character.removeEventListener('click', onCharacter)
+      next.removeEventListener('click', onNext); pause.removeEventListener('click', onPause)
       document.removeEventListener('visibilitychange', onVisibility)
-      vignette?.dispose()
-      live.remove()
     },
   }
 }
