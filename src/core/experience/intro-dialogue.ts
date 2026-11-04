@@ -2,9 +2,9 @@
 export type IntroDialogue = 'greeting' | 'camp' | 'work'
 export const INTRO_ARRIVAL_MS = 2800
 export const INTRO_LINES: Readonly<Record<IntroDialogue, { title: string; text: string; marker: string }>> = {
-  greeting: { title: '¡Ey, llegaste!', text: 'Soy Alejo. Este campamento está lleno de ideas hechas software. ¿Qué te gustaría descubrir?', marker: '!' },
+  greeting: { title: '¡Ey, llegaste!', text: 'Este es mi lugar para crear y compartir. Detrás de cada proyecto hay una historia. ¿Por dónde querés empezar?', marker: '!' },
   camp: { title: 'Te muestro el camino.', text: 'El taller guarda mis proyectos; la carpa, mi historia. Elegí un lugar y caminamos hasta ahí. ¿Vamos?', marker: '→' },
-  work: { title: 'De una idea a algo real.', text: 'Desarrollo productos web, conecto sistemas y automatizo procesos con IA. En el taller podés conocer mi trabajo.', marker: '</>' },
+  work: { title: 'De una idea a algo real.', text: 'Trabajo en full stack, análisis y automatización con IA. Me gusta conectar una buena idea con una solución que sirva. En el taller te muestro mis proyectos.', marker: '</>' },
 }
 /** Limit catch-up after stalls; a hidden tab must never fast-forward the arrival. */
 export function advanceIntroArrival(elapsed: number, dt: number, paused: boolean): number {
