@@ -1,3 +1,4 @@
+import { setControlLabel } from './control-label'
 import { WORLD } from '../core/domain'
 import { roomForView } from '../core/experience'
 import { email as defaultEmail, type Section } from '../entities'
@@ -94,9 +95,9 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
     if (action === 'motion') toggleMotion()
     if (action === 'sound') void audio.toggle().then(({ enabled, failed }) => {
       const label = failed ? 'No se pudo activar sonido' : enabled ? 'Sonido activado' : 'Sonido apagado'
-      button.setAttribute('aria-pressed', String(enabled)); button.textContent = label
+      button.setAttribute('aria-pressed', String(enabled)); setControlLabel(button, label)
       root.querySelectorAll?.<HTMLButtonElement>('[data-action=sound]').forEach(btn => {
-        btn.setAttribute('aria-pressed', String(enabled)); btn.textContent = label
+        btn.setAttribute('aria-pressed', String(enabled)); setControlLabel(btn, label)
       })
     })
   })

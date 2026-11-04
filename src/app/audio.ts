@@ -72,7 +72,7 @@ function buildSynth(): WebSynth | null {
   }
 }
 
-export function createAudio(bus?: CueBus, getState?: () => { position: Point; reading: boolean }) {
+export function createAudio(bus?: CueBus, getState?: () => { position: Point; reading: boolean; intro?: boolean }) {
   const ambient = new Audio(assetUrl('camp-ambience-loop.wav'))
   ambient.loop = true
   ambient.volume = 0.22
@@ -101,7 +101,7 @@ export function createAudio(bus?: CueBus, getState?: () => { position: Point; re
     synth.ambientGain.gain.setTargetAtTime(levels.ambient, now, 0.18)
     synth.sfxGain.gain.setTargetAtTime(levels.sfx, now, 0.08)
     synth.waterGain.gain.setTargetAtTime(targets.water * 0.14, now, 0.25)
-    synth.fireGain.gain.setTargetAtTime(targets.fire * 0.12, now, 0.25)
+    synth.fireGain.gain.setTargetAtTime((current.intro ? 0.38 : targets.fire * 0.12), now, 0.25)
     synth.waterPan?.pan.setTargetAtTime(targets.panWater, now, 0.25)
     synth.firePan?.pan.setTargetAtTime(targets.panFire, now, 0.25)
   }

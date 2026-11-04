@@ -27,7 +27,7 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     root.querySelector<HTMLElement>('.hud-left')!.inert = !intro.hidden
     root.querySelector<HTMLElement>('.hud-right')!.inert = !intro.hidden
     root.querySelector<HTMLElement>('.world')!.inert = !intro.hidden || root.dataset.reading === 'true'
-    enter.disabled = state.preparation !== 'ready'
+    enter.disabled = state.preparation !== 'ready' || root.dataset.introReady === 'false'
   }
   const loading = (load: ScenePreparation) => {
     root.dataset.load = `${load.completed}/${load.total}`

@@ -107,8 +107,8 @@ describe('carteles exteriores, controles de intro y salas interiores', () => {
     expect(html).toContain('<span class="sign-text">Sobre mí</span>')
     expect(html).toContain('<span class="sign-text">Trayectoria</span>')
     expect(html).toContain('<span class="sign-text">Contacto</span>')
-    expect(html).toContain('data-action="skip-intro"')
-    expect(html).toContain('data-action="intro-pause"')
+    expect(html).not.toContain('data-action="skip-intro"')
+    expect(html).not.toContain('data-action="intro-pause"')
   })
 
   it('estructura las cuatro salas interiores con contenido verificado y sin promesas falsas', () => {

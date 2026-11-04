@@ -29,7 +29,22 @@ export function mount(root: HTMLElement) {
   const session = createSession(root, controller, reducedMotion, bus)
   bindIntroFx(root, bus, loop, () => root.dataset.motion === 'reduced', () => session.skipIntro())
   bindWorldFx(root, controller, renderer.camera, bus, loop)
-  const audio = createAudio(bus, () => ({ position: controller.state.position, reading: root.dataset.reading === 'true' }))
+  const audio = createAudio(bus, () => ({ position: controller.state.position, reading: root.dataset.reading === 'true', intro: !root.querySelector<HTMLElement>('.intro')!.hidden }))
+  // Autoplay is best effort: browser policies may require a trusted gesture.
+  let wanted = true, starting = false
+  const startSound = async () => {
+    if (!wanted || starting || audio.enabled || document.hidden) return
+    starting = true
+    const result = await audio.toggle()
+    starting = false
+    const icon = root.querySelector<HTMLButtonElement>('.icon-control[data-action=sound]')
+    icon?.setAttribute('aria-pressed', String(result.enabled))
+    icon?.setAttribute('aria-label', result.enabled ? 'Apagar sonido' : 'Activar sonido')
+  }
+  root.addEventListener('click', event => { if ((event.target as HTMLElement).closest('[data-action=sound]')) wanted = false }, true)
+  document.addEventListener('pointerdown', event => { if (!(event.target as HTMLElement).closest('[data-action=sound]')) void startSound() })
+  document.addEventListener('keydown', () => { void startSound() })
+  void startSound()
   const toggleMotion = bindPreferences(root, controller, session, userMotion)
   const loader = prepareScene(state => { renderer.setFrames(state.frames); session.loading(state) })
   bindActions(root, controller, views, audio, session, () => loader.retry(), toggleMotion)
