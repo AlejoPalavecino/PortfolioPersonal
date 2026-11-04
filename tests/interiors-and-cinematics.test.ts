@@ -146,8 +146,8 @@ describe('carteles exteriores, controles de intro y salas interiores', () => {
     expect(introHtml).toContain('intro-campfire-fx')
     expect(introHtml).toContain('intro-actor-stage')
     expect(introHtml).toContain('intro-beat-dots')
-    expect(introHtml).toContain('intro-card-header')
-    expect(introHtml).toContain('intro-chip')
+    expect(introHtml).toContain('intro-heading')
+    expect(introHtml).toContain('intro-content')
     expect(introHtml).toContain('intro-loader-hud')
 
     const projectsHtml = sectionMarkup('projects')

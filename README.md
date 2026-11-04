@@ -1,8 +1,8 @@
 # Campamento creativo · portfolio para explorar
 
-La rama `feat/interactive-camp-intro` incorpora una bienvenida conversada: llegada animada, burbujas del personaje, dos respuestas, efectos y señales sonoras voluntarias. El visitante controla el ritmo y conserva los accesos directos. Ver [implementación, análisis y validación](docs/INTRO-INTERACTIVA.md).
+La rama `feat/unified-intro-scene` rediseña el inicio como una sola escena central: presentación breve, diálogo sobre el personaje y acciones integradas al paisaje. Elimina la ficha lateral y la información duplicada. Ver [dirección visual y validación](docs/INTRO-ESCENA-UNIFICADA.md).
 
-Los cambios se revisan en la [PR #3](https://github.com/AlejoPalavecino/PortfolioPersonal/pull/3), creada antes de implementar la mejora. No están integrados a `main` ni publicados. La revisión visual y auditiva en navegador está pendiente; las pruebas, lint y build figuran en la entrega.
+Los cambios están en la [PR #4](https://github.com/AlejoPalavecino/PortfolioPersonal/pull/4), sin integrar ni publicar. La conversación interactiva de la [PR #3](https://github.com/AlejoPalavecino/PortfolioPersonal/pull/3) ya está integrada a `main`; este rediseño conserva sus reglas y controles. La revisión visual de la nueva composición está pendiente.
 
 Antecedentes: [entrega audiovisual](docs/ENTREGA-AUDIOVISUAL.md), [cierre](docs/ENTREGA-CLOSURE.md) y [reproducción local](docs/QA-CLOSURE.md).
 

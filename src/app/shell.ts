@@ -40,16 +40,23 @@ function intro(): string {
     <div class="intro-top-bar" role="toolbar" aria-label="Controles de presentación">
       <div class="intro-brand-pill" aria-hidden="true">
         <img src="${assetUrl('emblem.webp')}" alt="" width="28" height="28">
-        <span>ALEJO PALAVECINO · PORTFOLIO INTERACTIVO</span>
+        <span>CAMPAMENTO CREATIVO</span>
       </div>
       <div class="intro-top-actions">
         <button type="button" data-action="sound" aria-pressed="false">Sonido apagado</button>
+        <button type="button" data-action="motion" aria-pressed="false">Reducir movimiento</button>
         <button type="button" class="intro-pause-button" data-action="intro-pause" aria-pressed="false">Pausar presentación</button>
         <button type="button" class="intro-skip-button" data-action="skip-intro">Omitir presentación →</button>
       </div>
     </div>
-    <div class="intro-scene" aria-label="Conversación con Alejo">
-      <div class="intro-scene-caption" aria-hidden="true"><span>PRÓLOGO / 01</span><strong>Un lugar para<br>las buenas ideas.</strong><small>Acercate. Hay mucho por descubrir.</small></div>
+    <div class="intro-content">
+      <header class="intro-heading">
+        <p class="intro-eyebrow">ALEJO PALAVECINO <span aria-hidden="true">/</span> DESARROLLADOR DE SOFTWARE</p>
+        <h1>Ideas que cobran <em>vida.</em></h1>
+        <p class="intro-lead">Construyo productos digitales. Acá podés conocerlos, explorar mi historia y pensar conmigo lo que viene.</p>
+      </header>
+      <div class="intro-scene" aria-label="Conversación con Alejo">
+      <div class="intro-arrival-note" aria-hidden="true"><span>Tu próxima parada: el campamento.</span><small>Alejo se acerca para darte la bienvenida.</small></div>
       <div class="intro-actor-stage">
         <div class="intro-story-banner" id="intro-conversation" hidden>
           <div class="intro-dialogue-head"><span class="intro-beat-kicker">ALEJO · TU GUÍA</span><span class="intro-beat-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
@@ -61,7 +68,7 @@ function intro(): string {
             <button type="button" data-intro-reply="work">¿Qué construís?</button>
           </div>
           <button type="button" class="intro-dialogue-next" data-action="intro-next" hidden>¡Vamos al campamento! →</button>
-          <small class="intro-dialogue-hint">Elegí una respuesta · podés entrar cuando quieras</small>
+          <small class="intro-dialogue-hint">Tu respuesta elige el camino de la charla.</small>
         </div>
         <span class="intro-actor-shadow" aria-hidden="true"></span>
         <span class="intro-emote" aria-hidden="true" hidden>!</span>
@@ -72,25 +79,7 @@ function intro(): string {
         <span class="intro-step-dust" aria-hidden="true"></span>
       </div>
     </div>
-    <div class="intro-card">
-      <div class="intro-card-header">
-        <img class="intro-portrait-badge" src="${assetUrl('portrait.webp')}" width="72" height="72" alt="">
-        <div class="intro-card-titles">
-          <span class="intro-kicker">CAMPAMENTO CREATIVO</span>
-          <h1>Soy Alejo Palavecino</h1>
-          <p class="intro-subtitle">Desarrollo software. Transformo ideas en productos.</p>
-        </div>
-      </div>
-      <p class="intro-specialties" aria-label="Especialidades principales">
-        <span class="intro-chip">Full stack</span>
-        <span class="intro-chip-sep" aria-hidden="true">·</span>
-        <span class="intro-chip">Análisis</span>
-        <span class="intro-chip-sep" aria-hidden="true">·</span>
-        <span class="intro-chip">Automatización e IA</span>
-      </p>
-      <div class="intro-quest-hint" aria-hidden="true">
-        <span>🗺️ <strong>4 lugares interactivos:</strong> Taller de Proyectos · Carpa Personal · Archivo · Puesto de Radio</span>
-      </div>
+      <div class="intro-entry" aria-label="Entrar o consultar el portfolio">
       <div class="intro-loader-hud">
         <div class="loading-bar-wrap">
           <div class="loading-progress" role="progressbar" aria-label="Preparación real de recursos del campamento" aria-valuemin="0" aria-valuemax="28" aria-valuenow="0"><span></span></div>
@@ -99,14 +88,15 @@ function intro(): string {
       </div>
       <button class="retry-intro" data-action="retry" hidden>Reintentar carga</button>
       <div class="intro-primary-actions">
-        <button class="enter-button" data-action="enter" disabled>Entrar al campamento →</button>
-        <button class="direct-button" data-action="direct">Ver portfolio sin recorrer</button>
+        <button class="enter-button" data-action="enter" disabled>Explorar el campamento <span aria-hidden="true">↗</span></button>
+        <button class="direct-button" data-action="direct">Ir directo a proyectos</button>
       </div>
       <div class="intro-links">
-        <button data-section="projects">Proyectos</button>
-        <button data-section="contact">Contacto</button>
-        <a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>CV ↓</a>
-        <button type="button" data-action="motion" aria-pressed="false">Reducir movimiento</button>
+        <span class="intro-links-label">¿Tenés algo en mente?</span>
+        <button data-section="contact">Conversemos</button>
+        <span class="intro-link-divider" aria-hidden="true">/</span>
+        <a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>Descargar CV ↓</a>
+      </div>
       </div>
     </div>
   </section>`

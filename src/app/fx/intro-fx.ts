@@ -7,8 +7,8 @@ import type { Loop } from '../loop'
 /** Arrival, dialogue typing and sound share one clock. Loading remains independent. */
 export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedMotion: () => boolean, onComplete?: () => void) {
   const intro = root.querySelector<HTMLElement>('.intro')
-  const card = root.querySelector<HTMLElement>('.intro-card')
-  if (!intro || !card) return { dispose() {}, refresh() {} }
+  const content = root.querySelector<HTMLElement>('.intro-content')
+  if (!intro || !content) return { dispose() {}, refresh() {} }
   const actor = root.querySelector<HTMLImageElement>('.intro-actor')!
   const stage = root.querySelector<HTMLElement>('.intro-actor-stage')!
   const bubble = root.querySelector<HTMLElement>('.intro-story-banner')!
@@ -23,7 +23,7 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
   const bar = root.querySelector<HTMLElement>('.loading-progress')
   const fill = bar?.querySelector<HTMLElement>('span')
   const live = document.createElement('p')
-  live.className = 'sr-only'; live.setAttribute('role', 'status'); card.append(live)
+  live.className = 'sr-only'; live.setAttribute('role', 'status'); content.append(live)
 
   let elapsed = 0, typedMs = 0, lastStep = -1, lastVoice = -1
   let paused = false, stopped = false, greeted = false, revealAll = false
