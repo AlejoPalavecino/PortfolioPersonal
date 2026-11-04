@@ -11,6 +11,7 @@ export type CueMap = {
   'prepare-slow': Record<string, never>
   'prepare-ready': Record<string, never>
   'prepare-failed': { error: string | null }
+  'intro-cue': { kind: 'step' | 'greeting' | 'voice' | 'reply' | 'depart' }
   'enter': { reduced: boolean }
   'move-start': { mode: 'route' | 'manual' }
   'move-stop': { reason: 'arrive' | 'cancel' | 'release' | 'pause' | 'open' | 'replace' }
@@ -27,7 +28,7 @@ export type CueMap = {
 }
 export type CueName = keyof CueMap
 export const CUE_NAMES: readonly CueName[] = [
-  'prepare-start', 'prepare-progress', 'prepare-slow', 'prepare-ready', 'prepare-failed', 'enter',
+  'intro-cue', 'prepare-start', 'prepare-progress', 'prepare-slow', 'prepare-ready', 'prepare-failed', 'enter',
   'move-start', 'move-stop', 'step', 'ground-tap', 'destination-selected', 'route-cancel', 'arrive',
   'surface-open', 'surface-close', 'page-change', 'pause', 'resume',
 ]

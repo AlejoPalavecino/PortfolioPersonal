@@ -47,7 +47,16 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     }
     if (load.status === 'loading' && load.generation !== state.generation) update({ type: 'load-start', generation: load.generation })
     if (load.timedOut) update({ type: 'load-slow', generation: load.generation })
-    if (load.status === 'ready') { update({ type: 'load-ready', generation: load.generation }); controller.dispatch({ type: 'set-scene', scene: 'ready' }) }
+    if (load.status === 'ready') {
+      const wasExploring = state.phase === 'explore'
+      update({ type: 'load-ready', generation: load.generation })
+      controller.dispatch({ type: 'set-scene', scene: 'ready' })
+      // A queued skip enters as soon as loading finishes, with the same focus/cue as Enter.
+      if (!wasExploring && state.phase === 'explore') {
+        bus?.emit('enter', { reduced: state.reducedMotion })
+        root.querySelector<HTMLElement>('.world')!.focus({ preventScroll: true })
+      }
+    }
     if (load.status === 'failed') { update({ type: 'load-failed', generation: load.generation }); controller.dispatch({ type: 'set-scene', scene: 'failed' }) }
     status.textContent = load.status === 'ready' ? 'Listo para explorar' : load.status === 'failed' ? 'No se pudo preparar el campamento. Podés consultar el portfolio.' : load.timedOut ? 'Está tardando. Podés consultar el portfolio mientras tanto.' : `${load.task ?? 'Preparando el campamento'}… ${load.completed} de ${load.total}`
     sceneStatus.hidden = load.status !== 'failed'

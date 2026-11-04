@@ -1,0 +1,123 @@
+/* The conversation and character share a stage: the bubble follows its speaker. */
+.intro {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(330px,460px);
+  grid-template-rows:auto minmax(520px,1fr);
+  column-gap:clamp(24px,5vw,80px);
+  row-gap:24px;
+  padding:24px clamp(20px,4vw,64px) 36px;
+  isolation:isolate;
+}
+.intro [hidden] { display:none !important; }
+.intro-top-bar { grid-column:1 / -1; width:100%; align-self:start; }
+.intro-brand-pill { border:0; box-shadow:none; background:rgba(12,32,43,.75); padding:10px 14px; }
+.intro-top-actions button { min-height:44px; padding:9px 12px; font:600 12px/1.2 Pixelify,sans-serif; }
+.intro-top-actions [data-action="sound"] { background:#173949; border:1px solid #e4c68a; color:#fff2d1; }
+.intro-scene { position:relative; z-index:3; min-width:0; min-height:520px; align-self:stretch; }
+.intro-scene-caption { position:absolute; top:3%; left:0; color:#fff3d6; text-shadow:0 3px 0 #152f3c; }
+.intro-scene-caption span { display:block; color:#ffcf7c; font:600 12px/1.4 Pixelify,sans-serif; letter-spacing:.2em; margin-bottom:14px; }
+.intro-scene-caption strong { display:block; font:700 clamp(32px,4vw,58px)/1.03 Pixelify,sans-serif; }
+.intro-scene-caption small { display:block; margin-top:14px; font-size:14px; }
+.intro-actor-stage {
+  bottom:4%; left:18%; width:clamp(88px,10vw,138px);
+  transform:translateX(var(--arrival-x, -154px));
+  pointer-events:auto;
+}
+.intro-character { position:relative; z-index:2; padding:0; border:0; background:none; box-shadow:none; width:100%; cursor:pointer; }
+.intro-character:hover { filter:brightness(1.12); }
+.intro-character:focus-visible { outline:3px dashed #ffe3a2; outline-offset:8px; }
+.intro-actor { display:block; }
+.intro-actor-tag { margin:6px 0 0; font-size:10px; }
+.intro-actor-shadow { bottom:24px; }
+.intro-story-banner {
+  display:block; top:auto; bottom:calc(100% + 26px); left:-28px; right:auto;
+  width:clamp(270px,30vw,400px); padding:16px 18px;
+  background:#fff5dc; color:#173949; border:3px solid #563d2c;
+  box-shadow:0 5px 0 #bc8855,0 12px 32px #0c1c3155;
+  animation:intro-bubble-in 260ms ease-out both;
+}
+.intro-story-banner::after { display:block; left:54px; background:#fff5dc; border-color:#563d2c; }
+.intro-dialogue-head { border-color:#b9986655; margin-bottom:10px; }
+.intro-beat-kicker { color:#80532d; font-size:11px; letter-spacing:.08em; }
+.intro-beat-title { color:#173949; text-shadow:none; font-size:26px; margin:0 0 8px; }
+.intro-beat-subtitle { color:#344c53; font-size:14px; line-height:1.55; min-height:4.65em; }
+.intro-beat-dots i { background:#ba8c4b; border:0; width:5px; height:5px; }
+.intro-replies { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.intro-replies button,.intro-dialogue-next {
+  font:600 13px/1.2 Pixelify,sans-serif; min-height:44px; padding:9px 12px;
+  color:#fff5dc; background:#204b54; border:2px solid #14343c; box-shadow:0 2px 0 #102b31;
+}
+.intro-replies button:hover,.intro-dialogue-next:hover { background:#326671; }
+.intro-replies button:focus-visible,.intro-dialogue-next:focus-visible { outline:3px solid #b8582e; outline-offset:3px; }
+.intro-dialogue-next { margin-top:14px; }
+.intro-dialogue-hint { display:block; margin-top:12px; color:#665c48; font-size:10px; line-height:1.5; }
+.intro-emote { position:absolute; right:-15px; top:-8px; padding:6px 9px; background:#ffd28a; border:2px solid #633b28; color:#193e4b; font:700 20px/1 Pixelify,sans-serif; transform:rotate(8deg); animation:intro-emote-pop 340ms ease-out both; }
+.intro-step-dust { position:absolute; bottom:24px; left:0; width:8px; height:4px; background:#e8c38e; opacity:0; }
+#app[data-intro-action="walk-right"] .intro-step-dust { animation:intro-dust 520ms steps(4) infinite; }
+.intro-card { width:100%; align-self:center; margin:0; padding:24px; background:linear-gradient(145deg,#fff8e8,#f1dfba); }
+.intro-card h1 { font-size:clamp(28px,3vw,38px); }
+.intro-portrait-badge { width:54px; height:54px; }
+.intro-kicker { font-size:10px; letter-spacing:.12em; }
+.intro-specialties { margin:16px 0; }
+.intro-quest-hint { font-size:12px; }
+.intro-primary-actions { grid-template-columns:1fr; gap:10px; }
+.intro-primary-actions button { min-height:48px; }
+.intro-links { gap:8px; }
+.intro-links button,.intro-links a { border:0; box-shadow:none; background:transparent; font-size:12px; }
+.intro .loading-vignette { display:none; }
+.intro-loader-hud { border:0; padding:10px 0; background:none; }
+.loading-progress { height:7px; border-width:1px; }
+.intro-motes { position:absolute; inset:0; overflow:hidden; }
+.intro-motes i { position:absolute; width:3px; height:3px; background:#ffe3a1; left:calc(7% + var(--i) * 7.5%); bottom:8%; opacity:0; animation:intro-mote calc(5s + var(--i) * .3s) linear infinite; animation-delay:calc(var(--i) * -.7s); }
+.intro-backdrop { animation:intro-establish 2800ms ease-out both; }
+.intro-cinematic::after { background:linear-gradient(90deg,#0b243a55,transparent 68%),linear-gradient(180deg,#0b243a88,transparent 45%,#0b243a66); }
+#app[data-intro-paused="true"] .intro *,#app[data-intro-paused="true"] .intro *::after { animation-play-state:paused !important; }
+#app[data-intro-skipped="true"] .intro *,#app[data-intro-skipped="true"] .intro *::after { animation:none !important; }
+@keyframes intro-establish { from { transform:scale(1.035); filter:brightness(.65) saturate(.9); } to { transform:scale(1); filter:brightness(1) saturate(1.06); } }
+@keyframes intro-bubble-in { from { opacity:0; translate:0 8px; } to { opacity:1; translate:0 0; } }
+@keyframes intro-emote-pop { from { scale:.6; opacity:0; } to { scale:1; opacity:1; } }
+@keyframes intro-dust { from { opacity:.55; transform:translateX(0) scale(1); } to { opacity:0; transform:translateX(-24px) scale(2); } }
+@keyframes intro-mote { 15%,75% { opacity:.6; } to { transform:translate(32px,-280px); opacity:0; } }
+@media (max-width:1000px) {
+  .intro { column-gap:24px; grid-template-columns:minmax(0,1fr) minmax(300px,380px); padding-inline:24px; }
+  .intro-scene-caption strong { font-size:36px; }
+  .intro-actor-stage { left:10%; }
+  .intro-story-banner { width:290px; }
+  .intro-card { padding:18px; }
+}
+@media (max-width:760px) {
+  .intro { display:flex; gap:20px; padding:16px 16px 28px; justify-content:flex-start; }
+  .intro-top-bar { flex:none; gap:12px; }
+  .intro-brand-pill { font-size:9px; padding:4px 0; background:none; }
+  .intro-top-actions { width:100%; justify-content:space-between; gap:6px; }
+  .intro-top-actions button { font-size:10px; padding:8px; flex:1; }
+  .intro-scene { flex:none; width:100%; min-height:490px; }
+  .intro-scene-caption { top:10px; left:8px; }
+  .intro-scene-caption strong { font-size:32px; }
+  .intro-scene-caption small { display:none; }
+  #app[data-intro-stage="conversation"] .intro-scene-caption { visibility:hidden; }
+  .intro-actor-stage { bottom:0; left:28px; width:74px; }
+  .intro-story-banner { left:-20px; bottom:calc(100% + 18px); width:min(360px,calc(100vw - 48px)); padding:14px; }
+  .intro-beat-title { font-size:24px; }
+  .intro-beat-subtitle { font-size:13px; }
+  .intro-campfire-fx { right:14%; bottom:50%; }
+  .intro-card { flex:none; width:100%; display:block; margin:0; padding:18px; }
+  .intro-card h1 { font-size:28px; }
+  .intro-card-header { margin-bottom:12px; }
+  .intro-primary-actions { grid-template-columns:1fr; }
+  .intro-card .intro-subtitle { font-size:13px; }
+  .intro-links button,.intro-links a { min-height:44px; }
+}
+@media (max-height:500px) and (min-width:761px) {
+  .intro { grid-template-rows:auto minmax(480px,1fr); }
+  .intro-scene { min-height:480px; }
+  .intro-scene-caption { display:none; }
+  .intro-card { display:block; }
+  .intro-story-banner { display:block; }
+}
+/* Make room for the dialogue without covering it with the opening title. */
+#app[data-intro-stage="conversation"] .intro-scene-caption { visibility:hidden; }
+@media (min-width:761px) { .intro-actor-stage { width:clamp(88px,8vw,112px); } }
+
+#app[data-intro-dialogue="camp"] .intro-actor, #app[data-intro-dialogue="work"] .intro-actor { animation:intro-acknowledge 420ms ease-out both; }
+@keyframes intro-acknowledge { 40% { transform:translateY(4px) rotate(-3deg); } 75% { transform:translateY(-2px) rotate(2deg); } to { transform:none; } }
