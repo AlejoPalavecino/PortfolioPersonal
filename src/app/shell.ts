@@ -43,10 +43,16 @@ function intro(): string {
         <span>CAMPAMENTO CREATIVO</span>
       </div>
       <div class="intro-top-actions">
-        <button type="button" class="icon-control" data-action="sound" aria-label="Apagar sonido" title="Sonido" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM17 8q5 4 0 8M19 4q9 8 0 16"/></svg></button>
-        <button type="button" class="icon-control" data-action="motion" aria-label="Reducir movimiento" title="Reducir movimiento" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M12 5v14M18 5v14M3 9h6M9 15h6M15 8h6"/></svg></button>
+        <button type="button" class="icon-control" data-action="sound" aria-label="Activar sonido" title="Activar sonido" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><g class="sound-waves"><path d="M17 8q5 4 0 8M19 4q9 8 0 16"/></g><path class="sound-slash" d="M3 3l18 18"/></svg></button>
+        <button type="button" class="icon-control" data-action="motion" aria-label="Reducir movimiento" title="Reducir movimiento" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="14" cy="4" r="2"/><g class="walking-person"><path d="M10 9l3-2 3 5 4 1M13 8l-2 7-4 5M11 15l5 2 1 4M10 9l-3 4H4"/></g><path class="motion-slash" d="M3 3l18 18"/></svg></button>
       </div>
     </div>
+    <div class="intro-boot" role="status" aria-live="polite">
+      <span class="boot-emblem" aria-hidden="true">◈</span><p class="boot-kicker">CAMPAMENTO CREATIVO</p>
+      <h2>Preparando tu aventura</h2><p class="boot-task">Cargando el paisaje y los personajes…</p>
+      <div class="boot-meter" aria-hidden="true"><span></span></div><small class="boot-count">0 de 28 recursos</small>
+    </div>
+    <div class="intro-handoff" role="status" aria-live="polite" hidden><span class="boot-emblem" aria-hidden="true">◈</span><h2 class="handoff-title">Entrando al campamento</h2><p class="handoff-detail">Proyectos · Contacto · Trayectoria · Sobre mí</p><span class="handoff-spinner" aria-hidden="true"></span></div>
     <div class="intro-content">
       <header class="intro-heading">
         <p class="intro-eyebrow">ALEJO PALAVECINO <span aria-hidden="true">/</span> DESARROLLADOR DE SOFTWARE</p>
@@ -79,7 +85,7 @@ function intro(): string {
         </div>
       </div>
       <button class="retry-intro" data-action="retry" hidden>Reintentar carga</button>
-      <div class="intro-primary-actions">
+      <div class="intro-primary-actions" style="--adventure-button:url('${assetUrl('camp-rooms-v1/ui/adventure-button.webp')}')">
         <button class="enter-button" data-action="enter" disabled>Explorar el campamento <span aria-hidden="true">↗</span></button>
         <button class="direct-button" data-action="direct">Ir directo a proyectos</button>
       </div>

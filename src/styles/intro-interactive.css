@@ -211,3 +211,47 @@
 @keyframes intro-depart-ui { to { opacity:0; translate:0 -16px; } }
 @keyframes intro-depart-actor { to { transform:translate(120px,-65px) scale(.6); opacity:0; } }
 @keyframes intro-depart-landscape { to { transform:scale(1.12); filter:brightness(.2); } }
+/* Readiness and illustrated adventure actions. HTML retains the accessible text. */
+.intro-primary-actions button { position:relative; isolation:isolate; min-height:66px; padding:20px 28px; border:0; border-radius:0; background:transparent !important; box-shadow:none; color:#15383c !important; font-weight:700; text-shadow:0 1px #fff2d477; }
+.intro-primary-actions button::before { content:''; position:absolute; z-index:-1; inset:0; background:var(--adventure-button) center/100% 100% no-repeat; transition:filter .2s; }
+.intro-primary-actions .direct-button::before { filter:hue-rotate(135deg) saturate(.5) brightness(.7); }
+.intro-primary-actions .direct-button { color:#fff4dc !important; text-shadow:0 1px #071f28; }
+.intro-primary-actions button:not(:disabled):hover::before { filter:brightness(1.15); }
+.intro-primary-actions .direct-button:not(:disabled):hover::before { filter:hue-rotate(135deg) saturate(.5) brightness(.85); }
+.intro-primary-actions button:not(:disabled):active { transform:translateY(2px); }
+#app[data-intro-ready="true"] .intro-primary-actions { animation:adventure-actions-in .5s cubic-bezier(.2,.8,.3,1) both; }
+@keyframes adventure-actions-in { from { opacity:0; translate:0 14px; } to { opacity:1; translate:0 0; } }
+.icon-control { position:relative; transition:background .2s,transform .2s,border-color .2s; }
+.icon-control:hover { transform:translateY(-2px) scale(1.06); border-color:#ffe0a0; }
+.icon-control:active { transform:scale(.94); }
+.icon-control::after { content:attr(aria-label); position:absolute; top:calc(100% + 10px); right:0; width:max-content; max-width:200px; padding:8px 10px; border:1px solid #d9bc7a; border-radius:6px; background:#102f38; color:#fff4dc; font:500 12px/1.4 Lexend,sans-serif; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-4px); transition:opacity .15s,transform .15s; }
+.icon-control:hover::after,.icon-control:focus-visible::after { visibility:visible; opacity:1; transform:none; }
+.sound-slash,.motion-slash { display:none; }
+[data-action="sound"][aria-pressed="false"] .sound-slash { display:block; }
+[data-action="sound"][aria-pressed="false"] .sound-waves { display:none; }
+[data-action="sound"][aria-pressed="true"] .sound-waves { animation:sound-wave-breathe 1.6s ease-in-out infinite; }
+[data-action="motion"][aria-pressed="true"] .walking-person { opacity:.35; }
+[data-action="motion"][aria-pressed="true"] .motion-slash,#app[data-motion="reduced"] .motion-slash { display:block; }
+[data-action="motion"][aria-pressed="false"] .walking-person { animation:walk-icon 1s ease-in-out infinite alternate; transform-origin:12px 12px; }
+@keyframes sound-wave-breathe { 50% { opacity:.5; } }
+@keyframes walk-icon { to { transform:rotate(-8deg); } }
+.intro-boot,.intro-handoff { position:fixed; z-index:4; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:14px; padding:28px; text-align:center; background:radial-gradient(ellipse at center,#204b52,#0b222d); color:#fff4dc; }
+.intro-top-bar { z-index:6; }
+.intro-boot h2,.intro-handoff h2 { margin:0; font-size:clamp(24px,4vw,36px); }
+.intro-boot p,.intro-handoff p { margin:0; font-size:14px; line-height:1.6; }
+.boot-emblem { color:#f3d296; font-size:48px; animation:boot-pulse 1.4s ease-in-out infinite alternate; }
+.boot-kicker { color:#f3d296; letter-spacing:.14em; }
+.boot-meter { width:min(320px,85vw); height:8px; background:#081f29; border:1px solid #c5a66e77; border-radius:6px; overflow:hidden; }
+.boot-meter span { display:block; height:100%; background:#edca88; transform:scaleX(var(--boot-progress,0)); transform-origin:left; transition:transform .15s; }
+.boot-count { font-size:12px; color:#d9d5c1; }
+#app[data-intro-boot="true"] .intro-content { visibility:hidden; }
+.intro-handoff { z-index:5; background:#0b222deb; animation:handoff-in .45s ease both; }
+.handoff-spinner { width:26px; height:26px; border:2px solid #f3d29644; border-top-color:#f3d296; border-radius:50%; animation:handoff-spin 1s linear infinite; }
+@keyframes boot-pulse { to { opacity:.55; scale:.94; } }
+@keyframes handoff-in { from { opacity:0; } to { opacity:1; } }
+@keyframes handoff-spin { to { rotate:360deg; } }
+/* Fixed feet and a single walk cycle prevent the earlier bob/size jitter. */
+.intro-actor { height:142px; object-fit:contain; object-position:center bottom; animation:none !important; }
+@media(max-width:760px) { .intro-actor { height:112px; } .intro-primary-actions button { min-height:64px; padding-inline:22px; } }
+@media(min-height:900px) and (min-width:761px) { .intro-actor { height:174px; } }
+@media(min-width:761px) and (max-height:850px) { .intro-actor { height:110px; } }
