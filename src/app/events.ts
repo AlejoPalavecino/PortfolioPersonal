@@ -1,3 +1,4 @@
+import { setControlLabel } from './control-label'
 import { hitDestination } from '../core/domain'
 import { effectiveReducedMotion } from '../core/experience'
 import type { CueBus } from '../core/fx/cues'
@@ -31,11 +32,11 @@ export function bindPreferences(root: HTMLElement, controller: Controller, sessi
     button.setAttribute('aria-pressed', String(user))
     button.setAttribute('aria-description', desc)
     controller.dispatch({ type: 'set-motion', reduced }); session.update({ type: 'set-motion', reduced })
-    button.textContent = label
+    setControlLabel(button, label)
     root.querySelectorAll?.<HTMLButtonElement>('[data-action=motion]').forEach(btn => {
       btn.setAttribute('aria-pressed', String(user))
       btn.setAttribute('aria-description', desc)
-      btn.textContent = label
+      setControlLabel(btn, label)
     })
   }
   motion.addEventListener('change', apply); apply()
@@ -65,7 +66,7 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape' || event.defaultPrevented || event.isComposing || (event.target as HTMLElement)?.closest('input,textarea,select')) return
     const intro = root.querySelector<HTMLElement>('.intro')
-    if (intro && !intro.hidden) { session.skipIntro(); return }
+    if (intro && !intro.hidden) return
     if (!root.querySelector<HTMLElement>('.mobile-menu')!.hidden) { closeMenu(root, session); root.querySelector<HTMLButtonElement>('.menu-toggle')!.focus() }
     else if (!help.hidden && session.state.phase === 'explore' && !controller.state.route) { help.hidden = true; root.querySelector<HTMLElement>('[data-action=help]')?.focus() }
     else if (controller.state.route) { controller.dispatch({ type: 'cancel' }); if (views.current.kind === 'camp') root.querySelector<HTMLElement>('.world')?.focus() }
@@ -80,9 +81,9 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
       audio.pause()
       bus?.emit('pause', { reason: 'hidden' })
       const sound = root.querySelector<HTMLButtonElement>('[data-action=sound]')!
-      if (sound.getAttribute('aria-pressed') === 'true') sound.textContent = 'Continuar sonido'
+      if (sound.getAttribute('aria-pressed') === 'true') setControlLabel(sound, 'Continuar sonido')
       root.querySelectorAll?.<HTMLButtonElement>('[data-action=sound]').forEach(btn => {
-        if (btn.getAttribute('aria-pressed') === 'true') btn.textContent = 'Continuar sonido'
+        if (btn.getAttribute('aria-pressed') === 'true') setControlLabel(btn, 'Continuar sonido')
       })
     } else {
       bus?.emit('resume', { reason: 'visible' })

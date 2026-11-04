@@ -29,13 +29,13 @@ function roomCurtain(): string {
 function intro(): string {
   return `<section class="intro" aria-label="Bienvenida y presentación inicial">
     <div class="intro-cinematic" aria-hidden="true">
-      <div class="intro-backdrop" style="--intro-desktop-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival.webp')}');--intro-portrait-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival-portrait.webp')}')"></div>
+      <div class="intro-panorama"><div class="intro-backdrop" style="--intro-desktop-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival-clean.webp')}');--intro-portrait-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival-clean.webp')}')"></div>
       <div class="intro-campfire-fx" style="--fx-fire:url('${assetUrl('camp-rooms-v1/fx/fire.png')}');--fx-smoke:url('${assetUrl('camp-rooms-v1/fx/smoke.png')}')">
         <span class="intro-fire-glow"></span>
         <span class="intro-fire-smoke"></span>
         <span class="intro-fire-flame"></span>
       </div>
-      <div class="intro-motes">${Array.from({ length: 12 }, (_, i) => `<i style="--i:${i}"></i>`).join('')}</div>
+      </div><div class="intro-motes">${Array.from({ length: 12 }, (_, i) => `<i style="--i:${i}"></i>`).join('')}</div>
     </div>
     <div class="intro-top-bar" role="toolbar" aria-label="Controles de presentación">
       <div class="intro-brand-pill" aria-hidden="true">
@@ -43,11 +43,8 @@ function intro(): string {
         <span>CAMPAMENTO CREATIVO</span>
       </div>
       <div class="intro-top-actions">
-        <button type="button" data-action="sound" aria-pressed="false">Sonido apagado</button>
-        <button type="button" data-action="motion" aria-pressed="false">Reducir movimiento</button>
-        <button type="button" class="intro-pause-button" data-action="intro-pause" aria-pressed="false">Pausar presentación</button>
-        <button type="button" class="intro-replay-button" data-action="intro-replay" hidden>Repetir bienvenida</button>
-        <button type="button" class="intro-skip-button" data-action="skip-intro">Omitir presentación →</button>
+        <button type="button" class="icon-control" data-action="sound" aria-label="Apagar sonido" title="Sonido" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM17 8q5 4 0 8M19 4q9 8 0 16"/></svg></button>
+        <button type="button" class="icon-control" data-action="motion" aria-label="Reducir movimiento" title="Reducir movimiento" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M12 5v14M18 5v14M3 9h6M9 15h6M15 8h6"/></svg></button>
       </div>
     </div>
     <div class="intro-content">
@@ -64,18 +61,12 @@ function intro(): string {
           <p class="intro-beat-title">¡Ey, llegaste!</p>
           <p class="intro-beat-subtitle" aria-hidden="true"></p>
           <p class="intro-dialogue-accessible sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
-          <div class="intro-replies" aria-label="Responder a Alejo">
-            <button type="button" data-intro-reply="camp">Mostrame el campamento</button>
-            <button type="button" data-intro-reply="work">¿Qué construís?</button>
-          </div>
-          <button type="button" class="intro-dialogue-next" data-action="intro-next" hidden>¡Vamos al campamento! →</button>
-          <small class="intro-dialogue-hint">Tu respuesta elige el camino de la charla.</small>
         </div>
         <span class="intro-actor-shadow" aria-hidden="true"></span>
         <span class="intro-emote" aria-hidden="true" hidden>!</span>
-        <button type="button" class="intro-character" aria-label="Saludar a Alejo" aria-controls="intro-conversation">
+        <div class="intro-character">
           <img class="intro-actor" src="${assetUrl('camp-rooms-v1/avatars/idle-right.png')}" width="160" height="288" alt="">
-        </button>
+        </div>
         <span class="intro-actor-tag" aria-hidden="true">ALEJO · DEV</span>
         <span class="intro-step-dust" aria-hidden="true"></span>
       </div>
@@ -92,12 +83,7 @@ function intro(): string {
         <button class="enter-button" data-action="enter" disabled>Explorar el campamento <span aria-hidden="true">↗</span></button>
         <button class="direct-button" data-action="direct">Ir directo a proyectos</button>
       </div>
-      <div class="intro-links">
-        <span class="intro-links-label">¿Tenés algo en mente?</span>
-        <button data-section="contact">Conversemos</button>
-        <span class="intro-link-divider" aria-hidden="true">/</span>
-        <a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>Descargar CV ↓</a>
-      </div>
+
       </div>
     </div>
   </section>`
