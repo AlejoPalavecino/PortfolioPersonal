@@ -79,6 +79,7 @@ export function createAudio(bus?: CueBus, getState?: () => { position: Point; re
   let enabled = false, paused = false
   let levels: AudioLevels = { master: 0.85, ambient: 0.75, sfx: 0.8 }
   let synth: WebSynth | null = null
+  let revision = 0, disposed = false
   const cooldowns = new Map<string, number>()
 
   const canPlay = (key: string, minGapMs: number): boolean => {
@@ -194,28 +195,39 @@ export function createAudio(bus?: CueBus, getState?: () => { position: Point; re
     },
     sync: updateSpatial,
     async toggle() {
+      if (disposed) return { enabled: false, failed: false }
+      const request = ++revision
       if (paused && enabled) paused = false
       else enabled = !enabled
-      if (enabled) {
-        try {
-          synth ??= buildSynth()
-          if (synth && synth.ctx.state === 'suspended') await synth.ctx.resume()
-          updateSpatial()
-          await ambient.play()
-        } catch {
-          ambient.pause()
-          if (synth && synth.ctx.state === 'running') void synth.ctx.suspend()
-          enabled = false
-          paused = false
-          return { enabled, failed: true }
-        }
-      } else {
+      // Mute and expose the requested state synchronously, before any media promise.
+      ambient.muted = !enabled
+      if (!enabled) {
+        ambient.volume = 0
         ambient.pause()
-        if (synth && synth.ctx.state === 'running') void synth.ctx.suspend()
+        if (synth) {
+          synth.masterGain.gain.cancelScheduledValues?.(synth.ctx.currentTime)
+          synth.masterGain.gain.value = 0
+        }
+        return { enabled: false, failed: false }
       }
-      return { enabled, failed: false }
+      try {
+        synth ??= buildSynth()
+        if (synth) synth.masterGain.gain.value = levels.master
+        updateSpatial()
+        // Invoke both immediately in the gesture; don't wait for resume before play.
+        const resume = synth?.ctx.state === 'suspended' ? synth.ctx.resume() : Promise.resolve()
+        await Promise.all([resume, ambient.play()])
+      } catch {
+        if (request !== revision || disposed) return { enabled: enabled && !paused, failed: false }
+        enabled = false; paused = false; ambient.muted = true; ambient.pause()
+        if (synth) synth.masterGain.gain.value = 0
+        return { enabled: false, failed: true }
+      }
+      return { enabled: enabled && !paused, failed: false }
     },
     pause() {
+      revision++
+      ambient.muted = true
       if (enabled) {
         ambient.pause()
         if (synth && synth.ctx.state === 'running') void synth.ctx.suspend()
@@ -223,6 +235,7 @@ export function createAudio(bus?: CueBus, getState?: () => { position: Point; re
       }
     },
     dispose() {
+      disposed = true; revision++; enabled = false; ambient.muted = true
       offs.forEach(off => off())
       ambient.pause()
       if (synth) void synth.ctx.close()

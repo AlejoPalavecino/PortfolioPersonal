@@ -93,13 +93,18 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
     }
     if (action === 'open') controller.dispatch({ type: 'open-now' })
     if (action === 'motion') toggleMotion()
-    if (action === 'sound') void audio.toggle().then(({ enabled, failed }) => {
-      const label = failed ? 'No se pudo activar sonido' : enabled ? 'Sonido activado' : 'Sonido apagado'
-      button.setAttribute('aria-pressed', String(enabled)); setControlLabel(button, label)
-      root.querySelectorAll?.<HTMLButtonElement>('[data-action=sound]').forEach(btn => {
-        btn.setAttribute('aria-pressed', String(enabled)); setControlLabel(btn, label)
-      })
-    })
+    if (action === 'sound') {
+      const paintSound = (failed = false) => {
+        const enabled = audio.enabled
+        root.querySelectorAll<HTMLButtonElement>('[data-action=sound]').forEach(btn => {
+          btn.setAttribute('aria-pressed', String(enabled))
+          setControlLabel(btn, failed ? 'No se pudo activar sonido' : enabled ? 'Apagar sonido' : 'Activar sonido')
+        })
+      }
+      const pending = audio.toggle()
+      paintSound()
+      void pending.then(({ failed }) => paintSound(failed))
+    }
   })
 }
 
