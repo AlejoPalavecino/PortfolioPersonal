@@ -17,7 +17,7 @@ export function createCamera(world: Size, viewport: Size, focus: Point, scale: n
  */
 export function responsiveCameraScale(world: Size, viewport: Size): number {
   const width = Math.max(1, viewport.width), height = Math.max(1, viewport.height)
-  if (width < 700) return height < 500 ? Math.max(0.75, Math.min(1.08, height / 470)) : 1.08
+  if (width < 700) return height < 500 ? Math.max(0.6, Math.min(0.78, height / 560)) : Math.max(0.7, Math.min(0.88, width / 500))
   return Math.max(0.75, width / Math.max(1, world.width), height / Math.max(1, world.height))
 }
 

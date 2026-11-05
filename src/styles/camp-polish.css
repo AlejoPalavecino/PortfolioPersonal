@@ -1,0 +1,31 @@
+/* Compact supports keep the landmarks visible; touch targets remain 44 logical units. */
+.world-label { width:116px; height:44px; font-family:Lexend,sans-serif; }
+.world-label .sign-plate { left:-6px; top:-4px; width:128px; height:58px; background-size:128px 58px; }
+.world-label .sign-text { left:26px; top:8px; width:86px; height:22px; font:600 12px/1.2 Lexend,sans-serif; }
+.label-projects { left:590px; top:160px; }
+.label-about { left:116px; top:287px; }
+.label-journey { left:278px; top:435px; }
+.label-contact { left:718px; top:285px; }
+.world-label[data-visited]::after { content:'✓'; position:absolute; top:2px; right:1px; padding:2px; border-radius:50%; color:#fff6df; background:#315d43; font:700 10px/1 Lexend,sans-serif; pointer-events:none; }
+.world-label[data-nearby] .sign-plate { filter:brightness(1.14) drop-shadow(0 0 5px #ffce7380); }
+.hud-left,.hud-right,.mobile-menu,.help-card,.route-controls,.world-hint { font-family:Lexend,sans-serif; }
+.camp-destinations { display:none; }
+@media(max-width:699px) {
+  .camp-destinations { position:absolute; z-index:35; left:10px; right:10px; bottom:max(12px,env(safe-area-inset-bottom)); display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:8px; background:#102f38f0; border:1px solid #d5bd8b88; border-radius:12px; box-shadow:0 4px 20px #071e2933; }
+  .camp-destinations button { display:flex; align-items:center; gap:7px; min-width:0; min-height:44px; padding:9px; border:1px solid #e1cda254; border-radius:7px; background:#22474f; color:#fff3d7; font:500 12px/1.3 Lexend,sans-serif; }
+  .destination-dot { width:5px; height:5px; border-radius:50%; flex:none; background:#b8b5a3; }
+  .camp-destinations [data-visited] .destination-dot { background:#a7d58b; }
+  .camp-destinations [data-selected] { border-color:#f4ce86; background:#365a5d; }
+  .world-label[data-offscreen="true"] { visibility:hidden; }
+  .world-hint { bottom:136px; max-width:calc(100% - 20px); font-size:11px; }
+  .route-controls { bottom:136px; width:calc(100% - 20px); white-space:normal; justify-content:center; }
+  .route-controls button { min-height:44px; }
+  .help-card { bottom:136px; left:10px; right:10px; width:auto; max-width:none; font-size:12px; }
+  .hud-right [data-action="help"] { bottom:136px; right:10px; }
+  #app:has(.help-card:not([hidden])) .hud-right [data-action="help"],#app[data-routing="true"] .hud-right [data-action="help"] { display:none; }
+}
+#app:has(.intro:not([hidden])) .camp-destinations,#app[data-reading="true"] .camp-destinations { display:none; }
+@media(max-height:500px) and (max-width:699px) { .camp-destinations { grid-template-columns:repeat(4,minmax(0,1fr)); padding:5px; } .camp-destinations button { padding:5px; font-size:10px; } .world-hint,.route-controls,.help-card,.hud-right [data-action="help"] { bottom:78px; } }
+/* Keep the same family across world controls and reading rooms, preserving sizes. */
+#app :is(.panel,.world-label,.hud-left,.hud-right,.mobile-menu,.help-card,.route-controls,.world-hint),
+#app :is(.panel,.world-label,.hud-left,.hud-right,.mobile-menu,.help-card,.route-controls,.world-hint) * { font-family:Lexend,sans-serif; }

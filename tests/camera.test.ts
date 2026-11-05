@@ -54,12 +54,12 @@ describe('cámara y coordenadas', () => {
 })
 
 describe('encuadre adaptable al alto del dispositivo', () => {
-  it('conserva la escala de retrato y muestra más suelo en ventanas muy bajas', () => {
+  it('muestra más contexto en retrato y aún más suelo en ventanas bajas', () => {
     const portrait = responsiveCameraScale(world, { width: 390, height: 844 })
     const compact = responsiveCameraScale(world, { width: 390, height: 360 })
-    expect(portrait).toBe(1.08)
+    expect(viewport.width / portrait).toBeGreaterThanOrEqual(480)
     expect(compact).toBeLessThan(portrait)
-    expect(compact).toBeGreaterThanOrEqual(0.75)
+    expect(compact).toBeGreaterThanOrEqual(0.6)
     expect(responsiveCameraScale(world, { width: 1366, height: 768 })).toBeCloseTo(1.366)
   })
 
