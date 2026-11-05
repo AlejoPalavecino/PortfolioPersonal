@@ -1,7 +1,8 @@
 import { setControlLabel } from './control-label'
 import { WORLD } from '../core/domain'
 import { roomForView } from '../core/experience'
-import { email as defaultEmail, type Section } from '../entities'
+import { cases, email as defaultEmail, type CaseId, type Section } from '../entities'
+import { t } from '../shared/i18n'
 import type { createController } from './controller'
 import type { createViews } from './views'
 import type { createAudio } from './audio'
@@ -70,7 +71,7 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
     if (credential) { controller.dispatch({ type: 'restore', view: { kind: 'credential', id: credential } }); return }
     if (action === 'recognitions') { controller.dispatch({ type: 'restore', view: { kind: 'recognitions' } }); return }
     if (action === 'journey') { controller.dispatch({ type: 'restore', view: { kind: 'section', section: 'journey' } }); return }
-    if (id === 'foxmind' || id === 'flower') { controller.dispatch({ type: 'open-project', project: id }); return }
+    if (id && Object.prototype.hasOwnProperty.call(cases, id)) { controller.dispatch({ type: 'open-project', project: id as CaseId }); return }
     if (action === 'enter' || action === 'skip-intro') { if (session.skipIntro) session.skipIntro(); else session.enter(); return }
     if (action === 'direct') { session.direct(); controller.dispatch({ type: 'select-section', section: 'projects', arrived: true }); return }
     if (action === 'copy-email') {

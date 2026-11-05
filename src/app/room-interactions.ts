@@ -1,4 +1,5 @@
 import { email } from '../entities'
+import { t } from '../shared/i18n'
 
 export function bindObjectInteractions(content: HTMLElement, saved: Record<string, string | undefined> = {}) {
   const tabs = [...content.querySelectorAll<HTMLButtonElement>('[data-notebook]')]
@@ -50,10 +51,10 @@ export function bindObjectInteractions(content: HTMLElement, saved: Record<strin
       const description = content.querySelector<HTMLElement>('.radio-intent-description')!
       const subject = project ? 'Proyecto de desarrollo a medida' : 'Oportunidad laboral'
       link.href = `mailto:${email}?subject=${encodeURIComponent(subject)}`
-      link.textContent = `Abrir correo · ${project ? 'Desarrollo a medida' : subject} ↗`
+      link.textContent = t(`Abrir correo · ${project ? 'Desarrollo a medida' : subject} ↗`, `Send email · ${project ? 'Custom software' : 'Job opportunity'} ↗`)
       description.textContent = project
-        ? 'Aplicaciones web, sistemas de gestión, integraciones e inteligencia artificial con un alcance definido.'
-        : 'Desarrollo full stack, análisis funcional, automatización e IA aplicada.'
+        ? t('Aplicaciones web, sistemas de gestión, integraciones e IA con alcance claro.','Web apps, business systems, integrations and AI with clear scope.')
+        : t('Desarrollo full stack, análisis funcional, automatización e IA aplicada.','Full stack, systems analysis, automation and applied AI.')
       content.querySelector<HTMLElement>('.radio-console')!.dataset.channel = project ? 'project' : 'team'
     })
   }

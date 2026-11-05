@@ -1,12 +1,13 @@
 import type { Section } from '../entities'
 import { assetUrl } from '../shared'
+import { t } from '../shared/i18n'
 import { roomForView } from '../core/experience'
 import type { RoomContext, View } from './room-types'
 
 type Reaction = { status: string; quote: string }
 
 export const ROOM_ACTOR_DEFAULTS: Record<Section, Reaction> = {
-  projects: { status: 'ALEJO · EN EL TALLER', quote: 'Estos planos cuentan dos maneras de resolver una necesidad real.' },
+  projects: { status: 'ALEJO · EN EL TALLER', quote: 'Estos planos muestran distintas maneras de resolver problemas reales.' },
   about: { status: 'ALEJO · EN LA CARPA', quote: 'Primero entiendo el problema. Después pienso cómo construir la solución.' },
   journey: { status: 'ALEJO · EN LA BITÁCORA', quote: 'Cada experiencia deja algo para llevar al próximo proyecto.' },
   contact: { status: 'ALEJO · EN LA RADIO', quote: 'Contame qué tenés en mente y empecemos una conversación.' },
@@ -15,6 +16,10 @@ export const ROOM_ACTOR_DEFAULTS: Record<Section, Reaction> = {
 const reactions: Record<string, Reaction> = {
   foxmind: { status: 'ALEJO · FOXMIND', quote: 'Aprendizaje e inteligencia artificial, con alcance público limitado antes de pilotos.' },
   flower: { status: 'ALEJO · FLOWER', quote: 'Un sistema que acompaña el trabajo de una librería, con facturación automática mediante ARCA.' },
+  agrotech: { status: 'ALEJO · AGROTECH', quote: 'Anticipar heladas para decidir mejor cuándo actuar.' },
+  irrigacion: { status: 'ALEJO · AGUA', quote: 'Medir para entender mejor la distribución del agua.' },
+  herbario: { status: 'ALEJO · HERBARIO', quote: 'Organizar conocimiento también es resolver un problema.' },
+  art: { status: 'ALEJO · PROCESOS', quote: 'Automatizar tareas repetitivas para ganar tiempo.' },
   recognitions: { status: 'ALEJO · EVIDENCIAS', quote: 'Acá reúno documentos que pueda compartir con su atribución verificada.' },
   laboral: { status: 'ALEJO · EQUIPOS', quote: 'Me interesa aportar a equipos que construyen productos útiles.' },
   proyecto: { status: 'ALEJO · A MEDIDA', quote: 'Podemos empezar por entender la necesidad y definir un alcance.' },
@@ -28,7 +33,7 @@ export function clearActorTimers(context: RoomContext) {
 }
 
 export function defaultReactionForView(view: Exclude<View, { kind: 'camp' }>): Reaction {
-  if (view.kind === 'case') return reactions[view.id]!
+  if (view.kind === 'case') return reactions[view.id] ?? ROOM_ACTOR_DEFAULTS.projects
   if (view.kind === 'recognitions' || view.kind === 'credential') return reactions.recognitions!
   return ROOM_ACTOR_DEFAULTS[roomForView(view)!]
 }

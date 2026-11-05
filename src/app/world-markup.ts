@@ -1,4 +1,6 @@
 import { DESTINATIONS, type Section } from '../core/domain'
+import { sections } from '../entities'
+import { t } from '../shared/i18n'
 import { assetUrl } from '../shared'
 import { campIcon } from '../shared/camp-icons'
 
@@ -18,7 +20,7 @@ export function worldMarkup(): string {
     const sign = item.visual.sign
     return `<button class="world-label label-${id}" data-section="${id}" data-mount="${sign.mount}"
       style="left:${sign.x}px;top:${sign.y}px;--sign-width:${sign.width}px;--sign-height:${sign.height}px;z-index:${item.depthY + 7}">
-      <span class="sign-plate" aria-hidden="true"></span><span class="sign-text">${campIcon(id)}${item.sign}</span>
+      <span class="sign-plate" aria-hidden="true"></span><span class="sign-text">${campIcon(id)}${sections[id]}</span>
     </button>`
   }).join('')
   return `<div class="world-scroll"><div class="world" tabindex="0" role="application" aria-label="Campamento interactivo">
@@ -32,5 +34,5 @@ export function worldMarkup(): string {
     </div>
     <canvas class="world-fx-props" width="1000" height="650" aria-hidden="true"></canvas>${signs}
     <div class="avatar-occlusion" aria-hidden="true" hidden><img class="avatar avatar-ghost" width="131" height="255" src="${assetUrl('avatar/idle-down.webp')}" alt=""></div>
-  </div></div><nav class="camp-destinations" aria-label="Lugares del campamento">${entries.map(([id,item]) => `<button data-section="${id}">${campIcon(id)}<span>${item.sign}</span><span class="destination-dot" aria-hidden="true"></span></button>`).join('')}</nav>`
+  </div></div><nav class="camp-destinations" aria-label="Lugares del campamento">${entries.map(([id,item]) => `<button data-section="${id}">${campIcon(id)}<span>${sections[id]}</span><span class="destination-dot" aria-hidden="true"></span></button>`).join('')}</nav>`
 }

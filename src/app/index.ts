@@ -1,4 +1,5 @@
 import { createController } from './controller'
+import { applyPageMetadata } from '../shared/i18n'
 import { createAudio } from './audio'
 import { shell } from './shell'
 import { createViews } from './views'
@@ -21,6 +22,7 @@ export function mount(root: HTMLElement) {
   const reducedMotion = effectiveReducedMotion(matchMedia('(prefers-reduced-motion: reduce)').matches, userMotion)
   root.dataset.userMotion = String(userMotion)
   root.dataset.motion = reducedMotion ? 'reduced' : 'full'
+  applyPageMetadata()
   root.innerHTML = shell()
   observeViewport(root)
   const loop = createLoop(), bus = createCueBus()
