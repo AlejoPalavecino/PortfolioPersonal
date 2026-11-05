@@ -32,8 +32,8 @@ export const ROOM_META: Readonly<Record<Section, RoomMeta>> = {
     loadingLabel: 'Preparando el interior…',
     theme: 'workbench',
     fallbackBg: '#241b16',
-    desktopAsset: 'camp-rooms-v1/rooms/projects-desktop.webp',
-    portraitAsset: 'camp-rooms-v1/rooms/projects-portrait.webp',
+    desktopAsset: 'camp-rooms-v2/projects-desktop.webp',
+    portraitAsset: 'camp-rooms-v2/projects-portrait.webp',
     iconAsset: 'camp-rooms-v1/ui/icon-projects@4x.png',
     frameAsset: 'camp-rooms-v1/ui/frame-workbench-9slice.png',
     introFx: 'door-open',
@@ -48,8 +48,8 @@ export const ROOM_META: Readonly<Record<Section, RoomMeta>> = {
     loadingLabel: 'Preparando el interior…',
     theme: 'linen',
     fallbackBg: '#1f2a24',
-    desktopAsset: 'camp-rooms-v1/rooms/about-desktop.webp',
-    portraitAsset: 'camp-rooms-v1/rooms/about-portrait.webp',
+    desktopAsset: 'camp-rooms-v2/about-desktop.webp',
+    portraitAsset: 'camp-rooms-v2/about-portrait.webp',
     iconAsset: 'camp-rooms-v1/ui/icon-about@4x.png',
     frameAsset: 'camp-rooms-v1/ui/frame-linen-9slice.png',
     introFx: 'canvas-open',
@@ -64,8 +64,8 @@ export const ROOM_META: Readonly<Record<Section, RoomMeta>> = {
     loadingLabel: 'Preparando el interior…',
     theme: 'journal',
     fallbackBg: '#261e17',
-    desktopAsset: 'camp-rooms-v1/rooms/journey-desktop.webp',
-    portraitAsset: 'camp-rooms-v1/rooms/journey-portrait.webp',
+    desktopAsset: 'camp-rooms-v2/journey-desktop.webp',
+    portraitAsset: 'camp-rooms-v2/journey-portrait.webp',
     iconAsset: 'camp-rooms-v1/ui/icon-journey@4x.png',
     frameAsset: 'camp-rooms-v1/ui/frame-journal-9slice.png',
     introFx: 'journal-open',
@@ -80,8 +80,8 @@ export const ROOM_META: Readonly<Record<Section, RoomMeta>> = {
     loadingLabel: 'Preparando el interior…',
     theme: 'radio',
     fallbackBg: '#16262f',
-    desktopAsset: 'camp-rooms-v1/rooms/contact-desktop.webp',
-    portraitAsset: 'camp-rooms-v1/rooms/contact-portrait.webp',
+    desktopAsset: 'camp-rooms-v2/contact-desktop.webp',
+    portraitAsset: 'camp-rooms-v2/contact-portrait.webp',
     iconAsset: 'camp-rooms-v1/ui/icon-contact@4x.png',
     frameAsset: 'camp-rooms-v1/ui/frame-radio-9slice.png',
     introFx: 'radio-signal',
@@ -95,12 +95,9 @@ export function roomVariantAsset(section: Section, portrait = false): string {
 
 function defaultDecodeImage(url: string): Promise<void> {
   if (typeof Image === 'undefined') return Promise.resolve()
-  return new Promise<void>((resolve, reject) => {
-    const img = new Image()
-    img.onload = () => resolve()
-    img.onerror = () => reject(new Error(`No se pudo cargar ${url}`))
-    img.src = url
-  })
+  const image = new Image()
+  image.src = url
+  return image.decode()
 }
 
 export type RoomStateSnapshot = {
@@ -112,113 +109,83 @@ export type RoomStateSnapshot = {
 export function createRoomLoader(
   decodeImage: (url: string) => Promise<void> = defaultDecodeImage,
   isPortrait: () => boolean = () => typeof window !== 'undefined' && typeof matchMedia === 'function' ? matchMedia('(max-width: 700px)').matches : false,
+  timeoutMs = 8000,
 ) {
   const states = new Map<Section, RoomStateSnapshot>()
   const inflight = new Map<Section, Promise<RoomAssetStatus>>()
   const listeners = new Set<(section: Section, snapshot: RoomStateSnapshot) => void>()
+  const cancellations = new Set<() => void>()
+  let generation = 0
   let disposed = false
 
-  const getSnapshot = (section: Section): RoomStateSnapshot => {
-    const portrait = isPortrait()
-    const url = roomVariantAsset(section, portrait)
+  function get(section: Section): RoomStateSnapshot {
+    const url = roomVariantAsset(section, isPortrait())
     const existing = states.get(section)
-    if (existing && existing.url.split('?')[0] === url) return existing
-    const initial: RoomStateSnapshot = { status: 'idle', url, generation: existing ? existing.generation : 0 }
-    states.set(section, initial)
-    return initial
+    if (existing?.url.split('?')[0] === url) return existing
+    const state: RoomStateSnapshot = { status: 'idle', url, generation: ++generation }
+    states.set(section, state)
+    return state
   }
 
-  const notify = (section: Section, snapshot: RoomStateSnapshot) => {
-    if (disposed) return
-    for (const listener of [...listeners]) listener(section, snapshot)
+  function decode(url: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const cancel = () => { clear(); reject(new Error('La carga de la ilustración no terminó')) }
+      const timer = setTimeout(cancel, timeoutMs)
+      const clear = () => { clearTimeout(timer); cancellations.delete(cancel) }
+      cancellations.add(cancel)
+      Promise.resolve().then(() => decodeImage(url)).then(
+        () => { clear(); resolve() },
+        error => { clear(); reject(error) },
+      )
+    })
   }
 
-  const load = (section: Section, forceRetry = false): Promise<RoomAssetStatus> => {
+  function publish(section: Section, state: RoomStateSnapshot) {
+    states.set(section, state)
+    for (const listener of [...listeners]) listener(section, state)
+  }
+
+  function load(section: Section, retry = false): Promise<RoomAssetStatus> {
     if (disposed) return Promise.resolve('idle')
-    const current = getSnapshot(section)
-    if (current.status === 'ready' && !forceRetry) return Promise.resolve('ready')
-    if (current.status === 'loading' && !forceRetry) {
+    const current = get(section)
+    if (!retry && current.status === 'ready') return Promise.resolve('ready')
+    if (!retry && current.status === 'loading') {
       const pending = inflight.get(section)
       if (pending) return pending
     }
-    const generation = current.generation + 1
-    const url = roomVariantAsset(section, isPortrait())
-    const loadingState: RoomStateSnapshot = { status: 'loading', url, generation }
-    states.set(section, loadingState)
-    notify(section, loadingState)
-
-    const promise = Promise.resolve()
-      .then(() => decodeImage(url))
-      .then((): RoomAssetStatus => {
-        const latest = states.get(section)
-        if (disposed || !latest || latest.generation !== generation) return latest?.status ?? 'idle'
-        const readyState: RoomStateSnapshot = { status: 'ready', url, generation }
-        states.set(section, readyState)
-        inflight.delete(section)
-        notify(section, readyState)
-        return 'ready'
-      })
-      .catch((): RoomAssetStatus => {
-        const latest = states.get(section)
-        if (disposed || !latest || latest.generation !== generation) return latest?.status ?? 'idle'
-        const failedState: RoomStateSnapshot = { status: 'failed', url, generation }
-        states.set(section, failedState)
-        inflight.delete(section)
-        notify(section, failedState)
-        return 'failed'
-      })
-
-    inflight.set(section, promise)
-    return promise
+    const id = ++generation
+    const base = roomVariantAsset(section, isPortrait())
+    const url = retry ? `${base}?r=${id}` : base
+    const loading: RoomStateSnapshot = { status: 'loading', url, generation: id }
+    const complete = (status: RoomAssetStatus): RoomAssetStatus => {
+      const latest = get(section)
+      if (disposed || latest !== loading) return latest.status
+      inflight.delete(section)
+      publish(section, { status, url, generation: id })
+      return status
+    }
+    const pending = decode(url).then(() => complete('ready'), () => complete('failed'))
+    inflight.set(section, pending)
+    publish(section, loading)
+    return pending
   }
 
   return {
-    get(section: Section): RoomStateSnapshot {
-      return getSnapshot(section)
-    },
-    prefetch(section: Section): Promise<RoomAssetStatus> {
-      return load(section, false)
-    },
-    retry(section: Section): Promise<RoomAssetStatus> {
-      const existing = states.get(section)
-      const baseUrl = roomVariantAsset(section, isPortrait()).split('?')[0]!
-      const retryUrl = `${baseUrl}?r=${Date.now()}`
-      const generation = (existing?.generation ?? 0) + 1
-      const loadingState: RoomStateSnapshot = { status: 'loading', url: retryUrl, generation }
-      states.set(section, loadingState)
-      notify(section, loadingState)
-      const promise = Promise.resolve()
-        .then(() => decodeImage(retryUrl))
-        .then((): RoomAssetStatus => {
-          const latest = states.get(section)
-          if (disposed || !latest || latest.generation !== generation) return latest?.status ?? 'idle'
-          const readyState: RoomStateSnapshot = { status: 'ready', url: retryUrl, generation }
-          states.set(section, readyState)
-          inflight.delete(section)
-          notify(section, readyState)
-          return 'ready'
-        })
-        .catch((): RoomAssetStatus => {
-          const latest = states.get(section)
-          if (disposed || !latest || latest.generation !== generation) return latest?.status ?? 'idle'
-          const failedState: RoomStateSnapshot = { status: 'failed', url: retryUrl, generation }
-          states.set(section, failedState)
-          inflight.delete(section)
-          notify(section, failedState)
-          return 'failed'
-        })
-      inflight.set(section, promise)
-      return promise
-    },
-    subscribe(fn: (section: Section, snapshot: RoomStateSnapshot) => void): () => void {
+    get,
+    prefetch: (section: Section) => load(section),
+    retry: (section: Section) => load(section, true),
+    subscribe(fn: (section: Section, snapshot: RoomStateSnapshot) => void) {
       listeners.add(fn)
       return () => { listeners.delete(fn) }
     },
     dispose() {
       disposed = true
+      for (const cancel of cancellations) cancel()
+      cancellations.clear()
       listeners.clear()
       inflight.clear()
     },
   }
 }
+
 export type RoomLoader = ReturnType<typeof createRoomLoader>

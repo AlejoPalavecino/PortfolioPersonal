@@ -6,7 +6,7 @@
 #app .hud-right [data-action="help"] { display: none; }
 .mobile-menu { border-radius: 14px; box-shadow: 0 8px 28px #10292533; }
 .mobile-menu .settings { border-top: 1px solid #b7a47c66; padding-top: 10px; }
-#app :is(.panel,.world-label,.hud-left,.hud-right,.mobile-menu,.help-card,.route-controls,.world-hint) * { font-family: Lexend,sans-serif; }
+#app :is(.world-label,.hud-left,.hud-right,.mobile-menu,.help-card,.route-controls,.world-hint) * { font-family: Lexend,sans-serif; }
 
 @media (max-width: 699px) {
   #app[data-phase="explore"] { --camera-top: 64px; --camera-bottom: 184px; }

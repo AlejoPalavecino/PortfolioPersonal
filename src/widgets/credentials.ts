@@ -5,7 +5,6 @@ const escape = (value: string) => value.replace(/[&<>"']/g, character => ({ '&':
 const kinds: Record<CredentialKind, string> = {
   training: 'Certificados de formación', certification: 'Certificaciones profesionales', award: 'Premios', mention: 'Menciones',
 }
-const back = '<button class="text-button" data-action="back">← Salir al campamento</button>'
 const sourceUrl = (url: string) => /^https:\/\//i.test(url) ? url : assetUrl(url)
 
 export function journeyTabs(selected: 'journey' | 'recognitions'): string {
@@ -23,16 +22,12 @@ function credentialCard(item: Credential): string {
 
 export function recognitionsMarkup(): string {
   const published = publishedCredentials()
-  const categoriesList = (Object.keys(kinds) as CredentialKind[]).map(k => `<li><strong>${kinds[k]}</strong></li>`).join('')
   const collection = published.length ? (Object.keys(kinds) as CredentialKind[]).map(kind => {
     const records = published.filter(item => item.kind === kind)
     return records.length ? `<section><h3>${kinds[kind]}</h3><div class="credential-grid">${records.map(credentialCard).join('')}</div></section>` : ''
-  }).join('') : `<div class="archive-empty-state">
-    <p class="review-note">La colección se está preparando. Los documentos originales y su atribución (persona, equipo o proyecto) se revisarán antes de incorporarlos; los registros en borrador permanecen fuera de publicación.</p>
-    <h3>Categorías contempladas en el archivo</h3>
-    <ul class="archive-categories">${categoriesList}</ul>
-  </div>`
-  return `<div class="panel-nav">${back}</div><span class="eyebrow">ARCHIVO DE EXPEDICIÓN · EVIDENCIAS</span>
+  }).join('') : `<div class="archive-empty-state"><h3>Las próximas páginas se están preparando.</h3>
+    <p>Los documentos originales y su atribución se revisan antes de publicarse. Los registros en borrador permanecen fuera de la colección.</p></div>`
+  return `<span class="eyebrow">ARCHIVO DE EXPEDICIÓN · EVIDENCIAS</span>
     <h2>Certificados y reconocimientos</h2>${journeyTabs('recognitions')}
     <p class="lead">Formación, premios y menciones con acceso a su evidencia original verificable.</p>${collection}`
 }
@@ -56,7 +51,7 @@ function originalEvidence(item: Credential): string {
 
 export function credentialMarkup(id: string): string {
   const item = credentialById(id)
-  const navigation = `<div class="panel-nav"><button class="text-button" data-action="recognitions">← Volver a certificados y reconocimientos</button>${back}</div>`
+  const navigation = `<div class="panel-nav"><button class="text-button" data-action="recognitions">← Volver a certificados y reconocimientos</button></div>`
   if (!item) return `${navigation}<h2>Documento no disponible</h2><p>Podés consultar la colección de documentos publicados desde la Bitácora.</p>`
   const date = dateLabel(item.date)
   const recipient = item.recipient!
