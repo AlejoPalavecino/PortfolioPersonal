@@ -43,6 +43,7 @@ export function createWorldCamera(root: HTMLElement, loop?: Loop) {
     for (const item of labels) {
       const x = (item.x - camera.x) * camera.scale, y = (item.y - camera.y) * camera.scale
       const index = x >= 0 && y >= 0 && x + item.w * camera.scale <= size.width && y + item.h * camera.scale <= size.height ? 0 : -1
+      item.label.dataset.offscreen = String(index === -1)
       if (item.label.tabIndex !== index) item.label.tabIndex = index
     }
   }
