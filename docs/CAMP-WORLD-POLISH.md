@@ -39,4 +39,4 @@ Pendiente: revisión de la rama en navegador real, especialmente caminar por bor
 
 En escritorio: ir a los cuatro destinos desde el centro y desde cada entrada; cancelar y cambiar rutas; aproximarse manualmente a paredes, silla, troncos, fogón y roca; comprobar que el personaje no se mete en sólidos. En móvil: 320×568, 390×844 y horizontal; seleccionar cada destino desde la barra, revisar ayuda/recorrido y entrar/salir de salas. Usar teclado y movimiento reducido.
 
-PR sin fusionar ni publicar.
+La PR #9 se integró a main en `d033325`. La siguiente etapa se documenta en [CAMP-EXPERIENCE.md](CAMP-EXPERIENCE.md).

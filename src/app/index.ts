@@ -38,9 +38,11 @@ export function mount(root: HTMLElement) {
     starting = true
     await audio.toggle()
     starting = false
-    const icon = root.querySelector<HTMLButtonElement>('.icon-control[data-action=sound]')
-    icon?.setAttribute('aria-pressed', String(audio.enabled))
-    if (icon) setControlLabel(icon, audio.enabled ? 'Apagar sonido' : 'Activar sonido')
+    root.dataset.sound = String(audio.enabled)
+    root.querySelectorAll<HTMLButtonElement>('[data-action=sound]').forEach(button => {
+      button.setAttribute('aria-pressed', String(audio.enabled))
+      setControlLabel(button, audio.enabled ? 'Apagar sonido' : 'Activar sonido')
+    })
   }
   root.addEventListener('click', event => { if ((event.target as HTMLElement).closest('[data-action=sound]')) wanted = false }, true)
   document.addEventListener('pointerdown', event => { if (!(event.target as HTMLElement).closest('[data-action=sound]')) void startSound() })
@@ -50,5 +52,8 @@ export function mount(root: HTMLElement) {
   const loader = prepareScene(state => { renderer.setFrames(state.frames); session.loading(state) })
   bindActions(root, controller, views, audio, session, () => loader.retry(), toggleMotion)
   bindEvents(root, controller, views, audio, session, renderer.camera, loop, bus)
+  if (import.meta.env.DEV && new URLSearchParams(location.search).has('calibrate')) {
+    void import('./scene-calibration').then(({ bindSceneCalibration }) => bindSceneCalibration(root, loop, controller))
+  }
   views.restoreUrl(controller)
 }

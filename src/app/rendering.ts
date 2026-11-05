@@ -17,6 +17,7 @@ function renderAccess(root: HTMLElement, state: State, nearby: Section | null) {
   root.querySelectorAll<HTMLButtonElement>('[data-section]').forEach(button => {
     const section = button.dataset.section as Section
     button.toggleAttribute('data-visited', state.visited.includes(section))
+    button.setAttribute('aria-description', state.visited.includes(section) ? 'Lugar visitado' : 'Lugar por explorar')
     button.toggleAttribute('data-selected', state.route?.target.kind === 'section' && state.route.target.section === section)
     button.toggleAttribute('data-nearby', nearby === section)
     if (active === section) button.setAttribute('aria-current', 'page')

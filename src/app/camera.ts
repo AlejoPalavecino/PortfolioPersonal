@@ -16,12 +16,21 @@ export function createWorldCamera(root: HTMLElement, loop?: Loop) {
   const landscape = root.querySelector<HTMLElement>('.landscape')
   const menu = root.querySelector<HTMLElement>('.mobile-menu')
   const panel = root.querySelector<HTMLElement>('.panel')
-  let size = { width: viewport.clientWidth, height: viewport.clientHeight }
+  let topInset = 0
+  let phase = root.dataset.phase
+  const measure = () => {
+    const style = getComputedStyle(root)
+    topInset = parseFloat(style.getPropertyValue('--camera-top')) || 0
+    const bottomInset = parseFloat(style.getPropertyValue('--camera-bottom')) || 0
+    return { width: viewport.clientWidth, height: Math.max(1, viewport.clientHeight - topInset - bottomInset) }
+  }
+  let size = measure()
   let focus: Point = WORLD.spawn
-  const scale = () => responsiveCameraScale(WORLD, size)
+  const scale = () => Math.max(responsiveCameraScale(WORLD, size), Math.min(.95, size.height / WORLD.height))
   let camera: Camera = createCamera(WORLD, size, focus, scale())
   let locked = false, reduced = false, settle: { start: number; duration: number } | null = null
   let labels: { label: HTMLButtonElement; x: number; y: number; w: number; h: number }[] = []
+  let labelsScale = 0
   const measureLabels = () => {
     labels = [...world.querySelectorAll<HTMLButtonElement>('.world-label')].map(label => ({ label, x: label.offsetLeft, y: label.offsetTop, w: label.offsetWidth, h: label.offsetHeight }))
   }
@@ -36,18 +45,19 @@ export function createWorldCamera(root: HTMLElement, loop?: Loop) {
     landscape.style.backgroundPosition = `${(50 + (.5 - tx) * 6 * amplitude).toFixed(1)}% ${(50 + (.5 - ty) * 4 * amplitude).toFixed(1)}%`
   }
   const paint = () => {
-    world.style.transform = `translate(${-camera.x * camera.scale}px, ${-camera.y * camera.scale}px) scale(${camera.scale})`
+    world.style.setProperty('--camera-scale', String(camera.scale))
+    world.style.transform = `translate(${-camera.x * camera.scale}px, ${topInset - camera.y * camera.scale}px) scale(${camera.scale})`
     root.dataset.camera = `${camera.x.toFixed(1)},${camera.y.toFixed(1)},${camera.scale.toFixed(2)}`
     parallax()
-    if (!labels.length) measureLabels()
+    if (!labels.length || labelsScale !== camera.scale) { labelsScale = camera.scale; measureLabels() }
     for (const item of labels) {
-      const x = (item.x - camera.x) * camera.scale, y = (item.y - camera.y) * camera.scale
+      const x = (item.x - item.w / 2 - camera.x) * camera.scale, y = (item.y - item.h / 2 - camera.y) * camera.scale
       const index = x >= 0 && y >= 0 && x + item.w * camera.scale <= size.width && y + item.h * camera.scale <= size.height ? 0 : -1
       item.label.dataset.offscreen = String(index === -1)
       if (item.label.tabIndex !== index) item.label.tabIndex = index
     }
   }
-  const resize = () => { size = { width: viewport.clientWidth, height: viewport.clientHeight }; camera = createCamera(WORLD, size, focus, scale() * boost()); measureLabels(); paint() }
+  const resize = () => { size = measure(); camera = createCamera(WORLD, size, focus, scale() * boost()); measureLabels(); paint() }
   const boost = () => settle ? 1 + (SETTLE_ZOOM - 1) * (1 - ease(Math.min(1, (performance.now() - settle.start) / settle.duration))) : 1
   const tick = (_time: number, elapsed: number) => {
     if (settle) {
@@ -64,8 +74,13 @@ export function createWorldCamera(root: HTMLElement, loop?: Loop) {
   const observer = new ResizeObserver(resize); observer.observe(viewport)
   paint()
   return {
-    update(point: Point, freeze: boolean, motion: boolean) { focus = point; locked = freeze; if (motion !== reduced) { reduced = motion; paint() } },
-    point(x: number, y: number) { const rect = viewport.getBoundingClientRect(); return screenToWorld({ x: x - rect.left, y: y - rect.top }, camera) },
+    update(point: Point, freeze: boolean, motion: boolean) {
+      focus = point
+      if (phase !== root.dataset.phase) { phase = root.dataset.phase; resize() }
+      locked = freeze
+      if (motion !== reduced) { reduced = motion; paint() }
+    },
+    point(x: number, y: number) { const rect = viewport.getBoundingClientRect(); return screenToWorld({ x: x - rect.left, y: y - rect.top - topInset }, camera) },
     /** Entry gesture: start slightly closer and ease out. Ignored with reduced motion. */
     settle(durationMs = 560) { if (!reduced) settle = { start: performance.now(), duration: durationMs } },
     /** An order arrived during the settle: finish it now so aim and picture agree again. */

@@ -21,6 +21,7 @@ describe('regreso explícito durante un recorrido', () => {
     const pushState = vi.fn((_state, _title, url: string) => { location.hash = url.startsWith('#') ? url : '' })
     vi.stubGlobal('location', location)
     vi.stubGlobal('history', { pushState })
+    vi.stubGlobal('window', { addEventListener: vi.fn() })
     const panel = { setAttribute: vi.fn(), querySelector: vi.fn() }
     const root = { dataset: {}, querySelector: (selector: string) => selector === '.panel' ? panel : null } as unknown as HTMLElement
     const views = createViews(root)

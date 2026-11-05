@@ -96,21 +96,6 @@
 .panel-header h2:focus-visible { text-decoration: underline; text-decoration-color: #9a4a31; text-underline-offset: 5px; }
 .world-hint { position: absolute; z-index: 31; bottom: max(16px, env(safe-area-inset-bottom)); left: 50%; translate: -50% 0; padding: 8px 12px; margin: 0; color: #fff6db; background: #173e52; border: 2px solid #f3d29a; }
 #app[data-routing="true"] .world-hint, #app[data-reading="true"] .world-hint, #app:has(.help-card:not([hidden])) .world-hint { display: none; }
-@media (max-height: 500px) and (orientation: landscape) {
-  .room-topbar { top: 6px; left: 10px; right: 10px; gap: 6px; flex-wrap: nowrap; }
-  .room-badge { display: none; }
-  .room-exit-btn, .room-nav-pill, .room-cv-link { min-height: 36px; padding: 4px 9px; font-size: 12px; }
-  .panel-scroll,
-  .panel[data-room="about"] .panel-scroll,
-  .panel[data-room="journey"] .panel-scroll,
-  .panel[data-room="contact"] .panel-scroll { top: 50px; bottom: 10px; left: 26%; right: 2%; }
-  .panel-header { padding: 8px 14px; }
-  .panel-header .eyebrow { display: none; }
-  .panel-header h2 { font-size: 22px; margin: 2px 0; }
-  .panel-content { padding: 10px 14px 24px; }
-  .room-plaque { top: 54px; left: 12px; max-width: 23%; }
-  .room-actor { width: 64px; left: 10%; bottom: 4%; }
-}
 @media (max-width: 360px) {
   .intro { min-width: 0; padding-inline: 10px; }
   .intro-card { min-width: 0; padding: 14px; }

@@ -67,6 +67,12 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
     if (event.key !== 'Escape' || event.defaultPrevented || event.isComposing || (event.target as HTMLElement)?.closest('input,textarea,select')) return
     const intro = root.querySelector<HTMLElement>('.intro')
     if (intro && !intro.hidden) return
+    const roomMenu = root.querySelector<HTMLElement>('details.room-navigation[open]')
+    if (roomMenu) {
+      roomMenu.removeAttribute('open')
+      roomMenu.querySelector<HTMLElement>('summary')?.focus()
+      return
+    }
     if (!root.querySelector<HTMLElement>('.mobile-menu')!.hidden) { closeMenu(root, session); root.querySelector<HTMLButtonElement>('.menu-toggle')!.focus() }
     else if (!help.hidden && session.state.phase === 'explore' && !controller.state.route) { help.hidden = true; root.querySelector<HTMLElement>('[data-action=help]')?.focus() }
     else if (controller.state.route) { controller.dispatch({ type: 'cancel' }); if (views.current.kind === 'camp') root.querySelector<HTMLElement>('.world')?.focus() }
@@ -77,6 +83,7 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
   })
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
+      root.dataset.paused = 'true'
       controller.dispatch({ type: 'pause' })
       audio.pause()
       bus?.emit('pause', { reason: 'hidden' })
@@ -86,6 +93,7 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
         if (btn.getAttribute('aria-pressed') === 'true') setControlLabel(btn, 'Continuar sonido')
       })
     } else {
+      delete root.dataset.paused
       bus?.emit('resume', { reason: 'visible' })
     }
   })

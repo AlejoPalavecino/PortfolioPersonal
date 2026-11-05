@@ -50,6 +50,7 @@ export async function copyEmailAddress(root: HTMLElement, button: HTMLButtonElem
 }
 
 export function bindActions(root: HTMLElement, controller: Controller, views: ReturnType<typeof createViews>, audio: ReturnType<typeof createAudio>, session: Session, retry: () => void, toggleMotion: () => void) {
+  let copyRevision = 0
   root.addEventListener('click', event => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button'); if (!button) return
     const section = button.dataset.section as Section | undefined, action = button.dataset.action, id = button.dataset.case
@@ -72,7 +73,13 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
     if (id === 'foxmind' || id === 'flower') { controller.dispatch({ type: 'open-project', project: id }); return }
     if (action === 'enter' || action === 'skip-intro') { if (session.skipIntro) session.skipIntro(); else session.enter(); return }
     if (action === 'direct') { session.direct(); controller.dispatch({ type: 'select-section', section: 'projects', arrived: true }); return }
-    if (action === 'copy-email') { void copyEmailAddress(root, button); return }
+    if (action === 'copy-email') {
+      const revision = ++copyRevision
+      void copyEmailAddress(root, button).then(success => {
+        if (button.isConnected && revision === copyRevision) views.copyResult?.(success)
+      })
+      return
+    }
     if (action === 'force-room') { views.forceOpenPendingRoom?.(); return }
     if (action === 'retry-room-bg' && button.dataset.room) { views.retryRoomBackground?.(button.dataset.room as Section); return }
     if (action === 'menu') { toggleMenu(root, controller, session); return }
@@ -96,6 +103,7 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
     if (action === 'sound') {
       const paintSound = (failed = false) => {
         const enabled = audio.enabled
+        root.dataset.sound = String(enabled)
         root.querySelectorAll<HTMLButtonElement>('[data-action=sound]').forEach(btn => {
           btn.setAttribute('aria-pressed', String(enabled))
           setControlLabel(btn, failed ? 'No se pudo activar sonido' : enabled ? 'Apagar sonido' : 'Activar sonido')
