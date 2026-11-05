@@ -93,34 +93,6 @@ main {
   cursor:pointer;
 }
 
-.poi-projects {
-  width:32%;
-  left:49%;
-  top:18%;
-  z-index:252;
-}
-
-.poi-about {
-  width:22%;
-  left:10%;
-  top:17%;
-  z-index:310;
-}
-
-.poi-journey {
-  width:19%;
-  left:25%;
-  top:46%;
-  z-index:420;
-}
-
-.poi-contact {
-  width:20%;
-  left:66%;
-  top:36%;
-  z-index:365;
-}
-
 .avatar {
   position:absolute;
   left:51%;

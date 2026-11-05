@@ -1,4 +1,4 @@
-import { WORLD, nearbySection, type Point, type Section } from '../../core/domain'
+import { DESTINATIONS, WORLD, nearbySection, type Point, type Section } from '../../core/domain'
 import { FX_LIMITS, createFrameMonitor, degrade, initialLevel, type FxLevel } from '../../core/fx/budget'
 import type { CueBus } from '../../core/fx/cues'
 import { createParticlePool } from '../../core/fx/particles'
@@ -97,16 +97,28 @@ export function bindWorldFx(
     if (reduced() || !thresholdStage) return
     thresholdStage.hidden = false
     thresholdStage.dataset.section = section
+    const { actor, fx } = DESTINATIONS[section].visual.threshold
+    if (thresholdActor) {
+      thresholdActor.style.left = `${actor.x}px`
+      thresholdActor.style.top = `${actor.y}px`
+    }
+    const effect = thresholdStage.querySelector<HTMLElement>('.threshold-fx')
+    if (effect) {
+      effect.style.left = `${fx.x}px`
+      effect.style.top = `${fx.y}px`
+      effect.style.width = `${fx.width}px`
+      effect.style.height = `${fx.height}px`
+    }
     if (thresholdActor) {
       if (section === 'projects' || section === 'about') {
         thresholdActor.hidden = false
-        thresholdActor.src = assetUrl('camp-rooms-v1/avatars/walk-up-1.png')
+        thresholdActor.src = assetUrl('avatar/walk-up-1.webp')
         thresholdTimers.push(
           window.setTimeout(() => {
-            if (thresholdActor) thresholdActor.src = assetUrl('camp-rooms-v1/avatars/walk-up-2.png')
+            if (thresholdActor) thresholdActor.src = assetUrl('avatar/walk-up-2.webp')
           }, 90),
           window.setTimeout(() => {
-            if (thresholdActor) thresholdActor.src = assetUrl('camp-rooms-v1/avatars/idle-up.png')
+            if (thresholdActor) thresholdActor.src = assetUrl('avatar/idle-up.webp')
           }, 180),
         )
       } else {

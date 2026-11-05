@@ -23,7 +23,7 @@ export const WORLD: World = {
     { kind: 'circle', center: { x: 250, y: 278 }, radius: 23 }, // Fire ring and logs.
     { kind: 'circle', center: { x: 190, y: 282 }, radius: 12 }, // Front stump.
     { kind: 'circle', center: { x: 300, y: 263 }, radius: 11 }, // Side stump.
-    { kind: 'circle', center: { x: 174, y: 338 }, radius: 4 }, // About sign post.
+    { kind: 'circle', center: { x: 172, y: 344 }, radius: 5 }, // About sign post.
     { kind: 'circle', center: { x: 630, y: 396 }, radius: 18 }, // Rock beside the radio path.
   ],
   arrivals: Object.fromEntries(sections.map(section => [section, DESTINATIONS[section].arrival])) as World['arrivals'],

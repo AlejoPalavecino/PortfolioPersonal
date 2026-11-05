@@ -1,131 +1,49 @@
-/* Exterior camp signs: 4 distinct physical supports (160x72 sprite cells) with real HTML text. */
+/* The landscape anchor is separate from the screen-sized interaction area. */
 .world-label {
   position: absolute;
-  width: 136px;
-  height: 44px;
-  min-height: 44px;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  background: transparent;
-  color: #21160d;
-  font: 700 15px/1 Pixelify, sans-serif;
-  text-align: left;
-  cursor: pointer;
-  transform: none !important;
-  box-shadow: none;
-  border-radius: 2px;
-  overflow: visible;
+  display: grid;
+  place-items: center;
   isolation: isolate;
+  width: max(var(--sign-width), calc(45px / var(--camera-scale, 1)));
+  height: max(var(--sign-height), calc(45px / var(--camera-scale, 1)));
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #2e2518;
+  box-shadow: none;
+  transform: translate(-50%, -50%);
+  font: 650 max(10px, calc(12px / var(--camera-scale, 1)))/1.15 Lexend, sans-serif;
 }
-
 .world-label .sign-plate {
   position: absolute;
-  left: -12px;
-  top: -14px;
-  width: 160px;
-  height: 72px;
-  background-image: var(--sign-idle);
-  background-size: 160px 72px;
-  background-repeat: no-repeat;
-  image-rendering: pixelated;
-  pointer-events: none;
-  filter: drop-shadow(0 2px 0 rgba(28, 19, 12, 0.55));
-  transition: filter 130ms ease-out;
+  z-index: -1;
+  width: var(--sign-width);
+  height: var(--sign-height);
+  border: 1.5px solid #705232;
+  border-radius: 3px;
+  background: linear-gradient(#e6c48b, #cda86e);
+  box-shadow: 0 2px 0 #5c432a, 0 3px 4px #21372933;
 }
-
-.world-label .sign-text {
-  position: absolute;
-  left: 32px;
-  top: 9px;
-  width: 91px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font: 700 15px/1 Pixelify, sans-serif;
-  color: #1f140c;
-  text-shadow: 0 1px 0 rgba(255, 244, 214, 0.85);
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.world-label[data-visited] .sign-plate {
-  background-image: var(--sign-visited);
-}
-
-.world-label:hover .sign-plate,
-.world-label:focus-visible .sign-plate {
-  background-image: var(--sign-hover);
-}
-
-.world-label[data-selected] .sign-plate,
-.world-label[data-nearby] .sign-plate {
-  background-image: var(--sign-selected);
-}
-
-.world-label:hover,
-.world-label:focus-visible,
-.world-label[data-selected],
-.world-label[data-nearby],
-.world-label[data-visited] {
-  transform: none !important;
-  color: #140d08;
-}
-
-.world-label:focus-visible {
-  outline: 3px solid #ffce73;
-  outline-offset: 2px;
-}
-
-/* Sprite support stays stationary: only paint/filter changes on interaction.
-   Ground-mounted signs receive a small contact shadow, not a floating glow. */
-.world-label:hover .sign-plate,
-.world-label:focus-visible .sign-plate {
-  filter: brightness(1.08) drop-shadow(0 3px 0 rgba(28, 19, 12, 0.6));
-}
-.world-label[data-selected] .sign-plate,
-.world-label[data-nearby] .sign-plate {
-  filter: brightness(1.06) drop-shadow(0 2px 0 rgba(28, 19, 12, 0.55));
-}
-.world-label[data-mount="poste-suelo"]::before,
-.world-label[data-mount="placa-mesa"]::before {
+.world-label[data-mount="fachada-taller"] .sign-plate { background: none; border: 0; box-shadow: none; }
+.world-label[data-mount="poste-suelo"] .sign-plate::after {
   content: '';
   position: absolute;
-  left: 22px;
-  width: 70px;
-  height: 8px;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(37, 54, 31, .31), transparent 74%);
+  width: 5px;
+  height: 16px;
+  background: #795333;
+  left: 50%;
+  top: 100%;
 }
-.world-label[data-mount="poste-suelo"]::before { top: 49px; }
-.world-label[data-mount="placa-mesa"]::before { top: 37px; }
-
-/* Calibrated mount positions on each building/prop without covering the avatar at arrival.point */
-.label-projects {
-  left: 582px;
-  top: 152px;
-  z-index: 324;
-}
-
-.label-about {
-  left: 112px;
-  top: 268px;
-  z-index: 324;
-}
-
-.label-journey {
-  left: 274px;
-  top: 414px;
-  z-index: 472;
-}
-
-.label-contact {
-  left: 712px;
-  top: 266px;
-  z-index: 426;
-}
+.world-label .sign-text { display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+.sign-text svg { width: 13px; height: 13px; flex: none; }
+.world-label:hover .sign-plate,
+.world-label:focus-visible .sign-plate { filter: brightness(1.12); }
+.world-label[data-selected] .sign-plate,
+.world-label[data-nearby] .sign-plate { filter: brightness(1.16) drop-shadow(0 0 3px #ffd78599); }
+.world-label:focus-visible { outline: 2px solid #fff5d5; outline-offset: 3px; }
+.world-label[data-visited] .sign-text::after { content: '✓'; color: #234e35; font-size: .8em; }
 
 /* Threshold entry stage: transient visual actor & prop FX at the building threshold (logical position never enters solids) */
 .threshold-stage {
@@ -137,11 +55,11 @@
 
 .threshold-actor {
   position: absolute;
-  width: 45px;
+  width: 36.68px;
   height: auto;
   image-rendering: pixelated;
   pointer-events: none;
-  transform: translate(-50%, -95%);
+  transform: translate(-50%, -99%);
 }
 
 .threshold-fx {
@@ -157,65 +75,44 @@
 }
 
 .threshold-stage[data-section="projects"] .threshold-actor {
-  left: 643px;
-  top: 336px;
-  clip-path: inset(12% 0 0 0);
   animation: threshold-step-workshop 280ms ease-out forwards;
 }
 
 .threshold-stage[data-section="projects"] .threshold-fx {
-  left: 611px;
-  top: 266px;
-  width: 64px;
-  height: 64px;
   background-image: var(--fx-door-open);
-  background-size: 512px 64px;
+  background-size: 800% 100%;
   animation: fx-steps-8 280ms steps(8) forwards;
 }
 
 @keyframes threshold-step-workshop {
-  from { transform: translate(-50%, -95%) translate(7px, 9px); opacity: 1; }
-  to { transform: translate(-50%, -95%) translate(0, -10px) scale(0.92); opacity: 0.35; }
+  from { transform: translate(-50%, -99%) translate(7px, 9px); opacity: 1; }
+  to { transform: translate(-50%, -99%) translate(0, -10px) scale(0.92); opacity: 0.35; }
 }
 
 .threshold-stage[data-section="about"] .threshold-actor {
-  left: 220px;
-  top: 332px;
   animation: threshold-step-tent 280ms ease-out forwards;
 }
 
 @keyframes threshold-step-tent {
-  from { transform: translate(-50%, -95%) translate(0, 3px); opacity: 1; }
-  to { transform: translate(-50%, -95%) translate(-4px, -8px) scale(0.94); opacity: 0.45; }
+  from { transform: translate(-50%, -99%) translate(0, 3px); opacity: 1; }
+  to { transform: translate(-50%, -99%) translate(-4px, -8px) scale(0.94); opacity: 0.45; }
 }
 
 .threshold-stage[data-section="about"] .threshold-fx {
-  left: 176px;
-  top: 238px;
-  width: 96px;
-  height: 84px;
   background-image: var(--fx-canvas-open);
-  background-size: 768px 84px;
+  background-size: 800% 100%;
   animation: fx-steps-8 280ms steps(8) forwards;
 }
 
 .threshold-stage[data-section="journey"] .threshold-fx {
-  left: 312px;
-  top: 356px;
-  width: 96px;
-  height: 72px;
   background-image: var(--fx-journal-open);
-  background-size: 768px 72px;
+  background-size: 800% 100%;
   animation: fx-steps-8 280ms steps(8) forwards;
 }
 
 .threshold-stage[data-section="contact"] .threshold-fx {
-  left: 736px;
-  top: 312px;
-  width: 64px;
-  height: 32px;
   background-image: var(--fx-radio-signal);
-  background-size: 512px 32px;
+  background-size: 800% 100%;
   animation: fx-steps-8 280ms steps(8) infinite;
 }
 
