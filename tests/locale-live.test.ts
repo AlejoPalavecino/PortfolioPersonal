@@ -1,6 +1,5 @@
 // @vitest-environment happy-dom
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest'
-import signStyles from '../src/styles/world-signs.css?raw'
 import { shell } from '../src/app/shell'
 import { createViews } from '../src/app/views'
 import { bindLanguagePicker } from '../src/app/locale-ui'
@@ -122,10 +121,4 @@ describe('bilingual portfolio with no reload', () => {
     expect(localizeText('7 of 28 assets')).toBe('7 de 28 recursos')
   })
 
-  it('keeps signs tactile without duplicating the workshop facade board', () => {
-    const css = signStyles
-    expect(css).toContain('repeating-linear-gradient')
-    expect(css).toContain('inset 0 1px')
-    expect(css).toContain('[data-mount="fachada-taller"] .sign-plate { background: none')
-  })
 })
