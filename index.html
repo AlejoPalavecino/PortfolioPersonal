@@ -7,7 +7,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
-    <meta name="theme-color" content="#90cef2">
+    <meta name="theme-color" content="#0b222d">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_AR">
     <meta property="og:title" content="Alejo Palavecino | Full Stack, Sistemas e IA">
@@ -26,12 +26,119 @@
     <link rel="alternate" hreflang="x-default" href="https://alejopalavecino.com.ar/">
     <link rel="sitemap" type="application/xml" href="%BASE_URL%sitemap.xml">
     <link rel="icon" href="%BASE_URL%assets/favicon.webp" type="image/webp">
-    <link rel="preload" href="%BASE_URL%assets/PixelifySans-Variable.ttf" as="font" type="font/ttf" crossorigin>
     <title>Alejo Palavecino | Full Stack, Sistemas e IA</title>
+    <style id="startup-critical-css">
+      /* First paint is deliberately self-contained: no font, image, CSS bundle or JS required. */
+      html { background: #0b222d; }
+      html, body { margin: 0; }
+      #app > .startup-preboot {
+        box-sizing: border-box;
+        min-height: 100vh;
+        min-height: 100dvh;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        padding: max(24px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom));
+        background:
+          radial-gradient(ellipse at 50% 110%, #345e55 0%, transparent 56%),
+          linear-gradient(158deg, #153944 0%, #0b222d 68%);
+        color: #f9ebd2;
+        text-align: center;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      .startup-preboot .startup-inner { width: min(100%, 420px); }
+      .startup-preboot .startup-symbol {
+        display: grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 18px;
+        border: 1px solid #e7c994ab;
+        border-radius: 14px;
+        background: linear-gradient(145deg, #365d5e, #143844);
+        box-shadow: 0 4px 0 #071a23, inset 0 1px #f9e7c04f;
+        color: #f3d396;
+        font-size: 31px;
+      }
+      .startup-preboot .startup-eyebrow {
+        margin: 0 0 12px;
+        color: #f1ce91;
+        font-size: 10px;
+        font-weight: 750;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+      }
+      .startup-preboot h1 {
+        margin: 0;
+        font-size: clamp(22px, 5vw, 31px);
+        font-weight: 750;
+        line-height: 1.2;
+        letter-spacing: -.025em;
+        text-wrap: balance;
+      }
+      .startup-preboot .startup-copy {
+        margin: 13px 0 20px;
+        color: #d7e0da;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .startup-preboot .startup-track {
+        display: block;
+        width: min(220px, 80%);
+        height: 4px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 9px;
+        background: #5a7672;
+      }
+      .startup-preboot .startup-track::before {
+        content: '';
+        display: block;
+        width: 40%;
+        height: 100%;
+        border-radius: inherit;
+        background: #f3d396;
+        animation: startup-loading 1.5s ease-in-out infinite alternate;
+      }
+      .startup-preboot .startup-help {
+        margin-top: 28px;
+        color: #d7e0da;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .startup-preboot .startup-help summary { cursor: pointer; text-underline-offset: 3px; }
+      .startup-preboot .startup-help a { color: #ffe0a3; text-underline-offset: 3px; }
+      .startup-preboot .startup-help a:focus-visible,
+      .startup-preboot .startup-help summary:focus-visible {
+        outline: 2px solid #ffe0a3; outline-offset: 4px;
+      }
+      .startup-preboot[data-failed="true"] .startup-track { display: none; }
+      @keyframes startup-loading { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+      @media (prefers-reduced-motion: reduce) {
+        .startup-preboot .startup-track::before { animation: none; width: 100%; }
+      }
+    </style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Alejo Palavecino","url":"https://alejopalavecino.com.ar/","email":"mailto:alejopalavecino12@gmail.com","jobTitle":["Software Developer","Systems Engineering Student"],"description":"Desarrollo Full Stack, análisis de sistemas, automatización e inteligencia artificial aplicada.","homeLocation":{"@type":"Place","name":"Mendoza, Argentina"},"sameAs":["https://www.linkedin.com/in/alejo-palavecino/","https://github.com/AlejoPalavecino","https://foxmind.site/"],"knowsAbout":["Software engineering","Full stack development","Systems analysis","Artificial intelligence","Process automation"]}</script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <section class="startup-preboot" role="status" aria-live="polite" aria-label="Preparando el portfolio">
+        <div class="startup-inner">
+          <span class="startup-symbol" aria-hidden="true">◈</span>
+          <p class="startup-eyebrow">Alejo Palavecino · Portfolio interactivo</p>
+          <h1>Preparando tu aventura</h1>
+          <p class="startup-copy">El campamento está despertando… / Loading the interactive portfolio…</p>
+          <span class="startup-track" aria-hidden="true"></span>
+          <details class="startup-help">
+            <summary>¿Demora demasiado? / Taking too long?</summary>
+            <p>Podés <a href="/">reintentar la carga</a> o contactarme por
+              <a href="mailto:alejopalavecino12@gmail.com">correo</a> y
+              <a href="https://www.linkedin.com/in/alejo-palavecino/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+            </p>
+          </details>
+        </div>
+      </section>
+    </div>
     <noscript>
       <style>html,body{height:auto;min-height:100%;overflow:auto}#app{display:none}noscript main{height:auto;overflow:visible}</style>
       <main style="max-width:48rem;margin:3rem auto;padding:1.5rem;background:#fff7e7;color:#092b40;font:1rem/1.6 sans-serif">
