@@ -2,6 +2,7 @@ import { WORLD, nearbySection } from '../core/domain'
 import { frameName, type Direction } from '../core/fx/gait'
 import { sections, type Section } from '../entities'
 import { assetUrl } from '../shared'
+import { t, language } from '../shared/i18n'
 import type { createController, Pose } from './controller'
 import type { createViews } from './views'
 import { createWorldCamera } from './camera'
@@ -17,7 +18,7 @@ function renderAccess(root: HTMLElement, state: State, nearby: Section | null) {
   root.querySelectorAll<HTMLButtonElement>('[data-section]').forEach(button => {
     const section = button.dataset.section as Section
     button.toggleAttribute('data-visited', state.visited.includes(section))
-    button.setAttribute('aria-description', state.visited.includes(section) ? 'Lugar visitado' : 'Lugar por explorar')
+    button.setAttribute('aria-description', state.visited.includes(section) ? t('Lugar visitado','Visited location') : t('Lugar por explorar','Location to explore'))
     button.toggleAttribute('data-selected', state.route?.target.kind === 'section' && state.route.target.section === section)
     button.toggleAttribute('data-nearby', nearby === section)
     if (active === section) button.setAttribute('aria-current', 'page')
@@ -33,8 +34,8 @@ function renderRoute(root: HTMLElement, state: State) {
   const controls = root.querySelector<HTMLElement>('.route-controls')!
   controls.hidden = !state.route
   const target = state.route?.target
-  controls.querySelector('span')!.textContent = state.route?.status === 'paused' ? 'Recorrido en pausa'
-    : target?.kind === 'section' ? `Yendo a ${sections[target.section]}…` : 'Caminando…'
+  controls.querySelector('span')!.textContent = state.route?.status === 'paused' ? t('Recorrido en pausa','Journey paused')
+    : target?.kind === 'section' ? t(`Yendo a ${sections[target.section]}…`, `Heading to ${sections[target.section]}…`) : t('Caminando…','Walking…')
   controls.querySelector<HTMLButtonElement>('[data-action=resume]')!.hidden = state.route?.status !== 'paused'
   controls.querySelector<HTMLButtonElement>('[data-action=open]')!.hidden = target?.kind !== 'section'
 }
@@ -71,11 +72,11 @@ export function createRenderer(root: HTMLElement, views: ReturnType<typeof creat
     root.dataset.position = `${state.position.x.toFixed(1)},${state.position.y.toFixed(1)}`
     const nearby = nearbySection(WORLD, state.position)
     const hint = root.querySelector<HTMLElement>('.world-hint')!
-    const key = JSON.stringify([state.view, state.route, state.scene, state.reducedMotion, state.visited, nearby])
+    const key = JSON.stringify([state.view, state.route, state.scene, state.reducedMotion, state.visited, nearby, language()])
     if (key === previous) return
     previous = key
     const touch = matchMedia('(pointer: coarse)').matches
-    hint.textContent = touch ? 'Tocá un destino para caminar hasta él. También podés tocar un punto del camino.' : nearby ? `Cerca de ${sections[nearby]}. E / Enter para abrir` : 'Elegí un destino para caminar. También podés explorar con WASD o las flechas.'
+    hint.textContent = touch ? t('Tocá un destino para caminar hasta él. También podés tocar un punto del camino.','Tap a destination to walk there. You can also tap a point along the path.') : nearby ? t(`Cerca de ${sections[nearby]}. E / Enter para abrir`, `Near ${sections[nearby]}. Press E / Enter to open`) : t('Elegí un destino para caminar. También podés explorar con WASD o las flechas.','Choose a destination to start walking. You can also explore with WASD or the arrow keys.')
     hint.hidden = state.reducedMotion || state.scene !== 'ready'
     root.dataset.routing = String(!!state.route)
     renderAccess(root, state, nearby)

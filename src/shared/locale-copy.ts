@@ -64,6 +64,8 @@ const copy: Readonly<Record<string, string>> = {
   'Reintentar fondo': 'Retry background',
   'Comentario de Alejo': 'Comment from Alejo',
   'Cargando el paisaje': 'Loading the landscape',
+  'Trazando los caminos': 'Mapping the paths',
+  'Preparando los movimientos de Alejo': 'Preparing Alejo’s animations',
   'Cargando el paisaje y los personajes…': 'Loading scenery and characters…',
   'CANAL 01': 'CHANNEL 01',
   'CANAL 02': 'CHANNEL 02',
@@ -156,6 +158,7 @@ export function localizeText(value: string): string {
 
 /** Only edits human-visible copy. Never touches icon SVGs, data attributes, user values, URLs or game state. */
 export function localizeVisibleUi(root: HTMLElement): void {
+  if (typeof document.createTreeWalker !== 'function' || typeof NodeFilter === 'undefined') return
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT)
   let node: Node | null
   while ((node = walker.nextNode())) {

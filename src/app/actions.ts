@@ -1,4 +1,5 @@
 import { setControlLabel } from './control-label'
+import { t } from '../shared/i18n'
 import { WORLD } from '../core/domain'
 import { roomForView } from '../core/experience'
 import { cases, email as defaultEmail, type CaseId, type Section } from '../entities'
@@ -29,16 +30,16 @@ export async function copyEmailAddress(root: HTMLElement, button: HTMLButtonElem
     if (status) {
       status.hidden = false
       status.dataset.copyState = 'copied'
-      status.textContent = `Correo copiado al portapapeles: ${address}`
+      status.textContent = t(`Correo copiado al portapapeles: ${address}`, `Email copied to clipboard: ${address}`)
     }
     if (fallbackWrap) fallbackWrap.hidden = true
-    button.textContent = 'Correo copiado ✓'
+    button.textContent = t('Correo copiado ✓','Email copied ✓')
     return true
   } catch {
     if (status) {
       status.hidden = false
       status.dataset.copyState = 'fallback'
-      status.textContent = `No se pudo copiar automáticamente. El correo quedó listo para copiar manualmente: ${address}`
+      status.textContent = t(`No se pudo copiar automáticamente. El correo quedó listo para copiar manualmente: ${address}`, `Automatic copying failed. The email is ready to copy manually: ${address}`)
     }
     if (fallbackWrap) fallbackWrap.hidden = false
     if (fallbackInput) {
@@ -106,7 +107,7 @@ export function bindActions(root: HTMLElement, controller: Controller, views: Re
         root.dataset.sound = String(enabled)
         root.querySelectorAll<HTMLButtonElement>('[data-action=sound]').forEach(btn => {
           btn.setAttribute('aria-pressed', String(enabled))
-          setControlLabel(btn, failed ? 'No se pudo activar sonido' : enabled ? 'Apagar sonido' : 'Activar sonido')
+          setControlLabel(btn, failed ? t('No se pudo activar sonido','Sound could not be enabled') : enabled ? t('Apagar sonido','Mute sound') : t('Activar sonido','Enable sound'))
         })
       }
       const pending = audio.toggle()

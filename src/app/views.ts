@@ -8,6 +8,7 @@ import type { View, ViewOptions, RoomContext as Context } from './room-types'
 import { clearActorTimers, copyReaction, bindRoomInteractions, defaultReactionForView, updateActorBubble } from './room-actor'
 import { buildRoomShell, syncRoomBackdrop, refreshRoomNavigation } from './room-shell'
 import { t } from '../shared/i18n'
+import { localizeVisibleUi } from '../shared/locale-copy'
 import { bindObjectInteractions } from './room-interactions'
 export type { View } from './room-types'
 
@@ -51,7 +52,7 @@ function bindMediaState(container: HTMLElement) {
       if (img.nextElementSibling?.classList.contains('media-error')) return
       const note = document.createElement('p')
       note.className = 'media-error'
-      note.innerHTML = 'No se pudo cargar la imagen. <button type="button" class="text-button">Reintentar</button>'
+      note.innerHTML = t('No se pudo cargar la imagen. <button type="button" class="text-button">Reintentar</button>', 'The image could not be loaded. <button type="button" class="text-button">Retry</button>')
       note.querySelector('button')?.addEventListener('click', () => {
         note.remove()
         img.dataset.loading = 'true'
@@ -89,7 +90,7 @@ function showCurtain(root: HTMLElement, section: Section, isLoading: boolean) {
   const forceBtn = curtain.querySelector<HTMLButtonElement>('[data-action="force-room"]')
   if (icon) icon.src = assetUrl(meta.iconAsset)
   if (text) text.textContent = isLoading ? meta.loadingLabel : meta.enteringLabel
-  if (sub) sub.textContent = isLoading ? `${meta.title} · Descargando escenario` : `${meta.number} · ${meta.title}`
+  if (sub) sub.textContent = isLoading ? t(`${meta.title} · Descargando escenario`, `${meta.title} · Loading scenery`) : `${meta.number} · ${meta.title}`
   if (forceBtn) forceBtn.hidden = !isLoading
   curtain.hidden = false
   curtain.classList.add('is-active')
@@ -132,6 +133,7 @@ function renderReading(context: Context, view: Exclude<View, { kind: 'camp' }>, 
   const byIndex = previous && previous.focus >= 0 ? controls(scroll)[previous.focus] : null
   const focus = bySelector ?? byIndex ?? heading
   focus.focus({ preventScroll: true })
+  localizeVisibleUi(context.panel)
 }
 
 function commitInterior(context: Context, next: Exclude<View, { kind: 'camp' }>, wasCamp: boolean, sameRoom: boolean, animateActor: boolean) {

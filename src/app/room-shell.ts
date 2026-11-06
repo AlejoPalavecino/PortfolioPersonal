@@ -1,6 +1,7 @@
 import { sections, type Section } from '../entities'
 import { t, language, languagePicker } from '../shared/i18n'
 import { assetUrl, ROOM_META } from '../shared'
+import { localizeText } from '../shared/locale-copy'
 import { campIcon } from '../shared/camp-icons'
 import type { RoomContext } from './room-types'
 import { ROOM_ACTOR_DEFAULTS } from './room-actor'
@@ -75,13 +76,13 @@ export function buildRoomShell(context: RoomContext, room: Section, animateActor
   guide.setAttribute('aria-label', 'Comentario de Alejo')
   const reaction = ROOM_ACTOR_DEFAULTS[room]
   guide.innerHTML = `<img class="room-actor" src="${assetUrl('avatar/idle-down.webp')}" width="131" height="255" alt="">
-    <div class="room-actor-bubble"><span class="room-actor-status">${reaction.status}</span><p class="room-actor-quote">${reaction.quote}</p></div>`
+    <div class="room-actor-bubble"><span class="room-actor-status">${localizeText(reaction.status)}</span><p class="room-actor-quote">${localizeText(reaction.quote)}</p></div>`
   const fallback = document.createElement('div')
   fallback.className = 'room-bg-fallback'
   fallback.hidden = true
   fallback.setAttribute('role', 'status')
-  fallback.innerHTML = `<span>No se pudo cargar la ilustración. El contenido sigue disponible.</span>
-    <button class="text-button" data-action="retry-room-bg" data-room="${room}">Reintentar fondo</button>`
+  fallback.innerHTML = `<span>${t('No se pudo cargar la ilustración. El contenido sigue disponible.','The illustration could not be loaded. The content is still available.')}</span>
+    <button class="text-button" data-action="retry-room-bg" data-room="${room}">${t('Reintentar fondo','Retry background')}</button>`
   const scroll = document.createElement('div')
   scroll.className = 'panel-scroll'
   scroll.tabIndex = 0

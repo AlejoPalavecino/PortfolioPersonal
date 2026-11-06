@@ -1,5 +1,6 @@
 import type { Section } from '../entities'
 import { assetUrl } from '../shared'
+import { localizeText } from '../shared/locale-copy'
 import { roomForView } from '../core/experience'
 import type { RoomContext, View } from './room-types'
 
@@ -40,8 +41,8 @@ export function defaultReactionForView(view: Exclude<View, { kind: 'camp' }>): R
 export function updateActorBubble(context: RoomContext, reaction: Reaction, glance = false) {
   const status = context.panel.querySelector<HTMLElement>('.room-actor-status')
   const quote = context.panel.querySelector<HTMLElement>('.room-actor-quote')
-  if (status) status.textContent = reaction.status
-  if (quote) quote.textContent = reaction.quote
+  if (status) status.textContent = localizeText(reaction.status)
+  if (quote) quote.textContent = localizeText(reaction.quote)
   const actor = context.panel.querySelector<HTMLImageElement>('.room-actor')
   if (!glance || !actor || context.root.dataset.motion === 'reduced') return
   if (context.poseTimer !== undefined) window.clearTimeout(context.poseTimer)
