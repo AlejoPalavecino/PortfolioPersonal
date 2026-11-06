@@ -6,7 +6,7 @@ import { bindLanguagePicker } from '../src/app/locale-ui'
 import { language, languagePicker, selectLanguage } from '../src/shared/i18n'
 import { localizeText } from '../src/shared/locale-copy'
 import { cases, sections } from '../src/entities'
-import { sectionMarkup } from '../src/widgets'
+import { sectionMarkup, caseMarkup } from '../src/widgets'
 
 const marker = 'feat/instant-language'
 const viewStub = () => {
@@ -109,6 +109,26 @@ describe('bilingual portfolio with no reload', () => {
     expect(contact).toContain('LinkedIn')
     expect(selectLanguage('es')).toBe(true)
     expect(sectionMarkup('about')).toContain('Soy Alejo')
+  })
+
+  it('renders every project dossier and section in English without leftover UI labels', () => {
+    expect(selectLanguage('en')).toBe(true)
+    const sectionsToCheck = ['projects', 'about', 'journey', 'contact'] as const
+    for (const section of sectionsToCheck) {
+      const html = sectionMarkup(section)
+      for (const leftover of ['QUIÉN SOY', 'CÓMO TRABAJO', 'QUÉ APORTO', 'CANAL 01', 'CANAL 02', 'Una conversación empieza acá.', 'Taller de soluciones', 'Abrir el caso']) {
+        expect(html, section + ' contains untranslated: ' + leftover).not.toContain(leftover)
+      }
+    }
+    for (const id of Object.keys(cases) as Array<keyof typeof cases>) {
+      const html = caseMarkup(id)
+      expect(html, id).toContain('THE PROBLEM')
+      expect(html, id).toContain('MY CONTRIBUTION')
+      expect(html, id).toContain('HIGHLIGHT')
+      expect(html, id).toContain('Back to Projects')
+      expect(html, id).not.toContain('EL PROBLEMA')
+      expect(html, id).not.toContain('MI PARTICIPACIÓN')
+    }
   })
 
   it('translates runtime and assistive labels in both directions', () => {
