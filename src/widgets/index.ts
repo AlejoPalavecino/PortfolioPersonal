@@ -113,6 +113,7 @@ function localizeMarkup(html: string): string {
   const phrases: readonly [string, string][] = [
     ['Quién soy', 'About me'],
     ['CANAL 01', 'CHANNEL 01'], ['CANAL 02', 'CHANNEL 02'],
+    ['QUIÉN SOY', 'ABOUT ME'], ['CÓMO TRABAJO', 'HOW I WORK'], ['QUÉ APORTO', 'WHAT I BRING'],
     ['Busco sumar experiencia en equipos de tecnología. Estoy abierto a análisis de sistemas, full stack, frontend, backend y automatización con IA; trabajo presencial o híbrido en Mendoza y remoto a nivel internacional.', 'I’m looking to gain experience on technology teams. I’m open to systems analysis, full stack, frontend, backend and applied AI automation roles; on-site or hybrid in Mendoza, or remote worldwide.'], ['Cómo trabajo', 'How I work'], ['Qué aporto', 'What I bring'],
     ['Construir algo que sirva.', 'Building something useful.'],
     ['Entender, definir, construir.', 'Understand, define, build.'],

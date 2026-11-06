@@ -34,6 +34,15 @@ function syncStaticUi(root: HTMLElement): void {
     root.querySelectorAll<HTMLElement>('.mobile-menu [data-section="' + section + '"] > span:first-child').forEach(node => {
       node.textContent = sections[section]
     })
+    const extendedLabels: Record<Section, string> = {
+      projects: t('Taller · Proyectos','Workshop · Projects'),
+      about: t('Carpa · Sobre mí','Tent · About me'),
+      journey: t('Archivo · Trayectoria','Journal · Journey'),
+      contact: t('Radio · Contacto','Radio · Contact'),
+    }
+    root.querySelectorAll<HTMLElement>('.mobile-menu [data-section="' + section + '"] > span:first-child').forEach(node => {
+      node.textContent = extendedLabels[section]
+    })
   }
   set('.hud-left .menu-toggle span', t('Campamento','Camp'))
   root.querySelector<HTMLElement>('.hud-left .brand')?.setAttribute('aria-label', t('Volver al campamento','Back to camp'))

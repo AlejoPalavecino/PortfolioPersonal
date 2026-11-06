@@ -87,13 +87,13 @@ describe('bilingual portfolio with no reload', () => {
     expect(root.querySelector('.world')).toBe(game)
     expect(root.querySelector('.panel-scroll')).toBe(scroll)
     expect(root.querySelector<HTMLElement>('.panel-content')!.dataset.notebook).toBe('method')
-    expect(root.querySelector('[data-notebook="method"]')!.textContent).toBe('How I work')
+    expect(root.querySelector('button[data-notebook="method"]')!.textContent).toBe('How I work')
     expect(root.querySelector('.panel-content')!.textContent).toContain('Understand, define, build.')
     expect(root.querySelector<HTMLButtonElement>('.room-topbar [data-language="en"]')!.getAttribute('aria-pressed')).toBe('true')
     expect(views.current).toEqual({ kind: 'section', section: 'about' })
     expect(location.hash).toBe('#sobre-mi')
     root.querySelector<HTMLButtonElement>('.room-topbar [data-language="es"]')!.click()
-    expect(root.querySelector('[data-notebook="method"]')!.textContent).toBe('Cómo trabajo')
+    expect(root.querySelector('button[data-notebook="method"]')!.textContent).toBe('Cómo trabajo')
   })
 
   it('uses the selected locale on newly rendered cases, services and milestones', () => {
