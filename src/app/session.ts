@@ -92,7 +92,11 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
       enterCamp()
     } else {
       skipRequested = true
-      root.querySelector<HTMLButtonElement>('[data-action=direct]')?.focus({ preventScroll: true })
+      const message = root.querySelector<HTMLElement>('.boot-queue-status')
+      if (message) {
+        message.hidden = false
+        message.textContent = t('Entrarás al campamento apenas termine la carga esencial.','You will enter the camp as soon as essential loading finishes.')
+      }
     }
   }
   return { update, loading, prepareEntry, direct, skipIntro, refreshLanguage: () => { if (latestLoad) status.textContent = loadLabel(latestLoad) }, get state() { return state }, enter: enterCamp }

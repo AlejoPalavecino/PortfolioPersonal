@@ -262,3 +262,24 @@
 /* A stable walking silhouette reads clearly at 22px; only the state indicator moves. */
 .intro .icon-control[data-action="motion"] .walking-person { animation:none; }
 .icon-control .motion-slash { stroke:#ffd99b; stroke-width:2.2; }
+
+/* Progressive first load: the visitor can reach projects while the scene is warming up. */
+.boot-actions { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:4px; }
+.intro .boot-actions button {
+  min-height:44px; padding:11px 18px;
+  border:1px solid #efce94;
+  border-radius:9px;
+  background:linear-gradient(160deg,#efdaa8,#d8b778);
+  color:#1c3437;
+  font:650 14px/1.4 Lexend,sans-serif;
+  box-shadow:0 3px 0 #6f583a,0 8px 18px #071a2566;
+  cursor:pointer;
+}
+.intro .boot-actions button:hover { background:#ffe6af; }
+.intro .boot-actions button:focus-visible, .intro-top-actions .intro-skip:focus-visible { outline:2px dashed #ffe5a6; outline-offset:4px; }
+.intro .boot-queue-status { max-width:360px; color:#f1e5c9; font:500 12px/1.6 Lexend,sans-serif; }
+.intro-top-actions .intro-skip { min-height:44px; border-color:#edce998a; border-radius:9px; background:#112e36ee; color:#ffe5b8; }
+.intro-top-actions .intro-skip:hover { background:#234c50; }
+@media(max-width:380px) {
+  .intro-top-actions .intro-skip { grid-column:1 / -1; }
+}

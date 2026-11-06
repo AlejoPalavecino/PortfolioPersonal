@@ -1,6 +1,6 @@
 import { sections } from '../entities'
 import { t, language, languagePicker } from '../shared/i18n'
-import { assetUrl } from '../shared'
+import { assetUrl, INITIAL_SCENE_TASKS } from '../shared'
 import { worldMarkup } from './world-markup'
 
 const labels = (): Record<string, string> => ({ projects: t('Taller · Proyectos','Workshop · Projects'), about: t('Carpa · Sobre mí','Tent · About me'), journey: t('Archivo · Trayectoria','Journal · Journey'), contact: t('Radio · Contacto','Radio · Contact') })
@@ -44,7 +44,7 @@ function intro(): string {
         <img src="${assetUrl('emblem.webp')}" alt="" width="28" height="28">
         <span>CAMPAMENTO CREATIVO</span>
       </div>
-      <div class="intro-top-actions">${langSwitch()}
+      <div class="intro-top-actions">${langSwitch()}<button type="button" class="intro-skip" data-action="skip-intro">${t('Omitir presentación','Skip intro')} ↗</button>
         <button type="button" class="icon-control" data-action="sound" aria-label="Activar sonido" title="Activar sonido" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><g class="sound-waves"><path d="M17 8q5 4 0 8M19 4q9 8 0 16"/></g><path class="sound-slash" d="M3 3l18 18"/></svg></button>
         <button type="button" class="icon-control" data-action="motion" aria-label="Reducir movimiento" title="Reducir movimiento" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4" r="1.8"/><g class="walking-person"><path d="m10 8 3-1 2 5 4 1M12 8l-2 7-4 6M10 15l5 2 1 4M10 8l-3 4H4"/></g><path class="motion-slash" d="M3 3l18 18"/></svg></button>
       </div>
@@ -52,7 +52,9 @@ function intro(): string {
     <div class="intro-boot" role="status" aria-live="polite">
       <span class="boot-emblem" aria-hidden="true">◈</span><p class="boot-kicker">CAMPAMENTO CREATIVO</p>
       <h2>${t('Preparando tu aventura','Preparing your adventure')}</h2><p class="boot-task">${t('Cargando el paisaje y los personajes…','Loading scenery and characters…')}</p>
-      <div class="boot-meter" aria-hidden="true"><span></span></div><small class="boot-count">0 de 28 recursos</small>
+      <div class="boot-meter" aria-hidden="true"><span></span></div><small class="boot-count">0 ${t('de','of')} ${INITIAL_SCENE_TASKS} ${t('recursos esenciales','essential assets')}</small>
+      <div class="boot-actions"><button type="button" data-action="direct">${t('Ver proyectos sin esperar','View projects now')} ↗</button></div>
+      <p class="boot-queue-status" role="status" hidden></p>
     </div>
     <div class="intro-handoff" role="status" aria-live="polite" hidden><span class="boot-emblem" aria-hidden="true">◈</span><h2 class="handoff-title">${t('Entrando al campamento','Entering the camp')}</h2><p class="handoff-detail">Proyectos · Contacto · Trayectoria · Sobre mí</p><span class="handoff-spinner" aria-hidden="true"></span></div>
     <div class="intro-content">
@@ -82,7 +84,7 @@ function intro(): string {
       <div class="intro-entry" aria-label="Entrar o consultar el portfolio">
       <div class="intro-loader-hud">
         <div class="loading-bar-wrap">
-          <div class="loading-progress" role="progressbar" aria-label="Preparación real de recursos del campamento" aria-valuemin="0" aria-valuemax="28" aria-valuenow="0"><span></span></div>
+          <div class="loading-progress" role="progressbar" aria-label="Preparación real de recursos del campamento" aria-valuemin="0" aria-valuemax="${INITIAL_SCENE_TASKS}" aria-valuenow="0"><span></span></div>
           <p class="loading-status">Preparando el campamento…</p>
         </div>
       </div>
