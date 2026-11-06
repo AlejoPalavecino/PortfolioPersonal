@@ -2,6 +2,8 @@ import { sampleIntroTimeline } from '../../core/experience'
 import { INTRO_LINES, visibleDialogue } from '../../core/experience/intro-dialogue'
 import type { CueBus } from '../../core/fx/cues'
 import { assetUrl, createRoomLoader } from '../../shared'
+import { t } from '../../shared/i18n'
+import { localizeText } from '../../shared/locale-copy'
 import type { Loop } from '../loop'
 
 /** One mandatory arrival, two exits and an uninterrupted handoff to the world. */
@@ -38,6 +40,7 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
     if (actor.getAttribute('src') !== src) actor.src = src
     actor.style.opacity = !waiting && snap.actorVisible ? '1' : '0'
     bubble.hidden = elapsed < 2800
+    intro.querySelector<HTMLElement>('.intro-beat-title')!.textContent = INTRO_LINES.greeting.title
     text.textContent = visibleDialogue(INTRO_LINES.greeting.text,elapsed-2800,instant)
     if (!bubble.hidden) accessible.textContent = INTRO_LINES.greeting.text
     for (const button of buttons) button.disabled = !!selected || waiting || elapsed < 6000 || (button.dataset.action === 'enter' && root.dataset.prepared !== 'true')
@@ -65,26 +68,26 @@ export function bindIntroFx(root: HTMLElement, bus: CueBus, loop: Loop, reducedM
     selected = button; departing = 0
     handoff.hidden = false
     const direct = button.dataset.action === 'direct'
-    handoff.querySelector<HTMLElement>('.handoff-title')!.textContent = direct ? 'Preparando el taller de proyectos' : 'Entrando al campamento'
-    handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = direct ? 'Cargando el interior del taller…' : 'Proyectos · Contacto · Trayectoria · Sobre mí'
+    handoff.querySelector<HTMLElement>('.handoff-title')!.textContent = direct ? t('Preparando el taller de proyectos','Preparing the project workshop') : t('Entrando al campamento','Entering the camp')
+    handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = direct ? t('Cargando el interior del taller…','Loading the workshop…') : t('Proyectos · Contacto · Trayectoria · Sobre mí','Projects · Contact · Journey · About me')
     if (direct) {
       destinationReady = false
-      handoffTimeout = setTimeout(() => { destinationReady = true; handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = 'El taller está tardando. Abriendo el contenido…' }, 8000)
+      handoffTimeout = setTimeout(() => { destinationReady = true; handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = t('El taller está tardando. Abriendo el contenido…', 'The workshop is taking longer. Opening the content…') }, 8000)
       void roomLoader.prefetch('projects').then(result => {
         clearTimeout(handoffTimeout)
         if (disposed) return
         destinationReady = true
-        handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = result === 'ready' ? 'Taller listo. Abriendo proyectos…' : 'Abriendo proyectos con fondo alternativo…'
+        handoff.querySelector<HTMLElement>('.handoff-detail')!.textContent = result === 'ready' ? t('Taller listo. Abriendo proyectos…', 'Workshop ready. Opening projects…') : t('Abriendo proyectos con fondo alternativo…', 'Opening projects with a fallback background…')
       })
     }
     root.dataset.introTransition = button.dataset.action === 'direct' ? 'projects' : 'camp'
     bus.emit('intro-cue',{kind:'depart'}); paint(); off = loop.add(tick)
   }
   intro.addEventListener('click',onClick,true)
-  const progress = (completed:number,total:number) => { bar.setAttribute('aria-valuenow',String(completed)); bar.setAttribute('aria-valuemax',String(total)); bar.querySelector<HTMLElement>('span')!.style.setProperty('--progress',String(total ? completed/total : 0)); boot.style.setProperty('--boot-progress',String(total ? completed/total : 0)); boot.querySelector<HTMLElement>('.boot-count')!.textContent = `${completed} de ${total} recursos` }
+  const progress = (completed:number,total:number) => { bar.setAttribute('aria-valuenow',String(completed)); bar.setAttribute('aria-valuemax',String(total)); bar.querySelector<HTMLElement>('span')!.style.setProperty('--progress',String(total ? completed/total : 0)); boot.style.setProperty('--boot-progress',String(total ? completed/total : 0)); boot.querySelector<HTMLElement>('.boot-count')!.textContent = `${completed} ${t('de','of')} ${total} ${t('recursos','assets')}` }
   const offs = [
     bus.on('prepare-start',()=>{failed=false;elapsed=0;root.dataset.prepared='false';progress(0,28);sync()}),
-    bus.on('prepare-progress',({completed,total,task})=>{progress(completed,total);boot.querySelector<HTMLElement>('.boot-task')!.textContent=task}),
+    bus.on('prepare-progress',({completed,total,task})=>{progress(completed,total);boot.querySelector<HTMLElement>('.boot-task')!.textContent=localizeText(task)}),
     bus.on('prepare-ready',()=>{root.dataset.prepared='true';progress(28,28);sync()}),
     bus.on('prepare-failed',()=>{failed=true;elapsed=6000;sync()}),
   ]

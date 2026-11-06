@@ -6,7 +6,8 @@ import type { createController } from './controller'
 
 import type { View, ViewOptions, RoomContext as Context } from './room-types'
 import { clearActorTimers, copyReaction, bindRoomInteractions, defaultReactionForView, updateActorBubble } from './room-actor'
-import { buildRoomShell, syncRoomBackdrop } from './room-shell'
+import { buildRoomShell, syncRoomBackdrop, refreshRoomNavigation } from './room-shell'
+import { t } from '../shared/i18n'
 import { bindObjectInteractions } from './room-interactions'
 export type { View } from './room-types'
 
@@ -115,7 +116,7 @@ function renderReading(context: Context, view: Exclude<View, { kind: 'camp' }>, 
   if (sceneStatus) header.append(sceneStatus)
 
   const scroll = buildRoomShell(context, room, animateActor)
-  scroll.setAttribute('aria-label', `Contenido de ${title}`)
+  scroll.setAttribute('aria-label', t(`Contenido de ${title}`, `Content of ${title}`))
   const content = document.createElement('div')
   content.className = 'panel-content'
   content.append(...source.childNodes)
@@ -322,8 +323,15 @@ export function createViews(root: HTMLElement, options: ViewOptions = {}) {
       if (context.mountedRoom === room) syncRoomBackdrop(context, room)
     })
   }
+  const relocalize = () => {
+    if (context.current.kind === 'camp' || context.panel.hidden) return
+    if (context.root.dataset.sceneStage === 'entering' || context.root.dataset.sceneStage === 'room-loading') return
+    remember(context)
+    refreshRoomNavigation(context, roomForView(context.current)!)
+    renderReading(context, context.current, false)
+  }
   return {
-    show: (next: View, push = true) => show(context, next, push), restore, restoreUrl,
+    show: (next: View, push = true) => show(context, next, push), restore, restoreUrl, relocalize,
     forceOpenPendingRoom, retryRoomBackground, roomLoader,
     copyResult: (success: boolean) => copyReaction(context, success),
     get current() { return context.current },

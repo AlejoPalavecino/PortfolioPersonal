@@ -1,6 +1,8 @@
 import { createExperience, reduceExperience, type ExperienceEvent } from '../core/experience'
 import type { CueBus } from '../core/fx/cues'
 import type { ScenePreparation } from '../shared'
+import { t } from '../shared/i18n'
+import { localizeText } from '../shared/locale-copy'
 import type { createController } from './controller'
 
 export function createSession(root: HTMLElement, controller: ReturnType<typeof createController>, reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches, bus?: CueBus) {
@@ -11,6 +13,11 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
   try { entered = sessionStorage.getItem('camp-entered') === '1' } catch { /* Storage is optional. */ }
   let state = createExperience({ entered, direct: !!location.hash, reducedMotion })
   let awaitingEntry = !location.hash, slowReported = 0, skipRequested = false
+  let latestLoad: ScenePreparation | null = null
+  const loadLabel = (load: ScenePreparation) => load.status === 'ready' ? t('Listo para explorar', 'Ready to explore')
+    : load.status === 'failed' ? t('No se pudo preparar el campamento. Podés consultar el portfolio.', 'The camp could not be prepared. You can still browse the portfolio.')
+    : load.timedOut ? t('Está tardando. Podés consultar el portfolio mientras tanto.', 'Loading is taking longer. You can browse the portfolio in the meantime.')
+    : localizeText((load.task ?? t('Preparando el campamento', 'Preparing the camp')) + '…') + ' ' + String(load.completed) + ' ' + t('de','of') + ' ' + String(load.total)
   const update = (event: ExperienceEvent) => {
     if (event.type === 'read' || event.type === 'direct') { awaitingEntry = false; skipRequested = false }
     state = reduceExperience(state, event)
@@ -30,6 +37,7 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     enter.disabled = state.preparation !== 'ready' || root.dataset.introReady === 'false'
   }
   const loading = (load: ScenePreparation) => {
+    latestLoad = load
     root.dataset.load = `${load.completed}/${load.total}`
     if (load.status === 'loading' && load.generation !== state.generation) bus?.emit('prepare-start', {})
     if (load.status === 'loading') bus?.emit('prepare-progress', { completed: load.completed, total: load.total, task: load.task ?? 'Preparando el campamento' })
@@ -58,7 +66,7 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
       }
     }
     if (load.status === 'failed') { update({ type: 'load-failed', generation: load.generation }); controller.dispatch({ type: 'set-scene', scene: 'failed' }) }
-    status.textContent = load.status === 'ready' ? 'Listo para explorar' : load.status === 'failed' ? 'No se pudo preparar el campamento. Podés consultar el portfolio.' : load.timedOut ? 'Está tardando. Podés consultar el portfolio mientras tanto.' : `${load.task ?? 'Preparando el campamento'}… ${load.completed} de ${load.total}`
+    status.textContent = loadLabel(load)
     sceneStatus.hidden = load.status !== 'failed'
     introRetry.hidden = load.status !== 'failed'
   }
@@ -87,5 +95,5 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
       root.querySelector<HTMLButtonElement>('[data-action=direct]')?.focus({ preventScroll: true })
     }
   }
-  return { update, loading, prepareEntry, direct, skipIntro, get state() { return state }, enter: enterCamp }
+  return { update, loading, prepareEntry, direct, skipIntro, refreshLanguage: () => { if (latestLoad) status.textContent = loadLabel(latestLoad) }, get state() { return state }, enter: enterCamp }
 }

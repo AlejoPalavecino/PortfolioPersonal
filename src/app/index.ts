@@ -1,5 +1,6 @@
 import { createController } from './controller'
 import { applyPageMetadata } from '../shared/i18n'
+import { bindLanguagePicker } from './locale-ui'
 import { createAudio } from './audio'
 import { shell } from './shell'
 import { createViews } from './views'
@@ -30,7 +31,7 @@ export function mount(root: HTMLElement) {
   const renderer = createRenderer(root, views, loop)
   const controller = createController(renderer.render, loop, bus)
   const session = createSession(root, controller, reducedMotion, bus)
-  bindIntroFx(root, bus, loop, () => root.dataset.motion === 'reduced', () => session.skipIntro())
+  const introFx = bindIntroFx(root, bus, loop, () => root.dataset.motion === 'reduced', () => session.skipIntro())
   bindWorldFx(root, controller, renderer.camera, bus, loop)
   const audio = createAudio(bus, () => ({ position: controller.state.position, reading: root.dataset.reading === 'true', intro: !root.querySelector<HTMLElement>('.intro')!.hidden }))
   // Autoplay is best effort: browser policies may require a trusted gesture.
@@ -58,4 +59,5 @@ export function mount(root: HTMLElement) {
     void import('./scene-calibration').then(({ bindSceneCalibration }) => bindSceneCalibration(root, loop, controller))
   }
   views.restoreUrl(controller)
+  bindLanguagePicker(root, views, introFx, session)
 }

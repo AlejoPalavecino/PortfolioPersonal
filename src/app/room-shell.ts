@@ -42,6 +42,16 @@ function navigation(context: RoomContext, room: Section): string {
     </details>`
 }
 
+/** Refresh only the room toolbar: keeps scenery, reading and world camera mounted. */
+export function refreshRoomNavigation(context: RoomContext, room: Section): void {
+  const header = context.panel.querySelector<HTMLElement>('.room-topbar')
+  if (!header) return
+  const expanded = !!header.querySelector('details.room-navigation[open]')
+  header.innerHTML = navigation(context, room)
+  if (expanded) header.querySelector('details.room-navigation')?.setAttribute('open', '')
+  context.panel.querySelector<HTMLElement>('.room-guide')?.setAttribute('aria-label', t('Comentario de Alejo', 'Comment from Alejo'))
+}
+
 export function buildRoomShell(context: RoomContext, room: Section, animateActor: boolean): HTMLElement {
   const existing = context.panel.querySelector<HTMLElement>('.panel-scroll')
   if (context.mountedRoom === room && existing) {
