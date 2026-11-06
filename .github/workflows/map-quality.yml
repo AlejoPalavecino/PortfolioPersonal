@@ -6,6 +6,10 @@ on:
     paths:
       - 'src/**'
       - 'tests/**'
+      - 'tools/check-public-safety.mjs'
+      - 'index.html'
+      - 'public/sitemap.xml'
+      - 'public/assets/cv-alejo-palavecino-*.pdf'
       - '.github/workflows/map-quality.yml'
   workflow_dispatch:
 
@@ -31,3 +35,5 @@ jobs:
         run: npm run lint
       - name: Typecheck and subpath build
         run: npm run build -- --base=/PortfolioPersonal/
+      - name: Inspect publication for sensitive data and SEO
+        run: node tools/check-public-safety.mjs

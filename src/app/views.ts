@@ -1,4 +1,4 @@
-import { credentialById, type Section } from '../entities'
+import { cases, credentialById, type CaseId, type Section } from '../entities'
 import { roomForView } from '../core/experience'
 import { assetUrl, createRoomLoader, ROOM_META } from '../shared'
 import { caseMarkup, sectionMarkup, recognitionsMarkup, credentialMarkup } from '../widgets'
@@ -15,7 +15,7 @@ const urls: Record<Section, string> = {
 }
 const key = (view: View) => JSON.stringify(view)
 const controls = (container: HTMLElement) => [...container.querySelectorAll<HTMLElement>('button,a')]
-const path = (view: View) => view.kind === 'camp' ? location.pathname
+const path = (view: View) => view.kind === 'camp' ? location.pathname + location.search
   : view.kind === 'case' ? `#proyectos/${view.id}` : view.kind === 'recognitions' ? '#trayectoria/reconocimientos'
     : view.kind === 'credential' ? `#trayectoria/reconocimientos/${view.id}` : `#${urls[view.section]}`
 
@@ -302,8 +302,8 @@ export function createViews(root: HTMLElement, options: ViewOptions = {}) {
     const id = hash[1]
     const view: View = section === 'journey' && id === 'reconocimientos'
       ? hash[2] && credentialById(hash[2]) ? { kind: 'credential', id: hash[2] } : { kind: 'recognitions' }
-      : section === 'projects' && (id === 'foxmind' || id === 'flower')
-      ? { kind: 'case', id } : section ? { kind: 'section', section } : { kind: 'camp' }
+      : section === 'projects' && id && Object.prototype.hasOwnProperty.call(cases, id)
+      ? { kind: 'case', id: id as CaseId } : section ? { kind: 'section', section } : { kind: 'camp' }
     restore(view, controller)
     history.replaceState(view, '', path(view))
   }
