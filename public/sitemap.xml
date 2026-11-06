@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://alejopalavecino.github.io/PortfolioPersonal/</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://alejopalavecino.github.io/PortfolioPersonal/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://alejopalavecino.github.io/PortfolioPersonal/?lang=en" />
+  <url><loc>https://alejopalavecino.com.ar/</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://alejopalavecino.com.ar/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://alejopalavecino.com.ar/?lang=en" />
   </url>
-  <url><loc>https://alejopalavecino.github.io/PortfolioPersonal/?lang=en</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://alejopalavecino.github.io/PortfolioPersonal/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://alejopalavecino.github.io/PortfolioPersonal/?lang=en" />
+  <url><loc>https://alejopalavecino.com.ar/?lang=en</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://alejopalavecino.com.ar/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://alejopalavecino.com.ar/?lang=en" />
   </url>
 </urlset>

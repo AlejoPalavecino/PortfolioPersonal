@@ -37,7 +37,7 @@ jobs:
           npm test
           npm run lint
       - name: Build project site
-        run: npm run build -- --base=/PortfolioPersonal/
+        run: npm run build -- --base=/
       - name: Inspect publication for sensitive data and SEO
         run: node tools/check-public-safety.mjs
       - name: Upload static site

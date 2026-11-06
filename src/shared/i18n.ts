@@ -18,7 +18,7 @@ export function applyPageMetadata(): void {
   if (typeof document === 'undefined') return
   const en = language() === 'en'
   document.documentElement.lang = en ? 'en' : 'es-AR'
-  const site = 'https://alejopalavecino.github.io/PortfolioPersonal/'
+  const site = 'https://alejopalavecino.com.ar/'
   const title = en
     ? 'Alejo Palavecino | Full Stack Developer & Systems Engineering'
     : 'Alejo Palavecino | Desarrollo Full Stack e Ingeniería en Sistemas'
