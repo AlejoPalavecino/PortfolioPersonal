@@ -14,7 +14,7 @@ function thresholdStyle(): string {
 
 export function worldMarkup(): string {
   const entries = Object.entries(DESTINATIONS) as [Section, (typeof DESTINATIONS)[Section]][]
-  const objects = entries.map(([id, item]) => `<img class="poi poi-${id}" data-poi="${id}" src="${assetUrl(item.sprite)}" alt="" style="z-index:${item.depthY};left:${item.visual.x}px;top:${item.visual.y}px;width:${item.visual.width}px;height:${item.visual.height}px">`).join('')
+  const objects = entries.map(([id, item]) => `<img class="poi poi-${id}" data-poi="${id}" src="${assetUrl(item.sprite)}" loading="lazy" decoding="async" fetchpriority="low" alt="" style="z-index:${item.depthY};left:${item.visual.x}px;top:${item.visual.y}px;width:${item.visual.width}px;height:${item.visual.height}px">`).join('')
   const signs = entries.map(([id, item]) => {
     const sign = item.visual.sign
     return `<button class="world-label label-${id}" data-section="${id}" data-mount="${sign.mount}"
@@ -23,7 +23,7 @@ export function worldMarkup(): string {
     </button>`
   }).join('')
   return `<div class="world-scroll"><div class="world" tabindex="0" role="application" aria-label="Campamento interactivo">
-    <img class="ground" src="${assetUrl('camp-hillside.webp')}" alt="">
+    <img class="ground" src="${assetUrl('camp-hillside.webp')}" decoding="async" fetchpriority="high" alt="">
     <canvas class="world-fx-ground" width="1000" height="650" aria-hidden="true"></canvas>${objects}
     <div class="avatar-shadow" aria-hidden="true"></div>
     <img class="avatar" width="131" height="255" src="${assetUrl('avatar/idle-down.webp')}" alt="">

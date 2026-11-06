@@ -43,6 +43,14 @@ if (html.includes('alejopalavecino.github.io/PortfolioPersonal/') ||
   console.error('Old public URL detected in canonical metadata or sitemap')
   failures++
 }
+const firstPaintOk = html.includes('id="startup-critical-css"') &&
+  html.includes('class="startup-preboot"') &&
+  html.includes('El campamento está despertando') &&
+  html.includes('class="startup-track"')
+if (!firstPaintOk) {
+  console.error('Missing self-contained, visible first-paint fallback for slow mobile startup')
+  failures++
+}
 for(const code of ['es','en']) {
   const path=join(root,'assets','cv-alejo-palavecino-'+code+'.pdf')
   if(!existsSync(path)) { console.error('Missing public resume: '+code); failures++; continue }
