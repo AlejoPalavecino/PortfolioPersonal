@@ -1,4 +1,5 @@
 import { validateFrames } from './frames'
+import { localizeText } from '../locale-copy'
 import type { SpriteFrame } from './frames'
 export type { SpriteFrame } from './frames'
 
@@ -19,7 +20,7 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
   const current = (generation: number) => !disposed && state.generation === generation && state.status === 'loading'
   const publish = (change: Partial<ScenePreparation>) => { state = { ...state, ...change }; onChange(state) }
   const clear = () => { if (timer !== undefined) clearTimeout(timer); timer = undefined }
-  const task = () => labels[order.find(group => done[group] < sizes[group]) ?? 'character']
+  const task = () => localizeText(labels[order.find(group => done[group] < sizes[group]) ?? 'character'])
   const complete = (generation: number, group: Group) => {
     if (!current(generation)) return
     done = { ...done, [group]: done[group] + 1 }
@@ -39,7 +40,7 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
     clear()
     done = { paths: 0, scenery: 0, character: 0 }
     const generation = state.generation + 1
-    publish({ generation, status: 'loading', completed: 0, timedOut: false, error: null, frames: [], task: labels.paths })
+    publish({ generation, status: 'loading', completed: 0, timedOut: false, error: null, frames: [], task: localizeText(labels.paths) })
     timer = setTimeout(() => { if (current(generation)) publish({ timedOut: true }) }, timeoutMs)
     run(generation, 'paths', () => ports.navigation())
     for (const image of images) run(generation, 'scenery', () => ports.image(image))

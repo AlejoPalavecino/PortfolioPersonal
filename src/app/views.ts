@@ -6,7 +6,9 @@ import type { createController } from './controller'
 
 import type { View, ViewOptions, RoomContext as Context } from './room-types'
 import { clearActorTimers, copyReaction, bindRoomInteractions, defaultReactionForView, updateActorBubble } from './room-actor'
-import { buildRoomShell, syncRoomBackdrop } from './room-shell'
+import { buildRoomShell, syncRoomBackdrop, refreshRoomNavigation } from './room-shell'
+import { t } from '../shared/i18n'
+import { localizeVisibleUi } from '../shared/locale-copy'
 import { bindObjectInteractions } from './room-interactions'
 export type { View } from './room-types'
 
@@ -50,7 +52,7 @@ function bindMediaState(container: HTMLElement) {
       if (img.nextElementSibling?.classList.contains('media-error')) return
       const note = document.createElement('p')
       note.className = 'media-error'
-      note.innerHTML = 'No se pudo cargar la imagen. <button type="button" class="text-button">Reintentar</button>'
+      note.innerHTML = t('No se pudo cargar la imagen. <button type="button" class="text-button">Reintentar</button>', 'The image could not be loaded. <button type="button" class="text-button">Retry</button>')
       note.querySelector('button')?.addEventListener('click', () => {
         note.remove()
         img.dataset.loading = 'true'
@@ -88,7 +90,7 @@ function showCurtain(root: HTMLElement, section: Section, isLoading: boolean) {
   const forceBtn = curtain.querySelector<HTMLButtonElement>('[data-action="force-room"]')
   if (icon) icon.src = assetUrl(meta.iconAsset)
   if (text) text.textContent = isLoading ? meta.loadingLabel : meta.enteringLabel
-  if (sub) sub.textContent = isLoading ? `${meta.title} · Descargando escenario` : `${meta.number} · ${meta.title}`
+  if (sub) sub.textContent = isLoading ? t(`${meta.title} · Descargando escenario`, `${meta.title} · Loading scenery`) : `${meta.number} · ${meta.title}`
   if (forceBtn) forceBtn.hidden = !isLoading
   curtain.hidden = false
   curtain.classList.add('is-active')
@@ -115,7 +117,7 @@ function renderReading(context: Context, view: Exclude<View, { kind: 'camp' }>, 
   if (sceneStatus) header.append(sceneStatus)
 
   const scroll = buildRoomShell(context, room, animateActor)
-  scroll.setAttribute('aria-label', `Contenido de ${title}`)
+  scroll.setAttribute('aria-label', t(`Contenido de ${title}`, `Content of ${title}`))
   const content = document.createElement('div')
   content.className = 'panel-content'
   content.append(...source.childNodes)
@@ -131,6 +133,7 @@ function renderReading(context: Context, view: Exclude<View, { kind: 'camp' }>, 
   const byIndex = previous && previous.focus >= 0 ? controls(scroll)[previous.focus] : null
   const focus = bySelector ?? byIndex ?? heading
   focus.focus({ preventScroll: true })
+  localizeVisibleUi(context.panel)
 }
 
 function commitInterior(context: Context, next: Exclude<View, { kind: 'camp' }>, wasCamp: boolean, sameRoom: boolean, animateActor: boolean) {
@@ -322,8 +325,15 @@ export function createViews(root: HTMLElement, options: ViewOptions = {}) {
       if (context.mountedRoom === room) syncRoomBackdrop(context, room)
     })
   }
+  const relocalize = () => {
+    if (context.current.kind === 'camp' || context.panel.hidden) return
+    if (context.root.dataset.sceneStage === 'entering' || context.root.dataset.sceneStage === 'room-loading') return
+    remember(context)
+    refreshRoomNavigation(context, roomForView(context.current)!)
+    renderReading(context, context.current, false)
+  }
   return {
-    show: (next: View, push = true) => show(context, next, push), restore, restoreUrl,
+    show: (next: View, push = true) => show(context, next, push), restore, restoreUrl, relocalize,
     forceOpenPendingRoom, retryRoomBackground, roomLoader,
     copyResult: (success: boolean) => copyReaction(context, success),
     get current() { return context.current },

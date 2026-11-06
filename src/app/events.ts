@@ -1,4 +1,5 @@
 import { setControlLabel } from './control-label'
+import { t } from '../shared/i18n'
 import { hitDestination } from '../core/domain'
 import { effectiveReducedMotion } from '../core/experience'
 import type { CueBus } from '../core/fx/cues'
@@ -27,8 +28,8 @@ export function bindPreferences(root: HTMLElement, controller: Controller, sessi
       if (panel && root.dataset.reading === 'false') panel.hidden = true
     }
     const button = root.querySelector<HTMLButtonElement>('[data-action=motion]')!
-    const label = motion.matches ? (user ? 'Movimiento reducido: sistema y preferencia' : 'Movimiento reducido por el sistema') : user ? 'Activar movimiento' : 'Reducir movimiento'
-    const desc = motion.matches ? 'El sistema solicita reducir movimiento.' : 'Preferencia de movimiento del portfolio.'
+    const label = motion.matches ? (user ? t('Movimiento reducido: sistema y preferencia','Motion reduced by system and personal preferences') : t('Movimiento reducido por el sistema','Motion reduced by system preference')) : user ? t('Activar movimiento','Enable motion') : t('Reducir movimiento','Reduce motion')
+    const desc = motion.matches ? t('El sistema solicita reducir movimiento.','Your system requests reduced motion.') : t('Preferencia de movimiento del portfolio.','Portfolio motion preference.')
     button.setAttribute('aria-pressed', String(user))
     button.setAttribute('aria-description', desc)
     controller.dispatch({ type: 'set-motion', reduced }); session.update({ type: 'set-motion', reduced })
@@ -46,7 +47,7 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
   const world = root.querySelector<HTMLElement>('.world')!
   const help = root.querySelector<HTMLElement>('.help-card')!
   const touch = matchMedia('(pointer: coarse)').matches
-  if (touch) help.querySelector('p')!.textContent = 'Tocá un destino para caminar hasta él. También podés tocar un punto del camino.'
+  if (touch) help.querySelector('p')!.textContent = t('Tocá un destino para caminar hasta él. También podés tocar un punto del camino.','Tap a destination to walk there. You can also tap a point along the path.')
   let down: { x: number; y: number } | null = null, dragged = false
   world.addEventListener('pointerdown', e => { if (!e.isPrimary) { dragged = true; return }; down = { x: e.clientX, y: e.clientY }; dragged = false })
   world.addEventListener('pointermove', e => { if (down && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 12) dragged = true })
@@ -88,9 +89,9 @@ export function bindEvents(root: HTMLElement, controller: Controller, views: Ret
       audio.pause()
       bus?.emit('pause', { reason: 'hidden' })
       const sound = root.querySelector<HTMLButtonElement>('[data-action=sound]')!
-      if (sound.getAttribute('aria-pressed') === 'true') setControlLabel(sound, 'Continuar sonido')
+      if (sound.getAttribute('aria-pressed') === 'true') setControlLabel(sound, t('Continuar sonido','Resume sound'))
       root.querySelectorAll?.<HTMLButtonElement>('[data-action=sound]').forEach(btn => {
-        if (btn.getAttribute('aria-pressed') === 'true') setControlLabel(btn, 'Continuar sonido')
+        if (btn.getAttribute('aria-pressed') === 'true') setControlLabel(btn, t('Continuar sonido','Resume sound'))
       })
     } else {
       delete root.dataset.paused

@@ -1,6 +1,7 @@
 import { sections, type Section } from '../entities'
-import { t, language, languageHref } from '../shared/i18n'
+import { t, language, languagePicker } from '../shared/i18n'
 import { assetUrl, ROOM_META } from '../shared'
+import { localizeText } from '../shared/locale-copy'
 import { campIcon } from '../shared/camp-icons'
 import type { RoomContext } from './room-types'
 import { ROOM_ACTOR_DEFAULTS } from './room-actor'
@@ -32,7 +33,7 @@ function navigation(context: RoomContext, room: Section): string {
   const motion = context.root.dataset.userMotion === 'true'
   return `<button class="room-exit-btn" data-action="back">← <span>${t('Campamento','Camp')}</span></button>
     <span class="room-location">${campIcon(room)}${sections[room]}</span>
-    <a class="language-switch room-language" href="${languageHref(language() === 'en' ? 'es' : 'en')}" aria-label="${t('Ver portfolio en inglés','See portfolio in Spanish')}">${language() === 'en' ? 'ES' : 'EN'}</a>
+    ${languagePicker('room-language')}
     <details class="room-navigation"><summary>${t('Explorar','Explore')} <span aria-hidden="true">⌄</span></summary>
       <nav class="room-quick-nav" aria-label="${t('Cambiar de lugar','Choose a place')}">${places}
         <a href="${assetUrl(language() === 'en' ? 'cv-alejo-palavecino-en.pdf' : 'cv-alejo-palavecino-es.pdf')}" download>${t('Descargar CV','Download resume')} ↓</a>
@@ -40,6 +41,16 @@ function navigation(context: RoomContext, room: Section): string {
         <button data-action="motion" aria-pressed="${motion}">${motion ? t('Activar movimiento','Enable motion') : t('Reducir movimiento','Reduce motion')}</button>
       </nav>
     </details>`
+}
+
+/** Refresh only the room toolbar: keeps scenery, reading and world camera mounted. */
+export function refreshRoomNavigation(context: RoomContext, room: Section): void {
+  const header = context.panel.querySelector<HTMLElement>('.room-topbar')
+  if (!header) return
+  const expanded = !!header.querySelector('details.room-navigation[open]')
+  header.innerHTML = navigation(context, room)
+  if (expanded) header.querySelector('details.room-navigation')?.setAttribute('open', '')
+  context.panel.querySelector<HTMLElement>('.room-guide')?.setAttribute('aria-label', t('Comentario de Alejo', 'Comment from Alejo'))
 }
 
 export function buildRoomShell(context: RoomContext, room: Section, animateActor: boolean): HTMLElement {
@@ -65,13 +76,13 @@ export function buildRoomShell(context: RoomContext, room: Section, animateActor
   guide.setAttribute('aria-label', 'Comentario de Alejo')
   const reaction = ROOM_ACTOR_DEFAULTS[room]
   guide.innerHTML = `<img class="room-actor" src="${assetUrl('avatar/idle-down.webp')}" width="131" height="255" alt="">
-    <div class="room-actor-bubble"><span class="room-actor-status">${reaction.status}</span><p class="room-actor-quote">${reaction.quote}</p></div>`
+    <div class="room-actor-bubble"><span class="room-actor-status">${localizeText(reaction.status)}</span><p class="room-actor-quote">${localizeText(reaction.quote)}</p></div>`
   const fallback = document.createElement('div')
   fallback.className = 'room-bg-fallback'
   fallback.hidden = true
   fallback.setAttribute('role', 'status')
-  fallback.innerHTML = `<span>No se pudo cargar la ilustración. El contenido sigue disponible.</span>
-    <button class="text-button" data-action="retry-room-bg" data-room="${room}">Reintentar fondo</button>`
+  fallback.innerHTML = `<span>${t('No se pudo cargar la ilustración. El contenido sigue disponible.','The illustration could not be loaded. The content is still available.')}</span>
+    <button class="text-button" data-action="retry-room-bg" data-room="${room}">${t('Reintentar fondo','Retry background')}</button>`
   const scroll = document.createElement('div')
   scroll.className = 'panel-scroll'
   scroll.tabIndex = 0

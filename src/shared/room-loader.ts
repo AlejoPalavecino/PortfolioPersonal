@@ -1,5 +1,6 @@
 import type { Section } from '../core/domain'
 import { assetUrl } from './index'
+import { t } from './i18n'
 
 export type RoomTheme = 'workbench' | 'linen' | 'journal' | 'radio'
 export type RoomAssetStatus = 'idle' | 'loading' | 'ready' | 'failed'
@@ -25,11 +26,11 @@ export const ROOM_META: Readonly<Record<Section, RoomMeta>> = {
   projects: {
     section: 'projects',
     number: '01',
-    title: 'Taller de soluciones',
-    shortLabel: 'Proyectos',
-    eyebrow: 'CAMPAMENTO / TALLER DE SOLUCIONES',
-    enteringLabel: 'Entrando al taller…',
-    loadingLabel: 'Preparando el interior…',
+    get title() { return t('Taller de soluciones', 'Solutions workshop') },
+    get shortLabel() { return t('Proyectos', 'Projects') },
+    get eyebrow() { return t('CAMPAMENTO / TALLER DE SOLUCIONES', 'CAMP / SOLUTIONS WORKSHOP') },
+    get enteringLabel() { return t('Entrando al taller…', 'Entering the workshop…') },
+    get loadingLabel() { return t('Preparando el interior…', 'Preparing the room…') },
     theme: 'workbench',
     fallbackBg: '#241b16',
     desktopAsset: 'camp-rooms-v2/projects-desktop.webp',
@@ -41,11 +42,11 @@ export const ROOM_META: Readonly<Record<Section, RoomMeta>> = {
   about: {
     section: 'about',
     number: '02',
-    title: 'Carpa personal',
-    shortLabel: 'Sobre mí',
-    eyebrow: 'CAMPAMENTO / CARPA PERSONAL',
-    enteringLabel: 'Entrando a la carpa…',
-    loadingLabel: 'Preparando el interior…',
+    get title() { return t('Carpa personal', 'Personal tent') },
+    get shortLabel() { return t('Sobre mí', 'About me') },
+    get eyebrow() { return t('CAMPAMENTO / CARPA PERSONAL', 'CAMP / PERSONAL TENT') },
+    get enteringLabel() { return t('Entrando a la carpa…', 'Entering the tent…') },
+    get loadingLabel() { return t('Preparando el interior…', 'Preparing the room…') },
     theme: 'linen',
     fallbackBg: '#1f2a24',
     desktopAsset: 'camp-rooms-v2/about-desktop.webp',
@@ -57,11 +58,11 @@ export const ROOM_META: Readonly<Record<Section, RoomMeta>> = {
   journey: {
     section: 'journey',
     number: '03',
-    title: 'Archivo de expedición',
-    shortLabel: 'Trayectoria',
-    eyebrow: 'CAMPAMENTO / ARCHIVO DE EXPEDICIÓN',
-    enteringLabel: 'Abriendo el archivo…',
-    loadingLabel: 'Preparando el interior…',
+    get title() { return t('Archivo de expedición', 'Adventure archive') },
+    get shortLabel() { return t('Trayectoria', 'Journey') },
+    get eyebrow() { return t('CAMPAMENTO / ARCHIVO DE EXPEDICIÓN', 'CAMP / ADVENTURE ARCHIVE') },
+    get enteringLabel() { return t('Abriendo el archivo…', 'Opening the archive…') },
+    get loadingLabel() { return t('Preparando el interior…', 'Preparing the room…') },
     theme: 'journal',
     fallbackBg: '#261e17',
     desktopAsset: 'camp-rooms-v2/journey-desktop.webp',
@@ -73,11 +74,11 @@ export const ROOM_META: Readonly<Record<Section, RoomMeta>> = {
   contact: {
     section: 'contact',
     number: '04',
-    title: 'Puesto de radio',
-    shortLabel: 'Contacto',
-    eyebrow: 'CAMPAMENTO / PUESTO DE RADIO',
-    enteringLabel: 'Conectando puesto de radio…',
-    loadingLabel: 'Preparando el interior…',
+    get title() { return t('Puesto de radio', 'Radio station') },
+    get shortLabel() { return t('Contacto', 'Contact') },
+    get eyebrow() { return t('CAMPAMENTO / PUESTO DE RADIO', 'CAMP / RADIO STATION') },
+    get enteringLabel() { return t('Conectando puesto de radio…', 'Connecting radio station…') },
+    get loadingLabel() { return t('Preparando el interior…', 'Preparing the room…') },
     theme: 'radio',
     fallbackBg: '#16262f',
     desktopAsset: 'camp-rooms-v2/contact-desktop.webp',
