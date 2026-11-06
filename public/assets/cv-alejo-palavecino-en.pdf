@@ -1,0 +1,72 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 3969 >>
+stream
+0.075 0.22 0.30 rg 0 752 595 90 re f
+1 1 1 rg BT /F2 24 Tf 1 0 0 1 42 813.0 Tm (ALEJO PALAVECINO) Tj ET
+0.85 0.94 0.97 rg BT /F1 11 Tf 1 0 0 1 42 780.0 Tm (Full Stack Developer | Systems Analysis | AI & Automation) Tj ET
+1 1 1 rg BT /F1 9 Tf 1 0 0 1 42 759.0 Tm (Mendoza, Argentina  |  alejopalavecino12@gmail.com) Tj ET
+0.13 0.18 0.22 rg BT /F1 8.5 Tf 1 0 0 1 42 730.0 Tm (linkedin.com/in/alejo-palavecino  |  github.com/AlejoPalavecino) Tj ET
+0.12 0.31 0.42 rg BT /F2 11 Tf 1 0 0 1 42 701.0 Tm (PROFILE) Tj ET
+0.78 0.84 0.86 RG 0.5 w 42 688 m 552 688 l S
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 679.0 Tm (Fourth-year Systems Engineering student at UTN Mendoza, Argentina.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 664.7 Tm (FoxMind co-founder. I develop custom software and automations, combining) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 650.4 Tm (systems analysis, product thinking, teamwork and practical innovation.) Tj ET
+0.12 0.31 0.42 rg BT /F2 11 Tf 1 0 0 1 42 626.1 Tm (EXPERIENCE) Tj ET
+0.78 0.84 0.86 RG 0.5 w 42 613.1000000000001 m 552 613.1000000000001 l S
+0.13 0.18 0.22 rg BT /F2 9.3 Tf 1 0 0 1 42 604.1 Tm (FoxMind  |  Co-founder, product lead and developer  |  2024 - present) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 589.8 Tm (Systems analysis, UX/UI, web development and AI integration for an EdTech platform.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 575.5 Tm (Pre-pilot development stage. ILAN University Innovation Award 2026: first place.) Tj ET
+0.13 0.18 0.22 rg BT /F2 9.3 Tf 1 0 0 1 42 561.2 Tm (Freelance developer  |  2022 - 2025) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 546.9 Tm (Custom software and websites for businesses, from requirements to deployment.) Tj ET
+0.12 0.31 0.42 rg BT /F2 11 Tf 1 0 0 1 42 522.6 Tm (SELECTED PROJECTS) Tj ET
+0.78 0.84 0.86 RG 0.5 w 42 509.60000000000036 m 552 509.60000000000036 l S
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 500.6 Tm (Flower - Production inventory and invoicing, React, Node.js, PostgreSQL, ARCA.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 486.3 Tm (Agrotech - Frost prediction and prevention concept; Emprende U 2021: 2nd.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 472.0 Tm (Irrigation - Device to compare flow rates and support fair water distribution.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 457.7 Tm (Digital Herbarium - Botanical species information website.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 443.4 Tm (Insurance workflow automation - Patient record integration; client confidential.) Tj ET
+0.12 0.31 0.42 rg BT /F2 11 Tf 1 0 0 1 42 419.1 Tm (TECHNICAL SKILLS) Tj ET
+0.78 0.84 0.86 RG 0.5 w 42 406.1000000000003 m 552 406.1000000000003 l S
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 397.1 Tm (Java, TypeScript, JavaScript, Python, C++; React, Next.js, Node.js, FastAPI,) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 382.8 Tm (Spring Boot, PostgreSQL, REST APIs, Git, Docker, TDD, testing, AI automation.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 368.5 Tm (Requirements gathering, UX/UI, process analysis and collaboration.) Tj ET
+0.12 0.31 0.42 rg BT /F2 11 Tf 1 0 0 1 42 344.2 Tm (EDUCATION & AVAILABILITY) Tj ET
+0.78 0.84 0.86 RG 0.5 w 42 331.2000000000003 m 552 331.2000000000003 l S
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 322.2 Tm (BSc-equivalent Systems Engineering programme - UTN, in progress \(year 4\).) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 307.9 Tm (Full Stack Web Development - Egg Corporation, 2022 \(500 hours\).) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 293.6 Tm (Mobile Application Development - Complutense University of Madrid, 2020.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 279.3 Tm (Agricultural Production Technician - National University of Cuyo, 2022.) Tj ET
+0.13 0.18 0.22 rg BT /F1 9.3 Tf 1 0 0 1 42 265.0 Tm (Spanish native | English B2. Remote worldwide | On-site/hybrid in Mendoza.) Tj ET
+0.075 0.22 0.30 rg 0 0 595 16 re f
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000348 00000 n 
+0000000450 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4470
+%%EOF
