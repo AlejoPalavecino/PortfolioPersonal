@@ -15,6 +15,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PAGES_ARTIFACT: github-pages-${{ github.run_attempt }}
+    outputs:
+      artifact_name: ${{ env.PAGES_ARTIFACT }}
     permissions:
       contents: read
       pages: read
@@ -43,6 +47,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
+          name: ${{ env.PAGES_ARTIFACT }}
           path: dist
 
   deploy:
@@ -59,3 +64,20 @@ jobs:
       - name: Deploy to Pages
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        with:
+          artifact_name: ${{ needs.build.outputs.artifact_name }}
+
+  verify-live:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check mobile loading on the public domain
+        run: |
+          npm install --prefix "$RUNNER_TEMP/mobile-probe" --ignore-scripts --no-audit --no-fund playwright-core@1.62.1
+          NODE_PATH="$RUNNER_TEMP/mobile-probe/node_modules" node tools/qa/production-mobile.cjs
