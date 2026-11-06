@@ -28,12 +28,15 @@ describe('carga progresiva de escena', () => {
       'world-backdrop.webp', 'camp-hillside.webp', 'avatar/idle-down.webp',
     ]))
     expect(image).toHaveBeenCalledTimes(3)
-    expect(image.mock.calls.map(call => call[0])).not.toContain('camp-ambience-loop.wav')
+    expect(image.mock.calls.map(call => call[0])).not.toContain('camp-ambience-loop.mp3')
     expect(image.mock.calls.map(call => call[0])).not.toContain('cv-alejo-palavecino-es.pdf')
 
-    await vi.advanceTimersByTimeAsync(899)
+    await vi.advanceTimersByTimeAsync(10000)
     expect(image).toHaveBeenCalledTimes(3)
-    await vi.advanceTimersByTimeAsync(1); await flush()
+    loader.prefetchMovement()
+    loader.prefetchMovement()
+    await vi.advanceTimersByTimeAsync(0)
+    expect(image).toHaveBeenCalledTimes(3 + 19)
     expect(image.mock.calls.map(call => call[0])).toContain('avatar/walk-up-4.webp')
     expect(loader.state.status).toBe('ready')
     const count = notify.mock.calls.length

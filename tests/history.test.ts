@@ -15,7 +15,7 @@ function setup(entered: boolean, ready: boolean) {
   const intro = node(), panel = node(), world = node(), entry = node(), direct = node()
   const elements: Record<string, ReturnType<typeof node>> = {
     '.intro': intro, '.panel': panel, '.world': world, '.loading-status': node(),
-    '[data-action=enter]': entry, '[data-action=direct]': direct,
+    '[data-action=enter]': entry, '.intro-primary-actions [data-action=direct]': direct,
     '.hud-left': node(), '.hud-right': node(), '.scene-status': node(), '.retry-intro': node(),
   }
   const root = { dataset: {}, querySelector: (key: string) => elements[key] } as unknown as HTMLElement
@@ -52,11 +52,24 @@ describe('restauración del historial desde lectura directa', () => {
     expect(x.world.inert).toBe(false)
   })
 
+  it('entra automáticamente si se pidió explorar, salvo que se elijan proyectos durante la espera', () => {
+    for (const readInstead of [false, true]) {
+      const x = setup(false, false)
+      x.session.prepareEntry()
+      x.session.skipIntro()
+      expect(x.session.state.phase).not.toBe('explore')
+      if (readInstead) x.session.direct()
+      x.session.update({ type: 'load-ready', generation: 1 })
+      expect(x.session.state.phase).toBe(readInstead ? 'direct' : 'explore')
+    }
+  })
+
   it('ofrece entrada mientras carga aunque la sesión ya haya entrado', () => {
     const x = setup(true, false)
     restoreHistoryView({ kind: 'camp' }, x.controller, x.views, x.session)
     expect(x.intro.hidden).toBe(false)
-    expect(x.entry.disabled).toBe(true)
+    expect(x.entry.disabled).toBe(false)
+    x.session.skipIntro()
     expect(x.world.inert).toBe(true)
     x.session.update({ type: 'load-ready', generation: 1 })
     expect(x.session.state.phase).toBe('explore')

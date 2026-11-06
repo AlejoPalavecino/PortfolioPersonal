@@ -1,3 +1,4 @@
+import { CAMP_SCENERY } from '../camp-scenery'
 import { validateFrames } from './frames'
 import { localizeText } from '../locale-copy'
 import type { SpriteFrame } from './frames'
@@ -17,12 +18,11 @@ export type ScenePorts = { metadata(): Promise<unknown>; image(file: string): Pr
 
 /**
  * Only assets needed to display the camp and place its idle avatar block entry.
- * The remaining sprites are fetched in the background; the browser also requests
- * visible world elements directly through their markup.
+ * Once the visitor enters, warm the remaining movement frames in the background.
+ * The world reveals its destinations when exploration begins.
  */
 export const INITIAL_SCENE_TASKS = 5
-const essentialImages = ['camp-hillside.webp', 'world-backdrop.webp', 'avatar/idle-down.webp'] as const
-const deferredImages = ['poi-projects.webp', 'poi-about.webp', 'poi-journey.webp', 'poi-contact.webp'] as const
+const essentialImages = [CAMP_SCENERY.ground, CAMP_SCENERY.backdrop, 'avatar/idle-down.webp'] as const
 const labels = {
   paths: 'Trazando los caminos',
   scenery: 'Cargando el paisaje',
@@ -35,9 +35,8 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
     total: INITIAL_SCENE_TASKS, timedOut: false, error: null, frames: [],
   }
   let timer: ReturnType<typeof setTimeout> | undefined
-  let deferredTimer: ReturnType<typeof setTimeout> | undefined
+  let prefetchedGeneration = 0
   let disposed = false
-  let framesForPrefetch: readonly SpriteFrame[] = []
 
   const active = (generation: number) =>
     !disposed && generation === state.generation && state.status === 'loading'
@@ -48,17 +47,15 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
   }
   const clear = () => {
     if (timer !== undefined) clearTimeout(timer)
-    if (deferredTimer !== undefined) clearTimeout(deferredTimer)
     timer = undefined
-    deferredTimer = undefined
   }
 
   /** At most two extra image decodes at a time, with no effect on readiness. */
-  const prefetchAfterReady = (generation: number) => {
-    const queue = [
-      ...deferredImages,
-      ...framesForPrefetch.filter(frame => frame.name !== 'idle-down').map(frame => `avatar/${frame.name}.webp`),
-    ]
+  const prefetchMovement = () => {
+    const generation = state.generation
+    if (disposed || state.status !== 'ready' || generation === prefetchedGeneration) return
+    prefetchedGeneration = generation
+    const queue = state.frames.filter(frame => frame.name !== 'idle-down').map(frame => `avatar/${frame.name}.webp`)
     let nextIndex = 0
     const next = () => {
       if (disposed || state.generation !== generation || state.status !== 'ready') return
@@ -68,11 +65,8 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
         // Optional images must not block access; the normal img element can retry.
       }).then(next)
     }
-    deferredTimer = setTimeout(() => {
-      if (disposed || state.generation !== generation || state.status !== 'ready') return
-      next()
-      next()
-    }, 900)
+    next()
+    next()
   }
 
   const complete = (generation: number, label: string) => {
@@ -82,7 +76,6 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
       if (timer !== undefined) clearTimeout(timer)
       timer = undefined
       publish({ completed, status: 'ready', task: 'Listo para explorar' })
-      prefetchAfterReady(generation)
     } else {
       publish({ completed, task: localizeText(label) })
     }
@@ -101,7 +94,6 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
   const startGeneration = () => {
     if (disposed) return
     clear()
-    framesForPrefetch = []
     const generation = state.generation + 1
     publish({
       generation, status: 'loading', completed: 0, timedOut: false,
@@ -115,7 +107,6 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
     void Promise.resolve().then(() => ports.metadata()).then(value => {
       if (!active(generation)) return
       const frames = validateFrames(value)
-      framesForPrefetch = frames
       publish({ frames })
       complete(generation, labels.character)
     }).catch(error => fail(generation, error))
@@ -124,6 +115,7 @@ export function createSceneLoader(ports: ScenePorts, onChange: (state: ScenePrep
     get state() { return state },
     start() { if (state.status === 'idle') startGeneration() },
     retry() { startGeneration() },
+    prefetchMovement,
     dispose() { disposed = true; clear() },
   }
 }

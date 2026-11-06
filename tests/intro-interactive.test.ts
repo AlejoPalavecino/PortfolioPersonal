@@ -27,37 +27,55 @@ function setup(reduced = false, ready = true) {
 }
 
 describe('cinematic arrival', () => {
-  it('offers projects immediately and unlocks exploring as soon as critical assets are ready', () => {
+  it('accepts both actions before camp assets are ready', () => {
     const s = setup(false, false)
     expect(s.root.querySelectorAll('.intro-primary-actions button')).toHaveLength(2)
     expect(s.root.querySelector<HTMLButtonElement>('.intro-primary-actions [data-action="direct"]')!.disabled).toBe(false)
-    expect(s.root.querySelector<HTMLButtonElement>('.intro-primary-actions [data-action="enter"]')!.disabled).toBe(true)
+    expect(s.root.querySelector<HTMLButtonElement>('.intro-primary-actions [data-action="enter"]')!.disabled).toBe(false)
+    const direct = vi.fn()
+    s.root.addEventListener('click', direct)
+    s.click('.intro-primary-actions [data-action="direct"]')
+    expect(direct).toHaveBeenCalledOnce()
     expect(s.root.querySelector('.intro-boot [data-action="direct"]')).not.toBeNull()
     expect(s.root.querySelector('.intro-top-actions [data-action="skip-intro"]')).not.toBeNull()
     s.bus.emit('prepare-ready', {})
     expect(s.root.dataset.introReady).toBe('true')
     expect(s.root.querySelector<HTMLButtonElement>('[data-action="enter"]')!.disabled).toBe(false)
   })
-  it('hands off only after the departure animation and preserves the selected exit', async () => {
+  it('opens projects immediately even after the camp finishes loading', () => {
     const s = setup()
     const arrived = vi.fn()
     s.root.addEventListener('click', arrived)
     s.click('.intro-primary-actions [data-action="direct"]')
+    expect(arrived).toHaveBeenCalledOnce()
+    expect(s.root.querySelector<HTMLElement>('.intro-handoff')!.hidden).toBe(true)
+  })
+  it('keeps the departure animation for entering the ready camp', async () => {
+    const s = setup()
+    const arrived = vi.fn()
+    s.root.addEventListener('click', arrived)
+    s.click('.intro-primary-actions [data-action="enter"]')
     expect(arrived).not.toHaveBeenCalled()
     await new Promise(resolve => setTimeout(resolve, 0))
     s.advance(200); expect(arrived).not.toHaveBeenCalled()
     s.advance(150); expect(arrived).toHaveBeenCalledOnce()
-    expect(s.root.dataset.introTransition).toBe('projects')
+    expect(s.root.dataset.introTransition).toBe('camp')
   })
-  it('waits for actual preparation, reports real tasks and supports failure recovery', () => {
+  it('shows the greeting while loading, then reports real progress if entry was requested', () => {
     const s = setup(false, false)
     s.advance(10000)
+    expect(s.root.dataset.introBoot).toBe('false')
+    expect(s.root.querySelector<HTMLElement>('.intro-story-banner')!.hidden).toBe(false)
+    s.root.querySelector<HTMLButtonElement>('.intro-primary-actions [data-action="enter"]')!.focus()
+    s.root.dataset.introQueued = 'true'
+    s.fx.refresh()
     expect(s.root.dataset.introBoot).toBe('true')
-    expect(s.root.querySelector<HTMLElement>('.intro-story-banner')!.hidden).toBe(true)
+    expect(document.activeElement).toBe(s.root.querySelector('.boot-actions [data-action="direct"]'))
     s.bus.emit('prepare-progress', {completed:2,total:5,task:'Cargando el paisaje'})
     expect(s.root.querySelector('.boot-task')!.textContent).toBe('Cargando el paisaje')
     expect(s.root.querySelector('.boot-count')!.textContent).toBe('2 de 5 recursos')
     s.bus.emit('prepare-failed', {error:'offline'})
+    expect(document.activeElement).toBe(s.root.querySelector('.intro-primary-actions [data-action="direct"]'))
     expect(s.root.dataset.introBoot).toBe('false')
     expect(s.root.querySelector<HTMLButtonElement>('[data-action="direct"]')!.disabled).toBe(false)
     s.bus.emit('prepare-start', {})
@@ -66,7 +84,7 @@ describe('cinematic arrival', () => {
     expect(s.root.dataset.introReady).toBe('true')
   })
   it('respects reduced motion and removes all subscriptions on disposal', () => {
-    const s = setup(true)
+    const s = setup(true, false)
     expect(s.root.dataset.introReady).toBe('true')
     expect(s.root.querySelector('.intro-beat-subtitle')!.textContent).toBe(INTRO_LINES.greeting.text)
     s.fx.dispose(); expect(s.loop.size).toBe(0)

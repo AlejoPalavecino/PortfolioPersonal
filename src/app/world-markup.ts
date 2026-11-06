@@ -14,7 +14,7 @@ function thresholdStyle(): string {
 
 export function worldMarkup(): string {
   const entries = Object.entries(DESTINATIONS) as [Section, (typeof DESTINATIONS)[Section]][]
-  const objects = entries.map(([id, item]) => `<img class="poi poi-${id}" data-poi="${id}" src="${assetUrl(item.sprite)}" loading="lazy" decoding="async" fetchpriority="low" alt="" style="z-index:${item.depthY};left:${item.visual.x}px;top:${item.visual.y}px;width:${item.visual.width}px;height:${item.visual.height}px">`).join('')
+  const objects = entries.map(([id, item]) => `<img class="poi poi-${id}" data-poi="${id}" data-world-src="${assetUrl(item.sprite)}" decoding="async" alt="" style="z-index:${item.depthY};left:${item.visual.x}px;top:${item.visual.y}px;width:${item.visual.width}px;height:${item.visual.height}px">`).join('')
   const signs = entries.map(([id, item]) => {
     const sign = item.visual.sign
     return `<button class="world-label label-${id}" data-section="${id}" data-mount="${sign.mount}"
@@ -23,15 +23,23 @@ export function worldMarkup(): string {
     </button>`
   }).join('')
   return `<div class="world-scroll"><div class="world" tabindex="0" role="application" aria-label="Campamento interactivo">
-    <img class="ground" src="${assetUrl('camp-hillside.webp')}" decoding="async" fetchpriority="high" alt="">
+    <img class="ground" decoding="async" fetchpriority="high" alt="">
     <canvas class="world-fx-ground" width="1000" height="650" aria-hidden="true"></canvas>${objects}
     <div class="avatar-shadow" aria-hidden="true"></div>
     <img class="avatar" width="131" height="255" src="${assetUrl('avatar/idle-down.webp')}" alt="">
     <div class="threshold-stage" style="${thresholdStyle()}" aria-hidden="true" hidden>
       <div class="threshold-fx"></div>
-      <img class="threshold-actor" width="131" height="255" src="${assetUrl('avatar/idle-up.webp')}" alt="">
+      <img class="threshold-actor" width="131" height="255" alt="">
     </div>
     <canvas class="world-fx-props" width="1000" height="650" aria-hidden="true"></canvas>${signs}
     <div class="avatar-occlusion" aria-hidden="true" hidden><img class="avatar avatar-ghost" width="131" height="255" src="${assetUrl('avatar/idle-down.webp')}" alt=""></div>
   </div></div><nav class="camp-destinations" aria-label="Lugares del campamento">${entries.map(([id]) => `<button data-section="${id}">${campIcon(id)}<span>${sections[id]}</span><span class="destination-dot" aria-hidden="true"></span></button>`).join('')}</nav>`
+}
+
+// A lazy <img> behind the full-screen welcome still intersects the viewport.
+export function showWorldArt(root: HTMLElement) {
+  for (const image of root.querySelectorAll<HTMLImageElement>('img[data-world-src]')) {
+    image.src = image.dataset.worldSrc!
+    delete image.dataset.worldSrc
+  }
 }
