@@ -14,7 +14,6 @@ import { effectiveReducedMotion } from '../core/experience'
 import { readManualMotion } from './motion-preference'
 import { createCueBus } from '../core/fx/cues'
 import { createLoop } from './loop'
-import { setControlLabel } from './control-label'
 import { bindIntroFx } from './fx/intro-fx'
 import { bindWorldFx } from './fx/world-fx'
 
@@ -34,23 +33,8 @@ export function mount(root: HTMLElement) {
   const introFx = bindIntroFx(root, bus, loop, () => root.dataset.motion === 'reduced', () => session.skipIntro())
   bindWorldFx(root, controller, renderer.camera, bus, loop)
   const audio = createAudio(bus, () => ({ position: controller.state.position, reading: root.dataset.reading === 'true', intro: !root.querySelector<HTMLElement>('.intro')!.hidden }))
-  // Autoplay is best effort: browser policies may require a trusted gesture.
-  let wanted = true, starting = false
-  const startSound = async () => {
-    if (!wanted || starting || audio.enabled || document.hidden) return
-    starting = true
-    await audio.toggle()
-    starting = false
-    root.dataset.sound = String(audio.enabled)
-    root.querySelectorAll<HTMLButtonElement>('[data-action=sound]').forEach(button => {
-      button.setAttribute('aria-pressed', String(audio.enabled))
-      setControlLabel(button, audio.enabled ? 'Apagar sonido' : 'Activar sonido')
-    })
-  }
-  root.addEventListener('click', event => { if ((event.target as HTMLElement).closest('[data-action=sound]')) wanted = false }, true)
-  document.addEventListener('pointerdown', event => { if (!(event.target as HTMLElement).closest('[data-action=sound]')) void startSound() })
-  document.addEventListener('keydown', () => { void startSound() })
-  void startSound()
+  // Sound is opt-in. Do not download the ambience or create an AudioContext
+  // until the visitor explicitly activates the sound control.
   const toggleMotion = bindPreferences(root, controller, session, userMotion)
   const loader = prepareScene(state => { renderer.setFrames(state.frames); session.loading(state) })
   bindActions(root, controller, views, audio, session, () => loader.retry(), toggleMotion)
