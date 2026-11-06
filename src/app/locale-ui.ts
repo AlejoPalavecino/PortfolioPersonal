@@ -71,6 +71,10 @@ function syncStaticUi(root: HTMLElement): void {
   const enter = root.querySelector<HTMLButtonElement>('.intro .enter-button')
   if (enter?.firstChild) enter.firstChild.textContent = t('Explorar el campamento','Explore the camp') + ' '
   set('.intro .retry-intro', t('Reintentar carga','Retry loading'))
+  set('.intro-top-actions .intro-skip', t('Omitir presentación ↗','Skip intro ↗'))
+  set('.boot-actions [data-action="direct"]', t('Ver proyectos sin esperar ↗','View projects now ↗'))
+  const queued = root.querySelector<HTMLElement>('.boot-queue-status')
+  if (queued && !queued.hidden) queued.textContent = t('Entrarás al campamento apenas termine la carga esencial.','You will enter the camp as soon as essential loading finishes.')
   set('.intro-handoff .handoff-title', t('Entrando al campamento','Entering the camp'))
   set('.intro-handoff .handoff-detail', t('Proyectos · Contacto · Trayectoria · Sobre mí','Projects · Contact · Journey · About me'))
   const sound = root.dataset.sound === 'true'

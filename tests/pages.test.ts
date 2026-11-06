@@ -30,13 +30,15 @@ describe.each(['/', '/PortfolioPersonal/'])('recursos con BASE_URL %s', (base) =
     vi.stubEnv('BASE_URL', base)
     const fetchMock = vi.fn().mockResolvedValue({ ok: false })
     vi.stubGlobal('fetch', fetchMock)
-    const audio = vi.fn(function () { return { loop: false, volume: 0 } })
+    const element = { loop: false, volume: 0, preload: '', src: '' }
+    const audio = vi.fn(function () { return element })
     vi.stubGlobal('Audio', audio)
     createAudio()
     const root = { querySelector: () => ({}) } as unknown as HTMLElement
     const views = {} as Parameters<typeof createRenderer>[1]
     await createRenderer(root, views).loadFrames(() => {})
-    expect(audio).toHaveBeenCalledWith(`${base}assets/camp-ambience-loop.wav`)
+    expect(audio).toHaveBeenCalledWith()
+    expect(element).toMatchObject({ preload: 'none', src: `${base}assets/camp-ambience-loop.wav` })
     expect(fetchMock).toHaveBeenCalledWith(`${base}assets/avatar/frames.json`)
   })
 })

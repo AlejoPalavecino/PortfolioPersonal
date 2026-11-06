@@ -17,7 +17,7 @@ describe('lectura durante la preparación', () => {
     vi.stubGlobal('location', { hash: '#proyectos/flower' }); vi.stubGlobal('sessionStorage', { getItem: () => null })
     vi.stubGlobal('document', { activeElement: focused })
     const session = createSession(root, controller, false)
-    const state = (generation: number, status: ScenePreparation['status']): ScenePreparation => ({ generation, status, completed: status === 'ready' ? 28 : 7, total: 28, timedOut: false, error: null, frames: [] })
+    const state = (generation: number, status: ScenePreparation['status']): ScenePreparation => ({ generation, status, completed: status === 'ready' ? 5 : 2, total: 5, timedOut: false, error: null, frames: [] })
     session.loading(state(1, 'loading')); session.direct(); session.update({ type: 'read' })
     if (failed) { session.loading(state(1, 'failed')); session.loading(state(2, 'loading')) }
     session.loading(state(failed ? 2 : 1, 'ready'))
