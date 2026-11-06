@@ -1,17 +1,19 @@
 import { sections } from '../entities'
+import { t, language, languageHref } from '../shared/i18n'
 import { assetUrl } from '../shared'
 import { worldMarkup } from './world-markup'
 
-const labels: Record<string, string> = { projects: 'Taller · Proyectos', about: 'Carpa · Sobre mí', journey: 'Archivo · Trayectoria', contact: 'Radio · Contacto' }
+const labels: Record<string, string> = { projects: t('Taller · Proyectos','Workshop · Projects'), about: t('Carpa · Sobre mí','Tent · About me'), journey: t('Archivo · Trayectoria','Journal · Journey'), contact: t('Radio · Contacto','Radio · Contact') }
+const langSwitch = () => `<a class="language-switch" href="${languageHref(language() === 'en' ? 'es' : 'en')}" hreflang="${language() === 'en' ? 'es' : 'en'}" aria-label="${t('Ver portfolio en inglés','See portfolio in Spanish')}">${language() === 'en' ? 'ES' : 'EN'}</a>`
 const links = () => Object.entries(sections).map(([id]) =>
   `<button data-section="${id}"><span>${labels[id]}</span><span class="visited-mark" aria-hidden="true">✓</span></button>`).join('')
 
 function hud(): string {
-  return `<div class="hud-left"><button class="brand" data-action="home" aria-label="Volver al campamento"><img src="${assetUrl('emblem.webp')}" alt=""></button>
-    <button class="menu-toggle" data-action="menu" aria-expanded="false">☰ <span>Campamento</span></button></div>
-    <div class="hud-right"><button data-section="contact">Contacto</button><a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>CV ↓</a><button data-action="help">Cómo jugar</button></div>
-    <nav class="mobile-menu" aria-label="Menú del campamento" hidden><strong>Explorar el campamento</strong>${links()}
-      <div class="settings"><button data-action="help">Cómo jugar</button><button data-action="sound" aria-pressed="false">Sonido apagado</button><button data-action="motion" aria-pressed="false">Reducir movimiento</button></div>
+  return `<div class="hud-left"><button class="brand" data-action="home" aria-label="${t('Volver al campamento','Back to camp')}"><img src="${assetUrl('emblem.webp')}" alt=""></button>
+    <button class="menu-toggle" data-action="menu" aria-expanded="false">☰ <span>${t('Campamento','Camp')}</span></button></div>
+    <div class="hud-right">${langSwitch()}<button data-section="contact">${sections.contact}</button><a href="${assetUrl(language() === 'en' ? 'cv-alejo-palavecino-en.pdf' : 'cv-alejo-palavecino-es.pdf')}" download>CV ↓</a><button data-action="help">${t('Cómo jugar','How to play')}</button></div>
+    <nav class="mobile-menu" aria-label="${t('Menú del campamento','Camp menu')}" hidden><strong>${t('Explorar el campamento','Explore the camp')}</strong>${links()}<div class="mobile-lang">${langSwitch()}</div>
+      <div class="settings"><button data-action="help">${t('Cómo jugar','How to play')}</button><button data-action="sound" aria-pressed="false">${t('Sonido apagado','Sound off')}</button><button data-action="motion" aria-pressed="false">${t('Reducir movimiento','Reduce motion')}</button></div>
     </nav>`
 }
 
@@ -42,22 +44,22 @@ function intro(): string {
         <img src="${assetUrl('emblem.webp')}" alt="" width="28" height="28">
         <span>CAMPAMENTO CREATIVO</span>
       </div>
-      <div class="intro-top-actions">
+      <div class="intro-top-actions">${langSwitch()}
         <button type="button" class="icon-control" data-action="sound" aria-label="Activar sonido" title="Activar sonido" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><g class="sound-waves"><path d="M17 8q5 4 0 8M19 4q9 8 0 16"/></g><path class="sound-slash" d="M3 3l18 18"/></svg></button>
         <button type="button" class="icon-control" data-action="motion" aria-label="Reducir movimiento" title="Reducir movimiento" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4" r="1.8"/><g class="walking-person"><path d="m10 8 3-1 2 5 4 1M12 8l-2 7-4 6M10 15l5 2 1 4M10 8l-3 4H4"/></g><path class="motion-slash" d="M3 3l18 18"/></svg></button>
       </div>
     </div>
     <div class="intro-boot" role="status" aria-live="polite">
       <span class="boot-emblem" aria-hidden="true">◈</span><p class="boot-kicker">CAMPAMENTO CREATIVO</p>
-      <h2>Preparando tu aventura</h2><p class="boot-task">Cargando el paisaje y los personajes…</p>
+      <h2>${t('Preparando tu aventura','Preparing your adventure')}</h2><p class="boot-task">${t('Cargando el paisaje y los personajes…','Loading scenery and characters…')}</p>
       <div class="boot-meter" aria-hidden="true"><span></span></div><small class="boot-count">0 de 28 recursos</small>
     </div>
-    <div class="intro-handoff" role="status" aria-live="polite" hidden><span class="boot-emblem" aria-hidden="true">◈</span><h2 class="handoff-title">Entrando al campamento</h2><p class="handoff-detail">Proyectos · Contacto · Trayectoria · Sobre mí</p><span class="handoff-spinner" aria-hidden="true"></span></div>
+    <div class="intro-handoff" role="status" aria-live="polite" hidden><span class="boot-emblem" aria-hidden="true">◈</span><h2 class="handoff-title">${t('Entrando al campamento','Entering the camp')}</h2><p class="handoff-detail">Proyectos · Contacto · Trayectoria · Sobre mí</p><span class="handoff-spinner" aria-hidden="true"></span></div>
     <div class="intro-content">
       <header class="intro-heading">
-        <p class="intro-eyebrow">ALEJO PALAVECINO <span aria-hidden="true">/</span> DESARROLLADOR DE SOFTWARE</p>
-        <h1>Ideas que cobran <em>vida.</em></h1>
-        <p class="intro-lead">Construyo productos digitales. Acá podés conocerlos, explorar mi historia y pensar conmigo lo que viene.</p>
+        <p class="intro-eyebrow">ALEJO PALAVECINO <span aria-hidden="true">/</span> ${t('INGENIERÍA EN SISTEMAS · DESARROLLO','SYSTEMS ENGINEERING · DEVELOPMENT')}</p>
+        <h1>${t('Ideas que cobran <em>vida.</em>','Ideas brought <em>to life.</em>')}</h1>
+        <p class="intro-lead">${t('Soy Alejo: estudio Ingeniería en Sistemas y creo software a medida, automatizaciones con IA y experiencias web diferentes. Acá te muestro lo que construyo.','I’m Alejo, a Systems Engineering student building custom software, AI automations and unique web experiences. Come see what I create.')}</p>
       </header>
       <div class="intro-scene" aria-label="Conversación con Alejo">
       <div class="intro-arrival-note" aria-hidden="true"><span>Tu próxima parada: el campamento.</span><small>Alejo se acerca para darte la bienvenida.</small></div>
@@ -84,10 +86,10 @@ function intro(): string {
           <p class="loading-status">Preparando el campamento…</p>
         </div>
       </div>
-      <button class="retry-intro" data-action="retry" hidden>Reintentar carga</button>
+      <button class="retry-intro" data-action="retry" hidden>${t('Reintentar carga','Retry loading')}</button>
       <div class="intro-primary-actions" style="--adventure-button:url('${assetUrl('camp-rooms-v1/ui/adventure-button.webp')}')">
-        <button class="enter-button" data-action="enter" disabled>Explorar el campamento <span aria-hidden="true">↗</span></button>
-        <button class="direct-button" data-action="direct">Ir directo a proyectos</button>
+        <button class="enter-button" data-action="enter" disabled>${t('Explorar el campamento','Explore the camp')} <span aria-hidden="true">↗</span></button>
+        <button class="direct-button" data-action="direct">${t('Ir directo a proyectos','Skip to projects')}</button>
       </div>
 
       </div>

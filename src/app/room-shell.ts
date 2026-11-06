@@ -1,4 +1,5 @@
 import { sections, type Section } from '../entities'
+import { t, language, languageHref } from '../shared/i18n'
 import { assetUrl, ROOM_META } from '../shared'
 import { campIcon } from '../shared/camp-icons'
 import type { RoomContext } from './room-types'
@@ -29,13 +30,14 @@ function navigation(context: RoomContext, room: Section): string {
   ).join('')
   const sound = context.root.dataset.sound === 'true'
   const motion = context.root.dataset.userMotion === 'true'
-  return `<button class="room-exit-btn" data-action="back">← <span>Campamento</span></button>
+  return `<button class="room-exit-btn" data-action="back">← <span>${t('Campamento','Camp')}</span></button>
     <span class="room-location">${campIcon(room)}${sections[room]}</span>
-    <details class="room-navigation"><summary>Explorar <span aria-hidden="true">⌄</span></summary>
-      <nav class="room-quick-nav" aria-label="Cambiar de lugar">${places}
-        <a href="${assetUrl('cv-alejo-palavecino-es.pdf')}" download>Descargar CV ↓</a>
-        <button data-action="sound" aria-pressed="${sound}">${sound ? 'Apagar sonido' : 'Activar sonido'}</button>
-        <button data-action="motion" aria-pressed="${motion}">${motion ? 'Activar movimiento' : 'Reducir movimiento'}</button>
+    <a class="language-switch room-language" href="${languageHref(language() === 'en' ? 'es' : 'en')}" aria-label="${t('Ver portfolio en inglés','See portfolio in Spanish')}">${language() === 'en' ? 'ES' : 'EN'}</a>
+    <details class="room-navigation"><summary>${t('Explorar','Explore')} <span aria-hidden="true">⌄</span></summary>
+      <nav class="room-quick-nav" aria-label="${t('Cambiar de lugar','Choose a place')}">${places}
+        <a href="${assetUrl(language() === 'en' ? 'cv-alejo-palavecino-en.pdf' : 'cv-alejo-palavecino-es.pdf')}" download>${t('Descargar CV','Download resume')} ↓</a>
+        <button data-action="sound" aria-pressed="${sound}">${sound ? t('Apagar sonido','Turn sound off') : t('Activar sonido','Turn sound on')}</button>
+        <button data-action="motion" aria-pressed="${motion}">${motion ? t('Activar movimiento','Enable motion') : t('Reducir movimiento','Reduce motion')}</button>
       </nav>
     </details>`
 }

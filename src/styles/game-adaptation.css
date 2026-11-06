@@ -102,3 +102,11 @@
   .intro-card h1 { font-size: clamp(28px, 10vw, 38px); overflow-wrap: anywhere; }
 }
 
+
+/* Language control: visible inside the game without adding a new top navbar. */
+.language-switch { display:inline-flex;justify-content:center;align-items:center;min-width:44px;min-height:44px;padding:7px 11px;border:1px solid #f4d49a;border-radius:9px;background:#153e52;color:#fff8e9;font:700 12px Lexend,sans-serif;text-decoration:none;letter-spacing:.08em;z-index:35; }
+.language-switch:hover,.language-switch:focus-visible { background:#235c6b; }
+.intro-top-actions .language-switch { align-self:center;margin-right:8px; }
+.room-language { margin-left:auto;margin-right:8px;flex:0 0 auto; }
+.mobile-lang { margin:8px 0; }
+@media(max-width:700px){ .hud-right>.language-switch { min-width:40px;min-height:40px;padding:5px 7px; } .room-language { min-width:38px;min-height:38px;margin-right:4px; } }
