@@ -42,7 +42,7 @@ describe('cinematic arrival', () => {
     const s = setup()
     const arrived = vi.fn()
     s.root.addEventListener('click', arrived)
-    s.click('[data-action="direct"]')
+    s.click('.intro-primary-actions [data-action="direct"]')
     expect(arrived).not.toHaveBeenCalled()
     await new Promise(resolve => setTimeout(resolve, 0))
     s.advance(200); expect(arrived).not.toHaveBeenCalled()

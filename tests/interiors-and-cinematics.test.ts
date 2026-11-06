@@ -107,7 +107,7 @@ describe('carteles exteriores, controles de intro y salas interiores', () => {
     expect(html).toContain('</svg>Sobre mí</span>')
     expect(html).toContain('</svg>Trayectoria</span>')
     expect(html).toContain('</svg>Contacto</span>')
-    expect(html).not.toContain('data-action="skip-intro"')
+    expect(html).toContain('data-action="skip-intro"')
     expect(html).not.toContain('data-action="intro-pause"')
   })
 
