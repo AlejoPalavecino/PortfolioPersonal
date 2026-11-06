@@ -26,6 +26,23 @@ for(const path of files) {
 const html=readFileSync(join(root,'index.html'),'utf8')
 if (!/name="robots" content="index, follow/i.test(html)) { console.error('SEO indexability missing'); failures++ }
 if (!/rel="canonical"/.test(html)||!/application\/ld\+json/.test(html)) { console.error('SEO metadata missing'); failures++ }
+const expectedDomain = 'https://alejopalavecino.com.ar/'
+const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8')
+const robots = readFileSync(join(root, 'robots.txt'), 'utf8')
+if (!html.includes('rel="canonical" href="' + expectedDomain + '"') ||
+    !html.includes('property="og:url" content="' + expectedDomain + '"') ||
+    !html.includes('property="og:image" content="' + expectedDomain + 'assets/share.webp"') ||
+    !html.includes('href="' + expectedDomain + '?lang=en"') ||
+    !sitemap.includes(expectedDomain + '?lang=en') ||
+    !robots.includes(expectedDomain + 'sitemap.xml')) {
+  console.error('Public domain, social sharing, hreflang or sitemap mismatch')
+  failures++
+}
+if (html.includes('alejopalavecino.github.io/PortfolioPersonal/') ||
+    sitemap.includes('alejopalavecino.github.io/PortfolioPersonal/')) {
+  console.error('Old public URL detected in canonical metadata or sitemap')
+  failures++
+}
 for(const code of ['es','en']) {
   const path=join(root,'assets','cv-alejo-palavecino-'+code+'.pdf')
   if(!existsSync(path)) { console.error('Missing public resume: '+code); failures++; continue }
