@@ -1,12 +1,12 @@
 import { sections } from '../entities'
-import { t, language, languageHref } from '../shared/i18n'
+import { t, language, languagePicker } from '../shared/i18n'
 import { assetUrl } from '../shared'
 import { worldMarkup } from './world-markup'
 
-const labels: Record<string, string> = { projects: t('Taller · Proyectos','Workshop · Projects'), about: t('Carpa · Sobre mí','Tent · About me'), journey: t('Archivo · Trayectoria','Journal · Journey'), contact: t('Radio · Contacto','Radio · Contact') }
-const langSwitch = () => `<a class="language-switch" href="${languageHref(language() === 'en' ? 'es' : 'en')}" hreflang="${language() === 'en' ? 'es' : 'en'}" aria-label="${t('Ver portfolio en inglés','See portfolio in Spanish')}">${language() === 'en' ? 'ES' : 'EN'}</a>`
+const labels = (): Record<string, string> => ({ projects: t('Taller · Proyectos','Workshop · Projects'), about: t('Carpa · Sobre mí','Tent · About me'), journey: t('Archivo · Trayectoria','Journal · Journey'), contact: t('Radio · Contacto','Radio · Contact') })
+const langSwitch = () => languagePicker()
 const links = () => Object.entries(sections).map(([id]) =>
-  `<button data-section="${id}"><span>${labels[id]}</span><span class="visited-mark" aria-hidden="true">✓</span></button>`).join('')
+  `<button data-section="${id}"><span>${labels()[id]}</span><span class="visited-mark" aria-hidden="true">✓</span></button>`).join('')
 
 function hud(): string {
   return `<div class="hud-left"><button class="brand" data-action="home" aria-label="${t('Volver al campamento','Back to camp')}"><img src="${assetUrl('emblem.webp')}" alt=""></button>
