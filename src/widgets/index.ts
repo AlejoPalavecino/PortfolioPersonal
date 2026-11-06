@@ -22,7 +22,7 @@ function projects(): string {
     <div class="blueprint-desk">${plans}</div>`
 }
 
-const notebook = [
+const notebook = () => [
   { id: 'profile', label: 'Quién soy', title: 'Construir algo que sirva.', body: `
     <p>${t('Soy Alejo, estudiante de Ingeniería en Sistemas de Información en la UTN Mendoza y desarrollador de software.','I’m Alejo, a Systems Engineering student at UTN Mendoza and a software developer.')}</p>
     <p>${t('Soy cofundador y líder de FoxMind. También construí software para empresas y proyectos propios. Me gusta escuchar, proponer, desarrollar y colaborar para transformar ideas en productos que sirvan.','I co-founded FoxMind and lead its product development. I’ve also built software for businesses and independent projects. I enjoy listening, designing, building and collaborating to turn ideas into useful products.')}</p>` },
@@ -38,9 +38,9 @@ const notebook = [
 ]
 
 function about(): string {
-  const tabs = notebook.map(({ id, label }, index) => `<button role="tab" id="tab-${id}" aria-controls="page-${id}"
+  const tabs = notebook().map(({ id, label }, index) => `<button role="tab" id="tab-${id}" aria-controls="page-${id}"
     aria-selected="${index === 0}" tabindex="${index === 0 ? 0 : -1}" data-notebook="${id}">${label}</button>`).join('')
-  const pages = notebook.map(({ id, label, title, body }, index) => `<section id="page-${id}" role="tabpanel"
+  const pages = notebook().map(({ id, label, title, body }, index) => `<section id="page-${id}" role="tabpanel"
     aria-labelledby="tab-${id}" tabindex="0" data-notebook-page="${id}"${index ? ' hidden' : ''}>
     <p class="page-number">0${index + 1} / ${label.toUpperCase()}</p><h3>${title}</h3>${body}
   </section>`).join('')
@@ -54,7 +54,7 @@ function about(): string {
     </div>`
 }
 
-const milestones = [
+const milestones = () => [
   { id: 'ilan', tag: t('Premio · 2026','Award · 2026'), title: t('Premio ILAN a la Innovación Universitaria','ILAN University Innovation Award'), text: t('Con FoxMind obtuvimos el primer puesto y conocimos el ecosistema tecnológico y emprendedor de Israel.','FoxMind earned first place, which opened the door to learning from Israel’s technology and entrepreneurship ecosystem.') },
   { id: 'agrotech', tag: t('Emprender · 2021','Entrepreneurship · 2021'), title: 'Agrotech', text: t('Creé un proyecto de prevención de heladas que obtuvo el segundo puesto en Emprende U 2021.','I created a frost prevention project that won second place at Emprende U 2021.') },
   { id: 'reconocimiento', tag: t('Reconocimiento','Recognition'), title: t('Interés provincial','Provincial interest'), text: t('FoxMind fue declarado de interés provincial por las cámaras legislativas de Mendoza. También obtuvo el segundo puesto en UTN Emprende 30 y fue semifinalista de Emprende U 2025.','FoxMind was declared of provincial interest by Mendoza’s legislative chambers. It also earned second place at UTN Emprende 30 and became a semifinalist at Emprende U 2025.') },
@@ -65,9 +65,10 @@ const milestones = [
 ]
 
 function journey(): string {
-  const index = milestones.map((m, i) => `<button data-milestone="${m.id}" aria-controls="entry-${m.id}" aria-expanded="${i === 0}">
+  const entries = milestones()
+  const index = entries.map((m, i) => `<button data-milestone="${m.id}" aria-controls="entry-${m.id}" aria-expanded="${i === 0}">
     <span>0${i + 1}</span><strong>${m.title}</strong><small>${m.tag}</small></button>`).join('')
-  const pages = milestones.map((m, i) => {
+  const pages = entries.map((m, i) => {
     const link = m.id === 'foxmind' || m.id === 'flower' || m.id === 'agrotech'
       ? `<button class="text-button" data-case="${m.id}">${t('Abrir el proyecto','Open project')} ${m.title} ↗</button>` : ''
     return `<article id="entry-${m.id}" data-journal-page="${m.id}"${i ? ' hidden' : ''} tabindex="-1">
@@ -110,7 +111,9 @@ function contact(): string {
 function localizeMarkup(html: string): string {
   if (language() !== 'en') return html
   const phrases: readonly [string, string][] = [
-    ['Quién soy', 'About me'], ['Cómo trabajo', 'How I work'], ['Qué aporto', 'What I bring'],
+    ['Quién soy', 'About me'],
+    ['CANAL 01', 'CHANNEL 01'], ['CANAL 02', 'CHANNEL 02'],
+    ['Busco sumar experiencia en equipos de tecnología. Estoy abierto a análisis de sistemas, full stack, frontend, backend y automatización con IA; trabajo presencial o híbrido en Mendoza y remoto a nivel internacional.', 'I’m looking to gain experience on technology teams. I’m open to systems analysis, full stack, frontend, backend and applied AI automation roles; on-site or hybrid in Mendoza, or remote worldwide.'], ['Cómo trabajo', 'How I work'], ['Qué aporto', 'What I bring'],
     ['Construir algo que sirva.', 'Building something useful.'],
     ['Entender, definir, construir.', 'Understand, define, build.'],
     ['De la idea al producto.', 'From idea to product.'],
