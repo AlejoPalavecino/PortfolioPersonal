@@ -11,7 +11,7 @@ describe.each(['/', '/PortfolioPersonal/'])('recursos con BASE_URL %s', (base) =
   it('resuelve recursos concretos del avatar, fuentes y CV', () => {
     vi.stubEnv('BASE_URL', base)
     expect(assetUrl('avatar/idle-down.webp')).toBe(`${base}assets/avatar/idle-down.webp`)
-    expect(assetUrl('fonts/pixel.woff2')).toBe(`${base}assets/fonts/pixel.woff2`)
+    expect(assetUrl('PixelifySans-Variable.woff2')).toBe(`${base}assets/PixelifySans-Variable.woff2`)
     expect(assetUrl('cv-alejo-palavecino-es.pdf')).toBe(`${base}assets/cv-alejo-palavecino-es.pdf`)
   })
 
@@ -19,7 +19,8 @@ describe.each(['/', '/PortfolioPersonal/'])('recursos con BASE_URL %s', (base) =
     vi.stubEnv('BASE_URL', base)
     const markup = shell() + sectionMarkup('about') + sectionMarkup('contact')
     const urls = [...markup.matchAll(/(?:src|href)="([^"]*assets\/[^"]+)"/g)].map(match => match[1])
-    expect(urls).toContain(`${base}assets/camp-hillside.webp`)
+    expect(markup).toContain('<img class="ground" decoding="async"')
+    expect(urls).not.toContain(`${base}assets/camp-hillside.webp`)
     expect(urls).toContain(`${base}assets/avatar/idle-down.webp`)
     expect(urls).toContain(`${base}assets/portrait.webp`)
     expect(urls).toContain(`${base}assets/cv-alejo-palavecino-es.pdf`)
@@ -38,7 +39,7 @@ describe.each(['/', '/PortfolioPersonal/'])('recursos con BASE_URL %s', (base) =
     const views = {} as Parameters<typeof createRenderer>[1]
     await createRenderer(root, views).loadFrames(() => {})
     expect(audio).toHaveBeenCalledWith()
-    expect(element).toMatchObject({ preload: 'none', src: `${base}assets/camp-ambience-loop.wav` })
+    expect(element).toMatchObject({ preload: 'none', src: `${base}assets/camp-ambience-loop.mp3` })
     expect(fetchMock).toHaveBeenCalledWith(`${base}assets/avatar/frames.json`)
   })
 })

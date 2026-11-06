@@ -2,12 +2,13 @@ import { createController } from './controller'
 import { applyPageMetadata } from '../shared/i18n'
 import { bindLanguagePicker } from './locale-ui'
 import { createAudio } from './audio'
+import { showWorldArt } from './world-markup'
 import { shell } from './shell'
 import { createViews } from './views'
 import { createRenderer } from './rendering'
 import { bindEvents, bindPreferences } from './events'
 import { bindActions } from './actions'
-import { prepareScene } from './load-scene'
+import { createCampLoader } from './load-scene'
 import { createSession } from './session'
 import { observeViewport } from './viewport'
 import { effectiveReducedMotion } from '../core/experience'
@@ -23,10 +24,15 @@ export function mount(root: HTMLElement) {
   root.dataset.userMotion = String(userMotion)
   root.dataset.motion = reducedMotion ? 'reduced' : 'full'
   applyPageMetadata()
-  root.innerHTML = shell()
+  const hasSectionLink = typeof location !== 'undefined' && !!location.hash
+  root.innerHTML = shell(hasSectionLink)
   observeViewport(root)
-  const loop = createLoop(), bus = createCueBus()
-  const views = createViews(root, { onView: view => session.update({ type: view.kind === 'camp' ? 'camp' : 'read' }), bus })
+  const loop = createLoop(root), bus = createCueBus()
+  const views = createViews(root, {
+    onView: view => session.update({ type: view.kind === 'camp' ? 'camp' : 'read' }),
+    onCamp: () => loader.start(),
+    bus,
+  })
   const renderer = createRenderer(root, views, loop)
   const controller = createController(renderer.render, loop, bus)
   const session = createSession(root, controller, reducedMotion, bus)
@@ -36,12 +42,20 @@ export function mount(root: HTMLElement) {
   // Sound is opt-in. Do not download the ambience or create an AudioContext
   // until the visitor explicitly activates the sound control.
   const toggleMotion = bindPreferences(root, controller, session, userMotion)
-  const loader = prepareScene(state => { renderer.setFrames(state.frames); session.loading(state) })
+  const loader = createCampLoader(root, state => { renderer.setFrames(state.frames); session.loading(state) })
+  bus.on('enter', () => {
+    showWorldArt(root)
+    loader.prefetchMovement()
+  })
   bindActions(root, controller, views, audio, session, () => loader.retry(), toggleMotion)
   bindEvents(root, controller, views, audio, session, renderer.camera, loop, bus)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('calibrate')) {
     void import('./scene-calibration').then(({ bindSceneCalibration }) => bindSceneCalibration(root, loop, controller))
   }
   views.restoreUrl(controller)
+  if (views.current.kind === 'camp') {
+    if (hasSectionLink) session.prepareEntry()
+    loader.start()
+  }
   bindLanguagePicker(root, views, introFx, session)
 }

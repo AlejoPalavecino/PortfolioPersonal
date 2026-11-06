@@ -28,10 +28,10 @@ function roomCurtain(): string {
   </div>`
 }
 
-function intro(): string {
-  return `<section class="intro" aria-label="Bienvenida y presentación inicial">
+function intro(hidden: boolean): string {
+  return `<section class="intro"${hidden ? ' hidden' : ''} aria-label="Bienvenida y presentación inicial">
     <div class="intro-cinematic" aria-hidden="true">
-      <div class="intro-panorama"><div class="intro-backdrop" style="--intro-desktop-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival-clean.webp')}');--intro-portrait-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival-clean.webp')}')"></div>
+      <div class="intro-panorama"><div class="intro-backdrop" style="--intro-desktop-url:url('${assetUrl('camp-rooms-v1/intro/mountain-arrival-clean.webp')}');--intro-landscape-url:url('${assetUrl('compact/arrival-wide.webp')}');--intro-portrait-url:url('${assetUrl('compact/arrival-center.webp')}')"></div>
       <div class="intro-campfire-fx" style="--fx-fire:url('${assetUrl('camp-rooms-v1/fx/fire.png')}');--fx-smoke:url('${assetUrl('camp-rooms-v1/fx/smoke.png')}')">
         <span class="intro-fire-glow"></span>
         <span class="intro-fire-smoke"></span>
@@ -75,7 +75,7 @@ function intro(): string {
         <span class="intro-actor-shadow" aria-hidden="true"></span>
         <span class="intro-emote" aria-hidden="true" hidden>!</span>
         <div class="intro-character">
-          <img class="intro-actor" src="${assetUrl('camp-rooms-v1/avatars/idle-right.png')}" width="160" height="288" alt="">
+          <img class="intro-actor" src="${assetUrl('avatar/idle-right.webp')}" width="129" height="266" alt="">
         </div>
         <span class="intro-actor-tag" aria-hidden="true">ALEJO · DEV</span>
         <span class="intro-step-dust" aria-hidden="true"></span>
@@ -89,7 +89,7 @@ function intro(): string {
         </div>
       </div>
       <button class="retry-intro" data-action="retry" hidden>${t('Reintentar carga','Retry loading')}</button>
-      <div class="intro-primary-actions" style="--adventure-button:url('${assetUrl('camp-rooms-v1/ui/adventure-button.webp')}')">
+      <div class="intro-primary-actions" style="--adventure-button:url('${assetUrl('compact/adventure-button.webp')}')">
         <button class="enter-button" data-action="enter" disabled>${t('Explorar el campamento','Explore the camp')} <span aria-hidden="true">↗</span></button>
         <button class="direct-button" data-action="direct">${t('Ir directo a proyectos','Skip to projects')}</button>
       </div>
@@ -99,9 +99,9 @@ function intro(): string {
   </section>`
 }
 
-export function shell(): string {
+export function shell(hideWelcome = false): string {
   return `<main id="main"><div class="landscape">${worldMarkup()}</div>${hud()}
     <div class="help-card" role="status"><p class="tutorial-hint" tabindex="-1">Elegí un destino para caminar y visitar su interior. También podés explorar con WASD o las flechas.</p><button data-action="dismiss-help" aria-label="Cerrar ayuda">×</button></div>
     <p class="world-hint" role="status" hidden></p><div class="route-controls" hidden><span role="status" aria-live="polite">En camino…</span><button data-action="resume" hidden>Continuar recorrido</button><button data-action="open">Abrir ahora</button><button data-action="cancel">Cancelar recorrido</button></div>
-    ${roomCurtain()}<section class="panel" hidden></section><p class="scene-status" role="status" hidden>El campamento no pudo cargarse. <button data-action="retry">Reintentar escena</button></p>${intro()}</main>`
+    ${roomCurtain()}<section class="panel" hidden></section><p class="scene-status" role="status" hidden>El campamento no pudo cargarse. <button data-action="retry">Reintentar escena</button></p>${intro(hideWelcome)}</main>`
 }

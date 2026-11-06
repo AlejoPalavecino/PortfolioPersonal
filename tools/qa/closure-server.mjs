@@ -11,7 +11,7 @@ await readFile(path.join(base, 'index.html'));
 let mode = 'release';
 const waiting = new Set();
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
-  '.json': 'application/json', '.webp': 'image/webp', '.pdf': 'application/pdf', '.ttf': 'font/ttf' };
+  '.json': 'application/json', '.webp': 'image/webp', '.pdf': 'application/pdf', '.woff2': 'font/woff2', '.mp3': 'audio/mpeg' };
 
 const server = http.createServer(async (request, response) => {
   try {

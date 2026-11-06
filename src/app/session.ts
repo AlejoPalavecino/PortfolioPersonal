@@ -18,6 +18,10 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     : load.status === 'failed' ? t('No se pudo preparar el campamento. Podés consultar el portfolio.', 'The camp could not be prepared. You can still browse the portfolio.')
     : load.timedOut ? t('Está tardando. Podés consultar el portfolio mientras tanto.', 'Loading is taking longer. You can browse the portfolio in the meantime.')
     : localizeText((load.task ?? t('Preparando el campamento', 'Preparing the camp')) + '…') + ' ' + String(load.completed) + ' ' + t('de','of') + ' ' + String(load.total)
+  const directButton = () => root.querySelector<HTMLButtonElement>(
+    root.querySelector<HTMLElement>('.intro-boot')?.hidden === false
+      ? '.boot-actions [data-action=direct]' : '.intro-primary-actions [data-action=direct]',
+  )
   const update = (event: ExperienceEvent) => {
     if (event.type === 'read' || event.type === 'direct') { awaitingEntry = false; skipRequested = false }
     state = reduceExperience(state, event)
@@ -34,7 +38,8 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     root.querySelector<HTMLElement>('.hud-left')!.inert = !intro.hidden
     root.querySelector<HTMLElement>('.hud-right')!.inert = !intro.hidden
     root.querySelector<HTMLElement>('.world')!.inert = !intro.hidden || root.dataset.reading === 'true'
-    enter.disabled = state.preparation !== 'ready' || root.dataset.introReady === 'false'
+    root.dataset.introQueued = String(skipRequested)
+    enter.disabled = state.preparation === 'failed'
   }
   const loading = (load: ScenePreparation) => {
     latestLoad = load
@@ -49,7 +54,7 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     if (load.status !== 'failed' && (sceneStatus.contains(document.activeElement) || introRetry.contains(document.activeElement))) {
       const panel = root.querySelector<HTMLElement>('.panel')!
       const target = !panel.hidden ? panel.querySelector<HTMLElement>('#reading-title')
-        : !intro.hidden ? root.querySelector<HTMLElement>('[data-action=direct]')
+        : !intro.hidden ? directButton()
           : root.querySelector<HTMLElement>('.menu-toggle')
       target?.focus({ preventScroll: true })
     }
@@ -74,7 +79,7 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
   const prepareEntry = () => {
     awaitingEntry = true
     update({ type: 'camp' })
-    root.querySelector<HTMLButtonElement>('[data-action=direct]')!.focus({ preventScroll: true })
+    directButton()?.focus({ preventScroll: true })
   }
   const direct = () => { awaitingEntry = false; update({ type: 'direct' }) }
   const enterCamp = () => {
@@ -90,8 +95,9 @@ export function createSession(root: HTMLElement, controller: ReturnType<typeof c
     root.dataset.introSkipped = 'true'
     if (state.preparation === 'ready') {
       enterCamp()
-    } else {
+    } else if (state.preparation !== 'failed') {
       skipRequested = true
+      root.dataset.introQueued = 'true'
       const message = root.querySelector<HTMLElement>('.boot-queue-status')
       if (message) {
         message.hidden = false

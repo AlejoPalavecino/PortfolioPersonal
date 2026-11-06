@@ -11,7 +11,7 @@
       rgba(157, 204, 219, .04) 0%,
       rgba(91, 158, 147, .08) 53%,
       rgba(52, 109, 91, .17) 100%),
-    url('/assets/world-backdrop.webp');
+    var(--camp-backdrop, none);
 }
 .landscape::before {
   content: '';

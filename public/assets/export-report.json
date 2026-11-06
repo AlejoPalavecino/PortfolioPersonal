@@ -64,5 +64,59 @@
     "bytes": 201230,
     "width": 1199,
     "height": 675
+  },
+  {
+    "file": "compact/camp-hillside.webp",
+    "bytes": 190616,
+    "width": 1056,
+    "height": 704
+  },
+  {
+    "file": "compact/world-backdrop.webp",
+    "bytes": 111292,
+    "width": 960,
+    "height": 640
+  },
+  {
+    "file": "compact/arrival-center.webp",
+    "bytes": 78070,
+    "width": 768,
+    "height": 768
+  },
+  {
+    "file": "compact/arrival-wide.webp",
+    "bytes": 89508,
+    "width": 1008,
+    "height": 567
+  },
+  {
+    "file": "compact/adventure-button.webp",
+    "bytes": 17652,
+    "width": 648,
+    "height": 216
+  },
+  {
+    "file": "compact/projects-portrait.webp",
+    "bytes": 188836,
+    "width": 736,
+    "height": 1104
+  },
+  {
+    "file": "compact/about-portrait.webp",
+    "bytes": 230136,
+    "width": 736,
+    "height": 1104
+  },
+  {
+    "file": "compact/journey-portrait.webp",
+    "bytes": 195586,
+    "width": 736,
+    "height": 1104
+  },
+  {
+    "file": "compact/contact-portrait.webp",
+    "bytes": 177116,
+    "width": 736,
+    "height": 1104
   }
 ]

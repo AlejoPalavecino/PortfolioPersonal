@@ -1,13 +1,13 @@
 @font-face {
   font-display: swap;
   font-family:Lexend;
-  src:url('/assets/Lexend-Variable.ttf');
+  src:url('/assets/Lexend-Variable.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
   font-family:Pixelify;
-  src:url('/assets/PixelifySans-Variable.ttf');
+  src:url('/assets/PixelifySans-Variable.woff2') format('woff2');
 }
 
 * {
@@ -59,7 +59,7 @@ main {
 .landscape {
   position:absolute;
   inset:0;
-  background:#98d1e9 url('/assets/world-backdrop.webp') center/cover no-repeat;
+  background:#98d1e9 var(--camp-backdrop, none) center/cover no-repeat;
 }
 
 .world-scroll {

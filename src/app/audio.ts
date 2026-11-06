@@ -76,7 +76,7 @@ export function createAudio(bus?: CueBus, getState?: () => { position: Point; re
   const ambient = new Audio()
   // Do not download the 2 MB soundtrack before the visitor enables sound.
   ambient.preload = 'none'
-  ambient.src = assetUrl('camp-ambience-loop.wav')
+  ambient.src = assetUrl('camp-ambience-loop.mp3')
   ambient.loop = true
   ambient.volume = 0.22
   let enabled = false, paused = false

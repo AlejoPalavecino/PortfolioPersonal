@@ -46,8 +46,9 @@ export function bindWorldFx(
   const groundCtx = groundCanvas?.getContext('2d') ?? null
   const propsCtx = propsCanvas?.getContext('2d') ?? null
   const reduced = () => root.dataset.motion === 'reduced'
-  const reading = () => root.dataset.reading === 'true'
-  const menuOpen = () => !root.querySelector<HTMLElement>('.mobile-menu')?.hidden
+  const intro = root.querySelector<HTMLElement>('.intro')
+  const menu = root.querySelector<HTMLElement>('.mobile-menu')
+  const covered = () => intro?.hidden === false || root.dataset.reading === 'true' || menu?.hidden === false
 
   const computeLevel = (): FxLevel => initialLevel({
     reducedMotion: reduced(),
@@ -136,7 +137,7 @@ export function bindWorldFx(
   }
 
   const drawStatic = () => {
-    if (!groundCtx || !propsCtx) return
+    if (covered() || !groundCtx || !propsCtx) return
     groundCtx.clearRect(0, 0, 1000, 650)
     propsCtx.clearRect(0, 0, 1000, 650)
     if (tap) drawPixelRing(groundCtx, tap.point.x, tap.point.y, 9, 5, '#ffe6a3', 0.85)
@@ -152,7 +153,7 @@ export function bindWorldFx(
   }
 
   const paintDynamic = (elapsedMs: number) => {
-    if (!groundCtx || !propsCtx) return
+    if (covered() || !groundCtx || !propsCtx) return
     const limits = FX_LIMITS[level]
     groundCtx.clearRect(0, 0, 1000, 650)
     propsCtx.clearRect(0, 0, 1000, 650)
@@ -237,7 +238,7 @@ export function bindWorldFx(
   }
 
   const tick = (_time: number, elapsedMs: number) => {
-    if (reading() || menuOpen()) return
+    if (covered()) return
     monitor.sample(elapsedMs)
     if (level === 'minimal') return
     clock += elapsedMs
