@@ -51,12 +51,12 @@ Abrir `/PortfolioPersonal/` en la dirección que imprime Vite. La dirección de 
 
 El loader prepara 28 operaciones reales: metadatos, validación de navegación, seis imágenes del mundo y veinte sprites. Audio, PDF y evidencias de proyectos no bloquean la entrada. A los ocho segundos ofrece una alternativa clara, sin una espera mínima artificial. Fallo y reintento conservan el acceso profesional.
 
-El PDF aportado está en `public/assets/cv-alejo-palavecino-es.pdf`. Reemplazarlo por el definitivo y comprobar su descarga. El exportador `npm run assets` requiere Python/Pillow y no reemplaza automáticamente el CV; su importación se gestiona por separado. Los archivos originales se conservan en `Portfolio_Campamento_Documentacion_y_Assets_v1/`.
+El CV público en español e inglés se encuentra en `public/assets/cv-alejo-palavecino-*.pdf`, sin número telefónico ni documento de identidad. Verificar su descarga y mantener los datos personales fuera del build. El exportador `npm run assets` requiere Python/Pillow y no reemplaza automáticamente el CV; su importación se gestiona por separado. Los archivos originales se conservan en `Portfolio_Campamento_Documentacion_y_Assets_v1/`.
 
 ## Contenido y publicación
 
-FoxMind y Flower son casos de revisión hasta integrar capturas reales elegidas y cerrar su edición. FoxMind conserva únicamente el alcance público autorizado; no se agregan demo, repositorio, arquitectura ni detalles internos. Flower utiliza sus datos confirmados y describe la automatización de la **facturación** de las ventas mediante ARCA.
+FoxMind, Flower, Agrotech, aforo, Herbario Digital y automatización ART son casos públicos con relato centrado en problema, contribución y estado. FoxMind conserva únicamente el alcance público autorizado; no se agregan demo, repositorio, arquitectura ni detalles internos. Flower utiliza sus datos confirmados y describe la automatización de la **facturación** de las ventas mediante ARCA.
 
 La dirección vigente y sus contratos están en [PLAN-GAME-FIRST](docs/PLAN-GAME-FIRST.md), el [charter](docs/01-CHARTER-AND-BACKLOG.md) y el [playbook](docs/02-PLAYBOOK-AND-OPS.md). La instrucción de cambio completa se conserva en [el brief](docs/briefs/2026-10-30-game-first.md). Los documentos de 0.1.0 y el dossier son antecedentes históricos donde contradigan esta dirección.
 
-Cada push a `main` publica mediante `.github/workflows/pages.yml`, después de pruebas, linter y build. La evolución game-first ya fue integrada por instrucción de Alejo. Mantener `noindex` y los faltantes identificados hasta la revisión editorial correspondiente.
+Cada push a `main` publica mediante `.github/workflows/pages.yml`, después de pruebas, linter y build. La evolución game-first ya fue integrada por instrucción de Alejo. La primera versión pública habilita indexación, mantiene privados los documentos sensibles y muestra seis casos de proyectos. Se agregaron selector ES/EN, LinkedIn y dos CV sin teléfono. Ver `tests/public-safety.test.ts`.
