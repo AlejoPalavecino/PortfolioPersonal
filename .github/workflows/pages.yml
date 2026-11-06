@@ -38,6 +38,8 @@ jobs:
           npm run lint
       - name: Build project site
         run: npm run build -- --base=/PortfolioPersonal/
+      - name: Inspect publication for sensitive data and SEO
+        run: node tools/check-public-safety.mjs
       - name: Upload static site
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
