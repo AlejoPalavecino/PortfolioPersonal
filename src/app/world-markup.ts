@@ -1,6 +1,5 @@
 import { DESTINATIONS, type Section } from '../core/domain'
 import { sections } from '../entities'
-import { t } from '../shared/i18n'
 import { assetUrl } from '../shared'
 import { campIcon } from '../shared/camp-icons'
 

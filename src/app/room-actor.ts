@@ -1,6 +1,5 @@
 import type { Section } from '../entities'
 import { assetUrl } from '../shared'
-import { t } from '../shared/i18n'
 import { roomForView } from '../core/experience'
 import type { RoomContext, View } from './room-types'
 
