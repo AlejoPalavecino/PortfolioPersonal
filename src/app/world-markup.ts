@@ -33,5 +33,5 @@ export function worldMarkup(): string {
     </div>
     <canvas class="world-fx-props" width="1000" height="650" aria-hidden="true"></canvas>${signs}
     <div class="avatar-occlusion" aria-hidden="true" hidden><img class="avatar avatar-ghost" width="131" height="255" src="${assetUrl('avatar/idle-down.webp')}" alt=""></div>
-  </div></div><nav class="camp-destinations" aria-label="Lugares del campamento">${entries.map(([id,item]) => `<button data-section="${id}">${campIcon(id)}<span>${sections[id]}</span><span class="destination-dot" aria-hidden="true"></span></button>`).join('')}</nav>`
+  </div></div><nav class="camp-destinations" aria-label="Lugares del campamento">${entries.map(([id]) => `<button data-section="${id}">${campIcon(id)}<span>${sections[id]}</span><span class="destination-dot" aria-hidden="true"></span></button>`).join('')}</nav>`
 }

@@ -1,5 +1,5 @@
 /** Dialogue never advances on a timer: visitors control their reading pace. */
-import { t } from '../../shared/i18n'
+const t = (es: string, en: string): string => typeof location !== 'undefined' && new URLSearchParams(location.search).get('lang') === 'en' ? en : es
 
 export type IntroDialogue = 'greeting' | 'camp' | 'work'
 export const INTRO_ARRIVAL_MS = 2800
