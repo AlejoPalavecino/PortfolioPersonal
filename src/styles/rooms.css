@@ -304,6 +304,7 @@
 .dossier-copy details[open] summary::after { content: '−'; }
 .dossier-copy details p { color: #526654; font-size: 14px; }
 .evidence-note { margin: 24px 0; padding: 16px 20px; border-left: 3px solid #a68c58; background: #ecdfbd66; font-size: 13px; color: #5e654f; }
+.case-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .evidence-note p { margin: 6px 0 0; }
 .archive-empty-state { padding: 25px; border: 1px dashed #a58a5c; border-radius: 10px; }
 .panel[data-surface="dossier"] .journey-tabs button { color: #254f45; text-shadow: none; }

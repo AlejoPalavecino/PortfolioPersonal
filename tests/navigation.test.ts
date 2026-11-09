@@ -102,6 +102,12 @@ describe('transiciones adicionales', () => {
     expect(back.view).toEqual({ kind: 'section', section: 'projects' })
     expect(reduceNavigation(back, { type: 'camp' }).view).toEqual({ kind: 'camp' })
   })
+  it('abre la ficha de Chuli desde el taller', () => {
+    const projects = reduceNavigation(start(), { type: 'select-section', section: 'projects', arrived: true })
+    const chuli = reduceNavigation(projects, { type: 'open-project', project: 'chuli' })
+    expect(chuli.view).toEqual({ kind: 'project', project: 'chuli' })
+    expect(chuli.route).toBeNull()
+  })
   it('abre la intención pendiente cuando falla la escena', () => {
     const walking = select(start(), 'contact')
     const failed = reduceNavigation(walking, { type: 'set-scene', scene: 'failed' })

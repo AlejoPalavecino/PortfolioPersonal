@@ -24,6 +24,17 @@ export const cases = {
     get status() { return t('En desarrollo · previo a pilotos', 'In development · pre-pilot') },
     get highlight() { return t('1.er puesto · Premio ILAN a la Innovación Universitaria 2026', '1st place · ILAN University Innovation Award 2026') },
   },
+  chuli: {
+    title: 'Chuli', shortTitle: 'Chuli',
+    get subtitle() { return t('Un perfil de ingeniería para desarrollar con Codex.', 'An engineering profile for building with Codex.') },
+    get role() { return t('Creador y desarrollador del harness', 'Creator and developer of the engineering harness') },
+    get stack() { return t('Go · Codex · Python · TUI · SDD · TDD · Skills', 'Go · Codex · Python · TUI · SDD · TDD · Skills') },
+    get description() { return t('Trabajar con agentes de IA en proyectos reales exige algo más que generar código: hace falta entender el sistema, definir el alcance, coordinar el trabajo y comprobar cada resultado. Chuli reúne ese proceso en un perfil de ingeniería para Codex.', 'Working with AI agents on real projects takes more than generating code: it requires understanding the system, defining scope, coordinating work and verifying every result. Chuli brings that process together in an engineering profile for Codex.') },
+    get contribution() { return t('Diseñé y desarrollé un perfil con un orquestador y seis especialistas para explorar código, definir arquitectura y producto, implementar cambios, diseñar pruebas y revisar resultados. Incorpora skills y protocolos de trabajo con SDD y TDD, seguimiento de tareas y decisiones en el repositorio, y Chuli Manager: una interfaz de terminal para instalar, verificar, actualizar y revertir el perfil.', 'I designed and built a profile with an orchestrator and six specialists for code exploration, architecture and product decisions, implementation, test design and independent review. It includes skills and SDD/TDD workflows, task tracking and repository-based decisions, plus Chuli Manager: a terminal interface to install, verify, update and roll back the profile.') },
+    get status() { return t('Release pública · v1.0.1', 'Public release · v1.0.1') },
+    get highlight() { return t('Manager multiplataforma: Windows, Linux y macOS ARM64', 'Cross-platform Manager: Windows, Linux and macOS ARM64') },
+    repositoryUrl: 'https://github.com/AlejoPalavecino/codex-engineering-harness',
+  },
   flower: {
     get title() { return t('Sistema de stock y facturación para Flower', 'Inventory and invoicing system for Flower') },
     shortTitle: 'Flower',
@@ -80,6 +91,8 @@ export const cases = {
   },
 } as const
 export type CaseId = keyof typeof cases
+
+export const featuredCaseIds = ['foxmind', 'chuli', 'flower', 'agrotech', 'irrigacion', 'herbario', 'art'] as const satisfies readonly CaseId[]
 
 export const services = [
   { get title() { return t('Software a medida', 'Custom software') }, get description() { return t('Desarrollo sistemas y aplicaciones para resolver necesidades concretas de emprendedores y pymes.', 'I build systems and applications around the real needs of founders and small businesses.') } },
