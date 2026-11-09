@@ -1,7 +1,7 @@
 export type Point = Readonly<{ x: number; y: number }>
 export type Section = 'projects' | 'about' | 'journey' | 'contact'
 export type SectionId = Section
-export type ProjectId = 'foxmind' | 'chuli' | 'portfolio' | 'flower' | 'agrotech' | 'irrigacion' | 'herbario' | 'art'
+export type ProjectId = 'foxmind' | 'chuli' | 'portfolio' | 'fitnutricion' | 'flower' | 'agrotech' | 'irrigacion' | 'herbario' | 'art'
 export type SceneStatus = 'loading' | 'ready' | 'failed'
 export type View = { kind: 'camp' } | { kind: 'section'; section: Section } | { kind: 'project'; project: ProjectId }
   | { kind: 'recognitions' } | { kind: 'credential'; id: string }

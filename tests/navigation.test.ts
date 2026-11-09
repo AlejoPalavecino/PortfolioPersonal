@@ -114,6 +114,12 @@ describe('transiciones adicionales', () => {
     expect(portfolio.view).toEqual({ kind: 'project', project: 'portfolio' })
     expect(portfolio.route).toBeNull()
   })
+  it('abre la ficha de FitNutrición desde el taller', () => {
+    const projects = reduceNavigation(start(), { type: 'select-section', section: 'projects', arrived: true })
+    const fitnutricion = reduceNavigation(projects, { type: 'open-project', project: 'fitnutricion' })
+    expect(fitnutricion.view).toEqual({ kind: 'project', project: 'fitnutricion' })
+    expect(fitnutricion.route).toBeNull()
+  })
   it('abre la intención pendiente cuando falla la escena', () => {
     const walking = select(start(), 'contact')
     const failed = reduceNavigation(walking, { type: 'set-scene', scene: 'failed' })
