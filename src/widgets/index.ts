@@ -164,6 +164,9 @@ export function caseMarkup(id: CaseId): string {
   const repositoryLink = 'repositoryUrl' in item
     ? `<a class="primary" href="${item.repositoryUrl}" target="_blank" rel="noopener noreferrer">${t('Ver repositorio en GitHub','View repository on GitHub')} ↗</a>`
     : ''
+  const liveLink = 'liveUrl' in item
+    ? `<a class="primary" href="${item.liveUrl}" target="_blank" rel="noopener noreferrer">${t('Ver versión online','View live version')} ↗</a>`
+    : ''
   return localizeMarkup(`<div class="panel-nav">
       <button class="text-button" data-action="projects">← Volver a Proyectos</button>
       <button class="text-button" data-case="${other}">${t('Siguiente caso','Next case')}: ${cases[other].shortTitle} →</button>
@@ -176,7 +179,7 @@ export function caseMarkup(id: CaseId): string {
       <details class="case-technical"><summary>${t('Tecnologías y alcance','Technology & scope')}</summary><p>${item.stack}</p></details>
       ${id === 'art' ? '<aside class="evidence-note">' + t('El cliente y cualquier dato de pacientes permanecen confidenciales.','Client and patient information remains confidential.') + '</aside>' : ''}
       ${id === 'foxmind' ? '<aside class="evidence-note">' + t('Proyecto en desarrollo: la validación de resultados llegará con los pilotos.','Development in progress: outcomes will be assessed during pilot testing.') + '</aside>' : ''}
-      <div class="case-actions">${repositoryLink}
+      <div class="case-actions">${repositoryLink}${liveLink}
         <button class="primary" data-section="contact">${t('Conversemos sobre un proyecto','Let’s talk about a project')} ↗</button>
       </div>
     </div>`)
