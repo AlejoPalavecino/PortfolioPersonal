@@ -1,18 +1,23 @@
 import { describe, expect, it, vi, afterEach } from 'vitest'
-import { cases, linkedin } from '../src/entities'
+import { cases, featuredCaseIds, linkedin } from '../src/entities'
 import { caseMarkup, sectionMarkup } from '../src/widgets'
 import { language, t, languageHref } from '../src/shared/i18n'
 
 afterEach(() => vi.unstubAllGlobals())
 
 describe('versión pública para compartir', () => {
-  it('incluye seis casos y conserva la confidencialidad del desarrollo de ART', () => {
-    const ids = ['foxmind','flower','agrotech','irrigacion','herbario','art']
+  it('incluye siete casos, destaca Chuli al comienzo y conserva la confidencialidad de ART', () => {
+    const ids = ['foxmind','chuli','flower','agrotech','irrigacion','herbario','art']
     for (const id of ids) {
       expect(Object.keys(cases)).toContain(id)
       expect(sectionMarkup('projects')).toContain('data-case="' + id + '"')
       expect(caseMarkup(id as keyof typeof cases)).toContain('MI PARTICIPACIÓN')
     }
+    expect(featuredCaseIds.slice(0, 3)).toEqual(['foxmind', 'chuli', 'flower'])
+    const projects = sectionMarkup('projects')
+    expect(projects.indexOf('data-case="chuli"')).toBeLessThan(projects.indexOf('data-case="flower"'))
+    expect(caseMarkup('chuli')).toContain('https://github.com/AlejoPalavecino/codex-engineering-harness')
+    expect(caseMarkup('chuli')).toContain('target="_blank"')
     expect(caseMarkup('art')).toContain('confidenciales')
     expect(caseMarkup('foxmind')).toContain('pruebas piloto')
   })

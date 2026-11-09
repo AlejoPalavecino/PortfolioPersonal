@@ -1,4 +1,4 @@
-import { cases, email, linkedin, services, type CaseId, type Section } from '../entities'
+import { cases, email, featuredCaseIds, linkedin, services, type CaseId, type Section } from '../entities'
 import { t, language } from '../shared/i18n'
 import { assetUrl } from '../shared'
 import { campIcon } from '../shared/camp-icons'
@@ -7,7 +7,7 @@ export { credentialMarkup, recognitionsMarkup } from './credentials'
 const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`
 
 function projects(): string {
-  const plans = (['foxmind', 'flower', 'agrotech', 'irrigacion', 'herbario', 'art'] as const).map((id, index) => {
+  const plans = featuredCaseIds.map((id, index) => {
     const item = cases[id]
     return `<button class="project-plan" data-project-card="${id}" data-case="${id}">
       <span class="plan-code">${t('PLANO','BLUEPRINT')} ${String(index + 1).padStart(2, '0')}</span>
@@ -160,8 +160,10 @@ export function sectionMarkup(section: Section): string {
 
 export function caseMarkup(id: CaseId): string {
   const item = cases[id]
-  const ids = ['foxmind', 'flower', 'agrotech', 'irrigacion', 'herbario', 'art'] as const satisfies readonly CaseId[]
-  const other = ids[(ids.indexOf(id) + 1) % ids.length]!
+  const other = featuredCaseIds[(featuredCaseIds.indexOf(id) + 1) % featuredCaseIds.length]!
+  const repositoryLink = 'repositoryUrl' in item
+    ? `<a class="primary" href="${item.repositoryUrl}" target="_blank" rel="noopener noreferrer">${t('Ver repositorio en GitHub','View repository on GitHub')} ↗</a>`
+    : ''
   return localizeMarkup(`<div class="panel-nav">
       <button class="text-button" data-action="projects">← Volver a Proyectos</button>
       <button class="text-button" data-case="${other}">${t('Siguiente caso','Next case')}: ${cases[other].shortTitle} →</button>
@@ -174,6 +176,8 @@ export function caseMarkup(id: CaseId): string {
       <details class="case-technical"><summary>${t('Tecnologías y alcance','Technology & scope')}</summary><p>${item.stack}</p></details>
       ${id === 'art' ? '<aside class="evidence-note">' + t('El cliente y cualquier dato de pacientes permanecen confidenciales.','Client and patient information remains confidential.') + '</aside>' : ''}
       ${id === 'foxmind' ? '<aside class="evidence-note">' + t('Proyecto en desarrollo: la validación de resultados llegará con los pilotos.','Development in progress: outcomes will be assessed during pilot testing.') + '</aside>' : ''}
-      <button class="primary" data-section="contact">${t('Conversemos sobre un proyecto','Let’s talk about a project')} ↗</button>
+      <div class="case-actions">${repositoryLink}
+        <button class="primary" data-section="contact">${t('Conversemos sobre un proyecto','Let’s talk about a project')} ↗</button>
+      </div>
     </div>`)
 }
