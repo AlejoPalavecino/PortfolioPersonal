@@ -47,6 +47,17 @@ export const cases = {
     repositoryUrl: 'https://github.com/AlejoPalavecino/PortfolioPersonal',
     liveUrl: 'https://alejopalavecino.com.ar/',
   },
+  fitnutricion: {
+    title: 'FitNutrición', shortTitle: 'FitNutrición',
+    get subtitle() { return t('Nutrición, entrenamiento y progreso en una sola aplicación.', 'Nutrition, training and progress in one app.') },
+    get role() { return t('Creador y desarrollador integral', 'Creator and end-to-end developer') },
+    get stack() { return t('React · TypeScript · Vite · Tailwind CSS · Supabase · Zustand · Recharts · Vitest', 'React · TypeScript · Vite · Tailwind CSS · Supabase · Zustand · Recharts · Vitest') },
+    get description() { return t('La alimentación, el entrenamiento y el seguimiento físico suelen quedar repartidos en herramientas distintas. FitNutrición busca reunirlos en una sola aplicación para registrar comidas y entrenamientos, revisar la evolución y ajustar objetivos a partir de los datos registrados.', 'Nutrition, training and progress tracking are often spread across separate tools. FitNutrición brings them together in one app to log meals and workouts, review progress and adjust goals based on recorded data.') },
+    get contribution() { return t('Diseñé y desarrollé la aplicación web de punta a punta: configuración inicial del perfil y objetivos, registro de alimentos y recetas con cálculo de macronutrientes, seguimiento biométrico, rutinas y sesiones de entrenamiento, catálogo de ejercicios y analítica de fuerza. El motor metabólico estima requerimientos y calcula ajustes adaptativos a partir del consumo y la evolución del peso; las actualizaciones se presentan para confirmación del usuario. Incorpora persistencia offline-first y sincronización en la nube con Supabase.', 'I designed and built the web app end to end: profile and goal setup, food and recipe logging with macro calculations, biometric tracking, workout routines and sessions, an exercise catalog and strength analytics. Its metabolic engine estimates requirements and calculates adaptive adjustments from intake and weight trends; updates are presented for user confirmation. It includes offline-first persistence and cloud synchronization with Supabase.') },
+    get status() { return t('Desarrollo activo', 'Actively developed') },
+    get highlight() { return t('Nutrición y entrenamiento conectados por el seguimiento del progreso', 'Nutrition and training connected through progress tracking') },
+    repositoryUrl: 'https://github.com/AlejoPalavecino/FitNutricion',
+  },
   flower: {
     get title() { return t('Sistema de stock y facturación para Flower', 'Inventory and invoicing system for Flower') },
     shortTitle: 'Flower',
@@ -104,7 +115,7 @@ export const cases = {
 } as const
 export type CaseId = keyof typeof cases
 
-export const featuredCaseIds = ['foxmind', 'chuli', 'portfolio', 'flower', 'agrotech', 'irrigacion', 'herbario', 'art'] as const satisfies readonly CaseId[]
+export const featuredCaseIds = ['foxmind', 'chuli', 'portfolio', 'fitnutricion', 'flower', 'agrotech', 'irrigacion', 'herbario', 'art'] as const satisfies readonly CaseId[]
 
 export const services = [
   { get title() { return t('Software a medida', 'Custom software') }, get description() { return t('Desarrollo sistemas y aplicaciones para resolver necesidades concretas de emprendedores y pymes.', 'I build systems and applications around the real needs of founders and small businesses.') } },
