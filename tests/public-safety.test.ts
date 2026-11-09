@@ -6,18 +6,22 @@ import { language, t, languageHref } from '../src/shared/i18n'
 afterEach(() => vi.unstubAllGlobals())
 
 describe('versión pública para compartir', () => {
-  it('incluye siete casos, destaca Chuli al comienzo y conserva la confidencialidad de ART', () => {
-    const ids = ['foxmind','chuli','flower','agrotech','irrigacion','herbario','art']
+  it('incluye ocho casos, destaca Chuli y el portfolio abierto entre los primeros y conserva la confidencialidad de ART', () => {
+    const ids = ['foxmind','chuli','portfolio','flower','agrotech','irrigacion','herbario','art']
     for (const id of ids) {
       expect(Object.keys(cases)).toContain(id)
       expect(sectionMarkup('projects')).toContain('data-case="' + id + '"')
       expect(caseMarkup(id as keyof typeof cases)).toContain('MI PARTICIPACIÓN')
     }
-    expect(featuredCaseIds.slice(0, 3)).toEqual(['foxmind', 'chuli', 'flower'])
+    expect(featuredCaseIds.slice(0, 4)).toEqual(['foxmind', 'chuli', 'portfolio', 'flower'])
     const projects = sectionMarkup('projects')
-    expect(projects.indexOf('data-case="chuli"')).toBeLessThan(projects.indexOf('data-case="flower"'))
+    expect(projects.indexOf('data-case="chuli"')).toBeLessThan(projects.indexOf('data-case="portfolio"'))
+    expect(projects.indexOf('data-case="portfolio"')).toBeLessThan(projects.indexOf('data-case="flower"'))
     expect(caseMarkup('chuli')).toContain('https://github.com/AlejoPalavecino/codex-engineering-harness')
     expect(caseMarkup('chuli')).toContain('target="_blank"')
+    expect(caseMarkup('portfolio')).toContain('https://github.com/AlejoPalavecino/PortfolioPersonal')
+    expect(caseMarkup('portfolio')).toContain('https://alejopalavecino.com.ar/')
+    expect(caseMarkup('portfolio')).toContain('Ver versión online')
     expect(caseMarkup('art')).toContain('confidenciales')
     expect(caseMarkup('foxmind')).toContain('pruebas piloto')
   })

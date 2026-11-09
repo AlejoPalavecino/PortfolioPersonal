@@ -35,6 +35,18 @@ export const cases = {
     get highlight() { return t('Manager multiplataforma: Windows, Linux y macOS ARM64', 'Cross-platform Manager: Windows, Linux and macOS ARM64') },
     repositoryUrl: 'https://github.com/AlejoPalavecino/codex-engineering-harness',
   },
+  portfolio: {
+    title: 'Portfolio interactivo', shortTitle: 'Portfolio',
+    get subtitle() { return t('Un portfolio que se explora como un videojuego.', 'A portfolio you explore like a video game.') },
+    get role() { return t('Creador y desarrollador integral', 'Creator and end-to-end developer') },
+    get stack() { return t('TypeScript · Vite · CSS · Vitest · GitHub Actions', 'TypeScript · Vite · CSS · Vitest · GitHub Actions') },
+    get description() { return t('Quise que mi portfolio no fuera una página tradicional con proyectos en una lista, sino una experiencia que se pudiera recorrer. Por eso lo convertí en un campamento ilustrado: cada espacio permite descubrir una parte de mi trabajo, mi trayectoria o cómo contactarme.', 'I wanted my portfolio to be more than a traditional page with projects in a list. I turned it into an illustrated camp you can explore, where each place reveals part of my work, background or ways to get in touch.') },
+    get contribution() { return t('Diseñé y desarrollé la experiencia completa: bienvenida interactiva, escenario 2D, personaje, cámara, navegación por teclado y pantallas táctiles, interiores con fichas, controles de movimiento reducido y carga progresiva de recursos. El código es público y está disponible para revisar, ejecutar y adaptar.', 'I designed and built the full experience: an interactive welcome, 2D world, character, camera, keyboard and touch navigation, project interiors, reduced-motion controls and progressive asset loading. The source code is public and available to inspect, run and adapt.') },
+    get status() { return t('Publicado · Código abierto', 'Published · Open source') },
+    get highlight() { return t('Experiencia game-first disponible en producción', 'Game-first experience live in production') },
+    repositoryUrl: 'https://github.com/AlejoPalavecino/PortfolioPersonal',
+    liveUrl: 'https://alejopalavecino.com.ar/',
+  },
   flower: {
     get title() { return t('Sistema de stock y facturación para Flower', 'Inventory and invoicing system for Flower') },
     shortTitle: 'Flower',
@@ -92,7 +104,7 @@ export const cases = {
 } as const
 export type CaseId = keyof typeof cases
 
-export const featuredCaseIds = ['foxmind', 'chuli', 'flower', 'agrotech', 'irrigacion', 'herbario', 'art'] as const satisfies readonly CaseId[]
+export const featuredCaseIds = ['foxmind', 'chuli', 'portfolio', 'flower', 'agrotech', 'irrigacion', 'herbario', 'art'] as const satisfies readonly CaseId[]
 
 export const services = [
   { get title() { return t('Software a medida', 'Custom software') }, get description() { return t('Desarrollo sistemas y aplicaciones para resolver necesidades concretas de emprendedores y pymes.', 'I build systems and applications around the real needs of founders and small businesses.') } },

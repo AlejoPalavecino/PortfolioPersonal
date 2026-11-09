@@ -108,6 +108,12 @@ describe('transiciones adicionales', () => {
     expect(chuli.view).toEqual({ kind: 'project', project: 'chuli' })
     expect(chuli.route).toBeNull()
   })
+  it('abre la ficha del portfolio de código abierto desde el taller', () => {
+    const projects = reduceNavigation(start(), { type: 'select-section', section: 'projects', arrived: true })
+    const portfolio = reduceNavigation(projects, { type: 'open-project', project: 'portfolio' })
+    expect(portfolio.view).toEqual({ kind: 'project', project: 'portfolio' })
+    expect(portfolio.route).toBeNull()
+  })
   it('abre la intención pendiente cuando falla la escena', () => {
     const walking = select(start(), 'contact')
     const failed = reduceNavigation(walking, { type: 'set-scene', scene: 'failed' })
